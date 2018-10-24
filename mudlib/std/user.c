@@ -1400,50 +1400,16 @@ nomask void reinit_channels() {
 static private int register_channels() {
     string *dir, class_name, join_room, gm;
     int i;
-
-    if(wizardp(this_object())) {
-      dir = get_dir("/d/damned/guilds/join_rooms/");
-      i = sizeof(dir);
-      channels = ({ });
-      while(i--)
-        if(sscanf(dir[i], "%s_join.c", class_name)) channels += ({ class_name, class_name+"-council" });
-      dir = (string *)CLAN_D->all_clans();
-      i = sizeof(dir);
-      while(i--)
-        channels += ({ dir[i] });
-    }
-    else
-	channels = ((query_class() &&
-	    query_class() != "child") ? ({ query_class() }) : ({}));
-    if(query_guild()) channels += ({ query_guild() });
-    if(query_level() > 1) channels += ({ "arena" });
+    if(!channels)
+        channels=({});
     if(query_level() > 1) channels += ({ "chat" });
-    if(query_level() > 1) channels += ({ "bid" });
-    if(query_level() > 1) channels += ({ "darkechat" });
-    if(this_player()->query_class() )
-    gm = "/d/damned/guilds/join_rooms/"+(string)this_player()->query_class()+"_join.c";
-    else gm=0;
-    if(gm) gm = gm->query_master();
-    if(this_player()->query_name() == gm) channels += ({ "council", this_object()->query_class()+"-council" });
 
     if(wizardp(this_object()) ||
       high_mortalp(this_object())) channels += ({ "newbie", "high-mortal" });
-      if(legendp(this_object())) channels += ({ "legend" });
-    else
-	channels += ({ "newbie" });
-    if(wizardp(this_object()) ||
-        (int)this_object()->query_level() > 3) channels += ({ "daybreak" });
-    if(wizardp(this_object())) channels += ({ "cre", "intercre", "darkelib", "legend" });
-    if(archp(this_object())) channels += ({ "admin", "council" });
-    if(!wizardp(this_object()) && this_object()->query_class()) {
-	join_room = "/d/damned/guilds/join_rooms/"+
-	(string)this_object()->query_class()+"_join";
-	if(file_exists(join_room+".c") && (string)join_room->query_master() ==
-          (string)this_object()->query_name() && wizardp(this_object())) channels  += ({ "council", this_object()->query_class()+"-council" });
-        if(file_exists(join_room+".c") && (int)join_room->filter_council(this_object()->query_true_name()) == 1) channels += ({ this_object()->query_class()+"-council" });
-	if((string)GUILD_D->query_gm(query_class()) ==
-	  (string)this_object()->query_name() ) channels += ({ "new-council" });
-    }
+    channels += ({ "newbie" });
+    if(wizardp(this_object())) channels += ({ "cre", "intercre", "darkelib" });
+    if(archp(this_object())) channels += ({ "admin"});
+    
     CHAT_D->add_user(distinct_array(channels));
 	return 1;
 }

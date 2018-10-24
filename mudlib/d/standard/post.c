@@ -14,8 +14,8 @@ void create() {
     ::create();
     set("short", "DarkeMUD Post Office");
     set("long",
-        "Welcome to the DarkeMUD Post Office!\n"
-        "To the west is the comment board and to the east is the suggest board.\n"
+        "Welcome to the RiftsMUD Post Office!\n"
+        "To the west is the square. East is the advancement hall\n"
 	"People come here to read and post mails.  Type <mail> to access "
 	"your mailbox, or <mail name> to send mail to player name.  "
 	"The DarkeMUD post office runs on the intermud system, meaning "
@@ -28,15 +28,13 @@ void create() {
     set_items( ([ "list" : "A list of commands you may use at the "
 		 "post office."]) );
 
-    add_exit("/d/standard/square", "up");
-    add_exit("/d/standard/adv_main", "hall");
-    add_exit("/d/damned/akkad/comments", "west");
-    add_exit("/d/damned/akkad/suggestions", "east");
-    set_pre_exit_functions( ({ "north" }), ({ "more" }) );
+    add_exit("/d/standard/square", "west");
+    add_exit("/d/standard/adv_main", "east");
+    set_pre_exit_functions( ({ "west", "east" }), ({ "more" }) );
     set_property("no attack", 1);
     set_property("no steal", 1);
 }
-
+//add mail obj and do mail func
 int mail(string str) {
     object ob;
 
@@ -49,11 +47,12 @@ int mail(string str) {
     ob->start_mail(str);
     return 1;
 }
-
+//remove mail obj
 int more() {
     object ob;
 
-    if(!(ob = present(POSTAL_ID, this_player()))) return 1;
+    if(!(ob = present(POSTAL_ID, this_player()))) 
+        return 1;
     ob->remove();
     return 1;
 }

@@ -640,14 +640,18 @@ string get_wiz_name(string file) {
  * just so it wouldn't be so annoying
  * - Geldron 030696
  */
-void log_error(string file, string msg) {
-    string nom;
+void log_error(string file, string msg)
+{
+  string nom;
+  string fullpath;
 
-    if(!(nom = get_wiz_name(file))) nom = "log";
-    if(!catch(write_file(DIR_ERROR_LOGS + "/" + nom, msg)))
-  if(this_player() && wizardp(this_player()))
+  if (!(nom = get_wiz_name(file)))
+    nom = "log";
+  fullpath = DIR_ERROR_LOGS + "/" + nom;
+
+  if (!catch(write_file(fullpath, msg)))
+    if (this_player() && wizardp(this_player()))
       message("Nloading_error", msg, this_player());
-
 }
 
 void destruct_environment_of(object ob) {

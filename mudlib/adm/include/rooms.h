@@ -7,4 +7,4 @@
 #define ROOM_HALL "/d/standard/adv_main"
 #define ROOM_QUEST "/d/standard/quest_room"
 #define ROOM_CACHE "/d/standard/cache"
-#define ROOM_NEWBIE "/d/newbieville/rooms/townsquare"
+#define ROOM_NEWBIE "/d/standard/square"

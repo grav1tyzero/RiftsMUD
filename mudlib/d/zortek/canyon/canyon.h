@@ -1,5 +1,0 @@
-#define DOMAIN "/wizards/zortek/canyon"
-#define ROOMS "/wizards/zortek/canyon/room/"
-#define MON "/wizards/zortek/canyon/mon/"
-#define WEAP "/wizards/zortek/canyon/wep/"
-#define ARM "/wizards/zortek/canyon/arm/"

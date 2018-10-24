@@ -80,27 +80,9 @@
 (/cmds/mortal/_sites): Banish
 (/cmds/mortal/_typo): Log
 (/cmds/mortal/_who): ArchSave
-(/d/damned/guilds/join_rooms/arch-mage_join): DamnedData
-(/d/damned/guilds/join_rooms/chaotic-lord_join): DamnedData
-(/d/damned/guilds/join_rooms/cleric_join): DamnedData
-(/d/damned/guilds/join_rooms/elementalist_join): DamnedData
-(/d/damned/guilds/join_rooms/enchanter_join): DamnedData
-(/d/damned/guilds/join_rooms/fighter_join): DamnedData
-(/d/damned/guilds/join_rooms/necromancer_join): DamnedData
-(/d/damned/guilds/join_rooms/nightblade_join): DamnedData
-(/d/damned/guilds/join_rooms/paladin_join): DamnedData
-(/d/damned/guilds/join_rooms/sword-mage_join): DamnedData
-(/d/damned/guilds/join_rooms/thief_join): DamnedData
-(/d/damned/guilds/join_rooms/tinker_join): DamnedData
-(/d/damned/guilds/join_rooms/war-priest_join): DamnedData
 (/d/damned/inn/main_room): DamnedData
-(/d/damned/akkad/voteboard): DamnedData
 (/daemon/clan_d): Root DaemonSave DamnedData
 (/daemon/castle_d): Root DaemonSave DamnedData
-(/d/damned/akkad/castle_shop): Root DamnedData
-(/d/damned/akkad/clan_shop): Root DamnedData
-(/d/damned/akkad/obj/misc/castle_key_rack): DamnedData
-(/d/damned/akkad/mine_shop): Root DamnedData
 (/d/standard/setter): Force Log Root Shell
 (/daemon/chat): Log
 (/daemon/email_d): UserSave Root DaemonSave
@@ -119,12 +101,9 @@
 (/daemon/voting): Log UidLaw VoteSave
 (/std/locker_room): Log
 (/std/compat_mker): Root
-(/wizards/diewarzau/misc/generate): DamnedData
 (/std/skills/communion): Force
 (/std/skills/prepare_item): Force
 (/std/spells/suggestion): Force
 (/std/spells/shadows/stat_shadow): Shadow
 (/std/obj/post): CreSave
-(/wizards/diewarzau/misc/anti_core): Root
-(/wizards/diewarzau/obj/weapons/skull_sword): Root
 (/daemon/www/rolecall): www
