@@ -24,8 +24,6 @@ void init_sky() {
 
     moons[MOONS[0]] = CURRENT_WEEK(time()) + 1;
     x = date(time())+(20*(CURRENT_MONTH(time())));
-    moons[MOONS[1]] = 1+((to_int(to_float(x)/2.5))%4);
-    moons[MOONS[2]] = 1+((x/10)%4);
 }
 
 int query_phase(string moon) {
@@ -91,9 +89,8 @@ void la_sky(string str) {
             write(DEFAULT_MSG);
           else {
               write("The sky is dark with night.\n");
-            if(phase[0] != "new") write("There is a "+MOON_DESC[0]+".\n");
-            if(phase[1] != "new") write("There is a "+MOON_DESC[1]+".\n");
-            if(phase[2] != "new") write("There is a "+MOON_DESC[2]+".\n");
+            if(phase[0] != "new") 
+              write("There is a "+MOON_DESC[0]+".\n");
           }
           break;
         case "sky":
@@ -116,10 +113,7 @@ void la_sky(string str) {
                 write("The sky is darkened with night.\n");
                 if(phase[0] != "new") 
                   write("There is a "+MOON_DESC[0]+" in the sky.\n");
-                if(phase[1] != "new")
-                  write("There is a "+MOON_DESC[1]+" in the sky.\n");
-                if(phase[2] != "new")
-                  write("There is a "+MOON_DESC[2]+" in the sky.\n");
+                
               }
               break;
           }
@@ -128,8 +122,6 @@ void la_sky(string str) {
           if(tod != "night") write(DEFAULT_MSG);
           else {
             if(phase[0] != "new") write("There is a "+MOON_DESC[0]+".\n");
-            if(phase[1] != "new") write("There is a "+MOON_DESC[1]+".\n");
-            if(phase[2] != "new") write("There is a "+MOON_DESC[2]+".\n");
             if((phase[0] == "new") && (phase[1] == "new") &&  ("new" == phase[2]))
               write(DEFAULT_MSG);
           }
@@ -137,20 +129,13 @@ void la_sky(string str) {
 /* The current MudOS driver does not handle case statements well
    with #define macros.  Change this asap
 */
-	case "warzau": case "red moon":
+	case "moon": case "moon":
           if(tod != "night" || phase[0] == "new") write(DEFAULT_MSG);
           else {
             if(ansi) write("The "+phase[0]+" "+red(MOON_DESC[0])+" is hovering in the night time sky.\n");
             else write("The "+phase[0]+" "+MOON_DESC[0]+" is hovering in the night time sky.\n");
           }
           break;
-	case "ankh": case "blue moon":
-	  if(tod != "night" || phase[1] == "new") write(DEFAULT_MSG);
-          else write("The "+phase[1]+" "+MOON_DESC[1]+" is hovering in the night sky.\n");
-          break;
-	case "luna": case "green moon":
-          if(tod != "night" || phase[2] == "new") write(DEFAULT_MSG);
-          else write("The "+phase[2]+" "+MOON_DESC[2]+" is hovering in the night sky.\n");
-          break;
+	
     }
 }

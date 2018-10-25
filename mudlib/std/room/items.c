@@ -10,9 +10,7 @@
 
 #define DEFAULT_MSG "You do not notice that here.\n"
 #define ASTRA (: call_other, ASTRONOMY_D, "la_sky" :)
-#define DEFAULT_ITEMS ([ "sky":ASTRA, "sun":ASTRA, "moon":ASTRA, "moons":ASTRA,\
-MOONS[0]:ASTRA, MOONS[1]:ASTRA, MOONS[2]:ASTRA, MOON_DESC[0]:ASTRA,\
-MOON_DESC[1]:ASTRA, MOON_DESC[2]:ASTRA ])
+#define DEFAULT_ITEMS ([ "sky":ASTRA, "sun":ASTRA, "moon":ASTRA, "moons":ASTRA, MOONS[0]:ASTRA, MOON_DESC[0]:ASTRA, ])
 
 private mapping __Items;
 

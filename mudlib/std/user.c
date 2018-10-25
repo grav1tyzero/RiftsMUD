@@ -21,7 +21,6 @@
 #include <objects.h>
 #include <money.h>
 #include <flags.h>
-#include <user.h>
 #include <dirs.h>
 #include <council.h>
 // WHY IS THIS AN INCLUDE IF IT HAS A .C EXTENSION?
@@ -30,7 +29,16 @@
 #define RESURRECT "/cmds/adm/_resurrect"
 #define LOG_PROPS ({ "old exp", "dev points", "dev point base", "xp mod", "hp advance", "mp advance" })
 
+inherit "/std/living";
+inherit "/std/user/tsh";
+inherit "/std/user/autoload";
+inherit "/std/user/save";
+inherit "/std/user/edit";
+inherit "/std/user/trace";
+inherit "/std/user/bitflags";
+inherit "/std/user/refs";
 inherit "/std/user/more";
+
 
 #define OVERRIDE_IGNORE_MSG ({ "broadcast", "info", "more", "room_description", "room_exits","smell","listen","write","say", "system", "prompt", "inanimate_item", "living_item"})
 int platinum, gold, electrum, silver, copper;

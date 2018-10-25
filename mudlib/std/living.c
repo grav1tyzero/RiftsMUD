@@ -118,46 +118,7 @@ int buffer_full() {
 }
 
 void adjust_exp() {
-    int buff, rate;
-    if(!this_object()->is_player()) return;
-    buff = player_data["general"]["exp buffer"];
-    if(!buff) return;
-    if(!next_lev_exp)
-	next_lev_exp = (int)ADVANCE_D->get_exp((int)this_object()->query_level() + 1) -
-	(int)ADVANCE_D->get_exp((int)this_object()->query_level());
-    rate = 2+next_lev_exp/11000;
-    if((int)this_object()->query_level() > 19) rate /= 2;
-    rate += rate * query_skill("quick study") / 200;
-    if(environment() && environment()->query_property("quick study"))
-	rate *= 2;
-    if(!login_flag && player_data["general"]["last adjust"]) {
-	rate *= (time() - player_data["general"]["last adjust"]) / 10;
-	login_flag = 1;
-    }
-    player_data["general"]["last adjust"] = time();
-    if(rate > buff) rate = buff;
-    buff -= rate;
-    player_data["general"]["exp buffer"] = buff;
-    player_data["general"]["experience"] += rate;
-
-    if(player_data["general"]["experience"] >
-      player_data["general"]["max exp"] ||
-      !player_data["general"]["max exp"])
-	{
-	player_data["general"]["max exp"] =
-	(player_data["general"]["experience"] - 1);
-//GOING TO ADD DEV CODE HERE (did add it - Parnell feb99)
-//changed to fix various HB bugs
-       if(!query("no add dev") && dev_rate_int = get_dev_rate())
-		{
-if(!xp_to_next_dev) xp_to_next_dev = player_data["general"]["max exp"] + dev_rate_int;
-		while( player_data["general"]["max exp"] > xp_to_next_dev )
-		{
-		xp_to_next_dev += dev_rate_int;
-		this_object()->add_dev(1);
-		}
-                }
-	}
+  
     return;
 }
 
@@ -186,16 +147,7 @@ int percent_buffer() {
 }
 
 int max_buffer_size() {
-    int gain_exp, lev;
-
-    if((lev=(int)this_object()->query_level()) <= 1) return 500;
-    gain_exp = (int)ADVANCE_D->get_exp(lev+1) -
-    (int)ADVANCE_D->get_exp(lev);
-    if(lev < 5) gain_exp /= 10;
-    else
-	gain_exp /= 20;
-    gain_exp += gain_exp * query_skill("quick study") / 100;
-    return gain_exp;
+    return 0;
 }
 
 static void init_path() {

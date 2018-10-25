@@ -21,6 +21,6 @@
 #define LONGEST_DAY 101
 #define SHORTEST_DAY 1
 
-#define DAYS ({ "Oneday", "Twoday", "Threeday", "Fourday", "Lastday" })
-#define MONTHS ({ "Onery", "Twoery", "Threery", "Fourey", "Fivey",\
-"Sixy", "Seveny", "Eighty", "Niney", "Yearend" })
+#define DAYS ({ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" })
+#define MONTHS ({ "January", "February", "March", "April", "May",\
+"June", "July", "August", "September", "October", "November", "December" })
