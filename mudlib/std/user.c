@@ -53,7 +53,9 @@ static int snoop, earmuffs;
 static string *inf_heard;
 string default_who;
 string *inf_block;
-string	real_name, email, ip, last_on, password, cpath, race, original_site;
+string	real_name, email, ip, last_on, cpath, race, original_site;
+private string _password_hash;
+private string _password_salt;
 private string position, primary_start;
 private static string *channels;
 mapping mini_quests;
@@ -887,13 +889,19 @@ string query_email() { if (email) return email; return "???@" + ip; }
 
 string query_rname() { return real_name ? real_name : "???"; }
 
-string query_password() { return password; }
+//string query_password() { return password; }
 
-void set_password(string pass) {
+void set_password(string password) {
     if(geteuid(previous_object()) != UID_ROOT &&
       file_name(previous_object()) != PASSWD_D) return 0;
-    password = pass;
+    //generate a 2 character capital hex for crypt() to use in the seed. pad it left with 0 because crypt seed requires 2 full chars. 00-FF
+    _password_salt = sprintf("%02X", random(255));
+    _password_hash = crypt(password, _password_salt);
     save_player( query_name() );
+}
+
+int verify_password(string password) {
+    return crypt(password, _password_salt) == _password_hash;
 }
 
 void set_email(string e) {

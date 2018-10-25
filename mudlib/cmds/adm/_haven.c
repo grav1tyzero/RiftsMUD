@@ -25,7 +25,7 @@ int cmd_haven(string str) {
 	write ("You are now hidden.\n") ;
         if(!this_player()->query_invis())
 	INFORM_D->do_inform("logins_and_quits","Info: " + capitalize(
-          (string)this_player()->query_name(1)) + " has stepped beyond the boundary of Daybreak Ridge.",
+          (string)this_player()->query_name(1)) + " has logged off.",
 	    ({ this_player() }));
 	previous_object()->hide(1) ;
 	return 1 ;
@@ -36,7 +36,7 @@ int cmd_haven(string str) {
    previous_object()->hide(0) ;
    if(!this_player()->query_invis())
    INFORM_D->do_inform("logins_and_quits","Info: " + capitalize(
-        (string)this_player()->query_name(1)) + " steps out of the forest and onto the mountain of Daybreak Ridge.",
+        (string)this_player()->query_name(1)) + " has logged in.",
 	({ this_player() }));
    return 1 ;
 }

@@ -16,19 +16,19 @@
 #
 # (superuser) group: Defines the general operations personnel
 # that perform the day to day global support or emergency recovery
-(god): parnell traer helios
-(admin): noone rhasper
-(superuser): parnell traer helios thrace caeri rhasper
+(god): parnell
+(admin): noone
+(superuser): parnell
 #
 # (assist) group: Defines people who require Arch-Wizard access
 # in the performance of bug hunting and/or specific functionality 
 (siteadmin): parnell
-(assist): noone mitchell
+(assist): noone
 #
 # (arch) group: Defines the combined resources of (superuser) and
 # the (assist) personnel.  Plans are expected to change this to
 # contain (admin) and (assist) eventually to further isolate SU
-(arch): (superuser) (assist) rhasper schroom
+(arch): (superuser) (assist) noone
 #
 # (approval) group: To be honest, this is pretty much unused at this
 # time and its functionality in the future is uncertain.
@@ -52,13 +52,13 @@
 # (mentor) group: Defines the people that have demonstrated exceptional
 # commitment as builders, educators, and domain adminstration of multiple
 # areas.  These people are the ones that keep the younger wizzes in line.
-(mentor): noone bron stoney
+(mentor): noone
 #
 # (elder) group: Defines the people that have completed a major build
 # project and have established themselves as respectable builders.  This
 # is really just a "pat-on-the-back" however since the (mentor) group is
 # embedded, this makes a good mail group of the "top builders"
-(elder): (mentor)  cyric
+(elder): (mentor)  noone
 #
 # (wizard) group: Contains the complete list of all low ranking immortals
 # that have yet to distinguish or prove themselves in extraordinary ways

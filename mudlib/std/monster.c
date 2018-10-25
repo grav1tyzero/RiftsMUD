@@ -56,6 +56,8 @@ void create() {
   this_object()->__INIT();
   set_property("ambidextry", 1);
   speed = 0;
+  if(query_level() < 1) 
+    set_level(1);
 }
 
 void init() {
@@ -102,7 +104,7 @@ void chase(object plyr) {
 void set_name(string str) {
   set_living_name(str);
   ::set_name(str);
-  if(query_level() < 1) set_level(1);
+
 }
 
 varargs void heart_beat(int recurs_flag) {
@@ -297,16 +299,9 @@ void die(object ob) {
   tmp->move(environment(this_object()));
   tmp_size=sizeof(currs=query_currencies());
  
-  if(tmp_size){ money_ob = new("/std/obj/coins");
-	money_ob = put_money(tmp_size, currs, money_ob); 
-   /* moved to function --parnell mar 05
-    {
-    
-    for(i=0; i<tmp_size; i++) {
-      money_ob->add_money(currs[i], query_money(currs[i]));
-      add_money(currs[i], -query_money(currs[i]));
-    }
-   */
+  if(tmp_size){ 
+    money_ob = new("/std/obj/coins");
+	  money_ob = put_money(tmp_size, currs, money_ob); 
     money_ob->move(tmp);
   }
   contents = all_inventory(this_object());
@@ -429,66 +424,12 @@ int kill_ob(object who, int which) {
 }
 
 int query_num_rounds() {
-  if(level) return (level > 30)?4:((level/10)+1);
-  else return 1;
+  return 1;
 }
 
 void set_level(int x) {
-  int y;
+
   level = x;
-  if(x >= 10 && x <= 20) set_skill("resist stun", (x-9)*5+10);
-  else if(x > 20) set_skill("resist stun", 60 + 3*(x-20));
-  set_overall_ac(5*x / 2);
-if(x >= 20) set_overall_ac(6*x);
-  if(x>10)
-     set_skill("reverse stroke", (x-10)*2+5);
-  if(x >= 10)
-    set_property("enhance criticals", -1 * (x/10) );
-  if(x >= 5) {
-    set_skill("concentrate", 25 + x*5);
-    set("concentrate", 1);
-  }
-  set_property("base hp regen", 5 * x);
-  set_property("base mp regen", 5 * x);
-set_skill("melee", 25 + (x*4) + random(5) );
-  set_skill("perception", 15+(x*4) + random(10) );
-  if(x >= 12) set("gang bang", 1);
-  set_skill("attack", 20 + (x*4) + random(10) );
-  set_skill("defense", (x*4) + random(10) );
-  set_skill("blade", 30 + (x*4) + random(10) );
- if(x > 10) set_property("magic resistance", (x-10)*5);
-  set_skill("knife", (40 + x*4) + random(10) );
-  set_skill("blunt", 30 + (x*4) + random(10) );
-  set_skill("two handed staff", 30 + (x*4) + random(10) );
-  set_skill("projectile", 30 + (x*4) + random(10) );
-  set_skill("two handed blade", 30 + (x*4) + random(10) );
-  set_stats("constitution", 50 + x*2 + random(20) );
-  set_stats("strength", 50 + x*3 + random(20) );
-  set_stats("intelligence", 50 + x*2 + random(20) );
-  set_stats("wisdom", 50 + x*2 + random(20) );
-  set_stats("dexterity", 50 + x*3 + random(20) );
-  set_stats("charisma", 50 + x*2 + random(20) );
-  set_skill("dodge", 20 + x*4 + random(10) );
-  set_skill("parry", 40 + x*4 + random(10) );
-  set_property("melee damage", ([ "crushing" : 9 + 2*x, "impact" : 9 + 2*x ]));
-  if(this_object()->is_pet())
-    set_exp(x*1000);
-  else
-    if(x < 5) set_exp( (int)ADVANCE_D->get_exp(x) );
-  else if(x < 10) set_exp( (int)ADVANCE_D->get_exp(x) - 
-                           (int)ADVANCE_D->get_exp(x-1) );
-  else set_exp(( (int)ADVANCE_D->get_exp(x) - 
-                 (int)ADVANCE_D->get_exp(x-1) ) / 4);
-  if(x <= 1) set_exp(2000+random(1000));
- y = 50 + (level *50) + random(50);
-if(level>10) y+=40*level;
-if(level>15) y+=40*level;
-  if(level>20) y+=50*level;
-  if(level>25) y+=50*level;
-  set_max_hp(y);
-  set_hp(y);
-  set_max_mp(38 + (level * 150));
-  set_mp(query_max_mp());
 }
 
 int query_level() { return level; }
@@ -522,9 +463,7 @@ string query_body_type()
 }
 
 void set_exp(int x) {
-  if( x > (int)ADVANCE_D->get_exp(level) )
-    player_data["general"]["experience"] = (int)ADVANCE_D->get_exp(level);
-  else player_data["general"]["experience"] = x;
+  return;
 }
 
 // These two functions remain for backwards Nightmare 1.* and 2.* compat
@@ -534,21 +473,7 @@ void set_chats(int x, mixed *arr) { set_emotes(x, arr, 0); }
 void set_achats(int x, mixed *arr) { set_emotes(x, arr, 1); }
 
 void set_melee_damage(mixed what) {
-  string *tmp;
-  int i;
-
-  if(!mapp(what)) {
-    if(member_array(what,DAMAGE_TYPES) < 0) return;
-    props["melee damage"] = ([ what : 10 ]);
-    return;
-  }
-  tmp = keys(what);
-  i = sizeof(tmp);
-  while(i--) {
-    if(member_array(tmp[i],DAMAGE_TYPES) < 0) map_delete(what, tmp[i]);
-  }
-  if(!mapp(props["melee damage"])) props["melee damage"] = ([]);
-  props["melee damage"] += what;
+  return;
 }
 
 mixed query_melee_damage() { return props["melee damage"]; }
@@ -634,12 +559,6 @@ void set(string str, mixed val) {
   ::set(str, val);
   if(str == "race") {
     LANG_D->init_languages(this_object());
-    if(stringp(val) && val == "undead") {
-      tmp_map = (mapping)this_object()->query_property("enhance criticals");
-      if(mapp(tmp_map)) tmp_map += ([ "holy" : 2 ]);
-      else tmp_map = ([ "holy" : 2 ]);
-      set_property("enhance criticals", tmp_map);
-    }
   }
   return;
 }

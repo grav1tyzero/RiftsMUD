@@ -174,7 +174,7 @@ void create() {
        "Monthly Rate:      1500 gold\n" ]) );
   add_exit("/d/damned/inn/foyer", "south");
   add_exit("/d/damned/inn/gift_shop", "east");
-  add_exit("/d/daybreak/room/dbns2", "west");
+  add_exit("/d/standard/square", "north");
   this_object()->reset();
   return;
 }

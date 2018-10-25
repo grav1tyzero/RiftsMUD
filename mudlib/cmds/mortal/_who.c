@@ -92,7 +92,7 @@ string list_users(string *races, string order) {
     else
 	who_list = "ERROR: No who_header found\n\n";
     if(total == 1 && sizeof(users()) == 1)
-        who_list += "There beats but one heart in Daybreak Ridge!\n";
+        who_list += "There beats but one heart in the MUD!\n";
     else
 	who_list += "Number of users: "+sizeof(users())+" ("
 	+total+" shown)\n";
@@ -114,9 +114,6 @@ string list_users(string *races, string order) {
 		    line += " " + capitalize((string)tmp[j]->query_class());
 		} else
 		    line += "{"+(string)tmp[j]->query_name(1)+"}";
-//donno what the below shit was for but it broke the fuck out of the mud, good job thrace.		
-//if(!archp(tmp[j]) || (strsrch(line, "%^") == -1 && archp(tmp[j]))) 
-		  //  line = arrange_string(line, 65);
 		line = " "+line;
 		if(in_edit(tmp[j]) || in_input(tmp[j]))
 		    line = "%^YELLOW%^E%^RESET%^"+line;
@@ -280,26 +277,18 @@ int filter_wizard(object ob) {
     return wizardp(ob) && !archp(ob);
 }
 
- int filter_legend(object ob) {
-    return legendp(ob);
-}
-
-int filter_hero(object ob) {
-    return herop(ob) && !legendp(ob);
-}
-
 int filter_high_mortal(object ob) {
-    return high_mortalp(ob) && !legendp(ob) && !herop(ob);
+    return high_mortalp(ob);
 }
 
 int filter_ambassador(object ob) {
     return ambassadorp(ob) && !high_mortalp(ob) &&
-    !wizardp(ob) && !legendp(ob) && !herop(ob);
+    !wizardp(ob);
 }
 
 int filter_mortal(object ob) {
     int res;
-    res = !wizardp(ob) && !high_mortalp(ob) && !ambassadorp(ob) && !legendp(ob) && !herop(ob);
+    res = !wizardp(ob) && !high_mortalp(ob) && !ambassadorp(ob);
     return res;
 }
 

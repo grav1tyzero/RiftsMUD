@@ -167,11 +167,8 @@ static private int check_password(string str) {
     string pass; 
  
     master()->load_player_from_file(__Name, __Player); 
-    pass = (string)__Player->query_password();
-//++++++++++DEBUG
-//message("logon","Entered password "+ crypt(str, "BOB")[3..] + " existing password " + pass, this_object());
-//+++++++++++DEBUG
-    if(pass != crypt(str, "BOB")[3..]) return 0; 
+    if(__Player->verify_password(str)) 
+      return 0; 
     return 1;
   } 
  
@@ -282,10 +279,7 @@ nomask static void npass2(string pass) {
 	message("logon","Re-enter new password:",this_object());
 	input_to("new_pass");
     }
-    pass = crypt(pass, "BOB")[3..];
-//++++++++++DEBUG
-    message("logon","Crypted pass is "+ pass + "\n", this_object());
-//++++++++++DEBUG
+    
     __Player->set_password(pass);
     message("logon","\nPassword set!\n",this_object());
  

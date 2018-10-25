@@ -141,8 +141,14 @@ static int check_password(string pass){
   oplayer[i]->save_player();
   nplayer[i]=new(OB_USER);
   master()->load_player_from_file(name[i],nplayer[i]);
-  password=(string)nplayer[i]->query_password();
-  if(password!=crypt(pass,password)){
+  // password=(string)nplayer[i]->query_password();
+  // if(password!=crypt(pass,password)){
+  //   destruct(nplayer[i]);
+  //   return 0;
+  // }
+  // return 1;
+
+  if(!nplayer[i]->verify_password(pass)) {
     destruct(nplayer[i]);
     return 0;
   }

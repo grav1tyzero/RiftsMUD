@@ -46,13 +46,13 @@ nomask static int oldpass(string pass) {
 
     if (!pass) return 0;    
     seteuid(UID_USERACCESS);
-    password = (string) this_player()->query_password();
+    // password = (string) this_player()->query_password();
     seteuid(getuid());
-    if (password != crypt(pass, "BOB")[3..]) {
-      write("\nPassword not changed.");
+    if (!this_player()->verify_password(pass)) {
+      write("\nInvalid Current Password. Password not changed!\n");
       return 0;
     }
-    printf("\nNew password:");
+    printf("\nNew password:\n");
     input_to("newpass", 1);
     return 1;
 }
@@ -77,7 +77,7 @@ nomask static int npass2(string pass) {
 	write("You must do this with out being forced.\n");
 	return 0;
     }
-    pass = crypt(pass, "BOB")[3..];
+    //pass = crypt(pass, "BOB")[3..];
     seteuid(UID_USERACCESS);
     this_player()->set_password(pass);
     seteuid(getuid());
