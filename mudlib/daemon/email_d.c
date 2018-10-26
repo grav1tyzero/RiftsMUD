@@ -68,7 +68,7 @@ void pre_register() {
     }
     seteuid(UID_USERSAVE);
     em = (string)pl->query_email();
-    if(em == "ccrain@marlin.utmb.edu") write("Found You!");
+    write(sprintf("%s - %s \n",em,pl->query_name()));
     em = em_lower(em);
     if(email[em] && email[em] != files[i]) {
       rept += "Duplicate email: "+
@@ -78,7 +78,7 @@ void pre_register() {
       email += ([ em : files[i] ]);
   }
   seteuid(UID_ROOT);
-  write_file("/wizards/diewarzau/rept", rept);
+  write_file("/open/email_report.txt", rept);
   save_me();
   seteuid(getuid());
   return;
@@ -105,12 +105,13 @@ string generate_pass(string nm) {
   object pl = new("/std/user");
   string pass;
 
-  if(geteuid(previous_object()) != UID_ROOT) return 0;
+  if(geteuid(previous_object()) != UID_ROOT) 
+    return 0;
   seteuid(UID_ROOT);
   pl->set_name(nm);
   master()->load_player_from_file(nm, pl);
   pass = (string)ROOM_SETTER->random_password(random(4)+5);
-  pl->set_password(crypt(pass, 0)[3..]);
+  pl->set_password(pass);
   seteuid(UID_USERSAVE);
   pl->save_player(nm);
   seteuid(getuid());

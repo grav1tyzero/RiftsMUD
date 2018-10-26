@@ -52,6 +52,7 @@
 #define SU_D                 (DIR_SECURE_DAEMONS+"/su_d")
 #define TERMINAL_D           (DIR_DAEMONS+"/terminal_d")
 #define TIME_D               (DIR_DAEMONS+"/timezones")
+#define WIZCHAR_D            (DIR_SECURE_DAEMONS+"/wizchar_d")
 #define VIRTUAL_D            (DIR_SECURE_DAEMONS+"/virtual_d")
 #define VOTING_D             (DIR_DAEMONS+"/voting")
 #define VOTE      (DIR_DAEMONS+"/voter")

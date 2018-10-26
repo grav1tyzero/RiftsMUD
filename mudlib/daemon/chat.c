@@ -72,7 +72,6 @@ int send_chat(string verb, string who, string str) {
     switch(verb) {
     case "newbie": col = "%^BOLD%^%^MAGENTA%^"; break;
     case "bid": col = "%^B_GREEN%^%^BLACK%^"; break;
-    case "legend": col = "%^YELLOW%^"; break;
     case "chat": col = "%^CYAN%^"; break;
       case "daybreak":  col = "%^ORANGE%^"; break;
     case "cre":    col = "%^BOLD%^%^BLUE%^"; break;
@@ -290,14 +289,11 @@ int hist_channel(string str) {
           col = "%^ORANGE%^";
           if(member_array(this_player(), channels["daybreak"]) > -1) allow = 1;
 	break;
-    case "legend":
-        col = "%^YELLOW%^";
-        if(wizardp(this_player()) || legendp(this_player())) allow = 1;
-        break;
-    case "cre":
-	col = "%^BOLD%^%^BLUE%^";
-	if(wizardp(this_player())) allow = 1;
-	break;
+        case "cre":
+	        col = "%^BOLD%^%^BLUE%^";
+	        if(wizardp(this_player())) 
+                allow = 1;
+	        break;
     case "intercre":
 	col = "%^BOLD%^%^CYAN%^";
 	if(wizardp(this_player())) allow = 1;

@@ -345,7 +345,7 @@ void remove() {
 	if(count)
 	    INFORM_D->do_inform("logins_and_quits","Info: " +
 	      capitalize((string)this_object()->query_name()) +
-                " has stepped beyond the boundary of Daybreak Ridge.",
+                " has logged off.",
 	      who_exc);
     MULTI_D->quit(query_name());
     this_object()->tsh_cleanup();
@@ -508,7 +508,7 @@ void setup() {
     if(!hiddenp(this_object()))
 	INFORM_D->do_inform("logins_and_quits","Info: " +
 	  capitalize((string)this_object()->query_name()) +
-       " steps out of the forest and onto the mountain of Daybreak Ridge.",
+       " has logged in.",
 	  who_exc);
     catch(ROLECALL_D->html());
     log_file("enter", "ENTER:"+

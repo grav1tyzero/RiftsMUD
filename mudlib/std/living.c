@@ -81,39 +81,10 @@ static void init_living() {
 }
 
 void override_add_exp(int exp) {
-    object ob;
-
-    ob = this_object();
-    if(!this_object()->is_player()) 
-        return;
-    player_data["general"]["experience"] += exp;
-    if(player_data["general"]["experience"] > player_data["general"]["max exp"] || !player_data["general"]["max exp"])
-	{
-	    player_data["general"]["max exp"] =	(player_data["general"]["experience"] - 1);
-//ADDED NEW DEV SYS TO HERE (parnell feb99)
-       if(!query("no add dev") && dev_rate_int = get_dev_rate())
-		{
-            if(!xp_to_next_dev) 
-                xp_to_next_dev = player_data["general"]["max exp"] + dev_rate_int;
-            while( player_data["general"]["max exp"] > xp_to_next_dev )
-            {
-                xp_to_next_dev += dev_rate_int;
-                this_object()->add_dev(1);
-            }
-        }
-
-	}
-    ob = previous_object();
-    if(ob && file_name(ob) != "/cmds/mortal/_advance")
-	log_file("override_exp", "Override exp: "+exp+" to "+query_name()+".\n"+ "Object: "+file_name(ob)+"  Uid: "+getuid(ob)+"\n");
-    if(this_player() && this_player() != this_object())
-	    log_file("override_exp", sprintf("By: %s  Euid: %s\n", this_player()->query_name(), geteuid(this_player())));
-    this_object()->add_exp2(0);
-    return;
+   
 }
 
 int buffer_full() {
-    if((player_data["general"]["exp buffer"] * 100 / max_buffer_size()) < 95) return 0;
     return 1;
 }
 
@@ -124,26 +95,22 @@ void adjust_exp() {
 
 void reset_xp_to_dev()
 {
- if(previous_object()->is_player()) return;
- xp_to_next_dev = player_data["general"]["max exp"] + dev_rate_int;
+ 
  return;
 }
 
 void reset_max_exp() {
-    if(!this_player() || !archp(this_player())) return;
-    player_data["general"]["max exp"] = player_data["general"]["experience"] - 1;
+    
     return;
 }
 
 nomask int at_max_exp() {
-    if(player_data["general"]["experience"] >=
-      player_data["general"]["max exp"]) return 1;
+    
     return 0;
 }
 
 int percent_buffer() {
-    return 100 * player_data["general"]["exp buffer"] /
-    max_buffer_size();
+    return 100;
 }
 
 int max_buffer_size() {
@@ -161,8 +128,7 @@ static void init_path() {
 	search_path += ({ DIR_AMBASSADOR_CMDS, DIR_SYSTEM_CMDS });
     if(high_mortalp(this_object()) || wizardp(this_object()))
 	search_path += ({ DIR_HM_CMDS });
-      if(legendp(this_object()) || wizardp(this_object()))
-          search_path += ({ DIR_LEGEND_CMDS });
+      
     if(wizardp(this_object())) {
 	search_path += ({ DIR_CREATOR_CMDS });
 	if(file_size(user_path(query_name()) + "bin") == -2)
@@ -214,10 +180,9 @@ int force_me(string cmd) {
     else tmp = "";
     /*  Added by Geldron 031096 to work with equip/unequip */
     if(PO && BN(PO) && (BN(PO) == "/cmds/mortal/_equip" || 
-	BN(PO) == "/cmds/mortal/_unequip" || BN(PO) ==
-	"/d/damned/arena/booths_room")) {
-	res = command(cmd);
-	return res;
+	    BN(PO) == "/cmds/mortal/_unequip")) {
+	    res = command(cmd);
+	    return res;
     }
     if(this_object()->is_player() && origin() != "local" &&
       (tmp != UID_ROOT && tmp != UID_FORCE && tmp != geteuid()) &&
@@ -230,14 +195,7 @@ int force_me(string cmd) {
 }
 
 void reduce_stats() {
-    string *ind;
-    int i;
-
-    if(!stats) return;
-    ind = keys(stats);
-    for(i=0; i<sizeof(ind); i++)
-	if(random(100) < (int)this_object()->query_level())
-	    set_stats(ind[i], query_base_stats(ind[i])-1);
+    
 }
 
 int sort_limbs(string one, string two) {
@@ -260,148 +218,19 @@ int sort_limbs(string one, string two) {
 }
 
 void do_healing(int x) {
-    int tmp, i;
-    mapping limb_info;
-    string *severed;
-
-    if(this_object() && this_object()->is_player()) {
-	this_object()->add_exp2(0);
-	//     ^ Checks for level advancement. (Diewarzau 4/9/96)
-	tmp = query_physical();
-	if(tmp < 0) tmp = 0;
-	else if(tmp > 2) tmp = 2;
-	add_hp(tmp);
-	tmp = query_spiritual();
-	if(tmp < -2) tmp = -2;
-	else if(tmp > 2) tmp = 2;
-	add_mp(tmp);
-    }
-    if(!query_poisoning())
-	heal(query_heal_rate());
-    if(intp(props["base hp regen"])) tmp = props["base hp regen"];
-    else tmp = 3;
-    tmp += x / 30;
-    if(intp(props["extra hp regen"]))
-	tmp += props["extra hp regen"] * tmp / 100;
-    if(x < 20 && this_object()->is_player()) tmp /= 3;
-    set_heal_rate(tmp);
-    if(intp(props["base mp regen"])) tmp = props["base mp regen"];
-    else tmp = 3;
-    tmp += x/50;
-    tmp += query_stoned() / 3;
-    if(intp(props["extra mp regen"]))
-	tmp += props["extra mp regen"] * tmp / 100;
-    if(x < 20 && query_stoned() < 10 && this_object()->is_player()) tmp /= 3;
-    add_mp(tmp);
-    adjust_biorhythms();
-    if(query_poisoning()) {
-	message("info","%^GREEN%^You take poison damage.",this_object());
-	this_object()->add_hp(-(1 + (int)this_object()->query_poisoning() / 5));
-    }
-      if(query_potion_healing()) {
-          message("info","%^WHITE%^%^BOLD%^You feel much better.",this_object());
-          this_object()->add_hp((1 + (int)this_object()->query_potion_healing() / 5));
-      }
-    if(this_object()->is_player() && (string)this_object()->
-      getenv("SCORE") != "off" && !(query_hp() >= query_max_hp() &&
-	query_mp() >= query_max_mp()))
-	message("info","hp: "+query_hp()+" ("+query_max_hp()+")  mp: "+
-	  query_mp() + " ("+query_max_mp()+")", this_object());
-    if(this_object()->query_property("limb regen") &&
-      !this_object()->query_ghost()) {
-	severed = (string *)this_object()->query_severed_limbs();
-	i = sizeof(severed);
-	if(!healing) healing = ([]);
-	while(i--) {
-	    if(member_array(severed[i], (string *)this_object()->query_limbs())
-	      >= 0) continue;
-	    if(undefinedp(healing[severed[i]+" regen"]))
-		healing[severed[i]+" regen"] = 5 + random(10);
-	    if(healing[severed[i]+" regen"] <= 0) {
-		limb_info=
-		(mapping)RACE_D->query_limb_info(severed[i],(string)this_object()->
-		  query("race"));
-		if(!limb_info) continue;
-		if(limb_info["attach"] && limb_info["attach"] != "0" &&
-		  member_array(limb_info["attach"], (string *)this_object()->
-		    query_limbs()) < 0) {
-		    healing[severed[i]+" regen"] = 5 + random(10);
-		    continue;
-		}
-		this_object()->add_limb(severed[i], limb_info["ref"],
-		  query_max_hp() / limb_info["max"], 0, 0);
-		if(member_array(severed[i], (string *)RACE_D->
-		    query_wielding_limbs((string)this_object()->query("race"))) != -1)
-		    this_object()->add_wielding_limb(severed[i]);
-		message("info", "%^CYAN%^%^BOLD%^Your "+severed[i]+" grows back.",
-		  this_object());
-	    } else
-		healing[severed[i]+" regen"]--;
-	}
-    }
-    ok_to_heal = player_age + TIME_TO_HEAL;
 }
 
 void set_severed(string limb) {
-    if(!this_object()->query_property("limb regen")) return;
-    if(!healing) healing = ([]);
-    healing[limb + " regen"] = 5 + random(10);
+    
     return;
 }
 
 int calculate_healing() {
-    int borg;
-    string msg;
-
-    if(query_intox()) {
-	healing["intox"] --;
-	if(healing["intox"] < 0) healing["intox"] = 0;
-	if(!healing["intox"]) {
-	    write("Suddenly you get a bad headache.");
-	}
-	else if(3> random(101)) {
-	    borg = random(4);
-	    switch(borg) {
-	    case 0: msg = "stumble"; break;
-	    case 1: msg = "hiccup"; break;
-	    case 2: msg = "look"; break;
-	    case 3: msg = "burp"; break;
-	    }
-	    write("You "+msg+(msg=="look" ? " drunk." : "."));
-           say(query_cap_name()+" "+msg+"s"+(msg == "look" ? " drunk." : "."));
-	}
-    }
-    if(query_stoned()) {
-	healing["stoned"]--;
-	if(healing["stoned"] <= 0) healing["stoned"] = 0;
-	else if(3 > random(101)) {
-	    borg = random(4);
-	    switch(borg) {
-	    case 0: msg = "stares at the clouds, even if there are none."; break;
-	    case 1: msg = "says: Woooooooah, I am sooooo wasted."; break;
-	    case 2: msg = "contemplates: what do stupid people think when "+
-		"they are stoned?"; break;
-	    case 3: msg = "dances about in a Jim Morrison-esque fashion."; break;
-	    }
-	    say(query_cap_name() + " "+msg);
-	}
-    }
-    if(query_stuffed()) {
-	healing["stuffed"]--;
-	if(healing["stuffed"] < 0) healing["stuffed"] = 0;
-    }
-    if(query_quenched()) {
-	healing["quenched"]--;
-	if(healing["quenched"] < 0) healing["quenched"] = 0;
-    }
-    if(query_poisoning() > 0) add_poisoning(-1);
-      if(query_potion_healing() > 0) add_potion_healing(-1);
-    return query_intox()+query_stuffed()+query_quenched();
+    
 }
 
 void set_ritual(string str) {
-      if(getuid(previous_object()) != UID_ROOT) return;
-      ritual = str;
+      
 }
 
 void set_party(string str) {
@@ -410,33 +239,21 @@ void set_party(string str) {
 }
 
 int add_stoned(int x) {
-    if(!healing) healing = ([]);
-    if(!healing["stoned"]) healing["stoned"] = 0;
-    if((healing["stoned"] + x) > 300) {
-	healing["stoned"] = 300;
-	return 0;
-    }
-    healing["stoned"] += x;
-    return 1;
+  
 }
 
 int query_stoned() {
-    if(!healing || undefinedp(healing["stoned"])) return 0;
-    return healing["stoned"];
+    
 }
 
 
 void add_poisoning(int x) {
-    if(!healing) healing = ([]);
-    healing["poisoning"] += x;
-    if(healing["poisoning"] < 0) healing["poisoning"] = 0;
+    
 }
 
-  void add_potion_healing(int x) {
-      if(!healing) healing = ([]);
-      healing["potion"] += x;
-      if(healing["potion"] < 0) healing["potion"] = 0;
-  }
+void add_potion_healing(int x) {
+    
+}
 
 void set_stats(string str, int x) {
     if(!stats) stats = ([]);
@@ -479,136 +296,43 @@ void delete_search_path(string dir) {
 }
 
 void add_exp(int x) {
-    if(x>0 && query_party()) {
-	PARTY_OB->calculate_exp(party, x, previous_object());
-	return;
-    }
-    add_exp2(x);
-    return;
+    
 }
 
 void add_exp2(int x) {
-    int i, new_lev, flag;
-
-    flag = 0;
-    if( x > 0 && intp(this_object()->query_property("xp mod")))
-	x += x * (int)this_object()->query_property("xp mod") / 100;
-    if(x >= 0 && this_object()->is_player()) {
-	player_data["general"]["exp buffer"] += x;
-	if(player_data["general"]["exp buffer"] >=
-	  max_buffer_size()) {
-	    player_data["general"]["exp buffer"] =
-	    max_buffer_size();
-	    flag = 1;
-	}
-    }
-    else {
-	player_data["general"]["experience"] += x;
-	if(player_data["general"]["experience"] < 0)
-	    player_data["general"]["experience"] = 0;
-    }
-    if(wizardp(this_object()) || !this_object()->is_player()) return;
-    new_lev = (int)ADVANCE_D->advance(this_object());
-    if(new_lev > (int)this_object()->query_level())
-    {
-	this_object()->set_level(new_lev);
-	next_lev_exp = ((int)ADVANCE_D->get_exp(new_lev + 1) -
-	  (int)ADVANCE_D->get_exp(new_lev));
-    }
-    if(x < 0) return;
-    i = x/2000;
-    if(i>5) i = 5 + (i-5)/15;
-    if(i>8) i = 8 + (i-8)/30;
-    if(i>15) i = 15;
-    if(!query("no add dev") && !flag && this_object()->at_max_exp() && x > 0) {
-	while(i--)
-	    if(random(100) < 80) this_object()->add_dev(1);
-	i = (x%2000) / 20 + 1;
-	if(random(100) < i)
-	    this_object()->add_dev(1);
-    }
-    if(x >= 15000) {
-	log_file("exp",
-	  query_name()+" received "+x+" exp from "+ (string)previous_object()->query_name()+"\n");
-	log_file("exp",
-	  "(uid: "+getuid(previous_object())+" "+file_name(previous_object())+": "+
-	  ctime(time())+"\n");
-    }
+   
 }
 
 void add_dev(int x) {
-    int old_dev;
-
-if(query("no add dev")) return;
-    if(!query_property("dev points")) set_property("dev points", 0);
-    old_dev = query_property("dev points");
-    set_property("dev points", old_dev + x);
-    if(wizardp(this_object()) || !this_object()->is_player()) return;
-    if(x > 10 && previous_object() != this_object()) {
-	log_file("dev", query_name() + " received " + x + " dev points from "+
-	  (string)previous_object()->query_name()+"\n");
-	log_file("dev", "Uid: "+geteuid(previous_object())+" "+
-	  file_name(previous_object())+" "+ctime(time())+"\n");
-    }
-    return;
+ 
 }
 
 void fix_exp(int x, object tmp) {
-    if(getuid(previous_object()) != UID_ROOT) return;
-    add_exp2(x);
-    if(tmp && living(tmp) && member_array(this_object(),
-	(object *)tmp->query_hunted()) < 0) return;
-    if(x> 15000) {
-	log_file("exp",
-	  query_name()+" received "+x+" exp in party: "+party+" from "+
-	  (string)tmp->query_short()+"\n");
-	log_file("exp", 
-	  "(uid: "+getuid(tmp)+" "+file_name(tmp)+"): "+ctime(time())+"\n");
-    }
-    if(wizardp(this_object()) || !this_object()->is_player()) return;
+    
 }
 
 void add_alignment(int x) {
-    if(x>40) x = 40;
-    else if(x<-40) x = -40;
-    player_data["general"]["alignment"] += x;
-    if(query_alignment() > 1500) player_data["general"]["alignment"] = 1500;
-    if(query_alignment()< -1500) player_data["general"]["alignment"] = -1500;
+    
 }
 
 void adj_alignment(int x) {
-    add_alignment(x/200-x/50);
+    
 }
 
 int add_intox(int x) {
-    if(x>0) x = x*3 + x/2;
-    if(x+healing["intox"] > HEALING_FORMULA) return 0;
-    else healing["intox"] += x;
-    if(healing["intox"] < 0) healing["intox"] = 0;
-    return 1;
+    
 }
 
 int add_stuffed(int x) {
-    if(x>0) x = x*3;
-    if(x+healing["stuffed"] > HEALING_FORMULA) return 0;
-    else healing["stuffed"] += x;
-    if(healing["stuffed"] < 0) healing["stuffed"] = 0;
-    return 1;
+    
 }
 
 int add_quenched(int x) {
-    if(x>0) x = x*3;
-    if(x+healing["quenched"] > HEALING_FORMULA) return 0;
-    else healing["quenched"] += x;
-    if(healing["quenched"] < 0) healing["quenched"] = 0;
-    return 1;
+    
 }
 
 void add_stat_bonus(string stat, int amount) {
-    if(!stat_bonus) stat_bonus = ([]);
-    if(stat_bonus[stat]) stat_bonus[stat] += amount;
-    else stat_bonus[stat] = amount;
-    if(!stat_bonus[stat]) map_delete(stat_bonus, stat);
+    
 }
 
 string query_long(string unused) {
@@ -658,20 +382,11 @@ string query_long(string unused) {
 }
 
 int query_stat_bonus(string stat) {
-   int x;
-   if(!stats) return 0;
-   if(stat_bonus) x=stat_bonus[stat];
-   else x=0;
-   return x;
+   
 }
 
 int query_stats(string stat) {
-    int x;
-
-    if(!stats) return 0;
-    if(stat_bonus) x= stat_bonus[stat];
-    else x = 0;
-    return stats[stat] + x;
+    
 }
 
 int query_base_stats(string stat) {
@@ -724,25 +439,13 @@ string query_ritual() { return ritual; }
 string query_party() { return party; }
 
 string query_al_title() {
-    int al;
-
-    al = player_data["general"]["alignment"];
-    if(al > 1000) return "saintly";
-    else if(al >750) return "righteous";
-    else if(al >500) return "good";
-    else if(al > 280) return "benevolent";
-    else if(al > 135) return "nice";
-    else if(al > -135) return "neutral";
-    else if(al > -280) return "mean";
-    else if(al > -500) return "malevolent";
-    else if(al > -750) return "bad";
-    else if(al > -1000) return "evil";
-    else return "demonic";
+    return "";
 }
 
 int query_sight_bonus() { return sight_bonus; }
 
 int query_age() { return player_age; }
+
 string *query_all_stats() { return keys(stats); }
 
 string query_description() { return description; }
@@ -761,17 +464,7 @@ void remove() {
 }
 
 void adjust_biorhythms() {
-    float omega1, omega2, temps;
-
-    temps = to_float(player_age)/ 400.0;
-    if(!intp(this_object()->query_stats("wisdom")) ||
-      !intp(this_object()->query_stats("intelligence"))) return;
-    omega1 = to_float((int)this_object()->query_stats("wisdom"));
-    omega2 = to_float((int)this_object()->query_stats("intelligence"));
-    spiritual = to_int(5.0*sin(temps*omega1) + 5.0*cos(temps*omega2));
-    omega1 = to_float((int)this_object()->query_stats("strength"));
-    omega2 = to_float((int)this_object()->query_stats("dexterity"));
-    physical = to_int(5.0*sin(temps*omega1) + 5.0*cos(temps*omega2));
+    
 }
 
 int query_spiritual() { return spiritual; }
@@ -881,25 +574,5 @@ string query_objective() { return objective(gender); }
 
 int get_dev_rate()
 {
-int GDlev;
-GDlev = (int)this_object()->query_level();
-if(!GDlev) return 0;
-if(GDlev == 1) return 250;
-	
-		next_lev_exp = (int)ADVANCE_D->get_exp(GDlev + 1) -
-		(int)ADVANCE_D->get_exp(GDlev);
-	
-	  if(GDlev < 10) {
-	 return  (next_lev_exp / (GDlev*20));
-	  }  
-	  else {
-	    if(GDlev <18) { 
-	 return (next_lev_exp / (GDlev*50));
-	      }
-	    else {
-	     return (next_lev_exp / (GDlev*100));
-	    }
-	  }
-	
-
+    return 0;
 }

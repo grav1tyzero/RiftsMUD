@@ -38,10 +38,11 @@ void create() {
  
 static void logon() { 
     string name;
-
+    mapping err;
     call_out("idle", LOGON_TIMEOUT); 
-    if(catch(__Player = new(OB_USER))) { 
+    if(err = catch(__Player = new(OB_USER))) { 
         message("logon", "Someone appears to be messing with the user object.\n", this_object()); 
+        message("logon", sprintf("%O",err), this_object());
         message("logon", "Please try again in a few minutes.\n", this_object()); 
         internal_remove();
         return; 

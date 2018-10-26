@@ -65,8 +65,6 @@ int body (object *list) {
             arches += "<LI>"+ eliminate_colour( list[j]->query_cap_name() ) + "\n";
          else if ( wizardp(list[j]) )
             wizards += "<LI>"+ eliminate_colour( list[j]->query_cap_name() ) + "\n";
-         else if ( legendp(list[j]) )
-            legends += "<LI>"+ eliminate_colour( list[j]->query_cap_name() )+ "\n";
          else if ( high_mortalp(list[j]) )
             highms += "<LI>"+ eliminate_colour( list[j]->query_cap_name() )+ "\n";
          else

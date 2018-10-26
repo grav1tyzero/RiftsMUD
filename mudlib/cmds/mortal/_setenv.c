@@ -39,7 +39,7 @@ int cmd_setenv(string str) {
         this_player()->reset_terminal();
         break;
       case "TITLE":
-        if(!wizardp(this_player()) && !high_mortalp(this_player()) && !legendp(this_player()))
+        if(!wizardp(this_player()) && !high_mortalp(this_player()) )
 	    return notify_fail("You cannot set your title yet.\n");
 	this_player()->setenv("TITLE", val);
 	break;

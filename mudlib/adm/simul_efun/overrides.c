@@ -108,9 +108,6 @@ string *deep_inherit_list(object ob) {
 
 varargs void message(string type, string mess, mixed to, mixed exclude) {
   if(!to) return;
-  if(wizardp(to))
-    efun::message(type, sprintf("[%s] %s",type,mess), to, exclude);
-  else
-    efun::message(type, mess, to, exclude);
+  efun::message(type, mess, to, exclude);
   return;
 }
