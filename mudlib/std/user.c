@@ -324,7 +324,6 @@ void create() {
     level = 1;
     autosave = 500;
     set_weight(500);
-    set_max_internal_encumbrance(2000);
     verbose_moves = 1;
     enable_commands();
 }
@@ -440,7 +439,6 @@ void new_body() {
     for(i=0, max=sizeof(zippo=keys(borg)); i<max; i++) 
 	add_limb(zippo[i], borg[zippo[i]]["limb_ref"],borg[zippo[i]]["max_dam"], 0, 0);
     set_wielding_limbs((string *)RACE_D->query_wielding_limbs(tmp));
-    set_max_internal_encumbrance(query_stats("strength") * 30);
     set_fingers((int)RACE_D->query_fingers(tmp));
 }
 
@@ -477,7 +475,6 @@ void setup() {
     setup_inform();
     if(!original_site) original_site = query_ip_number(this_object());
     set_property("light", 0);
-      set_max_internal_encumbrance(30*query_stats("strength"));
     if(!sizeof(query_aliases())) {
 	message("environment", "Resetting alias data.", this_object());
 	init_aliases();

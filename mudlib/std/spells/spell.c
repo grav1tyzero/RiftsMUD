@@ -6,7 +6,6 @@
 #include <daemons.h>
 #include <balance.h>
 #include <party.h>
-#include <ritual.h>
 
 #define UNDEAD_RACES ({ "undead", "skeleton", "zombie", "vampire", \
       "ghoul", "ghost", "lich" })
@@ -17,8 +16,6 @@
 //	result message is not sent.  -- Diewarzau 7/7/95
 
 inherit OBJECT;
-
-string ritual;
 
 static int skill;
 static int resist_flag;
@@ -349,13 +346,13 @@ void begin_casting(object caster, string arg, int power) {
     if(props["no target"]) xtra_arg = arg;
     else if(sscanf(arg, "%s with %s", target, xtra_arg) != 2)
       target = arg;
-      if(((int)caster->query_spell_level(props["name"]) < power || power == 0) && !props["ritual final"] && !props["ritual spell"] && !props["ritual dud"]) {
+      if(((int)caster->query_spell_level(props["name"]) < power || power == 0) ) {
 	message("info","You do not know that spell at that power level.",
 	    caster);
 	remove();
 	return;
     }
-if(!caster->query_skill(props["skill"]) && !props["ritual final"] && !props["ritual spell"] && !props["ritual dud"]) {
+if(!caster->query_skill(props["skill"])) {
 	message("info","You do not know the skill "+props["skill"]+", "
 	    "which is required to cast this spell.",caster);
 	remove();
@@ -379,24 +376,9 @@ if(!caster->query_skill(props["skill"]) && !props["ritual final"] && !props["rit
 	set_element();
     }
 
-// Setting up the ritual variables
-	if(caster->query_ritual()){
-	ritual = caster->query_ritual();
-	b = sizeof(casters = RITUAL_D->query_members(ritual));
-	while(b--){
-	casters_names = casters[b]->query_cap_name();
-}
-	b = sizeof(casters);
-}
-
     call_value = ([ "caster" : caster, "target" : target,
 	"power" : power, "arg" : xtra_arg ]);
     if(!props["casting time"]) props["casting time"] = 1;
-
-	if(props["ritual dud"] || props["ritual spell"]){
-	message("info","%^GREEN%^You begin casting your part of the ritual spell.", caster);
-	message("info","%^GREEN%^" +caster->query_cap_name()+" begins casting a ritual spell with "+caster->query_possessive()+" group.", environment(caster), ({caster}));
-}
 
 else{
     message("info","%^CYAN%^You begin your casting.",caster);
@@ -408,17 +390,13 @@ else{
 }
 
     bonus = ({});
-	if(props["ritual bonus"] || props["ritual bonus"] > 0){
-        props["extra power"] += props["ritual bonus"];
-        call_value["power"] += props["ritual bonus"];
-}
+	
     if((int)caster->query_skill(props["skill"]) > 100) {
       i = (int)caster->query_skill(props["skill"]) / 100;
       if(i > 0) set_property("extra power", 0);
       while(i--) {
-	if(props["ritual final"])
-	set("instant cast", 1);
-	if(i==0 && random(100) > ((int)caster->query_skill(props["skill"])%100) || props["ritual spell"] || props["ritual dud"] || props["ritual final"])
+
+	if(i==0 && random(100) > ((int)caster->query_skill(props["skill"])%100))
           continue;
         switch(random(10)) {
         case 0..2:
@@ -621,10 +599,7 @@ void do_spell(mapping info) {
     }
     mp_cost = props["base mp cost"];
 
-// Ritual skill settings
-	if(props["ritual spell"] || props["ritual dud"] || props["ritual final"])
-	skill = props["original skill"];
-	else
+
 	skill = (int)caster->query_skill(props["skill"]);
 
    if(caster->query_stoned())
@@ -687,43 +662,13 @@ void do_spell(mapping info) {
     props["observer message"] = replace_string(props["observer message"],"$C",
 	(string)caster->query_cap_name());
     skill += caster->query_spiritual();
-	if(wizardp(caster) || caster->query_property("test ritual"))
+	if(wizardp(caster))
       message("info", sprintf("Casting skill level: %d", skill), caster);
     if(mp_cost < 0) mp_cost = 0;
     props["mp cost"] = mp_cost;
     caster->add_mp(-mp_cost);
     roll = random(100) + 1;
     if(roll > (95 + skill / 20) || roll == 100) {
-
-	if(!caster->query("no fumble") && !caster->query_property("no fumble") && !props["ritual final"]) {
-// Ritual fumbling
-	if(props["ritual dud"]){
-	message("info","%^RED%^%^BOLD%^You fumble your spell ruining the entire group's efforts!",caster);
-	message("info","%^RED%^%^BOLD%^"+(string)caster->query_cap_name()+" fumbles "+possessive(caster)+" spell ruining the groups efforts!", environment(caster),({ caster }));
-	leader = RITUAL_D->query_leader(ritual);
-	leader = leader->query_casting();
-	leader->set_property("no cast", 1);
-}
-	else{
-	message("info","%^RED%^%^BOLD%^You fumble your spell!",caster);
-	message("info","%^RED%^%^BOLD%^"+(string)caster->query_cap_name()+" fumbles "+possessive(caster)+" spell!", environment(caster),({ caster }));
-		fumble_flag = 1;
-}
-}
-	} else if(roll > skill && !props["ritual final"]) {
-// Ritual sputtering
-	if(props["ritual dud"] || props["ritual spell"]){
-	message("info","%^CYAN%^%^BOLD%^You sputter your spell ruining the entire group's efforts!",caster);
-	message("info","%^CYAN%^%^BOLD%^"+(string)caster->query_cap_name()+" sputters "+possessive(caster)+" spell ruining the groups efforts!", environment(caster),({ caster }));
-	leader = RITUAL_D->query_leader(ritual);
-	leader = leader->query_casting();
-	leader->set_property("no cast", 1);
-}
-	else{
-	message("info","%^CYAN%^Your spell sputters ineffectively.", caster);
-	message("info","%^CYAN%^%^BOLD%^"+(string)caster->query_cap_name()+"'s spell fails.", environment(caster),({ caster }));
-}
-
 	    caster->add_mp(mp_cost/2);
 	    if(props["combat spell"] && at && member_array(caster,(object *)
 		at->query_attackers()) < 0 && at != caster)

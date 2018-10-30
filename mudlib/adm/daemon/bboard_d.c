@@ -148,20 +148,16 @@ string display_board(string id) {
 }
  
 int valid_edit(int x, string id) {
-    string who, gm;
+    string who;
     int level;
 
-    gm = "/d/damned/guilds/join_rooms/"
-      +(string)this_player()->query_class()+"_join.c";
-    gm = gm->query_master();
-    if (!gm) gm = "None";
+
     who = posts[x]["owner"];
     level = posts[x]["level"];
     if(id == UID_ROOT) return 1;
 /*  Root may remove any notes */
     if(id == who) return 1;
-/* Guildmasters may remove notes */
-    if ((string) this_player()->query_name() == gm) return 1;
+
 /* Arches may remove any notes */
     if(this_player() && archp(this_player())) return 1;
 /* You cannot remove an arch's note unless you are an arch */

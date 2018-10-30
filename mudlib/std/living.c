@@ -11,19 +11,14 @@
 #include <security.h>
 #include <daemons.h>
 #include <party.h>
-#include <ritual.h>
 #include <dirs.h>
 #include <living.h>
-
-#define TIME_TO_HEAL 12
-#define HEALING_FORMULA (stats["strength"]+stats["constitution"]+stats["charisma"])*2
 
 int invis, ok_to_heal, player_age;
 static int forced, spiritual, physical;
 static int next_lev_exp;
 int sight_bonus;
 string description;
-static string ritual;
 static string party;
 static string *search_path;
 static int login_flag;
@@ -38,16 +33,12 @@ static int dev_rate_int;
 private int xp_to_next_dev;
 
 void did_command(string str);
-void add_exp2(int x);
 void set_stats(string str, int x);
-void set_alignment(int x);
-void add_alignment(int x);
-void adj_alignment(int x);
 void adjust_biorhythms();
 void set_invis();
 int query_physical();
 int query_spiritual();
-int query_alignment();
+string query_alignment();
 int query_stats(string str);
 int query_stat_bonus(string stat);
 int query_base_stats(string stat);
@@ -67,12 +58,13 @@ int query_quenched();
 int query_invis();
 void adjust_exp();
 int max_buffer_size();
-string query_ritual();
 string query_party();
 string query_long(string unused);
 static void init_path();
 int get_dev_rate();
 void remove();
+int query_exp();
+void set_exp(int exp);
 
 static void init_living() {
     add_action("cmd_hook", "", 1);
@@ -229,10 +221,6 @@ int calculate_healing() {
     
 }
 
-void set_ritual(string str) {
-      
-}
-
 void set_party(string str) {
     if(getuid(previous_object()) != UID_ROOT) return;
     party = str;
@@ -257,14 +245,19 @@ void add_potion_healing(int x) {
 
 void set_stats(string str, int x) {
     if(!stats) stats = ([]);
-    if(stats[str] && stats[str] != x) {
-	log_file("stats", query_name()+" went from "+stats[str]+" to "+x+
-	  " in "+str+" ("+ctime(time())+")\n");
-	log_file("stats", "uid: "+getuid(previous_object())+" ("+
-	  file_name(previous_object())+")\n");
+    //TODO: this weight should be a calculation not a 'set thing' -parnell 2018
+    if(str == "ps") {
+        if(x <= 16)
+	        this_object()->set_max_internal_encumbrance(x * 10);
+        else if(x > 16)
+            this_object()->set_max_internal_encumbrance(x * 20);
+        //else if robot
+        //this_object()->set_max_internal_encumbrance(x * 25);
+        //else if supernatural 
+        //this_object()->set_max_internal_encumbrance(x * 20);
+        //and ps >=18
+        //this_object()->set_max_internal_encumbrance(x * 50);
     }
-    if(str == "strength")
-	this_object()->set_max_internal_encumbrance(30 * x);
     stats[str] = x;
 }
 
@@ -296,27 +289,7 @@ void delete_search_path(string dir) {
 }
 
 void add_exp(int x) {
-    
-}
-
-void add_exp2(int x) {
-   
-}
-
-void add_dev(int x) {
- 
-}
-
-void fix_exp(int x, object tmp) {
-    
-}
-
-void add_alignment(int x) {
-    
-}
-
-void adj_alignment(int x) {
-    
+    set_exp(query_exp()+x);
 }
 
 int add_intox(int x) {
@@ -386,7 +359,9 @@ int query_stat_bonus(string stat) {
 }
 
 int query_stats(string stat) {
-    
+    if(stats && stats[stat])
+        return stats[stat];
+    else return 0;
 }
 
 int query_base_stats(string stat) {
@@ -406,8 +381,14 @@ int query_invis() { return invis; }
 
 int query_exp() { return player_data["general"]["experience"]; }
 
+void set_exp(int exp) 
+{
+    player_data["general"]["experience"] = exp;
+}
 
-int query_alignment() { return player_data["general"]["alignment"]; }
+string query_alignment() { return player_data["general"]["alignment"]; }
+
+void set_alignment(string x) { player_data["general"]["alignment"] = x; }
 
 int query_intox() {
     if(healing) return healing["intox"];
@@ -429,12 +410,11 @@ int query_poisoning() {
     else return 0;
 }
 
-    int query_potion_healing() {
-      if(healing) return healing["potion"];
-      else return 0;
-  }
+int query_potion_healing() {
+    if(healing) return healing["potion"];
+    else return 0;
+}
 
-string query_ritual() { return ritual; }
 
 string query_party() { return party; }
 

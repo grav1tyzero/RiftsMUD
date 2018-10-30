@@ -78,4 +78,5 @@ string identify(mixed a);
 #include "/adm/simul_efun/syntax.c"
 #include "/adm/simul_efun/verify_dir_exists.c"
 #include "/adm/simul_efun/write_border.c"
+#include "/adm/simul_efun/roll.c"
 

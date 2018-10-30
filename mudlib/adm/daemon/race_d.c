@@ -13,7 +13,7 @@
 		   "wisdom", "charisma", "dexterity" })
 mapping races, limbs;
 
-int query_wieght(string res, int con);
+int query_weight(string res, int con);
 int query_fingers(string res);
 int query_sight_bonus(string res);
 string *query_wielding_limbs(string res);

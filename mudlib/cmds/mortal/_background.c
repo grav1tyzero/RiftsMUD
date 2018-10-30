@@ -15,7 +15,6 @@ int help();
 int
 cmd_background(string text)
 {
-    string str, new_text;
     string file,who,*whol;
     string *allbg;
     object ob;
@@ -43,7 +42,7 @@ cmd_background(string text)
       whol = ({""});
       for(i=0; i < j; i++) {
          sscanf(allbg[i],"%s.b",who);
-         whol +=({"%^BLUE%^"+capitalize(who)});
+         whol +=({capitalize(who)});
       }
       message("info","The Following Characters have backgrounds:",this_player());
       this_player()->more(whol);
@@ -52,8 +51,8 @@ cmd_background(string text)
     else if(text == "set")
     {
        file="/data/backgrounds/"+ ob->query_name() + ".b";
-       ob->edit(file);
-       message("info","You have updated your background.\n",ob);
+       ob->edit(file, "finished", this_object());//send to callback finished()
+       
        return 1;
     }
     else if(text == "delete")
@@ -65,6 +64,10 @@ cmd_background(string text)
     }
     else
        return notify_fail (capitalize(text)+ " has not created a character background.\n");
+}
+
+void finished() {
+        message("info","You have updated your background.\n",this_player());
 }
 
 int

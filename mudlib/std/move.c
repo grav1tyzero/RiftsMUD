@@ -227,13 +227,12 @@ void set_no_clean(int x) { no_clean = x; }
 
 int move_or_destruct(object env_of_destee) {
     if(!TO || !objectp(TO))
-	return 0;
+	    return 0;
     if(interactive(TO)) {
-	message("environment", "%^RED%^You are transferred to the Akkad Church...%^RESET%^",
-	  TO);
-	TO->move_player(ROOM_START);
+	    message("environment", "%^RED%^Your environment was destructed. You are moving to Square.%^RESET%^", TO);
+	    TO->move_player(ROOM_START);
     }
     else if(env_of_destee)
-	return move(env_of_destee);
+	    return move(env_of_destee);
     return 0;
 }

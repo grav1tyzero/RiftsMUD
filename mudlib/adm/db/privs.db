@@ -11,7 +11,6 @@
 (/adm/daemon/banish): Banish Log SecureDaemonSave
 (/d/damned/akkad/obj/mon/banker): Root
 (/adm/daemon/delayed_function_d): Log
-(/adm/daemon/inactivity_d): UserSave Log SecureDaemonSave
 (/adm/daemon/save_items_d): Log SecureDaemonSave
 (/adm/daemon/shell_d): Log External
 (/adm/daemon/shutdown_d): Shutdown Shell

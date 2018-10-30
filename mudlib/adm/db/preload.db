@@ -10,7 +10,6 @@
 /adm/daemon/castle_d
 /adm/daemon/guild_d
 /adm/daemon/race_d
-/adm/daemon/inactivity_d
 /daemon/localpost
 /daemon/remotepost
 /daemon/letter

@@ -46,7 +46,9 @@ int add_limb(string limb_name, string limb_ref, int max_dam, int curr_dam, int l
 int remove_limb(string limb_name);
 int query_max_sp();
 int query_max_hp();
+int query_max_sdc();
 int query_hp();
+int query_sdc();
 int query_sp();
 int query_max_mp();
 int query_mp();
@@ -70,16 +72,22 @@ void uncripple(string limb);
 
 //  This function initializes the variables
 //  This should only be called when there is NO limb data yet
+void init_player_data() {
+    player_data = ([ "general":([ "hp":1, "max_hp":1, "sdc":0,"max_sdc":0, "sp":1, "max_sp":1])]);
+}
 
 void init_limb_data() {
     if(!player_data)
-      player_data = ([ "general":([ "hp":1, "max_hp":50, "sp":1, "max_sp":1, "exp buffer" : 0])]);
+      init_player_data();
     body = ([]);
     limbs = ({});
     wielded = ([]);
     severed = ([]);
     healing = ([]);
     if(!magic) magic = ([]);
+}
+void init_general() {
+    player_data["general"] = ([]);
 }
 
 int query_flying() {
@@ -93,30 +101,56 @@ int query_flying() {
 }
 
 void set_max_hp(int hp) {
-    int i;
+    int i, maxd;
     string *what_limbs;
 
-    if(!player_data) player_data = ([]);
-    if(!player_data["general"]) player_data["general"] = ([]);
+    if(!player_data) 
+        init_player_data();
+    if(!player_data["general"]) 
+        init_general();
     player_data["general"]["max_hp"] = hp;
     what_limbs = query_limbs();
-    for(i=0;i<sizeof(what_limbs);i++)
-	if(body[what_limbs[i]] && RACE_D->query_max_dam(what_limbs[i],
-	    (string)this_object()->query_race()))
-	    body[what_limbs[i]]["max_dam"] = hp/(int)RACE_D->query_max_dam(
-		what_limbs[i],(string)this_object()->query_race());
+    for(i=0;i<sizeof(what_limbs);i++) {
+        if(body[what_limbs[i]] 
+        && maxd = RACE_D->query_max_dam(what_limbs[i], (string)this_object()->query_race()))
+            body[what_limbs[i]]["max_dam"] = (int)(hp / maxd);
+    }
 }
 
 void set_hp(int hp) {
-    if(!query_max_hp()) player_data["general"]["max_hp"] = hp;
+    if(!query_max_hp()) 
+        set_max_hp(hp);
     if(hp> query_max_hp()) {
-	if(this_object()->is_player()) player_data["general"]["hp"] = query_max_hp();
-	else {
-	    player_data["general"]["max_hp"] = hp;
-	    player_data["general"]["hp"] = hp;
-	}
+        if(this_object()->is_player()) player_data["general"]["hp"] = query_max_hp();
+        else {
+            set_max_hp(hp);
+            player_data["general"]["hp"] = hp;
+        }
     }
     else player_data["general"]["hp"] = hp;
+}
+
+void set_max_sdc(int sdc) {
+    
+    if(!player_data)
+        init_player_data();
+    if(!player_data["general"]) 
+        init_general();
+    player_data["general"]["max_sdc"] = sdc;
+}
+
+void set_sdc(int sdc) {
+    if(!query_max_sdc()) 
+        set_max_sdc(sdc);
+    if(sdc > query_max_sdc()) {
+        if(this_object()->is_player()) 
+            player_data["general"]["sdc"] = query_max_sdc();
+        else {
+            set_max_sdc(sdc);
+            player_data["general"]["sdc"] = sdc;
+        }
+    }
+    else player_data["general"]["sdc"] = sdc;
 }
 
 void add_hp(int x) {
@@ -330,7 +364,12 @@ int query_is_limb(string limb) {
     else return 0;
 }
 
-int query_max_hp() { return player_data["general"]["max_hp"]; }
+int query_max_hp() 
+{ 
+    return player_data["general"]["max_hp"]; 
+}
+
+int query_max_sdc() { return player_data["general"]["max_sdc"]; }
 
 int query_sp() { 
     return 1000;
@@ -640,8 +679,10 @@ void init_complex_body() {
 void heal(int x) {
     int i;
 
-    if(!player_data) player_data = ([]);
-    if(!player_data["general"]) player_data["general"] = ([]);
+    if(!player_data) 
+        init_player_data();
+    if(!player_data["general"]) 
+        init_general();
     if(player_data["general"]["hp"] < 1) return;
     if(x < 0 && player_data["general"]["hp"] + x <= 0)
 	x = 1 + -1 * player_data["general"]["hp"];

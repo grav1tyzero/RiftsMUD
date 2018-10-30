@@ -1,6 +1,6 @@
 //--==** /wizards/thrace/save_all_d2.c **==--
-
-// save_all_d.c
+// 
+// /daemon/save_all_d.c
 // Daemon which allows players to save items on thier bodies over
 // crashes, quits and reboots.
 // Written by: Thrace (April 11 '1999)
@@ -26,7 +26,7 @@ int do_save_filter(object ob){
 void add_crash_items(object player, int flag){
     object *inv;
     object a;
-    int i, x;
+    int i;
     string tmp, file, *inv2;
     string letter, save_dir, name;
 

@@ -6,31 +6,14 @@
 inherit DAEMON;
  
 int cmd_status(string arg) {
-    string mind;
-    int level, nlevel, exp, nexp;
-    mixed lexp;
+    int exp = this_player()->query_exp();
 
-    level=this_player()->query_level();
-    nlevel=level+1;
-    exp=this_player()->query_exp();
-    nexp="/adm/daemon/advance_d"->get_exp(nlevel);
-    lexp=nexp-exp;
-            switch((int)this_player()->percent_buffer()) {
-            case 0..5: mind = "clear"; break;
-            case 6..25: mind = "almost clear"; break;
-            case 26..50: mind = "slightly fuzzy"; break;
-            case 51..75: mind = "clouded"; break;
-            case 76..89: mind = "very fuzzy"; break;
-            case 90..110: mind = "%^MAGENTA%^full of facts%^RESET%^"; break;
-            default: mind = "clear"; break;
-            }
- if(!arg) {
-  write("%^BOLD%^CYAN%^hp: %^BOLD%^WHITE%^"+this_player()->query_hp()+"/"+this_player()->query_max_hp()+"  "
-        "%^BOLD%^CYAN%^mp: %^BOLD%^WHITE%^"+this_player()->query_mp()+"/"+this_player()->query_max_mp()+"  "
-        "%^BOLD%^CYAN%^experience: %^BOLD%^WHITE%^"+lexp+"  "
-        "%^BOLD%^CYAN%^Mind: %^BOLD%^WHITE%^"+mind+"%^RESET%^");
-  return 1;
- }
+  if(!arg) {
+    write("%^BOLD%^CYAN%^hp: %^BOLD%^WHITE%^"+this_player()->query_hp()+"/"+this_player()->query_max_hp()+"  "
+          "%^BOLD%^CYAN%^sdc: %^BOLD%^WHITE%^"+this_player()->query_sdc()+"/"+this_player()->query_max_sdc()+"  "
+          "%^BOLD%^CYAN%^experience: %^BOLD%^WHITE%^"+exp+"%^RESET%^");
+    return 1;
+  }
   if(lower_case(arg) == "on") {
 	this_player()->setenv("SCORE", "on");
 	write("Hp/mp report is ON.");

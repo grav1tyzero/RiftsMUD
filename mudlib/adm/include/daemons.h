@@ -24,7 +24,6 @@
 #define CRASH_D		    (DIR_DAEMONS+"/crash_items_d")
 #define GUILD2_D             (DIR_SECURE_DAEMONS+"/guild2_d")
 #define HUNTING_D	     (DIR_SECURE_DAEMONS+"/hunting_d")
-#define INACTIVITY_D	     (DIR_SECURE_DAEMONS+"/inactivity_d")
 #define INFORM_D	     (DIR_DAEMONS+"/inform_d")
 #define LANG_D               (DIR_SECURE_DAEMONS+"/lang_d")
 #define LETTER_D             (DIR_DAEMONS+"/letter")

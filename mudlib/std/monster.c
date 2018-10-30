@@ -34,7 +34,7 @@ string *combat_spells;
 int test_heart();
 string return_chat();
 string return_achat();
-void set_exp(int x);
+
 void set_level(int x);
 int query_level();
 void chase(object plyr);
@@ -462,9 +462,6 @@ string query_body_type()
   return body_type;
 }
 
-void set_exp(int x) {
-  return;
-}
 
 // These two functions remain for backwards Nightmare 1.* and 2.* compat
 
@@ -488,7 +485,7 @@ void set_speech(int x, string lang, string *arr, int att) {
     (att ? "attack msg" : "msg"): arr ]);
 }
 
-void set_alignment(int x) { player_data["general"]["alignment"] = x; }
+
 
 string query_race() { return query("race"); }
 
