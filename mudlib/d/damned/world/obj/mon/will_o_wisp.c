@@ -21,7 +21,7 @@ create() {
     set("long", "The Will-o-Wisp takes the form of a bright sphere dancing about in the "+
 	"air.");
     set_body_type("sphere");
-    set_overall_ac(10);
+    
     set_property("physical resistance", ([ "iron" : 35, "default" : 35,
 					  "wood" : 35, "steel" : 35 ]));
     set_property("magic resistance", 30);

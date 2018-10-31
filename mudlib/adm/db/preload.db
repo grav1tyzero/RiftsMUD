@@ -8,7 +8,6 @@
 /adm/daemon/delayed_function_d
 /adm/daemon/astronomy_d
 /adm/daemon/castle_d
-/adm/daemon/guild_d
 /adm/daemon/race_d
 /daemon/localpost
 /daemon/remotepost
@@ -18,9 +17,4 @@
 /adm/daemon/save_items_d
 /daemon/voter
 /daemon/terminal_d
-#/d/damned/arena/master_room
-/d/damned/virtual/armour_db
-/d/damned/virtual/weapon_db
-#/d/damned/arena/battle_room
-#/d/damned/arena/booths_room
 /adm/daemon/wizchar_d

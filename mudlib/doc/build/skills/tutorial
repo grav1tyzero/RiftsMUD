@@ -6,23 +6,7 @@ inherit "/std/skills/skill";
 
 void create() {
     ::create();
-    set_dev_cost(int whatever);
-    set_fast_dev_cost(int whatever);
-    set_stat(string stat);
 }
-dev_cost is the development cost of the skill, and may range from 2 or 3
-for newbie skills to twenty or more for extra cool skills.  Note that this
-cost reflects the cost for PRIMARY GUILD SKILLS.  If a character belongs
-to a guild in which the skill is secondary, the development cost will
-be multiplied by 2 or 3.  IMPORTANT: See /doc/build/dev_balance for 
-notes on how developing and fast developing work.  
-fast_dev_cost is the cost for fast development.  The character can only
-develop any skill once per level, then he or she must fast develop.
-Fast delelopment cost can be 2-3 times development cost, depending on
-the hardness of the skill.
-
-Stat it the stat which is used to modify the skill.  It may be
-strength, wisdom, dexterity, constitution, intelligence, or charisma.
 
 Now if you actually want the skill to DO something, it gets a little
 more complex.

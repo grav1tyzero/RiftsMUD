@@ -59,7 +59,7 @@ static void lines(string str) {
  
    if (str == "." || str == "**") {
       this_player()->set_is_editing("");
-      if (act_ob && function_exists(callback,act_ob)) {
+      if (act_ob && function_exists(callback, act_ob)) {
 	call_other(act_ob,callback,edit_args);
       }
       else message("system", "Cannot find function "+callback, this_player());

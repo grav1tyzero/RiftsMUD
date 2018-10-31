@@ -24,11 +24,6 @@ int cmd_reincarnate(string str) {
   who->init_skills();
   who->set_property("reincarnate", 1);
   who->init_spells();
-  if((string)who->query_class() != "child") {
-    join_room = find_object_or_load("/d/damned/guilds/join_rooms/"+
-          (string)who->query_class() + "_join");
-    join_room->kick_member((string)who->query_name());
-  }
   who->set_property("xp mod", 0);
   lev = (int)who->query_level() / 2;
   if(lev < 1) lev = 1;
@@ -62,8 +57,7 @@ int cmd_reincarnate(string str) {
   log_file("reincarnate", sprintf("%s gave a lvl/2 reinc to %s on %s.\n", (string)previous_object()->query_name(), who->query_name(), ctime(time())));
   message("info", "%^CYAN%^%^BOLD%^You have been reincarnated!",who);
   message("info",
-  "\n     You may re-create your character now.  Afterward, you may "
-  "join a guild as usual.  All of your former exp has been transferred "
+  "\n     You may re-create your character now. All of your former exp has been transferred "
   "into a 'exp bank,' and you may access it by typing 'advance'.  That "
   "will advance your level by 1 each time you type it, until you "
   "are out of exp.  If you advance your level naturally, you will "

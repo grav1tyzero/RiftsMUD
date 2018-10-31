@@ -78,8 +78,8 @@ int copy_body(object ob)
     {
       body[limb_names[i]] = ([ "limb_ref": ob->query_reference(limb_names[i]),
 			      "max_dam": ob->query_max_dam(limb_names[i]),
-			      "damage": ob->query_dam(limb_names[i]), 
-			      "ac": ob->query_ac(limb_names[i]) ]);
+			      "damage": ob->query_dam(limb_names[i])
+			       ]);
     }
   fingers = ob->query_fingers();
   old_hp = ob->query_max_hp();

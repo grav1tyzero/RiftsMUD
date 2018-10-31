@@ -59,7 +59,7 @@ void create() {
     set_skill("dodge", 100);
     set_skill("parry", 100);
     set_skill("perception", 90);
-    set_overall_ac(25);
+    
     set_lang_prof("common", 10);
     set("no clean up", 1);
     call_out("load_store", 2);

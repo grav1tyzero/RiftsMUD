@@ -25,7 +25,7 @@ void create() {
    set_skill("melee", 70);
    set_skill("dodge", 70);
    set_skill("perception", 95);
-   set_overall_ac( 5 );
+   
    set_languages(({"common", "elvish", "serra", "yin", "dwarvish"}));
    set("storage room","/d/damned/inn/gift_shop_store");
    set("markup", 75);

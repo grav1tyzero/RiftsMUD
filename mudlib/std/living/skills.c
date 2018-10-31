@@ -96,24 +96,6 @@ void set_spell_level(string spell, int x) {
     if(!spells[spell]) spells[spell] = ([]);
     if(x < 0 || x > 6) return;
     spells[spell]["level"] = x;
-    if(!this_object()->is_player() || wizardp(this_object())) return;
-    if(previous_object() && inherits("/std/guilds/spell_room",
-                                     previous_object())) return;
-    if(previous_object() && base_name(previous_object()) ==
-       "/d/standard/setter") return;
-    if(strlen(file_name(previous_object())) > 17 &&
-	arrange_string(file_name(previous_object()), 17) == "/d/damned/guilds/")
-	return;
-	  if(file_name(previous_object()) == "/d/damned/akkad/adv_guild_sp")
-	return;
-
-    log_file("illegal", (string)this_object()->query_name()+
-      ":set_spell_level"+
-      ":"+spell+"["+x+"]:"+
-      (this_player() ? this_player()->query_name() : file_name(previous_object()))+
-      ":"+file_name(previous_object())+
-      ":"+getuid(previous_object())+":"+ctime(time())+"\n"
-      );
 }
 
 void delete_spell(string spell) {

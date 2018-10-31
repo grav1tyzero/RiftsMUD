@@ -1,4 +1,4 @@
-Items with special weapons class (example:  set_wc(8,"fire")) need
+Items with special weapons class need
 some special considerations if coded.  Weapons of this grade detract
 from other guild capabilities and its use should be limited.  Also,
 you need to code properties associated with that weapon's class into
@@ -14,14 +14,13 @@ create() {
   mixed ench_str; 
   ::create(); 
 set_name("skewer");
-set_ac(8); 
+
 set("id", ({ "spear", "skewer" })); 
 set("short", "Khojem's Great Newbie-Wizard Skewer"); 
 set("long", "This is used to impale wizards who gen "+
   "big weapons in their areas."); 
 set_type("two handed polearm"); 
 set_quality(6); 
-et_wc(28, "impaling");
 
 // set enchantment - *glow* in short description
 set_property("enchantment",4);
@@ -29,9 +28,6 @@ set_property("enchantment",4);
 // maximum spell stacking for flame blade is 4 
 // see /std/spells/flame_blade.c  
 set_property("flame blade", 4);
-
-// wc = (power+2) * stack  so, (6 +2) *2 = 32
-set_wc(32,"fire");
 
 // allows enchanter w/ detect magic skill to determine
 // magic and power of magic on LOOK AT SKEWER
@@ -90,14 +86,12 @@ create() {
     set_gender("male");
     set_body_type("human");
     
-    // remember to set_overall_ac, Hagar has no armor!
-    set_overall_ac(15);
+    
     
     ob = new("/d/damned/virtual/spear_6.weapon");
     ob -> set("short", "Khojem's Great Newbie-Wizard Skewer");
     ob -> set("long", "This is used to impale wizards who gen "+
             "big weapons in their areas."); 
-    ob -> set_wc(28, "impaling");
 
        // set enchantment - *glow* in short description
     ob -> set_property("enchantment",4);
@@ -106,8 +100,6 @@ create() {
       // see /std/spells/flame_blade.c  
     ob -> set_property("flame blade", 4);
 
-      // wc = (power+2) * stack  so, (6 +2) *2 = 32
-    ob -> set_wc(32,"fire");
 
      // allows enchanter w/ detect magic skill to determine
      // magic and power of magic on LOOK AT SKEWER

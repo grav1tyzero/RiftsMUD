@@ -60,14 +60,6 @@ twenty to thirty even for powerful spells.  Newbie spells 3-10.
 NOTE: dev cost is CUMULATIVE.  The cost to advance to level 2 is twice
 level one, etc.
 
-set_property("fast dev cost", int cost);
-If the player wishes to gain more than one power level before advancing a
-level in his or her guild, he or she must fast dev.  The cost of fast 
-reflects the amount that character must pay to advance after once per level.
-It is usually around 3 times dev cost (higher for cool spells).
-NOTE: See /doc/build/dev_balance for notes on balancing out dev points.
-
-
 set_property("moon", string moon);
 Every spell in DarkeMUD is governed by a moon.  There are three moons in
 DarkeMUD:

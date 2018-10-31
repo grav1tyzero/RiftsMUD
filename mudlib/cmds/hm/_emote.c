@@ -25,7 +25,7 @@ cmd_emote(string str) {
     if (sscanf(str," %s",tail)==1) insert = "";
     else if (sscanf(str,"'%s",tail) == 1) insert = "";
     else insert = " ";
-    if((int)this_player()->query_mp() <0 && (int)this_player()->query_level() < 20) {
+    if((int)this_player()->query_ppe() <0 && (int)this_player()->query_level() < 20) {
       write("You are low on magic points.");
         return 1;
     }

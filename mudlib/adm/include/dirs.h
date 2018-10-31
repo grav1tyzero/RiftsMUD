@@ -44,7 +44,6 @@
 #define DIR_MENTOR_CMDS         DIR_CMDS+"/mentor"
 #define DIR_CLASS_CMDS          DIR_CMDS+"/skills"
 #define DIR_CREATOR_CMDS        DIR_CMDS+"/creator"
-#define DIR_GUILD_CMDS          DIR_CMDS+"/guild"
 #define DIR_HM_CMDS             DIR_CMDS+"/hm"
 #define DIR_LEGEND_CMDS             DIR_CMDS+"/legend"
 #define DIR_MORTAL_CMDS         DIR_CMDS+"/mortal"

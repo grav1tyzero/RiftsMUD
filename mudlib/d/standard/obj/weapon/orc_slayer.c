@@ -8,8 +8,7 @@ create() {
     set_long("It is a very finely crafter sword with the picture of a dying orc on it.\nThere are writings on it.\n");
    set_weight(611);
    set("value", 200);
-   set_wc(7);
-   set_ac(2);
+   
    set_type("blade");
     set_wield_string("You feel a great hatred for orcs as you wield the sword.\n");
     set_hit((:this_object(), "weapon_hit":));

@@ -78,8 +78,8 @@ int borrow_mp(string str) {
     set_heart_beat(1);
   }
   write("Ok.");
-  write(sprintf("You now have %d (%d) mp.", (int)this_player()->query_mp(),
-      (int)this_player()->query_max_mp()));
+  write(sprintf("You now have %d (%d) mp.", (int)this_player()->query_ppe(),
+      (int)this_player()->query_max_ppe()));
   return 1;
 }
 

@@ -3,11 +3,7 @@ The following commands exist for you to talk to multiple people
 
 newbie - Newbie line for asking stupid questions that are covered in help.
 high-mortal - Private line for those who have achieved HM status.
-darke - This line is for IN CHARACTER conversation only.  Violators will
-        be violated.
 chat -  This line is for socializing.  Don't start spam wars here.
-bid -   This line is for bidding for items only.
-<guild> - Guild lines are private lines for guild members only.
 
 The command to use each line is the name of the line.  You may also
 send emotes over the chat lines by appending "emote" onto the command name.  Example:

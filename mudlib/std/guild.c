@@ -64,7 +64,7 @@ int __Initiate(string str) {
 
     if(!((*__GuildInfo["test"])(ob))) return 1;
 
-    if(this_player()->query_mp() < 200)
+    if(this_player()->query_ppe() < 200)
 
       return notify_fail("Too low on magic power.\n");
 
@@ -232,7 +232,7 @@ int __Bring(string str) {
 
     }
 
-    if((int)this_player()->query_mp() < 70) {
+    if((int)this_player()->query_ppe() < 70) {
 
 	notify_fail("Too low on magic power,\n");
 

@@ -10,8 +10,6 @@ create() {
        "is rusted almost to the point of uselessness.");
    set_weight(500);
    set("value", 50);
-   set_wc(7);
-   set_ac(1);
    set_type("blade");
    set_wield_string("A disgusting slime covers your hand as you "
 		    "wield the sword.");

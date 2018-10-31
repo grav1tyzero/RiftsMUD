@@ -100,45 +100,49 @@ int clean_up_attackers() {
     i = sizeof(attackers);
     if(i) first = attackers[0];
     while(i--) {
-	if(!attackers[i] || !objectp(attackers[i])) continue;
-	if(attackers[i]->shadow_form() ||
-	  this_object()->shadow_form()) {
-	    if(environment(attackers[i]) == environment())
-		phunters_tmp += ({ attackers[i] });
-	    else
-		hunters_tmp += ({ attackers[i] });
-	    continue;
-	}
-	if(attackers[i]->query_ghost()) continue;
-	if(environment(attackers[i]) != environment(this_object()))
-	    hunters_tmp += ({ attackers[i] });
-	else attackers_tmp += ({ attackers[i] });
+		if(!attackers[i] || !objectp(attackers[i])) 
+			continue;
+		if(attackers[i]->shadow_form() ||
+		this_object()->shadow_form()) {
+			if(environment(attackers[i]) == environment())
+				phunters_tmp += ({ attackers[i] });
+			else
+				hunters_tmp += ({ attackers[i] });
+			continue;
+		}
+		if(attackers[i]->query_ghost()) 
+			continue;
+		if(environment(attackers[i]) != environment(this_object()))
+			hunters_tmp += ({ attackers[i] });
+		else attackers_tmp += ({ attackers[i] });
     }
     i = sizeof(hunters);
     while(i--) {
-	if(!hunters[i] || !objectp(hunters[i])) continue;
-	if(hunters[i]->query_ghost()) continue;
-	if(hunters[i]->shadow_form()) {
-	    if(environment() == environment(hunters[i]))
-		phunters_tmp += ({ hunters[i] });
-	    else
-		hunters_tmp += ({ hunters[i] });
-	    continue;
-	}
-	if(environment(hunters[i]) == environment(this_object())) {
-	    if(hunters[i]->query_invis() && !this_object()->query("see invis")) {
-		phunters_tmp += ({ hunters[i] });
-		continue;
-	    }
-	    if(hunters[i]->query_stealth() &&
-	      skill_contest((int)hunters[i]->query_stealth(),
-		(int)this_object()->query_skill("perception"), 1) == 1) {
-		phunters_tmp += ({ hunters[i] });
-		continue;
-	    }
-	    attackers_tmp += ({ hunters[i] });
-	}
-	else hunters_tmp += ({ hunters[i] });
+		if(!hunters[i] || !objectp(hunters[i])) 
+			continue;
+		if(hunters[i]->query_ghost()) 
+			continue;
+		if(hunters[i]->shadow_form()) {
+			if(environment() == environment(hunters[i]))
+				phunters_tmp += ({ hunters[i] });
+			else
+				hunters_tmp += ({ hunters[i] });
+			continue;
+		}
+		if(environment(hunters[i]) == environment(this_object())) {
+			if(hunters[i]->query_invis() && !this_object()->query("see invis")) {
+				phunters_tmp += ({ hunters[i] });
+				continue;
+			}
+			if(hunters[i]->query_stealth() &&
+			skill_contest((int)hunters[i]->query_stealth(),
+			(int)this_object()->query_skill("perception"), 1) == 1) {
+				phunters_tmp += ({ hunters[i] });
+				continue;
+			}
+			attackers_tmp += ({ hunters[i] });
+		}
+		else hunters_tmp += ({ hunters[i] });
     }
     i = sizeof(pres_hunters);
     while(i--) {
@@ -247,9 +251,9 @@ void continue_attack() {
 
     if(!environment(me) || me->query_ghost()) return;
     if(me->is_player() && !interactive(me)) return;
-    if(player_data["general"]["hp"] < 1 && !me->query_ghost() ) {
+    if(query_hp() < 1 && !me->query_ghost() ) {
 	if(wizardp(me)) {
-	    player_data["general"]["hp"] = 1;
+	    set_hp(1);
 	    message("my_combat", "You are immortal and cannot die.",me);
 	}
 	else {
@@ -710,24 +714,12 @@ private void do_criticals(string *criticals) {
     if(dur < 0) continue;
     criticals[i] = sprintf("%s %s",what2, CRIT_TYPES[dur]);
     roll = random(100)+1;
-/* no more devs no more trace
-    if(random(100) < (roll / 5)*(dur+1) && !me->buffer_full()&&
-       me->at_max_exp() && ((int)attackers[0]->query_hp() > 5)) me->add_dev(1);
-    if((string)me->getenv("TRACE") == "on" && wizardp(me))
-      message("info", "Crit type: "+criticals[i]+"  Roll: "+roll, me);
-    if(attackers[0] && (string)attackers[0]->getenv("TRACE") == "on" && wizardp(attackers[0]))
-      message("info", "Attacker crit type: "+criticals[i]+"  Roll: "+roll, attackers[0]);
-*/
+
     send_messages((string *)DAMAGE_D->query_msg(criticals[i],
 						roll, sprintf("%s:%s",(string)me->query_name(),
 							      (string)attackers[0]->query_name())));
     tmp = (string *)DAMAGE_D->query_result(criticals[i], roll);
-/*
-    if(attackers[0] && (string)attackers[0]->getenv("TRACE") == "on" && wizardp(attackers[0]))
-      message("info", "Attacker critical results: "+implode(tmp, ", "), attackers[0]);
-    if((string)me->getenv("TRACE") == "on" && wizardp(me))
-      message("info", "Critical results: "+implode(tmp, ", "), me);
-*/
+
     if(!tmp || !sizeof(tmp)) continue;
     else for(j=0;j<sizeof(tmp);j++) {
       switch(explode(tmp[j]," ")[0]) {
@@ -1067,8 +1059,7 @@ int query_current_protection(string target_thing, string type) {
     int prot, tmp;
 
     if(!type || member_array(type,DAMAGE_TYPES) < 0)
-	type = DAMAGE_TYPES[0];
-    prot = (int)this_object()->query_ac(target_thing, type)+query_skill("defense")/15;
+		type = DAMAGE_TYPES[0];
     return prot;
 }
 

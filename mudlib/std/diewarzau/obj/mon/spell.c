@@ -603,7 +603,7 @@ void do_spell(mapping info) {
 	}
     }
     mp_cost *= power;
-    if(mp_cost >(int)caster->query_mp() && !props["can overcast"]) {
+    if(mp_cost >(int)caster->query_ppe() && !props["can overcast"]) {
 	message("info","You do not have enough magic points to cast this "
 	    "spell.",caster);
 	return;
@@ -953,7 +953,6 @@ void spell_func(object caster, object at, int power, string args, int flag) {
 	case "protection":
 	    if(!mapp(props["protection types"]) || !props["duration"]) break;
 	    if(props["duration"] == "permanent") {
-		at->set_overall_ac(values(props["protection types"])[0]*power);
 		break;
 	    }
 	    if(props["stack key"]) {

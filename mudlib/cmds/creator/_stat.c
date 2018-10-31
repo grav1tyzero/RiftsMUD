@@ -14,7 +14,7 @@ void language_display();
  
 int cmd_stat(string str)
 {
-   string name, title, class_str, race, married, guild;
+   string name, title, class_str, race, married;
    int level, hp, max_hp, mp, max_mp, sp, max_sp, exp,sdc,max_sdc;
  
    if(!str) {
@@ -43,15 +43,12 @@ int cmd_stat(string str)
    max_hp = (int)ob->query_max_hp();
    sdc = ob->query_sdc();
    max_sdc = ob->query_max_sdc();
-   mp = (int)ob->query_mp();
-   max_mp = (int)ob->query_max_mp();
-   sp = (int)ob->query_sp();
-   max_sp = (int)ob->query_max_sp();
+   mp = (int)ob->query_ppe();
+   max_mp = (int)ob->query_max_ppe();
+   
    married = (string)ob->query_married();
-   guild = (string)ob->query_guild();
  
    if(!married) married = "none";
-   if(!guild) guild = "none";
    if(!race) race = "undefined";
    if(!class_str) class_str = "none";
    printf("%s\n", title);
@@ -73,7 +70,7 @@ int cmd_stat(string str)
    printf("%s%s%s\n",
       arrange_string("quest points: "+(int)ob->query_quest_points(), 25),
       arrange_string("spouse: "+married, 25),
-      arrange_string("guild: "+guild, 25) );
+      "" );
    if(ob->is_player()) {
       show_quests(ob);
    }

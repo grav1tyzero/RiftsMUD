@@ -306,13 +306,6 @@ int hist_channel(string str) {
 	col = "%^BOLD%^%^RED%^";
 	allow = 1;
 	break;
-    case "council":
-	col = "%^B_RED%^%^YELLOW%^";
-      gm = "/d/damned/guilds/join_rooms/"+ (string)this_player()->query_class()+"_join.c";
-      gm = gm->query_master();        
-      if(this_player()->query_name() == gm || wizardp(this_player())) allow = 1;
-// 	if(member_array(this_player(), channels["council"]) > -1) allow = 1;
-	break;
     case "high-mortal":
 	col = "%^B_BLUE%^%^YELLOW%^";
 	if(member_array(this_player(), channels["high-mortal"]) > -1) allow = 1;

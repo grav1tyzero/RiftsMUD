@@ -433,7 +433,7 @@ void new_body() {
     if(!race) return;
     tmp = race;
     set_hp(query_max_hp() / 2);
-    set_mp(query_max_mp() / 2);
+    set_ppe(query_max_ppe() / 2);
     set_heal_rate(2);
     borg = (mapping)RACE_D->body(this_object());
     for(i=0, max=sizeof(zippo=keys(borg)); i<max; i++) 
@@ -625,8 +625,8 @@ varargs static void heart_beat(int recurs_flag) {
     }
     if(sizeof(query_attackers()) && getenv("SCORE") != "off")
 	message("my_combat", sprintf("hp: %d (%d)  mp: %d (%d)",
-	    query_hp(), query_max_hp(), query_mp(), 
-	    query_max_mp()), this_object());
+	    query_hp(), query_max_hp(), query_ppe(), 
+	    query_max_ppe()), this_object());
     if(stringp(props["lycanthrope moon"]) && !this_object()->
       query("in creation")) {
 	tod = (string)EVENTS_D->query_time_of_day();

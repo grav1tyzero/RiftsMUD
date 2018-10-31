@@ -3,8 +3,8 @@
 inherit DAEMON;      
 int cmd_title(string str) {
       int level;
-      string name, title, pre, gen, rank, guild;
-    guild = lower_case(this_player()->query_class());
+      string name, title, pre, gen, rank, _class;
+    _class = lower_case(this_player()->query_class());
     level = (int)this_player()->query_level();
     title = (string)this_player()->query_title();
     name = (string)this_player()->query_cap_name();
@@ -40,8 +40,8 @@ int cmd_title(string str) {
       break;
     }
 
-    if(file_size("/data/pretitles/"+guild+"/"+rank+".pt") > -1){
-        pre = read_file( "/data/pretitles/"+guild+"/"+rank+".pt", 1, 1 );
+    if(file_size("/data/pretitles/"+_class+"/"+rank+".pt") > -1){
+        pre = read_file( "/data/pretitles/"+_class+"/"+rank+".pt", 1, 1 );
         pre = replace_string(pre, "\n", "");
 
     }

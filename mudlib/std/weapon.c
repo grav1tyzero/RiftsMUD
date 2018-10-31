@@ -16,26 +16,15 @@ private mapping __Weapon;
 
 int __Wield(string str);
 int __Unwield(string str);
-varargs void set_ac(int x,string type);
 string query_verb();
 void set_verb(string verb);
-void set_wc(int x, string type);
-void set_enh_critical(mixed x);
-void set_auto_critical(mixed type);
 void set_hit(mixed val);
 void set_wield(mixed val);
 void set_unwield(mixed val);
 void set_type(string str);
 void set_decay_rate(int x);
 void add_poisoning(int x);
-int query_ac(string type);
-string *query_ac_types();
-mapping query_all_ac();
-mixed query_enh_critical();
-string *query_auto_critical();
-int query_wc(string type);
-string *query_wc_types();
-mapping query_all_wc();
+
 mixed query_hit();
 mixed query_wield();
 mixed query_unwield();
@@ -158,54 +147,7 @@ int throw_me(string arg) {
 	  ", hitting "+ objective(who)+".",
 	  all_inventory(environment(this_player())),
 	  ({ this_player(), who }) );
-  wc = (mapping)this_player()->get_damage(this_object());
-  if(!mapp(wc)) return 1;
-  w_hit = this_object()->query_hit();
-  if(functionp(w_hit)) {
-    w_hit = (*w_hit)(who);
-    if(intp(w_hit)) tmp_res = ([ "crushing" : w_hit ]);
-    else if(mapp(w_hit)) tmp_res = w_hit;
-  } else if(pointerp(w_hit)) {
-    i = sizeof(w_hit);
-    tmp_res = ([]);
-    while(i--) {
-      if(!functionp(w_hit[i])) continue;
-      tmp_mix = (*w_hit[i])(who);
-      if(intp(tmp_mix)) tmp_res += ([ "crushing" : tmp_mix ]);
-      else if(mapp(tmp_mix)) tmp_res += tmp_mix;
-    }
-  }
-  if(!tmp_res) tmp_res = ([]);
-  wc += tmp_res;
-  wc_keys = keys(wc);
-  i = sizeof(wc_keys);
-  limb = (string)who->return_target_limb();
-  if(!limb) return 1;
-  crits = ({});
-  while(i--) {
-    res = wc[wc_keys[i]] - (int)who->query_ac(limb, wc_keys[i]);
-    if(res < 0) res = 0;
-    who->do_damage(limb, res * 2);
-    res -= (random(100) - 50);
-    switch(res) {
-    case 0..20:
-      crits += ({ sprintf("%s A", wc_keys[i]) });
-      break;
-    case 21..40:
-      crits += ({ sprintf("%s B", wc_keys[i]) });
-      break;
-    case 41..65:
-      crits += ({ sprintf("%s C", wc_keys[i]) });
-      break;
-    case 66..90:
-      crits += ({ sprintf("%s D", wc_keys[i]) });
-      break;
-    case 91..10000:
-      crits += ({ sprintf("%s E", wc_keys[i]) });
-      break;
-    }
-  }
-  do_critical(this_player(), who, crits);
+  
   this_object()->remove();
   return 1;
 }
@@ -370,19 +312,6 @@ int id(string str) {
     return ::id(replace_string(str, query_quality_desc()+" ", ""));
 }
 
-varargs void set_ac(int x, string type) {
-    int i;
-
-    if(!__Weapon["ac"]) __Weapon["ac"] = ([]);
-    if(!type || !stringp(type)) {
-	for(i=0;i<sizeof(DAMAGE_TYPES);i++) {
-	    __Weapon["ac"][DAMAGE_TYPES[i]] = x;
-	} return; }
-    if(member_array(type, DAMAGE_TYPES) < 0) return;
-    else
-	__Weapon["ac"][type] = x;
-}
-
 void set_quality(int x) {
     if(x >= sizeof(VALID_TYPES) || x < 0) __Weapon["quality"] = 2;
     else __Weapon["quality"] = x;
@@ -426,16 +355,6 @@ string query_verb() { return __Weapon["verb"]?__Weapon["verb"]:"hit"; }
 
 void set_verb(string verb) {
     __Weapon["verb"] = verb;
-}
-
-void set_wc(int x, string type) {
-    if(!type || !stringp(type)) type = DAMAGE_TYPES[0];
-    if(member_array(type, DAMAGE_TYPES) < 0) return;
-    if(!__Weapon["decay rate"]) __Weapon["decay rate"] = 10000/(x+1);
-    if(!__Weapon["wc"]) __Weapon["wc"] = ([ type : x ]);
-    else __Weapon["wc"][type] = x;
-    if(!__Weapon["original wc"]) __Weapon["original wc"] = ([]);
-    if(!__Weapon["original wc"][type]) __Weapon["original wc"][type] = x;
 }
 
 void set_hit(mixed val) {
@@ -518,137 +437,6 @@ string *query_auto_critical() {
     else if(auto_crit && pointerp(auto_crit)) ret += auto_crit;
     return ret;
 }
-
-mixed query_enh_critical() {
-    int i;
-    string *e_keys;
-    mapping tmp;
-
-    if(!prop("enhance criticals"))
-	return __Weapon["enhance critical"];
-    else if(intp(__Weapon["enhance critical"]))
-	return __Weapon["enhance critical"] + prop("enhance criticals");
-    else if(mapp(__Weapon["enhance critical"])) {
-        e_keys = DAMAGE_TYPES;
-	i = sizeof(e_keys);
-	tmp = ([]);
-	while(i--) {
-	    if(!__Weapon["enhance critical"][e_keys[i]])
-		tmp[e_keys[i]] = prop("enhance criticals");
-	    else
-		tmp[e_keys[i]] = prop("enhance criticals") +
-		__Weapon["enhance critical"][e_keys[i]];
-	}
-	return tmp;
-    }
-    return 0;
-}
-
-int query_ac(string type) {
-    string *dmg_types;
-    if(!__Weapon["ac"]) return 0;
-    dmg_types = keys(__Weapon["ac"]);
-    if(!pointerp(dmg_types) || !sizeof(dmg_types)) return 0;
-    if(!type || !stringp(type))
-	type = dmg_types[0];
-    return __Weapon["ac"][type];
-}
-
-
-string *query_ac_types() {
-    if(!__Weapon["ac"]) return ({});
-    return keys(__Weapon["ac"]);
-}
-
-mapping query_all_ac() {
-    if(!__Weapon["ac"]) return ([]);
-    return __Weapon["ac"];
-}
-
-int query_wc(string type) {
-    string *dmg_types;
-    int tmp,stf;
-    mapping extra;
-
-    if(!__Weapon["wc"]) return 0;
-    dmg_types = keys(__Weapon["wc"]);
-    if(!pointerp(dmg_types)) return 0;
-    if(query_wielded()) {
-    	if(query_property("balanced") &&
-    		query_property("balanced") ==
-			(string)query_wielded()->query_name()) {
-			stf = query_property("balanced wc bonus"); 
-		}
-		else {
-			if(query_property("balanced") &&
-				query_property("balanced") != 
-				(string)query_wielded()->query_name()) {
-			stf = 5 - query_property("balanced wc bonus");
-		}}
-	}
-    if(!type || !stringp(type)) type = dmg_types[0];
-    tmp = __Weapon["wc"][type] + props["enchantment"] +
-    ((__Weapon["wc"][type]/5)*(query_quality()-2)) + stf;
-    if(intp(this_object()->prop("damage bonus")))
-	tmp += (int)this_object()->prop("damage bonus");
-    if(mapp(extra=query_property("extra wc")))
-	    if(extra[type]) tmp += extra[type];
-	if(mapp(extra=prop("extra wc")))
-	    if(extra[type]) tmp += extra[type];
-	if(tmp < 0) tmp = 0;
-    return tmp;
-}
-
-mapping all_base_wc() {
-  if(!__Weapon["wc"]) return ([]);
-  return __Weapon["wc"];
-}
-
-mapping query_all_wc() {
-    int i, tmp, stf;
-    string *types;
-    mapping ret_val, extra;
-
-    if(!__Weapon["wc"]) return ([]);
-    i = sizeof((types = query_wc_types()));
-    if(i) ret_val = allocate_mapping(i);
-    if(query_wielded()) {
-    	if(query_property("balanced") &&
-    		query_property("balanced") ==
-			(string)query_wielded()->query_name()) {
-			stf = query_property("balanced wc bonus"); 
-		}
-		else {
-			if(query_property("balanced") &&
-				query_property("balanced") != 
-				(string)query_wielded()->query_name()) {
-			stf = 5 - query_property("balanced wc bonus");
-		}}
-	}
-    if(!mapp(extra=query_property("extra wc")))
-      extra = ([]);
-    if(prop("extra wc") && mapp(prop("extra wc"))) extra += prop("extra wc");
-    while(i--) {
-	tmp = __Weapon["wc"][types[i]] + props["enchantment"]+
-	((__Weapon["wc"][types[i]]/5)*(query_quality()-2)) + stf;
-	if(prop("damage bonus")) tmp += (int)prop("damage bonus");
-	if(extra[types[i]]) tmp += extra[types[i]];
-	if(tmp < 0) tmp = 0;
-	ret_val[types[i]] = tmp; }
-    return ret_val;
-}
-
-string *query_wc_types() {
-  string *ret;
-  
-    if(!__Weapon["wc"]) return ({});
-    ret = keys(__Weapon["wc"]);
-    if(mapp(query_property("extra wc")))
-      ret += keys(query_property("extra wc"));
-    if(prop("extra wc") && mapp(prop("extra wc"))) ret += keys(prop("extra wc"));
-    return distinct_array(ret);
-}
-
 
 mixed query_hit() { return __Weapon["hit"]; }
 

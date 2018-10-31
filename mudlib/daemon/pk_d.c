@@ -4,7 +4,7 @@
 #include <objects.h>
 #include <save.h>
 #include <security.h>
-#define BOUNTY "/d/damned/guilds/join_rooms/nightblade_join"
+
 mapping *player_kills;
 
 void clean_list();
@@ -103,9 +103,6 @@ void add_player_kill(object who) {
     x = -1;
     killer = who->query_cap_name();
     victim = ob->query_cap_name();
-    if( (who->query_class() == "nightblade") &&
-        (BOUNTY->find_bounty(ob->query_name()) != "none") )
-    BOUNTY->bounty_exp(who,ob);
     wibble = random(10);
 if (who->query_property("pkmsg")==0){
     switch(wibble) {

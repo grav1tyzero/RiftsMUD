@@ -106,22 +106,8 @@ int cmd_I(string str)
 
       message("Nwrite", "     ", this_player());
 
-      if (wc = inv[lcv]->query_wc()) 
 
-         message("Nwrite", "WC ["+wc+"]\t", this_player());
-
-      else 
-
-         message("Nwrite", "WC [None]\t", this_player());
-
-      if (ac = inv[lcv]->query_ac())
-
-         message("Nwrite", "AC ["+ac+"]\t   ", this_player());
-
-      else
-
-         message("Nwrite", "AC [None]  ", this_player());
-
+     
       if (value = inv[lcv]->query_value())
 
          message("Nwrite", "Value ["+value+"]\t", this_player());

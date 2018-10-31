@@ -38,21 +38,20 @@ void set_max_sp(int x);
 void set_sp(int x);
 void add_sp(int x);
 void add_mp(int x);
-void set_max_mp(int x);
-void set_mp(int x);
-void set_overall_ac(int ac);
-void set_ac(string limb_name, int ac);
+void set_max_ppe(int x);
+void set_ppe(int x);
 int add_limb(string limb_name, string limb_ref, int max_dam, int curr_dam, int limb_ac);
 int remove_limb(string limb_name);
-int query_max_sp();
 int query_max_hp();
 int query_max_sdc();
+int query_max_mdc();
 int query_hp();
 int query_sdc();
-int query_sp();
-int query_max_mp();
-int query_mp();
-int query_ac(string limb_name, string type);
+int query_mdc();
+int query_max_ppe();
+int query_max_isp();
+int query_ppe();
+int query_isp();
 int do_damage(string limb_name, int damage);
 string query_reference(string limb);
 string equip_weapon_to_limb(object weap, string limb1, string limb2);
@@ -153,6 +152,28 @@ void set_sdc(int sdc) {
     else player_data["general"]["sdc"] = sdc;
 }
 
+void set_max_mdc(int mdc) {
+    if(!player_data) 
+        init_player_data();
+    if(!player_data["general"]) 
+        init_general();
+    player_data["general"]["max_mdc"] = mdc;
+}
+
+void set_mdc(int mdc) {
+    if(!query_max_mdc()) 
+        set_max_sdc(mdc);
+    if(mdc > query_max_mdc()) {
+        if(this_object()->is_player()) 
+            player_data["general"]["mdc"] = query_max_mdc();
+        else {
+            set_max_sdc(mdc);
+            player_data["general"]["mdc"] = mdc;
+        }
+    }
+    else player_data["general"]["mdc"] = mdc;
+}
+
 void add_hp(int x) {
     int can_exceed;
 
@@ -175,36 +196,16 @@ if(player_data["general"]["hp"] < 0) {
 */
 }
 
-void set_max_sp(int x) { 
-    player_data["general"]["max_sp"] = x;
-}
-
-void set_sp(int x) {
-    if(!query_max_sp()) set_max_sp(x);
-    if(x > query_max_sp()) player_data["general"]["sp"] = query_max_sp();
-    else player_data["general"]["sp"] = x;
-}
-
-void add_sp(int x) {
-    if(!player_data["general"]["sp"])  
-	set_sp(x);
-    else player_data["general"]["sp"] += x;
-    if(player_data["general"]["sp"] > query_max_sp())
-	player_data["general"]["sp"] = query_max_sp();
-    if(player_data["general"]["sp"] < -200)
-	player_data["general"]["sp"] = -200;
-}
-
-void set_max_mp(int x) {
+void set_max_ppe(int x) {
     if(!magic) magic = ([]);
     magic["max points"] = x;
 }
 
-int query_max_mp() { return magic["max points"]; }
+int query_max_ppe() { return magic["max points"]; }
 
-void set_mp(int x) { 
-    if(!query_max_mp()) magic["max points"] = x;
-    if(x > query_max_mp()) {
+void set_ppe(int x) { 
+    if(!query_max_ppe()) magic["max points"] = x;
+    if(x > query_max_ppe()) {
 	if(this_object()->is_player()) {
 	    magic["points"] = magic["max points"];
 	}
@@ -230,23 +231,7 @@ void add_mp(int x) {
     if(magic["points"] < -200) magic["points"] = -200;
 }
 
-int query_mp() { return magic["points"]; }
-
-//  This function is only for lazy wizzes to use when creating monsters!!
-
-void set_overall_ac(int x) {
-    int i;
-
-    for(i=0; i<sizeof(limbs); i++) {
-	if(limbs[i] != "torso") set_ac(limbs[i], x);
-	else set_ac("torso", (2*x));
-    }
-}
-
-void set_ac(string limb_name, int ac) {
-    body[limb_name]["ac"] = ac;
-}
-
+int query_ppe() { return magic["points"]; }
 
 //  This function adds limbs to a player or monster
 //  The values passed to it mean the following:
@@ -371,14 +356,6 @@ int query_max_hp()
 
 int query_max_sdc() { return player_data["general"]["max_sdc"]; }
 
-int query_sp() { 
-    return 1000;
-}
-
-int query_max_sp() {
-    if(!player_data["general"]["max_sp"]) return 0;
-    return player_data["general"]["max_sp"];
-}
 
 int query_hp() {
     return player_data["general"]["hp"];
@@ -416,26 +393,6 @@ int do_damage(string limb, int damage) {
     return 0;
 }
 
-int query_ac(string limb, string type) {
-    int tmp_ac, i;
-
-    if(!type || member_array(type, DAMAGE_TYPES) < 0)
-	type = DAMAGE_TYPES[0];
-    if(!body) return 0;
-    if(!body[limb]) return 0;
-    tmp_ac = body[limb]["ac"];
-    i = sizeof(body[limb]["armour_ob"]);
-    while(i--)
-	tmp_ac += (body[limb]["armour_ob"][i] ? 
-	  (int)body[limb]["armour_ob"][i]->query_ac(type) : 0);
-    if(this_object()->query_property("natural ac"))
-	tmp_ac += (int)this_object()->query_property("natural ac");
-    return tmp_ac;
-}
-
-/* Patched to equip weapons as armours as well to keep query_ac
-   in line with new type-specific damage -Diewarzau
-*/
 
 string equip_weapon_to_limb(object weap, string limb1, string limb2) {
     int i;
@@ -576,10 +533,9 @@ int remove_weapon_from_limb(object ob) {
 }
 
 int remove_armour_from_limb(object arm, string *limb) {
-    int i, arm_class;
+    int i;
     string type;
 
-    arm_class = (int)arm->query_ac("crushing");
     type = (string)arm->query_type();
     for(i=0; i<sizeof(limb); i++) {
 	if(!body) continue;

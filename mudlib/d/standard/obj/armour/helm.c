@@ -10,7 +10,7 @@ void create() {
     set("value", 95);
     set_type("helmet");
     set_limbs( ({ "head" }) );
-    set_ac(3);
+    
     set_wear( (: this_object(), "extra_worn" :) );
 }
 

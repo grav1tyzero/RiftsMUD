@@ -208,7 +208,7 @@ int list() {
           (int)PARTY_OB->query_party_exp(who[i]), ((int)who[i]->query_hp() < (int)who[i]->query_max_hp()/5)?"%^RED%^%^BOLD%^":"",
           (int)who[i]->query_hp(),
           (int)who[i]->query_max_hp(),
-          (int)who[i]->query_mp(), (int)who[i]->query_max_mp());
+          (int)who[i]->query_ppe(), (int)who[i]->query_max_ppe());
       tot_exp += (int)PARTY_OB->query_party_exp(who[i]);
     }
     tmp =

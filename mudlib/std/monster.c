@@ -263,7 +263,7 @@ void do_spell() {
       }
       max_pow = (int)this_object()->query_spell_level(spell_choice);
       while(max_pow > 0 &&
-        ((max_pow * (int)spell_ob->query_property("base mp cost")) > query_mp()))
+        ((max_pow * (int)spell_ob->query_property("base mp cost")) > query_ppe()))
         max_pow--;
       if(max_pow > 0) {
         spell_ob->begin_casting(this_object(), cast_string, max_pow);
@@ -443,8 +443,8 @@ void set_body_type(string str) {
   int i, max;
 
   if(!str || !RACE_D->is_monster_race(str)) str = "human";
-  mag = query_mp();
-  max_mag = query_max_mp();
+  mag = query_ppe();
+  max_mag = query_max_ppe();
   init_limb_data();
   monster_bod = (mapping)RACE_D->monster_body(str, query_max_hp());
   for(i = 0, max = sizeof(mon_limbs = keys(monster_bod)); i < max; i++)
@@ -453,8 +453,8 @@ void set_body_type(string str) {
   set_wielding_limbs((string *)RACE_D->query_monster_wielding_limbs(str));
   set_fingers((int)RACE_D->query_monster_fingers(str));
   body_type = str;
-  set_mp(mag);
-  set_max_mp(max_mag);
+  set_ppe(mag);
+  set_max_ppe(max_mag);
 }
 
 string query_body_type()
@@ -496,7 +496,7 @@ int test_heart() {
 
   if(query_current_attacker()) return 1;
   if((query_hp() < (query_max_hp()-5)) ||
-    (query_mp() < (query_max_mp()-5))) return 1;
+    (query_ppe() < (query_max_ppe()-5))) return 1;
   if(!(env = environment())) return 0;
   i = sizeof(inv = all_inventory(env));
   while(i--) 

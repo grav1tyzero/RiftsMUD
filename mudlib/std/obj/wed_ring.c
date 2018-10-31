@@ -36,7 +36,6 @@ void create() {
     set_id( ({ "band", "night_wed_ring", "wedding ring" }) );
     set_name("band");
     set("short", (: call_other, this_object() , "short_fun" :) );
-    set_ac(1);
     set_type("ring");
     set_limbs( ({ "left hand" }) );
     set_weight(0);

@@ -40,7 +40,6 @@
 (/d/damned/areas): (all)[r] (standard)[rw] (elder)[rw] (mentor)[rw] (assist)[rw] (superuser)[rw]
 (/d/damned/data): (all)[r] (wizard)[n] (elder)[r] (mentor)[rw] (assist)[rw] (superuser)[rw] (Damned)[rw] (DamnedData)[rw]
 (/d/damned/data/mines): (all)[r] (assist)[rw] (superuser)[rw] (DamnedData)[rw]
-(/d/damned/guilds): (all)[r] (assist)[rw] (superuser)[rw] (elder)[rw] (mentor)[rw]
 (/d/camps): (all)[r] (mentor)[rw] (assist)[rw] (superuser)[rw] (Camps)[rw] (camps)[rw]
 (/d/nocte): (all)[r] (mentor)[rw] (superuser)[rw] (assist)[rw] (nocte)[rw] (Nocte)[rw]
 (/d/nfd): (all)[r] (mentor)[rw] (superuser)[rw] (assist)[rw] (nfd)[rw] (Nfd)[rw]

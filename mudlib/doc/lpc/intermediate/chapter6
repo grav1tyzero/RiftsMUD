@@ -139,8 +139,6 @@ inherit "/std/objectc";
 
 private int wc;
 
-void set_wc(int wc);
-int query_wc();
 int wieldweapon(string str);
 
 void create() { ::create(); }
@@ -150,9 +148,6 @@ void init() {
       add_action("wieldweapon", "wield");
 }
 
-void set_wc(int x) { wc = x; }
-
-int query_wc() { return wc; }
 
 int wieldweapon(string str) {
     ... code for wielding the weapon ...

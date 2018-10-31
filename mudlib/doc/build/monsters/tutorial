@@ -91,8 +91,6 @@ set_body_type("human");    *or*     add_limb("head", "FATAL", 20, 0, 4);
 			 Example:
 				add_wielding_limb("right arm");
 			 Note that you have to add_limb it first.
-set_overall_ac( 4 ); //  This sets the ac of all limbs to 4, except the torso
-			 which it sets a bit higher than the number.
 
 
 These are all of the functions minimally necessary to create a monster.
@@ -104,8 +102,6 @@ listing of optional functions you may put in code to individualize your monster.
 set_wielding_limbs( ({ "right hand", "left hand" }) );
 		    //	 Sets the limbs in which a monster
 		    	 is able to wield a weapon.
-
-set_ac("right hand", 7); // Sets the ac of a limb to a certain number.
 
 set_melee_damage(string type);
 	Gives the monster a melee damage type other that 

@@ -22,7 +22,7 @@ int scry(string str) {
     object ob, env;
 
     write("You gaze into the crystal ball.");
-    if((int)this_player()->query_mp() < 5) {
+    if((int)this_player()->query_ppe() < 5) {
         write("Your magic powers are just too weak to help you.");
         return 1;
     }

@@ -29,15 +29,6 @@ set_type("helmet");
 	Armours have many different types.  You will have to refer to the mud's
 	document on armours to find out what the legal types are.
 
-set_ac(5);
-	Sets the protection the limbs covered by the armour will get for
-	wearing the armour.  See the balance documents for limits.
-
-ALSO suppoerted is the form:
-set_ac(int amount, string type);
-where type is a valid damage type (see "help damage_types").  If no type
-is supplied, ALL types will be set to the supplied value.
-
 set_limbs( ({ "head" }) );
 	Sets the limbs which the armour item protects.
 	The item can be set up to protect more than one limb, but there are

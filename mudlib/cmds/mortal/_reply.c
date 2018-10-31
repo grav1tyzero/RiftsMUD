@@ -49,7 +49,7 @@ int cmd_reply(string str) {
     }
     if(this_player()->query("in creation") || wizardp(this_player())) sp_cost = 0;
         else sp_cost = 2 - (8*(int)this_player()->query_skill("telepathy"))/200;
-    if(!wizardp(this_player()) && !this_player()->query("in creation") && (int)this_player()->query_mp() < sp_cost)
+    if(!wizardp(this_player()) && !this_player()->query("in creation") && (int)this_player()->query_ppe() < sp_cost)
         return notify_fail("You do not have enough mp.\n");
     this_player()->add_mp(-sp_cost);
     message("tell", (string)this_player()->query_cap_name()+" replies: "+ str, ob);

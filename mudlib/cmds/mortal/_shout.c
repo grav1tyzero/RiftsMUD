@@ -40,7 +40,7 @@ TEXT
     if(wizardp(this_player())) sp_cost = 0;
     else sp_cost -= (50 * (int)this_player()->query_skill("telepathy")) / 100;
     sp_cost = (sp_cost < 0)? 0:sp_cost;
-    if(!wizardp(this_player()) && (int)this_player()->query_mp() < sp_cost)
+    if(!wizardp(this_player()) && (int)this_player()->query_ppe() < sp_cost)
 	return notify_fail("You do not have the strength of mind right now,\n");
 //    if(environment(this_player())->query_property("no shout")) {
 //        message("my_action", "Your voice does not travel very far.", 

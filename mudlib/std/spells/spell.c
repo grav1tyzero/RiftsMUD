@@ -27,7 +27,6 @@ string casters_names;
 int b;
 
 void spell_func(object caster, object at, int power, string args, int flag);
-void do_criticals(string *criticals, string target_thing, object caster, object targ);
 void remove_skill_mod(mapping info);
 int filter_area(object who);
 void send_messages(string *mesgs,object caster,object at);
@@ -132,159 +131,6 @@ int filter_area(object who) {
 	default:
 	    return living(who);
     }
-}
-
-void do_criticals(string *criticals, string target_thing, object caster, object targ) {
-    int i,j, amt, roll, dur;
-    string *tmp, what, what2, *tmp2;
-    object ob;
-    object *targ_armour;
-    int k, x, l;
-    mixed tmp_crits;
-    string *crit_words;
-//    function special_func;
-
-    if(!target_thing) target_thing = (string)targ->return_target_limb();
-    for(i=0; i< sizeof(criticals);i++) {
-	sscanf(criticals[i],"%s %s",what2,what);
-	amt = 0;
-	tmp_crits = targ->query_property("enhance criticals");
-	if(tmp_crits && intp(tmp_crits))
-	    amt += tmp_crits;
-	else if(tmp_crits && mapp(tmp_crits)) {
-	    tmp = keys(tmp_crits);
-	    x = member_array(what2, tmp);
-	    if(x >= 0 && intp(tmp_crits[tmp[x]]))
-		amt += tmp_crits[tmp[x]];
-	}
-  if(member_array((string)targ->query_race(), UNDEAD_RACES) >= 0 &&
-      what2 == "holy") amt += 2;
-	if(target_thing)
-	    targ_armour = (object *)targ->query_armour_ob(target_thing);
-	if(pointerp(targ_armour)) {
-	    j = sizeof(targ_armour);
-	    while(j--) {
-	      tmp_crits = targ_armour[j]->query_enh_critical();
-		if(tmp_crits && intp(tmp_crits))
-		amt += tmp_crits;
-		else if(tmp_crits && mapp(tmp_crits)) {
-		    tmp = keys(tmp_crits);
-		    x = member_array(what2,tmp);
-		    if(x >= 0) {
-			amt += tmp_crits[tmp[x]];
-		    }
-		}
-	    }
-	}
-	what = capitalize(what);
-	dur = member_array(what,CRIT_TYPES);
-	dur += amt;
-	if(dur > 4) dur = 4;
-	if(dur < 0) continue;
-	criticals[i] = replace_string(criticals[i],what,CRIT_TYPES[dur]);
-	roll = random(100)+1;
-       if(member_array(what2, DAMAGE_TYPES) >= 0) 
-      if(random(100) < (dur+1)*(roll/5) && living(caster) && caster->at_max_exp() &&
-        !caster->buffer_full() && ((int)targ->query_hp() > 5)) caster->add_dev(1);
-	if(member_array(what2,NO_CRIT_MSG) < 0)
-	send_messages((string *)DAMAGE_D->query_msg(criticals[i],
-	    roll, sprintf("%s:%s",(string)caster->query_name(),
-	    (string)targ->query_name())),caster,targ);
-	tmp = (string *)DAMAGE_D->query_result(criticals[i], roll);
-	if(!tmp || !sizeof(tmp)) continue;
-	else for(j=0;j<sizeof(tmp);j++) {
-	    switch(explode(tmp[j]," ")[0]) {
-		case "DAMAGE":
-		    if(!sscanf(tmp[j],"DAMAGE %d",amt)) break;
-		    if(target_thing) amt = (int)targ->
-			do_damage(target_thing, amt);
-		    else amt =(int)targ->do_damage((target_thing = 
-			(string)targ->
-			return_target_limb()),amt);
-		    if(amt > 0) {
-			caster->add_exp(amt/ATTACK_DAMAGE_EXP_MOD);
-			targ->check_on_limb(target_thing);
-		    }
-			break;
-		case "STUN":
-		    if(!sscanf(tmp[j],"STUN %d",dur)) break;
-		    targ->set_paralyzed(dur*2,
-			"%^MAGENTA%^You are stunned and cannot attack!");
-		    break;
-		case "KILL":
-		    targ->set_hp(-1);
-		    break;
-		  case "SPECIAL_RESULT":
-		    if(sscanf(tmp[j],"SPECIAL_RESULT %s %s", what, what2) != 2)
-		      continue;
-		    if(!caster || !targ) continue;
-		    call_other(what, what2, caster, targ);
-		case "LIMB_LOSS":
-		  crit_words = explode(tmp[j]," ");
-		    l = sizeof(crit_words);
-		    if(l == 1 || (l == 2 && crit_words[l-1] == "cripple"))
-		      what = (string)targ->return_target_limb();
-		    else if(l >= 2) {
-		      if(crit_words[1] == "non_fatal") {
-			k = sizeof((tmp2 = (string *)targ->
-				    query_limbs()));
-                        if(k >= 0) what = tmp2[k-1];
-			while((string)targ->query_reference(what) ==
-			      "FATAL" && k--)
-			  what = tmp2[k];
-			if((string)targ->query_reference(what) ==
-			      "FATAL") what = 0;
-		      } else {
-			if(crit_words[l-1] == "cripple" && l > 2)
-			  what = implode(crit_words[1..l-2], " ");
-			else
-			  what = implode(crit_words[1..l-1], " ");
-			what = (string)targ->sub_limb(what);
-		      }
-		    }
-		    if(!what) break;
-		    if(l >= 2 && crit_words[l-1] == "cripple") {
-		      if(targ->query_crippled(what)) break;
-		      amt = (int)targ->query_dam(what);
-		      if(amt >= (int)targ->query_max_dam(what)) break;
-		      targ->do_damage(what,(int)targ->query_max_dam(what)+3-amt);
-		      targ->add_hp(((int)targ->query_max_dam(what)+3-amt) / 2);
-		      targ->check_on_limb(what);
-} else if(targ) {
-		      amt = (int)targ->do_damage(what,(int)targ->query_max_dam(what)*2+1);
-		      targ->add_hp(amt / 2);
-		      targ->check_on_limb(what);
-		    }
-		    break;
-		case "STAT_MOD":
-		    if(sscanf(tmp[j],"STAT_MOD %s %d %d",what, amt, dur) !=3)
-			break;
-		    ob = clone_object("/std/spells/shadows/stat_shadow");
-		    ob->start_shadow(targ, dur*2, "%^GREEN%^You feel a "+
-			"little better.");
-		    ob->set_stat(what);
-		    ob->set_mod(amt);
-		    break;
-		case "CONT_DAMAGEOB":
-		    if(sscanf(tmp[j],"CONT_DAMAGE %d %d",amt,dur) != 2)
-			break;
-		    if(!target_thing) target_thing = (string)targ->
-			return_target_limb();
-		    DAMAGE_D->init_cont_damage(targ, dur, amt,
-					       "%^MAGENTA%^Your body is "+
-					       "racked with pain!");
-		    break;
-		case "SKILL_MOD":
-		    if(sscanf(tmp[j],"SKILL_MOD %s %d %d", what, amt, dur) != 3)
-			break;
-		    targ->add_skill_bonus(what,amt);
-		    delayed_call("remove_skill_mod",dur*2,([ "who" : targ,
-			"amount" : -amt, "what" : what ]));
-		    break;
-	    }
-	}
-    }
-    return;
 }
 
 void send_messages(string *mesgs,object caster, object at) {
@@ -632,7 +478,7 @@ void do_spell(mapping info) {
 	}
     }
     mp_cost *= power;
-    if(mp_cost >(int)caster->query_mp() && !props["can overcast"]) {
+    if(mp_cost >(int)caster->query_ppe() && !props["can overcast"]) {
 	message("info","You do not have enough magic points to cast this "
 	    "spell.",caster);
 	return;
@@ -971,8 +817,7 @@ void spell_func(object caster, object at, int power, string args, int flag) {
 	    break;
 	case "protection":
 	    if(!mapp(props["protection types"]) || !props["duration"]) break;
-	    if(props["duration"] == "permanent") {
-		at->set_overall_ac(values(props["protection types"])[0]*power);
+	    
 		break;
 	    }
 	    if(props["stack key"]) {

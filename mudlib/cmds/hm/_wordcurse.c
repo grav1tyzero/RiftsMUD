@@ -42,7 +42,7 @@ int cmd_wordcurse(string arg) {
 
     }
 
-    if(TP->query_mp() < 400) {
+    if(TP->query_ppe() < 400) {
 
 	message("word_curse", "You do not have enough mp.", TP);
 

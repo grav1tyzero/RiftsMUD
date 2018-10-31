@@ -46,7 +46,7 @@ int cmd_message(string str) {
 
     }
 
-    if((int)this_player()->query_mp() < 10) {
+    if((int)this_player()->query_ppe() < 10) {
 
 	notify_fail("Too low on magic power.\n");
 

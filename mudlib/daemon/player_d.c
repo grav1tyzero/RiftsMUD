@@ -47,8 +47,7 @@ void add_player_info() {
       "quests": sizeof((string *)ob->query_quests()),
       "major accomplishments": sizeof((mixed *)ob->query_mini_quests()),
       "level": (int)ob->query_level(),
-      "class": (string)ob->query_class(),
-      "guild": (string)ob->query_guild()
+      "class": (string)ob->query_class()
     ]) });
     player_list = sort_array(player_list, "sort_list", this_object());
     if(sizeof(player_list) > 50) player_list = player_list[0..49];

@@ -12,7 +12,6 @@ create() {
        "grievous wound.");
    set_weight(275);
    set("value", 100);
-   set_wc(9);
    set_type("knife");
    set_hit_func(this_object());
 }

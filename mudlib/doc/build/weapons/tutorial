@@ -6,26 +6,6 @@ set("long", string long_dec);  set_weight(int weight);  set("value", int val);
 
 Things which must be set which are specific to weapons:
 
-set_ac(int ac);
-Example: set_ac(2);
-This will give the weapon a value representing the level of protection
-it affords the limbs in which it is being wielded.  Balance documents
-outline specific armour class limits for this mud.
-
-NOTE: You may also set ac for a particular damage type in the form:
-set_ac(int ac, string type)
-The type must be a valid damage type, see help "damage_types"
-If no type is specified, all damage types receive the indicated ac.
-
-
-set_wc(int wc, string type);
-Example: set_wc(10, "cutting");
-This will give the weapon a value representing the quality of the weapon.
-Again see balance documentation for specific weapon class ranges.
-
-In addition to ac, wc is type specific, but you MUST supply a type or
-it will be set to "crushing" automatically.  Again see "help damage_types".
-
 set_type(string type);
 Example: set_type("blade");
 Sets what type of weapon the weapon is.  Valid types are listed in your mud's

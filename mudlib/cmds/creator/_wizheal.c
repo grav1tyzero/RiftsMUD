@@ -24,9 +24,9 @@ int cmd_wizheal(string str) {
 
     }
 
-    ob->heal((int)ob->query_max_hp()+ ((int)ob->query_max_mp()));
+    ob->heal((int)ob->query_max_hp()+ ((int)ob->query_max_ppe()));
 
-    ob->add_mp((int)ob->query_max_mp());
+    ob->add_mp((int)ob->query_max_ppe());
 
     if(!wizardp(ob)) log_file("illegal", this_player()->query_name() +
 

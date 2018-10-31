@@ -18,7 +18,7 @@ void create() {
     set_skill("dodge", 16);
     set_stats("strength", 2000);
     set_skill("attack", 2000);
-    set_overall_ac(9999);
+    
     set_max_hp(900000);
     set_hp(900000);
     set_stats( "dexterity", 1000);

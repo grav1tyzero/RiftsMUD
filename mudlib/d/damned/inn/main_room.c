@@ -204,8 +204,6 @@ void reset() {
     ob = new("/d/damned/inn/inn_clerk");
     ob->move(this_object());
   }
-  if(!present("trash can"))
-    new("/d/damned/guilds/common/tcan")->move(this_object());
   return;
 }
 

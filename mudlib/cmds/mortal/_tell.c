@@ -51,7 +51,7 @@ int cmd_tell(string str) {
     if(wizardp(this_player())||this_player()->query("in creation")) sp_cost = 0;
         else sp_cost = 4 - (8*(int)this_player()->query_skill("telepathy")) /200;
     sp_cost = (sp_cost < 0)? 0:sp_cost;
-    if(!this_player()->query("in creation") && !wizardp(this_player()) && (int)this_player()->query_mp() < sp_cost)
+    if(!this_player()->query("in creation") && !wizardp(this_player()) && (int)this_player()->query_ppe() < sp_cost)
         return notify_fail("You are too mentally exhausted to tell anyone anything.\n");
     this_player()->add_mp(-sp_cost);
     if(!(ob = find_living(who = lower_case(who)))) {

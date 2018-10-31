@@ -52,8 +52,7 @@ void create() {
 
    set_skill("perception", 95);
 
-   set_overall_ac( 10 );
-
+   
    set_languages(({"common", "elvish", "serra", "yin", "dwarvish"}));
 
    set("storage room","/wizards/diewarzau/rooms/weapon_store");

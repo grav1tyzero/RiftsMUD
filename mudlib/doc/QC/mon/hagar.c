@@ -21,13 +21,13 @@ create() {
     set("race", "high-man");
     set_gender("male");
     set_body_type("human");
-    set_overall_ac(15);
+    
     
     ob = new("/d/damned/virtual/spear_6.weapon");
     ob -> set("short", "Khojem's Great Newbie-Wizard Skewer");
     ob -> set("long", "This is used to impale wizards who gen "+
             "big weapons in their areas."); 
-    ob -> set_wc(28, "impaling");
+
 
        // set enchantment - *glow* in short description
     ob -> set_property("enchantment",4);
@@ -36,8 +36,6 @@ create() {
       // see /std/spells/flame_blade.c  
     ob -> set_property("flame blade", 4);
 
-      // wc = (power+2) * stack  so, (6 +2) *2 = 32
-    ob -> set_wc(32,"fire");
 
      // allows enchanter w/ detect magic skill to determine
      // magic and power of magic on LOOK AT SKEWER

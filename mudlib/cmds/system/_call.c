@@ -18,7 +18,7 @@ inherit "/adm/daemon/refs_d";
   "query_ip",\
   "query_class",\
   "query_race",\
-  "query_guild",\
+  "query_class",\
   "query_level",\
   "query_hp",\
   "query_max_hp",\

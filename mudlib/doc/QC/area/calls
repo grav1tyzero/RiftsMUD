@@ -53,5 +53,5 @@ call name;init_limb_data;"BODY-TYPE"   <-- this will fix you if you manage to lo
 call name;query_armour;"limb"
 call name;query_all_skills
 call name;query_limbs
-call name;query_ac;"limb"
+
 

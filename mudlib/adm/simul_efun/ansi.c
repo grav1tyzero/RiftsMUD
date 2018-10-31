@@ -57,10 +57,8 @@ string ansi_item(object item) {
     else {
 	c=WHT;
 	if (item->query_hit_func()) c=MAG;
- 	else if (item->query_wc()) c=RED;
-        else if (item->query_max_internal_encumbrance()) c=CYN;
-        else  if (item->query_ac())  c=GRN;
-        else  if (item->query_value()) c=YEL;
+    else if (item->query_max_internal_encumbrance()) c=CYN;
+    else if (item->query_value()) c=YEL;
     }
     return c;
 }

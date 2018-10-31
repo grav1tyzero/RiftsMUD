@@ -676,9 +676,10 @@ string get_bb_uid() { return UID_BACKBONE; }
 string creator_file(string str) {
        string str2;
        str2 = (string)call_other(OB_SIMUL_EFUN, "creator_file", str);
-       if(str2 == 0) return UID_MUDLIB;//parnell says i donno wtf to return if it's 0 but mudlib sounds good
-       else return str2;
-     //  return (string)call_other(OB_SIMUL_EFUN, "creator_file", str); //old way returned 0 which caused NOT STRING errors
+       if(!str2) 
+        return UID_MUDLIB;
+       else 
+        return str2;
 }
 
 /*
