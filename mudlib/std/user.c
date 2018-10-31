@@ -559,13 +559,10 @@ void setup() {
 	remove_property("lycanthrope moon");
 	delete_skill("control change");
     }
-    set_max_sp(query_stats("dexterity")*7);
     remove_property("reset max");
     HUNTING_D->set_mon_hunting(query_name(), this_object());
     REINC_D->check_reincarnate(this_object());
     convert_kills();
-    if(this_object()->query_property("guild watch"))
-	GUILD_D->set_last_on(query_class(), time());
     SAVEALL_D->restore_crash_items(this_object());
 }
 

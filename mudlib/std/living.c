@@ -113,8 +113,6 @@ static void init_path() {
     string tmp;
 
     search_path = ({ DIR_MORTAL_CMDS, DIR_CLASS_CMDS });
-    if(tmp = (string)this_object()->query_guild())
-	search_path += ({ DIR_GUILD_CMDS+"/"+tmp });
     if(ambassadorp(this_object()) ||
       wizardp(this_object()))
 	search_path += ({ DIR_AMBASSADOR_CMDS, DIR_SYSTEM_CMDS });

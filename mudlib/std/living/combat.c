@@ -11,7 +11,6 @@
 #include <party.h>
 #include <daemons.h>
 #include <council.h>
-#include <balance.h>
 // Remove non-standard includes out of std files!
 // Security and stability risk.
 
@@ -259,23 +258,6 @@ void continue_attack() {
 	else {
 	    if(attackers) {
 		if(sizeof(attackers) && attackers[0]) {
-		    if(!me->is_player() || !attackers[0]->is_player())
-			{
-			attackers[0]->add_exp((int)me->query_exp() / DEATH_EXP_MOD);
-		    if(wizardp(attackers[0]) && (string)attackers[0]->getenv("TRACE") == "on")
-			message("info", "EXP gained: "+(me->query_exp() / DEATH_EXP_MOD), attackers[0]);
-			}
-		    else {
-			exp = (int)me->query_level() -
-			(int)attackers[0]->query_level();
-			if(exp > 2)
-			    message("info", "You have lost experience by killing a "+
-			      "weaker player!", attackers[0]);
-			exp -= 2;
-			if(exp > 0) exp = -1 * (int)ADVANCE_D->get_exp(exp) / 2;
-			else if(exp < 0) exp = (int)ADVANCE_D->get_exp(-exp) / 10;
-			attackers[0]->add_exp(exp);
-		    }
 		    attackers[0]->adj_alignment( (int)me->query_alignment() );
 		    attackers[0]->add_kill((string)me->query_name());
 		    add_death((string)attackers[0]->query_name());
@@ -613,7 +595,6 @@ if((int)attackers[0]->query_max_internal_encumbrance() <= 0)
     if(x > 0) {
 	if(current) {
 	    current->decay();
-	    me->add_exp(x/ATTACK_DAMAGE_EXP_MOD);
 	}
     }
     if(!criticals) criticals = ({});
@@ -730,10 +711,7 @@ private void do_criticals(string *criticals) {
 	else amt =(int)attackers[0]->do_damage((target_thing = 
 						(string)attackers[0]->
 						return_target_limb()),amt);
-	if(amt > 0) {
-	  me->add_exp(amt/ATTACK_DAMAGE_EXP_MOD);
-	  attackers[0]->check_on_limb(target_thing);
-	}
+	
 	break;
       case "STUN":
 	if(!sscanf(tmp[j],"STUN %d",dur)) break;

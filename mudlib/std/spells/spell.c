@@ -4,7 +4,7 @@
 
 #include <std.h>
 #include <daemons.h>
-#include <balance.h>
+
 #include <party.h>
 
 #define UNDEAD_RACES ({ "undead", "skeleton", "zombie", "vampire", \
@@ -683,7 +683,6 @@ void spell_func(object caster, object at, int power, string args, int flag) {
 			roll /= (resist_flag?2:1);
 			inv[k]->do_damage(targ_limb, roll);
 			inv[k]->check_on_limb(targ_limb);
-			caster->add_exp(roll/ATTACK_DAMAGE_EXP_MOD);
 			break;
 		    case "CRITICAL":
 		  if(query_property("damage multiplier")) {
@@ -696,9 +695,7 @@ void spell_func(object caster, object at, int power, string args, int flag) {
 			roll /= (resist_flag?2:1);
 			inv[k]->do_damage(targ_limb, roll);
 			inv[k]->check_on_limb(targ_limb);			
-			caster->add_exp(roll/ATTACK_DAMAGE_EXP_MOD);
-			do_criticals(({ tmp[j] + replace_string(res,
-			     "CRITICAL","") }), targ_limb,caster, inv[k]);
+			
 			break;
 		}
 	    } }

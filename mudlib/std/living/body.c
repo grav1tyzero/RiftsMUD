@@ -34,7 +34,6 @@ int query_fingers();
 void set_max_hp(int hp);
 void set_hp(int hp);
 void add_hp(int x);
-void set_max_sp(int x);
 void set_sp(int x);
 void add_sp(int x);
 void add_mp(int x);
