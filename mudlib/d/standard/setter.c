@@ -18,8 +18,9 @@ inherit ROOM;
 
 void do_rolls();
 void assign_point(string str, int *points, int pts_left);
-
 void set_ansi();
+
+string * _occs = ({"Coalition Grunt"});
 
 
 
@@ -49,6 +50,7 @@ void init()
   //add_action("read", "read");
   //add_action("set_ansi", "ready");
   add_action("pick_race", "pick");
+  add_action("choose_occ","choose");
 }
 
 mapping s1_rolling_attributes() {
@@ -255,5 +257,19 @@ int read(string str)
   write("----------------------------------------------------------");
   write("pick <race> will forever make you one of these races");
   write("Type help <race> for more information.");
+  return 1;
+}
+
+int choose_occ(string str) {
+  object occ_obj;
+  object *inv = filter_array(all_inventory(this_player()), 
+    (: call_other :), "query_is_occ_obj");
+  if(inv)
+    for(int x = 0;x<sizeof(inv);x++) {
+      inv[x]->remove();
+    }
+  occ_obj = new ("/std/occ_picker");
+  occ_obj->move(this_player());
+  occ_obj->begin_selection();
   return 1;
 }

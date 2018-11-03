@@ -355,9 +355,17 @@ int query_max_hp()
 
 int query_max_sdc() { return player_data["general"]["max_sdc"]; }
 
+int query_max_mdc() { return player_data["general"]["max_mdc"]; }
+
 
 int query_hp() {
     return player_data["general"]["hp"];
+}
+int query_sdc() {
+    return player_data["general"]["sdc"];
+}
+int query_mdc() {
+    return player_data["general"]["mdc"];
 }
 
 int query_max_dam(string limb) {

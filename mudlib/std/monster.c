@@ -551,7 +551,6 @@ void set_languages(string *langs) {
 }
 
 void set(string str, mixed val) {
-  mapping tmp_map;
 
   ::set(str, val);
   if(str == "race") {
