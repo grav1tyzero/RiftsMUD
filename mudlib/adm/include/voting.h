@@ -1,4 +1,3 @@
-#define VOTE_DATA		"/adm/save/votes/"
 #define ELECTIONS		({ "rogue", "kataan", "mage", "monk", "cleric", "fighter" })
 #define NEXT_ELECTION	        "Wednesday 1 December 1993 at 00:00 EDT"
 

@@ -1,6 +1,7 @@
 //   A generic wall.
 
 #include <move.h>
+#include <dirs.h>
 
 inherit "/std/Object";
 inherit "/std/locker_logic";
@@ -67,8 +68,8 @@ int query_is_locker() {
 }
 
 void restore_locker(string file) {
-  if(!file_exists("/adm/save/objects/"+file+".o")) return;
-  restore_object("/adm/save/objects/"+file);
+  if(!file_exists(DIR_OBJECTS+"/"+file+".o")) return;
+  restore_object(DIR_OBJECTS+"/"+file);
   return;
 }
 

@@ -150,7 +150,7 @@ string get_sid() {
     int i;
 
     prev = previous_object();
-    sid2 = "/adm/save/";
+    sid2 = DIR_DATA+"/";
     if(prev->query_room())
         type = "room";
     else

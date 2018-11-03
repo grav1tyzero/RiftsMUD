@@ -3,7 +3,8 @@
 
 #define DIR_SECURE              "/adm"
 #define DIR_DB                  DIR_SECURE+"/db"
-#define DIR_DATA                DIR_SECURE+"/save"
+#define DIR_SAVE                "/save" //regular save
+#define DIR_DATA                DIR_SAVE+"/adm" //secure save
 #define DIR_SECURE_DAEMONS      DIR_SECURE+"/daemon"
 #define DIR_ACCOUNTS            DIR_DATA+"/accounts"
 #define DIR_BOARDS              DIR_DATA+"/boards"
@@ -12,6 +13,8 @@
 #define DIR_POSTAL              DIR_DATA+"/postal"
 #define DIR_SECURE_DAEMONS_SAVE DIR_DATA+"/daemons"
 #define DIR_VOTES               DIR_DATA+"/votes"
+#define DIR_OBJECTS		        DIR_DATA+"/objects"
+#define DIR_ROOM                DIR_DATA+"/room"
 
 #define DIR_DAEMONS             "/daemon"
 #define DIR_DAEMONS_SAVE        DIR_DAEMONS+"/save"
@@ -23,7 +26,7 @@
 #define DIR_USER_INHERITABLES   DIR_INHERITABLES+"/user"
 
 #define DIR_BACKBONE_OBJECTS    DIR_INHERITABLES+"/obj"
-#define DIR_OBJECTS		DIR_SECURE+"/save/objects"
+
 
 #define DIR_LOGS                "/log"
 #define DIR_DEBUG               DIR_LOGS+"/debug"
@@ -45,7 +48,6 @@
 #define DIR_CLASS_CMDS          DIR_CMDS+"/skills"
 #define DIR_CREATOR_CMDS        DIR_CMDS+"/creator"
 #define DIR_HM_CMDS             DIR_CMDS+"/hm"
-#define DIR_LEGEND_CMDS             DIR_CMDS+"/legend"
 #define DIR_MORTAL_CMDS         DIR_CMDS+"/mortal"
 #define DIR_RACE_CMDS           DIR_CMDS+"/race"
 #define DIR_SYSTEM_CMDS         DIR_CMDS+"/system"

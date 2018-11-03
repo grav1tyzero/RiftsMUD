@@ -1,4 +1,5 @@
-#define BBOARD_DIR 		"/adm/save/boards/"
+#include <dirs.h>
+#define BBOARD_DIR 		DIR_DATA+"/boards/"
 #define BBOARD_EDIT		"/tmp/bb/"
 
 #define BBOARD_OK		0

@@ -58,7 +58,7 @@ void clean_up_files() {
   class uil tmp_u_list;
 
   if(!unique_id[0]) return;
-  dir = get_dir("/adm/save/objects/*.o");
+  dir = get_dir(DIR_OBJECTS+"/*.o");
   foreach(file in dir) {
     if(sscanf(file, "%s_%d.o", key, id) != 2) continue;
     i = 0;

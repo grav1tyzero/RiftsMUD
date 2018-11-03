@@ -5,6 +5,7 @@
  * Diewarzau 8/3/96
  * DarkeLIB 1.0
  */
+#include <dirs.h>
 
 void add_crash_items(object tp, object *inv) {
   string *dir;
@@ -15,18 +16,18 @@ void add_crash_items(object tp, object *inv) {
 
   if(!tp || !inv) return;
   seteuid(getuid());
-  dir = map_array(get_dir(sprintf("/adm/save/objects/crash/%s_*",
+  dir = map_array(get_dir(sprintf(DIR_OBJECTS+"/crash/%s_*",
 				  (string)tp->query_name())),
-		  (: $2 + $1 :), "/adm/save/objects/crash/");
+		  (: $2 + $1 :), DIR_OBJECTS+"/crash/");
   map_array(dir, (: rm :));
   foreach(ob in inv) {
     ob->save_me(sprintf("%s_%d", (string)tp->query_name(),
 			idx));
-    rename(sprintf("/adm/save/objects/%s_%d.o", (string)tp->query_name(),
+    rename(sprintf(DIR_OBJECTS+"/%s_%d.o", (string)tp->query_name(),
 	       idx),
-       sprintf("/adm/save/objects/crash/%s_%d.tmp",
+       sprintf(DIR_OBJECTS+"/crash/%s_%d.tmp",
 	       (string)tp->query_name(), idx));
-    file = sprintf("/adm/save/objects/crash/%s_%d",
+    file = sprintf(DIR_OBJECTS+"/crash/%s_%d",
 		   (string)tp->query_name(), idx);
     if(virtualp(ob)) {
       write_file(file+".o", sprintf("#%s", base_name(ob))+"\n");
@@ -51,9 +52,9 @@ void restore_crash_items(object tp) {
   string file, obfile;
 
   seteuid(getuid());
-  dir = map_array(get_dir(sprintf("/adm/save/objects/crash/%s_*",
+  dir = map_array(get_dir(sprintf(DIR_OBJECTS+"/crash/%s_*",
                                   (string)tp->query_name())),
-                  (: $2 + $1 :), "/adm/save/objects/crash/");
+                  (: $2 + $1 :), DIR_OBJECTS+"/crash/");
   if(!dir || !sizeof(dir)) return;
   map_array(dir, (: rename($1, replace_string($1, $2, $3)) :),
 	    "crash/", "");

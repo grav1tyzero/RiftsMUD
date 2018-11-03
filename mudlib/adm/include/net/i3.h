@@ -1,5 +1,6 @@
 #include <socket.h>
 #include <config.h>
+#include <dirs.h>
  
 #ifndef SOCKET
 #define SOCKET "/adm/daemons/network/socket.c"
@@ -15,7 +16,7 @@
 #define I3_PORT                 __PORT__+3
 #define I3_MUDLIB		"Darkelib 0.2"
 #define I3_BASE_LIB		"Darkelib 0.1"
-#define I3_SAVE_FILE		"/adm/save/I3"
+#define I3_SAVE_FILE		DIR_DATA+"/I3"
 #define I3_TTL                  5
 #define I3_DAEMON		"/adm/daemons/network/I3"
 #define I3_SERVICE_DETECT	"Yes"

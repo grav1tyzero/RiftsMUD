@@ -4,6 +4,7 @@
     save() just saves the container, save(1) saves the container,
     and recursively saves all items in it as well.
 ****************************************************************/
+#include <dirs.h>
 
 varargs void restore(string str){
     string *k;
@@ -11,7 +12,7 @@ varargs void restore(string str){
     object o;
 
     if(TO->query_room() && !str){
-        str = "/adm/save/room/"+base_name(TO);
+        str = DIR_ROOM+"/"+base_name(TO);
     }
     ::restore(str);
     k = keys(objs);

@@ -52,7 +52,7 @@ void downward_compat() {
   mapping tmpor, tmp;
 
   seteuid(getuid());
-  dir = get_dir("/adm/save/objects/*.o");
+  dir = get_dir(DIR_OBJECTS+"/*.o");
   foreach(file in dir) {
     if(sscanf(file, "%s_%d.o", key, idx) != 2) continue;
     if(!(tuil = find_uid_list(key))) {
@@ -623,7 +623,7 @@ private void manage_lockers() {
     if(!tuil) continue;
 
     key = tuil->key;
-    dir = get_dir("/adm/save/objects/"+key+"_*.o");
+    dir = get_dir(DIR_OBJECTS+"/"+key+"_*.o");
 
     foreach(file in dir) {
       if(!sscanf(file, key+"_%d.o", idx)) continue;
@@ -635,7 +635,7 @@ private void manage_lockers() {
       if(!test_bit(tuil->bitlist, idx)) {
         if(key == "obj") rmdo++;
         else rmd++;
-        rm("/adm/save/objects/"+file);
+        rm(DIR_OBJECTS+"/"+file);
       }
     }
   }

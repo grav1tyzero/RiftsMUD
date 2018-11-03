@@ -33,10 +33,10 @@ void add_crash_items(object player, int flag){
     name=player->query_true_name();
     letter = explode(name, "")[0];
    
-    save_dir = "/adm/save/objects/saveall/"+letter;
+    save_dir = DIR_OBJECTS+"/saveall/"+letter;
     mkdir(save_dir);
 
-    save_dir = "/adm/save/objects/saveall/"+letter+"/"+name;
+    save_dir = DIR_OBJECTS+"/saveall/"+letter+"/"+name;
     mkdir(save_dir);
    
     save_dir += "/";
@@ -52,7 +52,7 @@ void add_crash_items(object player, int flag){
         a=inv[i];
         a->save_me("saveall/"+letter+"/"+name+"/"+name+"_"+i);
         if(virtualp(a)){
-            tmp = "/adm/save/objects/saveall/"+letter+"/"+name+"/"+name+"_"+i;
+            tmp = DIR_OBJECTS+"/saveall/"+letter+"/"+name+"/"+name+"_"+i;
             rename(tmp + ".o", tmp + ".tmp");
             write_file(tmp+".o", "#"+base_name(a)+"\n", 1);
             file = read_file(tmp+".tmp");
@@ -77,7 +77,7 @@ void restore_crash_items(object player){
     
     name=player->query_true_name();
     letter = explode(name, "")[0];
-    save_dir = "/adm/save/objects/saveall/"+letter+"/"+name;
+    save_dir = DIR_OBJECTS+"/saveall/"+letter+"/"+name;
 
     inv = get_dir(save_dir+"/"+name+"_*");
     for (i=0;i<sizeof(inv);i++){

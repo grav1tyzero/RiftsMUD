@@ -34,7 +34,7 @@ int cmd_arrest(string str) {
     }
     seteuid(UID_USERSAVE);
     rename(DIR_USERS+"/"+str[0..0]+"/"+str+".o", DIR_USERS+"/arrest/"+str+".o");
-    if(file_size(ACCOUNTS_DIR+str+".o") > -1) rm(ACCOUNTS_DIR+str+".o");
+    if(file_size(DIR_ACCOUNTS+str+".o") > -1) rm(DIR_ACCOUNTS+str+".o");
     write(capitalize(str)+" is arrested for "+mud_name()+".\n");
     seteuid(UID_LOG);
     log_file("arrest", (string)this_player()->query_name()+" arrested "+

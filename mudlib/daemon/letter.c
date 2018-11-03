@@ -1,6 +1,7 @@
 #include <post.h> 
 #include <objects.h>
 #include <security.h> 
+#include <dirs.h>
  
 private string __Letter; 
 private string *__Undeleted; 
@@ -18,15 +19,15 @@ int clean_up_names(){
    
    removed = 0;
    seteuid(UID_POSTALSAVE);
-   dirs = get_dir("/adm/save/postal/");
+   dirs = get_dir(DIR_POSTAL);
    for(x=0;x<sizeof(dirs);x++){
-      names = get_dir("/adm/save/postal/"+dirs[x]+"/");
+      names = get_dir(DIR_POSTAL+"/"+dirs[x]+"/");
       for(y=0;y<sizeof(names);y++){
          if(sscanf(names[y], "%s.o", name) != 1)
             continue;
          if(!user_exists(name)){
             removed++;
-            rm("/adm/save/postal/"+dirs[x]+"/"+names[y]);
+            rm(DIR_POSTAL+"/"+dirs[x]+"/"+names[y]);
          }
       }
    }
@@ -44,9 +45,9 @@ int clean_up_mudmails(){
     removed = 0;
     ids = ({});
     seteuid(UID_POSTALSAVE);
-    dirs = get_dir("/adm/save/postal/");
+    dirs = get_dir(DIR_POSTAL);
     for(x=0;x<sizeof(dirs);x++){
-        names = get_dir("/adm/save/postal/"+dirs[x]+"/");
+        names = get_dir(DIR_POSTAL+"/"+dirs[x]+"/");
         for(y=0;y<sizeof(names);y++){
             if(sscanf(names[y], "%s.o", name) != 1)
                 continue;
@@ -61,15 +62,15 @@ int clean_up_mudmails(){
             }
         }
     }
-    dirs = get_dir("/adm/save/letters/");
+    dirs = get_dir(DIR_LETTERS);
     for(x=0;x<sizeof(dirs);x++){
-        names = get_dir("/adm/save/letters/"+dirs[x]+"/");
+        names = get_dir(DIR_LETTERS+"/"+dirs[x]+"/");
         for(y=0;y<sizeof(names);y++){
             if(sscanf(names[y], "%s.o", name) != 1)
                 continue;
             if(member_array(name, ids) == -1){
                 removed++;
-                rm("/adm/save/letters/"+dirs[x]+"/"+names[y]);
+                rm(DIR_LETTERS+"/"+dirs[x]+"/"+names[y]);
             }
         }
     }

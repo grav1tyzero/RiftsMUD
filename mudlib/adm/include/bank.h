@@ -1,4 +1,5 @@
-#define ACCOUNTS_DIR		"/adm/save/accounts/"
+#include <dirs.h>
+
 #define LISCENSED_BANKS		({ "praxis" })
 
 #define TRANSACTION_OK		0

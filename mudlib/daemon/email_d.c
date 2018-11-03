@@ -41,8 +41,8 @@ void pre_register() {
   seteuid(UID_USERSAVE);
   email = ([]);
   dirs = filter_array(
-      map_array(get_dir("/adm/save/users/*"), (: $2 + $1 :),
-        "/adm/save/users/"),
+      map_array(get_dir(DIR_USERS+"/*"), (: $2 + $1 :),
+        DIR_USERS+"/"),
       (: (file_size($1) == $2) :), -2);
   dirs = filter_array(dirs, (: (strlen($1) < $2) :), 18);
   files = ({});

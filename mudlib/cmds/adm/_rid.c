@@ -47,15 +47,15 @@ int cmd_rid(string str) {
     if(sscanf(read_file(DIR_USERS+"/"+str[0..0]+"/"+str+".o"),"%*semail \"%s\"%*s", em) == 3)
        EMAIL_D->unregister_email(em);
     rename(DIR_USERS+"/"+str[0..0]+"/"+str+".o", DIR_USERS+"/rid/"+str+".o");
-    if(file_size(ACCOUNTS_DIR+str+".o") > -1) rm(ACCOUNTS_DIR+str+".o");
+    if(file_size(DIR_ACCOUNTS+str+".o") > -1) rm(DIR_ACCOUNTS+str+".o");
     write(capitalize(str)+" is removed from "+mud_name()+".\n");
     seteuid(UID_LOG);
     log_file("rid", (string)this_player()->query_name()+" rid "+str+": "+ctime(time())+"\n");
-    inv = get_dir("/adm/save/objects/saveall/"+explode(str, "")[0]+"/"+str+"/*");
+    inv = get_dir(DIR_OBJECTS+"/saveall/"+explode(str, "")[0]+"/"+str+"/*");
     for(i=0;i<sizeof(inv);i++){
-        file = "/adm/save/objects/saveall/"+explode(str, "")[0]+"/"+str+"/"+inv[i];
+        file = DIR_OBJECTS+"/saveall/"+explode(str, "")[0]+"/"+str+"/"+inv[i];
         rm(file);
-        rmdir("/adm/save/objects/saveall/"+explode(str, "")[0]+"/"+str);
+        rmdir(DIR_OBJECTS+"/saveall/"+explode(str, "")[0]+"/"+str);
     }
     seteuid(getuid());
     return 1;

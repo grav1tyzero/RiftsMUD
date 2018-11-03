@@ -40,11 +40,11 @@ static void my_choice(string str) {
              rename(DIR_USERS+"/"+name[0..0]+"/"+name+".o", DIR_USERS+"/suicide/"+name+".o");
            if(file_size(ACCOUNTS_DIR+name+".o") > -1)
              rm(ACCOUNTS_DIR+name+".o");
-             inv = get_dir("/adm/save/objects/saveall/"+explode(name,"")[0]+"/"+name+"/*");
+             inv = get_dir(DIR_OBJECTS+"/saveall/"+explode(name,"")[0]+"/"+name+"/*");
     for(i=0;i<sizeof(inv);i++){
-        file = "/adm/save/objects/saveall/"+explode(name,"")[0]+"/"+name+"/"+inv[i];
+        file = DIR_OBJECTS+"/saveall/"+explode(name,"")[0]+"/"+name+"/"+inv[i];
         rm(file);
-        rmdir("/adm/save/objects/saveall/"+explode(name, "")[0]+"/"+name);
+        rmdir(DIR_OBJECTS+"/saveall/"+explode(name, "")[0]+"/"+name);
     }
 
              write(capitalize(name)+" is removed from"+mud_name()+".\n");

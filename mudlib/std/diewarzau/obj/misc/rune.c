@@ -2,6 +2,7 @@
 #include <move.h>
 #include <rooms.h>
 #include <daemons.h>
+#include <dirs.h>
 
 inherit "/std/Object";
 inherit "/std/locker_logic";
@@ -24,8 +25,8 @@ int query_caster_level() { return clevel; }
 
 void restore_locker(string file) {
   seteuid(getuid());
-  if(!file_exists("/adm/save/objects/"+file+".o")) return;
-  restore_object("/adm/save/objects/"+file);
+  if(!file_exists(DIR_OBJECTS+"/"+file+".o")) return;
+  restore_object(DIR_OBJECTS+"/"+file);
   return;
 }
 
@@ -108,7 +109,7 @@ void preserve_me() {
 
   seteuid(getuid());
   remove_call_out("remove_rune");
-  dir = get_dir("/adm/save/objects/rune_*");
+  dir = get_dir(DIR_OBJECTS+"/rune_*");
   spec = 0;
   my_file = "rune_0";
   while(member_array(my_file+".o", dir) >= 0) {
