@@ -1,5 +1,6 @@
 #include <security.h>
 #include <std.h>
+#include <dirs>
 #define HIGH_FLOOR 4
 #define ROOMS_PER_FLOOR 30
 

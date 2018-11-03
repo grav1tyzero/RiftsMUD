@@ -12,12 +12,15 @@
 # meaning write access, read access, or read and write access
 # n means no access
 (/): (all)[rw]
+(/save): (all)[r] (superuser)[rw]
 (/adm): (all)[r] (superuser)[rw]
 (/adm/daemon): (all)[n] (assist)[r] (superuser)[rw] (elder)[r] (mentor)[r]
 (/adm/db): (all)[n] (superuser)[rw] (Advance)[rw]
 (/adm/text_files): (all)[n] (assist)[rw] (superuser)[rw] (ArchSave)[rw]
 (/adm/etc): (all)[n] (assist)[rw] (superuser)[rw] (ArchSave)[rw]
 (/adm/include): (all)[r] (assist)[rw] (superuser)[rw] (mentor)[r]
+# deprecated dont' use /adm/save
+(/adm/save): (all)[n]
 (/save/adm): (all)[r] (superuser)[rw] (assist)[rw]
 (/save/adm/objects): (all)[rw]
 (/save/adm/objects/crash): (all)[rw]
@@ -51,7 +54,9 @@
 # DAEMONS
 (/daemon): (all)[r] (mudlib)[rw] (assist)[rw] (superuser)[rw]
 (/daemon/db): (all)[r] (mudlib)[rw] (assist)[rw] (superuser)[rw]
-(/daemon/save): (all)[r] (mudlib)[rw] (DaemonSave)[rw] (superuser)[rw]
+# deprecated dont' use /daemon/save
+(/daemon/save): (all)[n]
+(/save/daemon): (all)[r] (mudlib)[rw] (DaemonSave)[rw] (superuser)[rw]
 (/doc): (all)[r] (mentor)[rw] (assist)[rw] (superuser)[rw]
 (/ftp): (all)[rw]
 # LOGS

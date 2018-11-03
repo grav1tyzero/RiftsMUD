@@ -17,7 +17,7 @@
 #define DIR_ROOM                DIR_DATA+"/room"
 
 #define DIR_DAEMONS             "/daemon"
-#define DIR_DAEMONS_SAVE        DIR_DAEMONS+"/save"
+#define DIR_DAEMONS_SAVE        DIR_SAVE+"/daemon"
 #define DIR_DAEMONS_DATA        DIR_DAEMONS+"/db"
 
 #define DIR_INHERITABLES        "/std"

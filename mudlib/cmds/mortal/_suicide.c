@@ -38,8 +38,8 @@ static void my_choice(string str) {
 //            if(sscanf(read_file(DIR_USERS+"/"+name[0..0]+"/"+name+".o"), "%*semail\"%s\"%*s", em) == 3)
              EMAIL_D->unregister_email(em);
              rename(DIR_USERS+"/"+name[0..0]+"/"+name+".o", DIR_USERS+"/suicide/"+name+".o");
-           if(file_size(ACCOUNTS_DIR+name+".o") > -1)
-             rm(ACCOUNTS_DIR+name+".o");
+           if(file_size(DIR_ACCOUNTS+name+".o") > -1)
+             rm(DIR_ACCOUNTS+name+".o");
              inv = get_dir(DIR_OBJECTS+"/saveall/"+explode(name,"")[0]+"/"+name+"/*");
     for(i=0;i<sizeof(inv);i++){
         file = DIR_OBJECTS+"/saveall/"+explode(name,"")[0]+"/"+name+"/"+inv[i];

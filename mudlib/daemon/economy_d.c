@@ -6,6 +6,7 @@
 #include <security.h>
 #include <save.h>
 #include <clock.h>
+#include <dirs.h>
 
 private mapping Currencies;
 int LastInflation;
@@ -18,8 +19,8 @@ void create() {
     Currencies = ([]);
     seteuid(UID_DAEMONSAVE);
     if(catch(restore_object(SAVE_ECONOMY))) {
-      rm("/daemon/save/economy.o");
-      cp("/daemon/save/economy.bak", "/daemon/save/economy.o");
+      rm(DIR_DAEMONS_SAVE+"/economy.o");
+      cp(DIR_DAEMONS_SAVE+"/economy.bak", DIR_DAEMONS_SAVE+"/economy.o");
       restore_object(SAVE_ECONOMY);
     }
     i = sizeof(borg = keys(Currencies));

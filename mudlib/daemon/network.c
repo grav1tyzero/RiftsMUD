@@ -2,8 +2,9 @@
 #include <daemons.h> 
 #include <security.h> 
 #include <network.h>
+#include <dirs.h>
 
-#define BANNED_MUDS "/daemon/save/banned"
+#define BANNED_MUDS DIR_DAEMONS_SAVE+"/banned"
 #define DARKECHATS ({ "land.of.the.chosen", "darkemud", "darkemudtest", "darkprophecy", "dark.prophecy", "darkedomain", "daybreak.ridge" })
 #define DARKELIBS ({ "land.of.the.chosen", "darkemud", "darkemudtest", "darkprophecy", "dark.prophecy", "darkedomain", "daybreak.ridge"})
  

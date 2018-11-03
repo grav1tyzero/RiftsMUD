@@ -39,7 +39,7 @@ string find_cmd(string cmd, string *path) {
 void rehash(mixed val) {
     string *choses;
     int i, j;
-
+    
     if(stringp(val)) val = ({ val });
     else if(!pointerp(val)) return;
     i = sizeof(val);
