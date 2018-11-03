@@ -72,14 +72,5 @@
 # DOMAIN GROUPS 
 # This area should expect to see significant expansion.
 #-------------------------------------------------------
-(standard): Standard 
-(nocte): Nocte 
-(camps): Camps 
-(mines): Mines 
-(nfd): Nfd 
-(caves): Caves cyric
-(arm_dealers): Arm_dealers
-(weavers): Weavers
-(illuminarae): Illuminarae
-(newbieville): Newbieville tailwind thrace
+(standard): Standard
 

@@ -84,7 +84,6 @@
 (/d/standard/setter): Force Log Root Shell
 (/daemon/chat): Log
 (/daemon/email_d): UserSave Root DaemonSave
-(/daemon/mine_d): Root DamnedData DaemonSave
 (/daemon/reinc_d): DaemonSave
 (/daemon/economy_d): DaemonSave
 (/daemon/events_d): DaemonSave Shutdown

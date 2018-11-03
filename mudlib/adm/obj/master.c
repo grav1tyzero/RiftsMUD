@@ -547,15 +547,13 @@ int valid_seteuid(object ob, string id) {
     if(uid == UID_ROOT) return 1;
     if(file_name(ob) == OB_SIMUL_EFUN) return 1;
     if(uid == UID_SYSTEM && id != UID_ROOT && id != UID_BACKBONE)
-  return 1;
+      return 1;
     dirs = explode(base_name(ob), "/");
     if(sizeof(dirs) >= 3 && implode(dirs[0..2],"/") == "std/spells/shadows"
       && id == UID_SHADOW) return 1;
     fn = base_name(ob);
     if((i=strlen(fn)) > 7 && fn[i-7..i-1] == ".castle" && id == UID_DAMNED_DATA)
-  return 1;
-    if((i=strlen(fn)) > 7 && fn[i-5..i-1] == ".mine" && id == UID_DAMNED_DATA)
-  return 1;
+      return 1;
     if(!privs) load_privs();
     return (privs[fn=base_name(ob)] && (member_array(id, privs[fn]) != -1));
 }

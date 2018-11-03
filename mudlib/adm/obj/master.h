@@ -3,7 +3,6 @@
 #include <daemons.h>
 #include <databases.h>
 #include <dirs.h>
-#include <law.h>
 #include <objects.h>
 #include <rooms.h>
 #include <security.h>
