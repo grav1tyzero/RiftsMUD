@@ -10,8 +10,12 @@
 inherit DAEMON;
 
 int cmd_nextreboot(string str) {
-    int x;
-
+    int x, hours;
+    hours = (int)EVENTS_D->query_reboot_interval();
+    if(!hours) {
+      message("info", "Reboot Interval is disabled. No reboots.",this_player());
+      return 1;
+    }
     x = (int)EVENTS_D->query_next_reboot() - time();
     if(!(str = (string)this_player()->getenv("TZONE")))
      str = sprintf("%s PST", ctime(time() + x));

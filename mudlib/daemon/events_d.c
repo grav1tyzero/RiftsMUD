@@ -32,7 +32,7 @@ void create() {
     seteuid(UID_DAEMONSAVE);
     restore_object(SAVE_EVENTS);
     seteuid(getuid());
-    if(!__RebootInterval) __RebootInterval = 24;
+    if(!__RebootInterval) __RebootInterval = 0;
     if(!__Events) __Events = ([]);
     Save();
     configure_day();
@@ -40,9 +40,16 @@ void create() {
 }
 
 void set_reboot_interval(int x) {
-    if(geteuid(previous_object()) != UID_SHUTDOWN) return;
-    if(x >1) __RebootInterval = x;
+    if(geteuid(previous_object()) != UID_SHUTDOWN 
+        && !archp(this_player()))
+        return;
+    if(x >= 0) 
+        __RebootInterval = x;
     Save();
+}
+
+int query_reboot_interval() {
+    return __RebootInterval;
 }
 
 varargs void add_events(object ob, string fun, int when, mixed *args, int reg) {
@@ -70,7 +77,9 @@ static void check_events() {
               map_delete(__Events, events[i]);
         }
     }
-    if(uptime() > __RebootInterval*3600 && !__InReboot) {
+    if(__RebootInterval && //if 0 then we don't reboot.
+        uptime() > __RebootInterval*3600 && 
+        !__InReboot) {
       __InReboot = 1;
         reboot();
     }
