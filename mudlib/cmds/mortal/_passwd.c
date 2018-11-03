@@ -77,7 +77,6 @@ nomask static int npass2(string pass) {
 	write("You must do this with out being forced.\n");
 	return 0;
     }
-    //pass = crypt(pass, "BOB")[3..];
     seteuid(UID_USERACCESS);
     this_player()->set_password(pass);
     seteuid(getuid());

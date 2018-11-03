@@ -354,81 +354,104 @@ void preload(string str) {
     write("\nGot error "+err+" when loading "+str+".\n");
 }
 
-int valid_write(string file, object ob, string fun) {
-    string tmp, name, whoisit;
-    string *file_str;
-    int i;
+int valid_write(string file, object ob, string fun)
+{
+  string tmp, name, whoisit;
+  string *file_str;
+  int i;
 
-    while(strlen(file) > 2 && file[0..1] == "//")
-  file = replace_string(file, "/", "", 1);
-    if(file_str = explode(file,"/"))
-  while(sizeof(file_str) && (i=member_array("",file_str)) > -1)
+  while (strlen(file) > 2 && file[0..1] == "//")
+    file = replace_string(file, "/", "", 1);
+  if (file_str = explode(file, "/"))
+    while (sizeof(file_str) && (i = member_array("", file_str)) > -1)
       file_str = exclude_array(file_str, i);
-    if(check_access(file, ob, WRITE)) {
-  if(!ob->is_player()) return 1;
-  whoisit = ob->query_name(1);
-  if(member_group(whoisit, "superuser")) return 1;
-  if(file_str[sizeof(file_str)-1] == whoisit) return 1;
-  if(file_str[sizeof(file_str)-1] == (lower_case(whoisit)+".o") &&
-    geteuid(ob) != UID_USERSAVE)
-      return 0;
-  if(sscanf(file_str[sizeof(file_str)-1],"%s.%s",name,tmp) == 2 &&
-    name == whoisit && tmp != "c" && tmp != "o")
+  if (check_access(file, ob, WRITE))
+  {
+    if (!ob->is_player())
       return 1;
-  if(member_group(name,"superuser") && tmp == "o" && geteuid(ob) !=
-    UID_USERSAVE) return 0;
-  if((sscanf(file,"/wizards/%s/%s",name,tmp) != 2 ||
-      name != whoisit) && ob && wizardp(ob))
-      INFORM_D->do_inform("external_edits","Info: "+capitalize(
-    whoisit)+" just wrote to " + file,({ ob }));
-  return 1;
-    } else return 0;
+    whoisit = ob->query_name(1);
+    if (member_group(whoisit, "superuser"))
+      return 1;
+    if (file_str[sizeof(file_str) - 1] == whoisit)
+      return 1;
+    if (file_str[sizeof(file_str) - 1] == (lower_case(whoisit) + ".o") &&
+        geteuid(ob) != UID_USERSAVE)
+      return 0;
+    if (sscanf(file_str[sizeof(file_str) - 1], "%s.%s", name, tmp) == 2 &&
+        name == whoisit && tmp != "c" && tmp != "o")
+      return 1;
+    if (member_group(name, "superuser") && tmp == "o" && geteuid(ob) != UID_USERSAVE)
+      return 0;
+    if ((sscanf(file, "/wizards/%s/%s", name, tmp) != 2 ||
+         name != whoisit) &&
+        ob && wizardp(ob))
+      INFORM_D->do_inform("external_edits", "Info: " + capitalize(whoisit) + " just wrote to " + file, ({ob}));
+    return 1;
+  }
+  else
+    return 0;
 }
 
 int valid_read(string file, object ob, string fun) {
     return check_access(file, ob, READ);
 }
 
-nomask int check_access(string file, object ob, int ind) {
-    string *path, *grps;
-    string euid, tmp, fn;
-    int i, j;
+nomask int check_access(string file, object ob, int ind)
+{
+  string *path, *grps;
+  string euid, tmp, fn;
+  int i, j;
 
-    while(strlen(file) > 2 && file[0..1] == "//")
-  file = replace_string(file, "/", "", 1);
-    if((euid=geteuid(ob)) == UID_ROOT) return 1;
-    if(sscanf(file, user_path(euid)+"%s", tmp) ==1) return 1;
-    if(sscanf(euid, "%sobj", tmp) == 1 && sscanf(file,user_path(tmp)+"%s",tmp)
-      ==1) return 1;
-    if(!access) load_access();
-    if(!groups) load_groups();
-    if(!privs) load_privs();
-    fn = base_name(ob);
-    if(sscanf(file, REALMS_DIRS+"/%s", tmp) ||
-      sscanf(file, DOMAINS_DIRS+"/%s", tmp))
-  if(groups["ambassador"] && member_array(euid, groups["ambassador"])
-    != -1) return 0;
-    if(!(path = explode(file, "/"))) path = ({});
-    else while(sizeof(path) && (i=member_array("",path)) > -1)
+  while (strlen(file) > 2 && file[0..1] == "//")
+    file = replace_string(file, "/", "", 1);
+  if ((euid = geteuid(ob)) == UID_ROOT)
+    return 1;
+  if (sscanf(file, user_path(euid) + "%s", tmp) == 1)
+    return 1;
+  if (sscanf(euid, "%sobj", tmp) == 1 && sscanf(file, user_path(tmp) + "%s", tmp) == 1)
+    return 1;
+  if (!access)
+    load_access();
+  if (!groups)
+    load_groups();
+  if (!privs)
+    load_privs();
+  fn = base_name(ob);
+  if (sscanf(file, REALMS_DIRS + "/%s", tmp) ||
+      sscanf(file, DOMAINS_DIRS + "/%s", tmp))
+    if (groups["ambassador"] && member_array(euid, groups["ambassador"]) != -1)
+      return 0;
+  if (!(path = explode(file, "/")))
+    path = ({});
+  else
+    while (sizeof(path) && (i = member_array("", path)) > -1)
       path = exclude_array(path, i);
-    i = sizeof(path);
-    while((i--) != -1) {
-  if(i== -1) file = "/";
-  else file = "/"+implode(path[0..(i)], "/");
-  if(access[file]) {
-      if(access[file]["all"] && access[file]["all"][ind] == 1) return 1;
-      else if(access[file][euid]) return access[file][euid][ind];
-      else {
-    j = sizeof(grps = keys(access[file]));
-    while(j--) {
-        if(groups[grps[j]] && member_array(euid, groups[grps[j]]) != -1
-          && access[file][grps[j]][ind] == 1) return 1;
-    }
-    return 0;
+  i = sizeof(path);
+  while ((i--) != -1)
+  {
+    if (i == -1)
+      file = "/";
+    else
+      file = "/" + implode(path[0..(i)], "/");
+    if (access[file])
+    {
+      if (access[file]["all"] && access[file]["all"][ind] == 1)
+        return 1;
+      else if (access[file][euid])
+        return access[file][euid][ind];
+      else
+      {
+        j = sizeof(grps = keys(access[file]));
+        while (j--)
+        {
+          if (groups[grps[j]] && member_array(euid, groups[grps[j]]) != -1 && access[file][grps[j]][ind] == 1)
+            return 1;
+        }
+        return 0;
       }
-  }
     }
-    return 0;
+  }
+  return 0;
 }
 /*
 connect(4)                Driver Applies               connect(4)

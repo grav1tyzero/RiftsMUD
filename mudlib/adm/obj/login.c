@@ -166,11 +166,9 @@ static private int locked_access() {
  
 static private int check_password(string str) { 
     string pass; 
- 
+
     master()->load_player_from_file(__Name, __Player); 
-    if(__Player->verify_password(str)) 
-      return 0; 
-    return 1;
+    return __Player->verify_password(str);
   } 
  
 static private int valid_site(string ip) { 

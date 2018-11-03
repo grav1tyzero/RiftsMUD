@@ -5,6 +5,7 @@
 #include <std.h>
 #include <security.h>
 #include <daemons.h>
+#include <dirs.h>
 
 inherit DAEMON;
 
@@ -15,11 +16,14 @@ int help();
 int
 cmd_background(string text)
 {
-    string file,who,*whol;
+    string file,who,*whol,uid,euid;
     string *allbg;
     object ob;
     int i,j;
 
+    uid = getuid();
+    euid=geteuid();
+    write(sprintf("uid:%s euid:%s",uid,euid));
     ob = this_player();
     if( !text )
     {
@@ -27,7 +31,7 @@ cmd_background(string text)
        return 1;
     }
     text = lower_case(text);
-    file = "/data/backgrounds/"+ text +".b";
+    file = DIR_SAVE+"/backgrounds/"+ text +".b";
     if( (file_size(file) > 0) &&
             (text != "set") &&
             (text != "delete") &&
@@ -37,7 +41,7 @@ cmd_background(string text)
        return 1;
     }
     else if(text == "list") {
-      allbg=get_dir("/data/backgrounds/");
+      allbg=get_dir(DIR_SAVE+"/backgrounds/");
       j=sizeof(allbg);
       whol = ({""});
       for(i=0; i < j; i++) {
@@ -50,14 +54,14 @@ cmd_background(string text)
     }
     else if(text == "set")
     {
-       file="/data/backgrounds/"+ ob->query_name() + ".b";
+       file=DIR_SAVE+"/backgrounds/"+ ob->query_name() + ".b";
        ob->edit(file, "finished", this_object());//send to callback finished()
        
        return 1;
     }
     else if(text == "delete")
     {
-       file="/data/backgrounds/"+ ob->query_name() + ".b";
+       file=DIR_SAVE+"/backgrounds/"+ ob->query_name() + ".b";
        if(file_size(file) > 0) rm(file);
        message("info", "Your background file has been deleted.\n",ob);
        return 1;

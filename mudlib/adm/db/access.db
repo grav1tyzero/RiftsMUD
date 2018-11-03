@@ -80,4 +80,4 @@
 (/tmp/ObProps): (all)[rw]
 (/wizards): (all)[r] (assist)[rw] (superuser)[rw] (elder)[rw] (mentor)[rw]
 (/www): (all)[n] (www)[rw] (superuser)[rw]
-(/data/backgrounds): (all)[rw]
+(/save/backgrounds): (all)[rw]
