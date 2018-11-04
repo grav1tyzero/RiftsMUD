@@ -41,7 +41,6 @@ void create() {
 void check_reincarnate(object who) {
   int i = 0;
   string *langs;
-  object join_room;
   object *inv;
   
   if(wizardp(who)) return;

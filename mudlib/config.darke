@@ -37,25 +37,6 @@ name : RiftsMUD
 port number : 7878
 
 #
-# [ optional ]
-#
-# The address server is an external program that lets the mud translate
-# internet names to numbers (and vice versa).  This program is typically
-# named "addr_server" and is built along with your driver executable.
-# Do not confuse this with a Domain Name Server.
-#
-# This IP address should match where you started the program.  This is
-# almost always "localhost".  The port number should match the command
-# line argument that you gave the addr_server program.  The example
-# below corresponds to running the addr_server on the same machine as
-# your mud and using the following command to start it up:
-#
-#    % addr_server 9990
-#
-address server ip : localhost
-address server port : 9990
-
-#
 # [ REQUIRED ]
 #
 # This should be the absolute pathname to where you placed your copy of
@@ -174,11 +155,7 @@ maximum read file size : 2000000
 # max number of bytes you allow to be read and written with read_bytes 
 # and write_bytes
 maximum byte transfer : 100000
- 
-# Reserve an extra memory area from malloc(), to free when we run out
-# of memory.   If this value is 0, no area will be reserved.
-reserved size : 0
- 
+  
 # Define the size of the shared string hash table.  This number should
 # a prime, probably between 1000 and 30000; if you set it to about 1/5
 # of the number of distinct strings you have, you will get a hit ratio

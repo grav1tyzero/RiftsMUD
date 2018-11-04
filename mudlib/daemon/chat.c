@@ -262,7 +262,7 @@ int list_channel(string str) {
 }
 
 int hist_channel(string str) {
-    string hist, gm;
+    string hist;
     string col, *foo;
     int  x, allow;
 
