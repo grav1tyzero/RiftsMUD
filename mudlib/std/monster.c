@@ -133,7 +133,7 @@ varargs void heart_beat(int recurs_flag) {
   continue_attack();
   if(speed && moving >= speed) move_around();
   else if(speed) moving++;
-  magic_round = 0;
+ 
   am_i_alive();
   if(!test_heart())
   {

@@ -10,26 +10,26 @@
 #include <std.h>
 #include <party.h>
 #include <daemons.h>
-#include <council.h>
 // Remove non-standard includes out of std files!
 // Security and stability risk.
 
 #pragma optimize
-#define MAX_MELEE_WC	    20
-#define MAX_ATTACK_BONUS    5
-#define NEWBIE_LEVEL 3
 #define KILL_RANGE 5
 #define DEFAULT_PARALYZE_MESSAGE "You are stiff as stone."
-#define UNDEAD_RACES ({"undead","skeleton","zombie","vampire","ghoul","ghost"})
-#define CRIT_TYPES ({"A","B","C","D","E"})
 
 inherit BODY;
 inherit SKILLS;
-
-static int paralyzed, magic_round;
-static int hunting;
+//savables and props
 int wimpy;
 private string wimpydir;
+private int _attacks_per_melee = 1;
+int query_attacks_per_melee() {return _attacks_per_melee;}
+void set_attacks_per_melee(int atk) {_attacks_per_melee = atk;}
+
+//ephemeral
+static int magic_round;
+private static int paralyzed;
+private static int hunting;
 private static object *attackers;
 private static int any_attack;
 private static int casting;
@@ -308,9 +308,10 @@ void execute_attack() {
     int spec_com;
     protection = hits = pois = i = j = k = num_attacks = x = defendflag = 0;
     parry_bonus = has_shield = skill = y = 0;
-	trace = (wizardp(me) && (string)me->getenv("TRACE") == "on");
+
 
     me = this_object();
+	trace = (wizardp(me) && (string)me->getenv("TRACE") == "on");
     spec_com=0;
     if(member_array(me, (object *)attackers[0]->query_attackers()) < 0)
 		attackers[0]->kill_ob(me, 1);

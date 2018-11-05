@@ -110,8 +110,6 @@ int max_buffer_size() {
 }
 
 static void init_path() {
-    string tmp;
-
     search_path = ({ DIR_MORTAL_CMDS, DIR_CLASS_CMDS });
     if(ambassadorp(this_object()) ||
       wizardp(this_object()))
@@ -309,7 +307,7 @@ void add_stat_bonus(string stat, int amount) {
 string query_long(string unused) {
     object *inv;
     string *tmp;
-    string pre, stuff, extra, reg, short;
+    string pre, reg;
     int i, x;
 
     if(this_object()->query_ghost()) return "An ethereal presence.\n";
@@ -506,7 +504,7 @@ int remove_language(string lang)
 
 void learn_language(string lang, int exp)
 {
-    int tot_exp, tmp, goal, lang_pts, intel_fac;
+    int tot_exp, intel_fac;
 
     if(lang == "coderish" && !wizardp(this_object()))
 	return;

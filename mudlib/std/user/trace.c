@@ -1,5 +1,5 @@
 /*
- * trace.c
+ * /std/user/trace.c
  * description: tools for developer debugging tools
  * author: taken from the default mudlib.n and modified
  * last modified: 2/5/92
@@ -119,9 +119,8 @@ object get_e_act_ob(string str)
 
 mixed *parse_args(string str)
 {
-   string tmp1, tmp2;
    string strn;
-   int i,num;
+   int num;
    object ob;
 
    if(!str || str == "")

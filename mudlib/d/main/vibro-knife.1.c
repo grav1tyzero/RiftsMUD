@@ -9,4 +9,5 @@ create() {
     set_damage("1d6");
     set_md(1);
     set_id(({"knife", "vibro-knife", "vibe"}));
+    set_type("knife");
 }

@@ -114,7 +114,7 @@ void set_property(string prop, mixed value) {
 }
 
 string *query_property_keys() {
-    if(!props) ({"no properties set",});
+    if(!props) return ({});
     else return keys(props);
 }
 
@@ -242,15 +242,11 @@ int restore_me(string file) {
 // *** More complicated set and query functions ***
 
 int id(string str) {
-int i;
-
-string *parts;
-
-if(!ob_data) init_ob();
-if( !stringp(str) ) return 0;
-if( lower_case(str) == true_name) return 1;
-if(member_array(str, ob_data["id"]) != -1) return 1;
-return 0;
+    if(!ob_data) init_ob();
+    if( !stringp(str) ) return 0;
+    if( lower_case(str) == true_name) return 1;
+    if(member_array(str, ob_data["id"]) != -1) return 1;
+    return 0;
 }
 
 int plural_id(string str) {

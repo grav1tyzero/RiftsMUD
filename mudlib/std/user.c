@@ -45,7 +45,7 @@ int platinum, gold, electrum, silver, copper;
 
 int level, ghost, crash_money, rolls, verbose_moves;
 int birth;
-static int count, challenged, count2, disable, time_of_login, autosave;
+static int _count, challenged, count2, disable, time_of_login, autosave;
 mapping blocked, colours, bank, exp_log;
 string *keep;
 string snatch;
@@ -239,9 +239,8 @@ int set_brief() {
 varargs void move_player(mixed dest, string msg) {
     object prev;
     object *inv;
-    string *my_limbs, here,going,temp1,temp2,temp3;
-    int i, illum, bzbd, adj, tmp;
-    int flag;
+    string here,going,temp1,temp2,temp3;
+    int i, bzbd, adj, tmp;
 
     this_object()->set("error report", 0);
     prev = environment( this_object() );
@@ -334,14 +333,14 @@ void remove() {
     who_exc = ({ this_object() });
     if(this_object()->query_invis())
 	who_exc += filter_array(users(),"filter_notanarch",this_object());
-    if(!count)
+    if(!_count)
 	if(previous_object() && previous_object() != this_object() && geteuid(previous_object()) != UID_ROOT && 
 	  TP != TO) return;
     destroy_autoload_obj();
     CHAT_D->remove_user();
     INFORM_D->remove_user(this_object());
     if(!hiddenp(this_object()))
-	if(count)
+	if(_count)
 	    INFORM_D->do_inform("logins_and_quits","Info: " +
 	      capitalize((string)this_object()->query_name()) +
                 " has logged off.",
@@ -370,7 +369,7 @@ static int finish_quit(object ob) {
     object tmp;
 
     crash_money = 0;
-    count = 1;
+    _count = 1;
     tmp = environment(TO);
     TO->move(ROOM_VOID);
     TO->move(tmp);
@@ -570,7 +569,7 @@ void setup() {
 // get age.  - Geldron 051296
 varargs static void heart_beat(int recurs_flag) {
     object *inv, lyc_ob;
-    string tod, *cns;
+    string tod;
     int i, tmp;
 
     if(!recurs_flag) {
@@ -1066,7 +1065,7 @@ void receive_message(string msg_class, string msg) {
     string *words;
     int i, max;
     string str, pre, post;
-    int x, do_wrap;
+    int x;
 
    if (!msg) 
       return;
@@ -1408,8 +1407,6 @@ nomask void reinit_channels() {
     return;
 }
 static private int register_channels() {
-    string *dir, class_name, join_room, gm;
-    int i;
     if(!channels)
         channels=({});
     if(query_level() > 1) channels += ({ "chat" });

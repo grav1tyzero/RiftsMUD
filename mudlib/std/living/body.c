@@ -261,7 +261,7 @@ int add_limb(string limb_name, string limb_ref, int max_dam, int curr_dam, int l
 
 void augment_body(int x) {
     int tmp;
-    int dam, i;
+    int i;
     string b_type;
 
     if((string)this_object()->query_race() == "satyr") {
@@ -319,13 +319,14 @@ string return_target_limb() {
 
     if(target_limb && !query_is_limb(target_limb)) target_limb = 0;
     if(target_limb) {
-	tmp_lmb = target_limb;
-	target_limb = 0;
-    count = member_array("torso", limbs);
-    i = 0;
-    while(i++ < ((sizeof(limbs))/2))
-      if( (res=random(sizeof(limbs))) == count ) break;
-    return limbs[res];
+        tmp_lmb = target_limb;
+        target_limb = 0;
+        count = member_array("torso", limbs);
+        i = 0;
+        while(i++ < ((sizeof(limbs))/2))
+        if( (res=random(sizeof(limbs))) == count ) break;
+        return limbs[res];
+    }
 }
 
 string *query_limbs() { return limbs; }
@@ -731,8 +732,8 @@ int severed_limb(string limb) {
 int check_on_limb(string limb) {
     object weap;
     object *arm;
-    string *locations, tmp;
-    int i, amt;
+    string tmp;
+    int i;
 
     object old_limb;
 
