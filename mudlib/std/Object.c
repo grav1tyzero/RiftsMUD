@@ -169,10 +169,14 @@ string * regexp_query_property (string pattern)
 
 
 // *** One line set and query functions ***
-void   set_id(mixed val) {
-if(stringp(val)) set("id", ({ val }));
-else if(pointerp(val)) set("id", val);
-else return;
+void set_id(mixed val)
+{
+    if (stringp(val))
+        set("id", ({val}));
+    else if (pointerp(val))
+        set("id", val);
+    else
+        return;
 }
 
 void   set_short(string str)     { set("short", str); }
@@ -189,13 +193,7 @@ string query_long(string str) {
 	desc = (string)(*ob_data["long"])(str);
     else desc = ob_data["long"];
     if(!this_player()) return desc;
-    if(this_object()->query_property("enchantment") &&
-      random(100) < (int)this_player()->query_skill("detect magic"))
-	desc += "\n%^CYAN%^This item is magic.%^RESET%^";
-    if(mapp(query_property("locked enchant")) &&
-      sizeof(keys((mapping)query_property("locked enchant"))) &&
-      random(100) < (int)this_player()->query_skill("detect magic"))
-     desc += "\n%^YELLOW%^%^BOLD%^This item has enchantments.%^RESET%^";
+    
     return desc;
 }
 
@@ -289,20 +287,25 @@ string query_short() {
     if(functionp(ob_data["short"]))
 	desc = (string)(*ob_data["short"])();
     else desc = ob_data["short"];
-    if(this_player() && this_object()->query_property("enchantment") &&
-      random(100) < (int)this_player()->query_skill("detect magic"))
-	desc += " *glowing*";
+    
     return desc;
 }
 
-string query_cap_name() { 
-    if(!true_name) return 0;
-    if(!cap_name) return 0;
-    if(this_object()->query_invis()) return "Someone";
-    if((string)TO->query_ghost()) {
-	if((string)TO->query_name()) return "The ghost of " +
-	    CAP((string)TO->query_name());
-	else return "A ghost";
+string query_cap_name()
+{
+    if (!true_name)
+        return 0;
+    if (!cap_name)
+        return 0;
+    if (this_object()->query_invis())
+        return "Someone";
+    if ((string)TO->query_ghost())
+    {
+        if ((string)TO->query_name())
+            return "The ghost of " +
+                   CAP((string)TO->query_name());
+        else
+            return "A ghost";
     }
     return cap_name;
 }

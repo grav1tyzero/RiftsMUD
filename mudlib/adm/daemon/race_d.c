@@ -9,8 +9,7 @@
 #define LIMB_DIR "/daemon/db/races/"
 #define PROPS_DIR "/daemon/db/racial_props/"
 #define MON_DIR "/daemon/db/mon_races/"
-#define STATS ({ "strength", "constitution", "intelligence",\
-		   "wisdom", "charisma", "dexterity" })
+
 mapping races, limbs;
 
 int query_weight(string res, int con);
@@ -24,28 +23,30 @@ int is_limb(string limb, string res);
 
 void create() {
     string *lines, *data, *w_limbs, *borg, *b_types;
-    int i, j, tmp, tmp2;
+    int i, j, tmp, tmp2,trace;
+    if(wizardp(this_player())) 
+      trace = (string)this_player()->getenv("TRACE") == "on";
+      
 
     seteuid(getuid());
     races = ([]);
     limbs = ([]);
     b_types = ({});
-    for(i=0, tmp = sizeof(lines = read_database(RACES_DB)); i<tmp; i++) {
-        if(sizeof(data=explode(lines[i], ":")) != 12) continue;
-        races[data[0]] =
-          ([ "sight":atoi(data[1]), "weight":atoi(data[2]), "fingers":atoi(data[3]) ]);
-        races[data[0]]["wielding"] = ({});
-        for(j=0, tmp2=sizeof(w_limbs=explode(data[4], ";")); j<tmp2; j++) 
-            races[data[0]]["wielding"] += ({ w_limbs[j] });
-        races[data[0]]["str"] = atoi(data[5]);
-        races[data[0]]["con"] = atoi(data[6]);
-        races[data[0]]["int"] = atoi(data[7]);
-        races[data[0]]["wis"] = atoi(data[8]);
-        races[data[0]]["dex"] = atoi(data[9]);
-        races[data[0]]["cha"] = atoi(data[10]);
-	races[data[0]]["body type"] = data[11];
-	if (member_array(data[11], b_types) == -1)
-	  b_types += ({ data[11] });
+    for (i = 0, tmp = sizeof(lines = read_database(RACES_DB)); i < tmp; i++)
+    {
+      if (sizeof(data = explode(lines[i], ":")) != 12)
+        continue;
+        
+      races[data[0]] =
+          (["sight":atoi(data[1]), "weight":atoi(data[2]), "fingers":atoi(data[3])]);
+      races[data[0]]["wielding"] = ({});
+      for (j = 0, tmp2 = sizeof(w_limbs = explode(data[4], ";")); j < tmp2; j++)
+        races[data[0]]["wielding"] += ({w_limbs[j]});
+      races[data[0]]["body type"] = data[11];
+      if (member_array(data[11], b_types) == -1)
+        b_types += ({data[11]});
+      if(trace)
+        write(sprintf("races[%s] %O\n",data[0], races[data[0]]));
     }
     for(i = 0, tmp = sizeof(b_types); i < tmp; i++) {
         if(!file_exists(LIMB_DIR+b_types[i])) {
@@ -57,14 +58,17 @@ void create() {
         for(j=0, tmp2=sizeof(lines=explode(read_file(LIMB_DIR+b_types[i]), "\n"));
           j<tmp2; j++) {
             if(lines[j][0] == '#')
-	      continue;
+	            continue;
             if(sizeof(data = explode(lines[j], ":")) != 4) 
-	      continue;
+	            continue;
             if(data[1] == "0") 
-	      data[1] = "";
+              data[1] = "";
             limbs[b_types[i]][data[0]] =
               ([ "ref":data[1], "max":atoi(data[2]), "attach":data[3] ]);
+            if(trace)
+              write(sprintf("limbs[%s][%s] %O\n",b_types[i],data[0], limbs[b_types[i]][data[0]]) );
         }
+        
     }
 }
 
@@ -133,27 +137,30 @@ int is_limb(string limb, string res) {
       return (member_array(limb, keys(limbs[races[res]["body type"]])) != -1);
 }
 
-mapping body(object ob) {
-    mapping borg;
-    string res;
-    string *what;
-    int i, tmp, max;
+mapping body(object ob)
+{
+  mapping borg;
+  string res;
+  string *what;
+  int i, tmp, max;
 
-    borg = ([]);
-    res = (string)ob->query_race();
-    if(!res) 
-      res = "human";
-    max = (int)ob->query_max_hp();
-    borg["torso"] = 
-      ([ "limb_ref": "FATAL", "max_dam": max, "damage":0, "ac":0 ]);
-    for(i=0, tmp = sizeof(what = keys(limbs[races[res]["body type"]])); 
-	i < tmp; i++)
-      borg[what[i]] =
-	(["limb_ref":limbs[races[res]["body type"]][what[i]]["ref"],
-          "max_dam": max/limbs[races[res]["body type"]][what[i]]["max"],
-          "damage":0, "ac":0
-	]);
-    return borg;
+  borg = ([]);
+  res = (string)ob->query_race();
+  if (!res)
+    res = "human";
+  max = (int)ob->query_max_hp();
+  //write(sprintf("limbs: %O\n", limbs));
+  //write(sprintf("races: %O\n", races));
+
+  borg["torso"] =
+      (["limb_ref":"FATAL", "max_dam":max, "damage":0, "ac":0]);
+  for (i = 0, tmp = sizeof(what = keys(limbs[races[res]["body type"]]));
+       i < tmp; i++)
+    borg[what[i]] =
+        (["limb_ref":limbs[races[res]["body type"]][what[i]]["ref"],
+             "max_dam":max / limbs[races[res]["body type"]][what[i]]["max"],
+              "damage":0, "ac":0]);
+  return borg;
 }
 int *do_rolls() {
   int *ret, *rolls;

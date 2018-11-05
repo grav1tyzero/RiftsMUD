@@ -161,7 +161,7 @@ void set_max_mdc(int mdc) {
 
 void set_mdc(int mdc) {
     if(!query_max_mdc()) 
-        set_max_sdc(mdc);
+        set_max_mdc(mdc);
     if(mdc > query_max_mdc()) {
         if(this_object()->is_player()) 
             player_data["general"]["mdc"] = query_max_mdc();
@@ -321,9 +321,6 @@ string return_target_limb() {
     if(target_limb) {
 	tmp_lmb = target_limb;
 	target_limb = 0;
-	if(random(120) > (int)this_object()->query_skill("defense"))
-	  return tmp_lmb;
-    }
     count = member_array("torso", limbs);
     i = 0;
     while(i++ < ((sizeof(limbs))/2))

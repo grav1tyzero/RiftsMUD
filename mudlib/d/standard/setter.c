@@ -103,11 +103,32 @@ void prompt_low_values(int low_values, mapping attrib, string race) {
 }
 
 int pick_race(string race) {
-  mapping attrib;
-  int low_values=0;
+  mapping attrib, racial_props;
+  string *racial_keys;
+  object who = this_player();
+  int low_values=0, i;
   if(!race) {
     return notify_fail("pick [race] (see help races)\n");
   }
+  who->set_race(race);
+  who->new_body();
+  who->add_sight_bonus((int)RACE_D->query_sight_bonus(race) -
+                       (int)who->query_sight_bonus());
+  racial_props = (mapping)RACE_D->query_racial_properties(race);
+  if (mapp(racial_props))
+  {
+    racial_keys = keys(racial_props);
+    i = sizeof(racial_keys);
+    while (i--)
+    {
+      who->set_property(racial_keys[i],
+                        racial_props[racial_keys[i]]);
+    }
+  }
+  who->setenv("TITLE", "Novice $N the " + capitalize(race));
+  //DEFAULT COMBAT COLOR
+  who->set_property("combat color", "%^BOLD%^");
+  //DEFAULT COMBAT COLOR
   switch(race) {
     case "human" :
       attrib = s1_rolling_attributes();
