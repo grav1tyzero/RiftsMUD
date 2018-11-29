@@ -182,15 +182,7 @@ string *attack_message(string arg) {
     if(sscanf(arg,"%d %s %s:%s",roll, verb, a_name, t_name) != 4)
 	return ({ "BUG", "BUG", "BUG" });
     roll = (roll < 0)? 0 : roll;
-    sz = sizeof(dmg_table->m_idx);
-    for(i=0;i<sz;i++) {
-	sscanf(dmg_table->m_idx[i],"%d..%d",low,hi);
-	if((roll <= hi && roll >= low) || i == (sz-1)) {
-	    line = dmg_table->mesgs[i];
-	    return parse_message(line,a_name,t_name,verb);
-	}
-    }
-    line = dmg_table->mesgs[sz-1];
+    line = sprintf("$A $V $T for %d",roll);
     return parse_message(line,a_name,t_name,verb);
 }
 

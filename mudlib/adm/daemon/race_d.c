@@ -3,12 +3,14 @@
 //      from the Nightmare Mudlib
 //      created by Descartes of Borg 10 june 1993
 
+
 #include <databases.h>
 #include <daemons.h>
 
 #define LIMB_DIR "/daemon/db/races/"
 #define PROPS_DIR "/daemon/db/racial_props/"
 #define MON_DIR "/daemon/db/mon_races/"
+inherit DAEMON;
 
 mapping races, limbs;
 
@@ -21,18 +23,21 @@ int query_max_dam(string limb, string res);
 string *query_limbs(string res);
 int is_limb(string limb, string res);
 
-void create() {
-    string *lines, *data, *w_limbs, *borg, *b_types;
+void init_data() {
+  string *lines, *data, *w_limbs, *borg, *b_types;
     int i, j, tmp, tmp2,trace;
+    
+
     if(wizardp(this_player())) 
       trace = (string)this_player()->getenv("TRACE") == "on";
-      
 
-    seteuid(getuid());
+    
     races = ([]);
     limbs = ([]);
     b_types = ({});
-    for (i = 0, tmp = sizeof(lines = read_database(RACES_DB)); i < tmp; i++)
+    lines = read_database(RACES_DB);
+    
+    for (i = 0, tmp = sizeof(lines); i < tmp; i++)
     {
       if (sizeof(data = explode(lines[i], ":")) != 12)
         continue;
@@ -70,6 +75,11 @@ void create() {
         }
         
     }
+}
+void create() {
+  daemon::create();
+  init_data();
+    
 }
 
 int query_weight(string res, int con) {
@@ -143,14 +153,15 @@ mapping body(object ob)
   string res;
   string *what;
   int i, tmp, max;
+  
+  if(!limbs || !races)
+    init_data();
 
   borg = ([]);
   res = (string)ob->query_race();
   if (!res)
     res = "human";
   max = (int)ob->query_max_hp();
-  //write(sprintf("limbs: %O\n", limbs));
-  //write(sprintf("races: %O\n", races));
 
   borg["torso"] =
       (["limb_ref":"FATAL", "max_dam":max, "damage":0, "ac":0]);

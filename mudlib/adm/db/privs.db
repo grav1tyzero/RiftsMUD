@@ -15,8 +15,6 @@
 (/adm/daemon/shell_d): Log External
 (/adm/daemon/shutdown_d): Shutdown Shell
 (/adm/daemon/save_all_d): Root
-(/cmds/adm/_addguest): Banish
-(/cmds/adm/_addquest): Root
 (/cmds/adm/_chkdev): Root
 (/cmds/adm/_dirupdate): Force
 (/cmds/adm/_at): Force

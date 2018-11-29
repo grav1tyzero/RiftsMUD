@@ -364,11 +364,18 @@ void execute_attack() {
 			}
 	    }
 	    if(!criticals || !sizeof(criticals) || x > 0) {
-		send_messages((string *)DAMAGE_D->attack_message(sprintf(
-		      "%d %s %s:%s", x, (current)?(string)current->query_verb() :
-		      "hit", (string)me->query_name(), (string)
-		      attackers[0]->query_name())));
-		x = (int)attackers[0]->do_damage(target_thing, x); }
+			send_messages(
+				(string *)DAMAGE_D->attack_message(
+					sprintf("%d %s %s:%s", 
+						x, 
+						(current)?(string)current->query_verb() :"hit", 
+						(string)me->query_name(), 
+						(string)attackers[0]->query_name()
+					)//sprintf
+				)//attack_message
+			);//send_messages
+			x = (int)attackers[0]->do_damage(target_thing, x); 
+		}
 	}
 	if(x > 0) attackers[0]->check_on_limb(target_thing);
 }
