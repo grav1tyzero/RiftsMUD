@@ -2,8 +2,8 @@ FROM ubuntu:latest as intermediate
 
 RUN apt-get update -y
 RUN apt-get install -y autoconf automake build-essential gcc g++ python git bison libbison-dev
-RUN apt-get install -y libbsd-dev libevent-dev libpq-dev libz-dev libssl-dev libpcre3-dev 
-RUN apt-get install -y libmysqlclient-dev libsqlite3-dev 
+RUN apt-get install -y libbsd-dev libevent-dev libpq-dev libz-dev libssl-dev libpcre3-dev
+RUN apt-get install -y libmysqlclient-dev libsqlite3-dev
 RUN apt-get install -y libgtest-dev googletest
 RUN apt-get install -y curl
 
@@ -39,8 +39,10 @@ RUN cd /tmp/fluffos \
 FROM ubuntu:latest
 
 RUN apt-get update -y
-RUN apt-get install -y libbsd-dev libevent-dev libpq-dev libz-dev libssl-dev libpcre3-dev 
+RUN apt-get install -y libbsd-dev libevent-dev libpq-dev libz-dev libssl-dev libpcre3-dev
 
 COPY --from=intermediate /tmp/fluffos/bin/driver /usr/bin/driver
+RUN mkdir /home/parnell/mud/mudlib/log \
+    && mkdir /home/parnell/mud/mudlib/log/errors
 
 CMD /home/parnell/mud/mud.sh
