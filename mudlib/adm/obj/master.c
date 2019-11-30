@@ -110,7 +110,11 @@ void socket_preload() {
     mixed err;
 
     TRACE("socket_preload BEGIN");
-    lines = sizeof(items=explode(read_file(PRELOAD_SOCKET_DB), "\n"));
+    items = ({
+      "/daemon/network",
+      "/daemon/services"
+    });
+    lines = sizeof(items);
     TRACE(sprintf("socket_preload - lines=%d", lines));
     for(i=0; i<lines; i++) {
       //Skipped commented or empty lines

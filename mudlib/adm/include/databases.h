@@ -4,7 +4,6 @@
 #define PRIVS_DB "/adm/db/privs.db"
 #define RACES_DB "/daemon/db/races.db"
 #define WHERE_DB "/cmds/database/where.db"
-#define PRELOAD_SOCKET_DB "/adm/db/preload_socket.db"
 #define INET_CHAN_MUDS_DB "/adm/db/inet_chan_muds.db"
 #define INTERMUDS_DB "/adm/db/intermuds.db"
 #define INTERSERVICES_DB "/adm/db/interservices.db"
