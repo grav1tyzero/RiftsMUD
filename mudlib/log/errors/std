@@ -1,0 +1,43 @@
+/std/user/tsh.c line 149: Warning: enqueue() inherited from both /std/user/history.c and /std/adt/cstack.c; using the definition in /std/user/history.c. before the end of file
+/std/user/tsh.c line 149: Warning: alloc() inherited from both /std/user/history.c and /std/adt/cstack.c; using the definition in /std/user/history.c. before the end of file
+/std/user/tsh.c line 149: Warning: alloc() inherited from both /std/user/history.c and /std/adt/cstack.c; using the definition in /std/user/history.c. before the end of file
+/std/user/tsh.c line 149: Warning: enqueue() inherited from both /std/user/history.c and /std/adt/cstack.c; using the definition in /std/user/history.c. before the end of file
+/std/user/tsh.c line 149: Warning: alloc() inherited from both /std/user/history.c and /std/adt/cstack.c; using the definition in /std/user/history.c. before the end of file
+/std/user/tsh.c line 149: Warning: enqueue() inherited from both /std/user/history.c and /std/adt/cstack.c; using the definition in /std/user/history.c. before the end of file
+/std/user/tsh.c line 149: Warning: alloc() inherited from both /std/user/history.c and /std/adt/cstack.c; using the definition in /std/user/history.c. before the end of file
+/std/user/tsh.c line 149: Warning: enqueue() inherited from both /std/user/history.c and /std/adt/cstack.c; using the definition in /std/user/history.c. before the end of file
+/std/user/tsh.c line 149: Warning: alloc() inherited from both /std/user/history.c and /std/adt/cstack.c; using the definition in /std/user/history.c. before the end of file
+/std/user/tsh.c line 149: Warning: enqueue() inherited from both /std/user/history.c and /std/adt/cstack.c; using the definition in /std/user/history.c. before the end of file
+/std/user/tsh.c line 149: Warning: enqueue() inherited from both /std/user/history.c and /std/adt/cstack.c; using the definition in /std/user/history.c. before the end of file
+/std/user/tsh.c line 149: Warning: alloc() inherited from both /std/user/history.c and /std/adt/cstack.c; using the definition in /std/user/history.c. before the end of file
+/std/user/tsh.c line 149: Warning: enqueue() inherited from both /std/user/history.c and /std/adt/cstack.c; using the definition in /std/user/history.c. before the end of file
+/std/user/tsh.c line 149: Warning: alloc() inherited from both /std/user/history.c and /std/adt/cstack.c; using the definition in /std/user/history.c. before the end of file
+/std/user/tsh.c line 149: Warning: alloc() inherited from both /std/user/history.c and /std/adt/cstack.c; using the definition in /std/user/history.c. before the end of file
+/std/user/tsh.c line 149: Warning: enqueue() inherited from both /std/user/history.c and /std/adt/cstack.c; using the definition in /std/user/history.c. before the end of file
+/std/user/tsh.c line 149: Warning: alloc() inherited from both /std/user/history.c and /std/adt/cstack.c; using the definition in /std/user/history.c. before the end of file
+/std/user/tsh.c line 149: Warning: enqueue() inherited from both /std/user/history.c and /std/adt/cstack.c; using the definition in /std/user/history.c. before the end of file
+/std/user.c line 509: Undefined variable 'ROLECALL_D' before html());
+/std/user.c line 509: Undefined variable 'ROLECALL_D' before html());
+/std/user.c line 509: Undefined variable 'ROLECALL_D' before html());
+/std/user/tsh.c line 149: Warning: alloc() inherited from both /std/user/history.c and /std/adt/cstack.c; using the definition in /std/user/history.c. before the end of file
+/std/user/tsh.c line 149: Warning: enqueue() inherited from both /std/user/history.c and /std/adt/cstack.c; using the definition in /std/user/history.c. before the end of file
+/std/user.c line 509: Undefined variable 'ROLECALL_D' before html());
+/std/user.c line 509: Undefined variable 'ROLECALL_D' before html());
+/std/user/tsh.c line 149: Warning: alloc() inherited from both /std/user/history.c and /std/adt/cstack.c; using the definition in /std/user/history.c. before the end of file
+/std/user/tsh.c line 149: Warning: enqueue() inherited from both /std/user/history.c and /std/adt/cstack.c; using the definition in /std/user/history.c. before the end of file
+/std/user.c line 509: Undefined variable 'ROLECALL_D' before html());
+/std/user/tsh.c line 149: Warning: alloc() inherited from both /std/user/history.c and /std/adt/cstack.c; using the definition in /std/user/history.c. before the end of file
+/std/user/tsh.c line 149: Warning: enqueue() inherited from both /std/user/history.c and /std/adt/cstack.c; using the definition in /std/user/history.c. before the end of file
+/std/user/tsh.c line 149: Warning: alloc() inherited from both /std/user/history.c and /std/adt/cstack.c; using the definition in /std/user/history.c. before the end of file
+/std/user/tsh.c line 149: Warning: enqueue() inherited from both /std/user/history.c and /std/adt/cstack.c; using the definition in /std/user/history.c. before the end of file
+/std/user/tsh.c line 149: Warning: alloc() inherited from both /std/user/history.c and /std/adt/cstack.c; using the definition in /std/user/history.c. before the end of file
+/std/user/tsh.c line 149: Warning: enqueue() inherited from both /std/user/history.c and /std/adt/cstack.c; using the definition in /std/user/history.c. before the end of file
+/std/http_client-test.c line 24: Reserved type name unexpected. before  = new ("/std/http_c
+/std/http_client-test.c line 24: syntax error before  = new ("/std/http_c
+/std/http_client-test.c line 24: Illegal LHS before 
+/std/http_client-test.c line 24: Warning: Expression has no side effects, and the value is unused before 
+/std/http_client-test.c line 25: Undefined variable 'ob' before open(args);
+/std/http_client-test.c line 25: syntax error before open(args);
+/std/http_client-test.c line 26: syntax error before open(args);
+/std/user/tsh.c line 149: Warning: enqueue() inherited from both /std/user/history.c and /std/adt/cstack.c; using the definition in /std/user/history.c. before the end of file
+/std/user/tsh.c line 149: Warning: alloc() inherited from both /std/user/history.c and /std/adt/cstack.c; using the definition in /std/user/history.c. before the end of file

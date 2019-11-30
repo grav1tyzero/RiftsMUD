@@ -12,7 +12,7 @@
    standard defines.
 -----------------------------------------------
 */
-
+#define USER_NAME	3
 /* FTPD_PORT port number on which the ftp daemon will listen.  On a UNIX
    system the user should type: ftp tmi.lp.mud.org 5554
    (depending on the hostname of the MUD and the port # set below).
@@ -31,7 +31,7 @@
  * FTPD_TIMEOUT and may manually adjust it up to the limit of MAX_FTPD_IDLE
  */
 #define MAX_FTPD_IDLE 7200
- 
+
 /* HOME_DIR: given a username give the home directory path */
 #define HOME_DIR(name)  user_path(name) /* on TMI-2 */
 
@@ -67,14 +67,14 @@
 /* define this to allow "anonymous" ftp logins
  * - this is an array of valid anonymous users
  */
-#define ANONYMOUS_FTP ({ "anonymous", "guest", "ftp" })
-//#define ANONYMOUS_FTP
+//#define ANONYMOUS_FTP ({ "anonymous", "guest", "ftp" })
+#undef ANONYMOUS_FTP
 
 /* define this to allow guest wizards (without home directories) to login */
 #define GUEST_WIZARD_FTP
 
 /* define this to support advisory file locking */
-#define FILE_LOCKING
+#undef FILE_LOCKING
 
 /* define this to support individual site checking (from .login file) */
 #define CHECK_SITE
@@ -121,8 +121,8 @@
  * Example:
  *   #define FTP_USERS ({ "buddha", "mobydick", "watcher" })
  */
-#undef FTP_USERS
-
+// #undef FTP_USERS
+#define FTP_USERS ({ "parnell" })
 /*
 -----------------------------------------------
    debugging defines.
@@ -133,7 +133,7 @@
 #undef DEBUG
 
 /* player to whom to "tell" debugging info */
-#define TP_CRE "robocoder"
+#define TP_CRE "parnell"
 
 /*
 -----------------------------------------------

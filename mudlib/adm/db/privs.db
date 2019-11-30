@@ -101,4 +101,3 @@
 (/std/spells/suggestion): Force
 (/std/spells/shadows/stat_shadow): Shadow
 (/std/obj/post): CreSave
-(/daemon/www/rolecall): www

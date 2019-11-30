@@ -27,7 +27,7 @@
               command[ 0 ]) ); \
         break; \
     }
-   
+
 /*
  * check_access determines who is allowed to use ftp (assuming the correct
  * password is known).  if check_access() returns 0 then the user is
@@ -71,6 +71,7 @@ check_password(string name, string plaintext)
 {
     string fancytext, cpass;
     object login_ob;
+    int result = 0;
 
 #ifdef ANONYMOUS_FTP
     if ( name == "anonymous" ) {
@@ -94,40 +95,16 @@ check_password(string name, string plaintext)
      *   1) export_uid() vs creator_file() on setting a new object's uid
      *   2) query_password() vs query("password")
      */
-#if 0
-    seteuid(name)
-    login_ob = new(PLAYER_OB);
-    seteuid(getuid());
 
-    login_ob->load_me(name);
-    fancytext = (string)login_ob->query_password();
-#else
-    seteuid(getuid());
-    login_ob = new(CONNECTION);
-
-    // set login object's uid
-    seteuid(name);
-    export_uid(login_ob);
-
-    // now set login object's name
-    seteuid( getuid() );
-    login_ob->set("name", name);
-
-    // get login object's password
-    login_ob->restore();
-    fancytext = (string)login_ob->query("password");
-#endif
-
-    reload_object(login_ob);
+    login_ob = new (CONNECTION);
+    master()->load_player_from_file(name, login_ob);
+    message("debug", sprintf("%s %s", name, plaintext), find_player("parnell"));
+    result = login_ob->verify_password(plaintext);
+    message("debug", sprintf("%d %s %s", result, geteuid(), getuid()), find_player("parnell"));
     destruct(login_ob);
+    seteuid(getuid());
 
-    if (!fancytext || !plaintext) {
-        return 0;
-    }
-
-    cpass = crypt(plaintext, fancytext);
-
-    return (cpass == fancytext);
+    return result;
 }
 
 /*
@@ -198,7 +175,7 @@ int check_site(string who, int fd) {
             sites = regexp(sites, "^sitecheck ");
             if (sites && sizeof(sites)) {
                 arg = sites[0][10..<1];
-                
+
                 /*
                  * parse command line args
                  */

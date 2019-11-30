@@ -37,7 +37,6 @@
 #define REINC_D		         (DIR_DAEMONS+"/reinc_d")
 #define REFS_D               (DIR_SECURE_DAEMONS+"/refs_d")
 #define REMOTEPOST_D         (DIR_DAEMONS+"/remotepost")
-#define ROLECALL_D           (DIR_DAEMONS+"/www/rolecall")
 #define SAVEALL_D            (DIR_DAEMONS+"/save_all_d")
 #define SAVE_ITEMS_D	     (DIR_SECURE_DAEMONS+"/save_items_d")
 #define SERVICES_D           (DIR_DAEMONS+"/services")

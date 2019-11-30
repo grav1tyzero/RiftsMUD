@@ -334,7 +334,7 @@ void remove() {
     if(this_object()->query_invis())
 	who_exc += filter_array(users(),"filter_notanarch",this_object());
     if(!_count)
-	if(previous_object() && previous_object() != this_object() && geteuid(previous_object()) != UID_ROOT && 
+	if(previous_object() && previous_object() != this_object() && geteuid(previous_object()) != UID_ROOT &&
 	  TP != TO) return;
     destroy_autoload_obj();
     CHAT_D->remove_user();
@@ -377,9 +377,9 @@ static int finish_quit(object ob) {
     if(ob->query_followers()) ob->clear_followers();
     if(environment(ob)) {
           if(!ob->query_ghost() && !environment(ob)->query_property("no quit and save")) {
-	    message("Nquit_save", ENV(ob)->query_short() && 
+	    message("Nquit_save", ENV(ob)->query_short() &&
 	      (string)ENV(ob)->query_short() != "" ?
-	      "Setting start location to " + ENV(ob)->query_short() + "..." : 
+	      "Setting start location to " + ENV(ob)->query_short() + "..." :
 	      "Setting start location here...", ob);
 	    ob->setenv("start", file_name(environment(ob)));
 	    if((string)ob->getenv("start") == BN(ENV(ob)))
@@ -435,7 +435,7 @@ void new_body() {
     set_ppe(query_max_ppe() / 2);
     set_heal_rate(2);
     borg = (mapping)RACE_D->body(this_object());
-    for(i=0, max=sizeof(zippo=keys(borg)); i<max; i++) 
+    for(i=0, max=sizeof(zippo=keys(borg)); i<max; i++)
 	add_limb(zippo[i], borg[zippo[i]]["limb_ref"],borg[zippo[i]]["max_dam"], 0, 0);
     set_wielding_limbs((string *)RACE_D->query_wielding_limbs(tmp));
     set_fingers((int)RACE_D->query_fingers(tmp));
@@ -506,7 +506,6 @@ void setup() {
 	  capitalize((string)this_object()->query_name()) +
        " has logged in.",
 	  who_exc);
-    catch(ROLECALL_D->html());
     log_file("enter", "ENTER:"+
       (string)this_object()->query_name()+
       ":"+ctime(time())+
@@ -599,7 +598,7 @@ varargs static void heart_beat(int recurs_flag) {
     adjust_exp();
     if( (player_age > autosave) && (!wizardp(this_object())) ) {
 	message("environment", "Autosaving.", this_object());
-	inv = filter_array(all_inventory(this_object()), 
+	inv = filter_array(all_inventory(this_object()),
               (: call_other :), "query_short");
         inv = filter_array(inv, (: ((string)$1->query($2) == $3) :),
                            "protected by", (string)this_object()->
@@ -621,7 +620,7 @@ varargs static void heart_beat(int recurs_flag) {
     }
     if(sizeof(query_attackers()) && getenv("SCORE") != "off")
 	message("my_combat", sprintf("hp: %d (%d)  mp: %d (%d)",
-	    query_hp(), query_max_hp(), query_ppe(), 
+	    query_hp(), query_max_hp(), query_ppe(),
 	    query_max_ppe()), this_object());
     if(stringp(props["lycanthrope moon"]) && !this_object()->
       query("in creation")) {
@@ -805,7 +804,7 @@ nomask void die() {
 	(*no_death)(this_object(), query_current_attacker());
 	return;
     }
-    
+
     if(wizardp(this_object())) {
 	message("death", "You are immortal and cannot die.", this_object());
 	return;
@@ -869,7 +868,7 @@ int query_challenged() {
 }
 
 void set_rname(string rname) {
-    if(geteuid(previous_object()) != UID_ROOT && 
+    if(geteuid(previous_object()) != UID_ROOT &&
       geteuid(previous_object()) != UID_USERACCESS) return;
     real_name = rname;
 }
@@ -898,7 +897,7 @@ int verify_password(string password) {
 }
 
 void set_email(string e) {
-    if(geteuid(previous_object()) != UID_ROOT && 
+    if(geteuid(previous_object()) != UID_ROOT &&
       geteuid(previous_object()) != UID_USERACCESS) return 0;
     if (this_player(1) != this_player()) return 0;
     email = e;
@@ -1020,14 +1019,14 @@ void set_position(string pos) {
 	if(member_array(pos, MORTAL_POSITIONS) == -1) {
 	    ovrd = 1;
 	    enable_wizard();
-	}    
+	}
     if(position == "high mortal" && pos != "high mortal")
 	CASTLE_D->disable_high_mortal(this_object());
     init_path();
     position = pos;
     if(!ovrd) log_file("security", "^SUCCESS"+"\n");
     return;
-} 
+}
 
 void set_level(int lev) {
     level = lev;
@@ -1067,7 +1066,7 @@ void receive_message(string msg_class, string msg) {
     string str, pre, post;
     int x;
 
-   if (!msg) 
+   if (!msg)
       return;
     if(!stringp(str=getenv("SCREEN"))) str = "75";
     x = atoi(str);
@@ -1083,7 +1082,7 @@ void receive_message(string msg_class, string msg) {
     case "room_exits": msg = "%^GREEN%^"+msg; break;
     case "smell": msg = "%^ORANGE%^"+msg; break;
     case "listen": msg = "%^CYAN%^"+msg; break;
-    case "tell": 
+    case "tell":
 	if(sscanf(msg, "%s:%s", pre, post) == 2)
 	    msg = "%^RED%^%^BOLD%^"+pre+":%^RESET%^"+post;
 	break;
@@ -1266,7 +1265,7 @@ int query_quest_points() {
     else return player_data["general"]["quest points"];
 }
 
-void set_disable(int x) { 
+void set_disable(int x) {
     if(x) disable = x;
     else disable = 1;
 }
@@ -1286,7 +1285,7 @@ void divorce_me() {
 }
 
 string query_married() {
-    return (current_marriage && sizeof(current_marriage) ? 
+    return (current_marriage && sizeof(current_marriage) ?
       current_marriage[0] : 0);
 }
 
@@ -1307,7 +1306,7 @@ int query_birthday() { return birth; }
 
 
 void set_colours(mapping tmp) {
-    colours = tmp; 
+    colours = tmp;
 }
 
 void set_colour(string tmp1, string tmp2) {
@@ -1319,7 +1318,7 @@ void remove_colour(string tmp1) {
     map_delete(colours, tmp1);
 }
 
-string query_colour(string tmp) { 
+string query_colour(string tmp) {
     if(!colours) return "";
     return colours[tmp];
 }
@@ -1334,7 +1333,7 @@ void hide(int x) {
     set_hide(x);
 }
 
-void set_race(string str) { 
+void set_race(string str) {
     race = str;
     set("race", str);
     LANG_D->init_languages(this_object());
@@ -1416,7 +1415,7 @@ static private int register_channels() {
     channels += ({ "newbie" });
     if(wizardp(this_object())) channels += ({ "cre", "intercre", "darkelib" });
     if(archp(this_object())) channels += ({ "admin"});
-    
+
     CHAT_D->add_user(distinct_array(channels));
 	return 1;
 }

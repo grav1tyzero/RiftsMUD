@@ -16,7 +16,7 @@ inherit DAEMON;
 
 #define MAX_BAR_COLS 55
 
-		      string 
+		      string
 		      bargraph(int gauge, int max, int flag)
 		      {
 			  string          borg;
@@ -79,7 +79,7 @@ inherit DAEMON;
 
 			  string          title,
 			  alerts,
-			  
+
 			  *pic_string,
 			  *attrib,
 			  borg,
@@ -101,7 +101,7 @@ inherit DAEMON;
 			  object          tp,
 			  op;
                           int exp,nexp,lexp,nlevel;
-		      int 
+		      int
 		      cmd_score(string who)
 		      {
 
@@ -121,7 +121,7 @@ inherit DAEMON;
                           level=op->query_level();
                           nlevel=level+1;
                           exp=op->query_exp();
-                          lexp=nexp-exp;
+
 			  title = (string) op->query_title();
 			  hp = (int) op->query_hp();
 			  max_hp = (int) op->query_max_hp();
@@ -139,13 +139,7 @@ inherit DAEMON;
 				if(age2>86400) age3 = (age2/86400 + " Days");
 				else if(age2>3600) age3 = (age2/3600) + " Hours";
 				else age3 = (age2/60) + " Min";
-			      hand = (string) op->query_property("handedness");
-				if(op->query_property("ambidextry"))
-								hand2 = "You are ambidextrious";
-								else 
-				if(hand == "left hand")
-				hand2 = "You are left handed. ";
-				else hand2 = "You are " + hand + "ed.";
+			    hand2 = "Unknown Handedness";
 
 			      attrib[0] = sprintf("%d", (int) op->query_level());
 			      attrib[1] = capitalize((string) op->query_race());
@@ -188,7 +182,7 @@ inherit DAEMON;
 			      }
 			      attrib[7] = (op->query_class() ) ? capitalize((string) op->query_class()) : "";
 			      alerts = (op->query_poisoning() ? "Poison " : " ");
-			      
+
 			      message("Ninfo", "%^BOLD%^%^WHITE%^" + sprintf("%|72s\n", title), tp);
 			      message("Ninfo", "%^BLUE%^" + sprintf("%s\n", dashes), tp);
 
@@ -210,19 +204,19 @@ inherit DAEMON;
 
 			      message("Ninfo", "%^BLUE%^Thirst: %^RESET%^" + sprintf("%-15s", attrib[5]) + "%^BLUE%^|%^RESET%^" + "                   " + "%^BLUE%^|--------------------------\n", tp);
 
-                  message("Ninfo", "%^BLUE%^Hunger: %^RESET%^" + sprintf("%-15s", attrib[6]) + "%^BLUE%^|%^RESET%^" + "                   " + "%^BLUE%^|%^RESET%^ Experience:  " + sprintf("%11i\n", lexp), tp);
+                  message("Ninfo", "%^BLUE%^Hunger: %^RESET%^" + sprintf("%-15s", attrib[6]) + "%^BLUE%^|%^RESET%^" + "                   " + "%^BLUE%^|%^RESET%^ Experience:  " + sprintf("%12i\n", op->query_exp()), tp);
 
 			      message("Ninfo", "%^BLUE%^Catch:  %^RESET%^" + sprintf("%-15s", ccatch)    + "%^BLUE%^|%^RESET%^" + "                   " + "%^BLUE%^|%^RESET%^\n" , tp);
 
 			      message("Ninfo", "%^BLUE%^Alerts: %^RESET%^" + sprintf("%-15s", alerts) + "%^RESET%^%^BLUE%^|                   |%^RESET%^\n", tp);
 
-			      message("Ninfo", sprintf("%-15s", hand2) + "  %^BLUE%^|%^RESET%^                   " + "%^BLUE%^|%^RESET%^\n", tp);
+			      message("Ninfo", sprintf("%-21s", hand2) + "  %^BLUE%^|%^RESET%^                   " + "%^BLUE%^|%^RESET%^\n", tp);
 
 			      message("Ninfo", "%^BLUE%^" + sprintf("%s\n", dashes) + "%^RESET%^", tp);
 			      return 1;
 			  }
 
-			  int 
+			  int
 			  help()
 			  {
 			      write(@HELP

@@ -16,7 +16,7 @@
 #define MAX_PASSWORD_TRIES       2
 #define MIN_USER_NAME_LENGTH     2
 #define MAX_USER_NAME_LENGTH     15
-#define MAX_USERS		 100 
+#define MAX_USERS		 100
 #define LOCKED_ACCESS_ALLOWED    ({ "superuser", "assist", "wizard", "creator", "wiz", "elder", "mentor" })
 #define MORTAL_POSITIONS         ({ "player", "high mortal" })
 

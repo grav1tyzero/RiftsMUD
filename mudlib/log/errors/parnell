@@ -1,0 +1,4 @@
+/wizards/parnell/CMD_EVAL_TMP_FILE.c line 8: Bad argument 1 to efun userp() before ;; }
+/wizards/parnell/CMD_EVAL_TMP_FILE.c line 8: Undefined function setuid before ;; }
+/wizards/parnell/CMD_EVAL_TMP_FILE.c line 8: syntax error before "this", "that"};; }
+/wizards/parnell/CMD_EVAL_TMP_FILE.c line 8: syntax error before "this", "that"];; }

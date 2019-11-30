@@ -2,7 +2,7 @@
 #ifndef __FTPD_H
 #define __FTPD_H
 
-#define POS		1
+#define FTP_POS		1
 #define DATA		2
 #define USER_NAME	3
 #define LOGGED_IN	4

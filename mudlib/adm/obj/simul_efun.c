@@ -1,7 +1,7 @@
 /*
 // File: simul_efun.c
 // This file holds a list of simulated efuns, that is loaded when
-// the game is booted.  
+// the game is booted.
 // Written by Buddha@TMI (2-19-92)
 // This file is part of the TMI distribution mudlib.
 // Please be considerate and retain the header file if you use it.
@@ -46,6 +46,7 @@ string identify(mixed a);
 #include "/adm/simul_efun/time.c"
 #include "/adm/simul_efun/atoi.c"
 #include "/adm/simul_efun/file_exists.c"
+#include "/adm/simul_efun/directory_exists.c"
 #include "/adm/simul_efun/absolute_value.c"
 #include "/adm/simul_efun/mud_info.c"
 #include "/adm/simul_efun/get_object.c"
@@ -80,3 +81,5 @@ string identify(mixed a);
 #include "/adm/simul_efun/write_border.c"
 #include "/adm/simul_efun/roll.c"
 #include "/adm/simul_efun/tail.c"
+#include "/adm/simul_efun/json.c"
+

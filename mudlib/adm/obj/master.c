@@ -43,7 +43,7 @@ DESCRIPTION
        This master apply is called for each command  line  option
        passed to the driver with the -f flag.
 
-MudOS                       5 Sep 1994     
+MudOS                       5 Sep 1994
 
 Example driver [config.file] -fTEST
 */
@@ -86,7 +86,22 @@ string *epilog(int load_empty)
 {
   //it appears FluffOS does not have valid -e flag so we ignore load_empty
   call_out("socket_preload", 5);
-  return read_database(PRELOAD_DB);
+  return ({"/daemon/command",
+    "/adm/daemon/delayed_function_d",
+    "/adm/daemon/astronomy_d",
+    "/adm/daemon/castle_d",
+    "/adm/daemon/race_d",
+    "/daemon/localpost",
+    "/daemon/remotepost",
+    "/daemon/letter",
+    "/daemon/economy_d",
+    "/daemon/events_d",
+    "/adm/daemon/save_items_d",
+    "/daemon/voter",
+    "/daemon/terminal_d",
+    "/adm/daemon/wizchar_d",
+    "/adm/daemon/network/ftpd"
+  });
 }
 
 void socket_preload() {
@@ -99,7 +114,7 @@ void socket_preload() {
     TRACE(sprintf("socket_preload - lines=%d", lines));
     for(i=0; i<lines; i++) {
       //Skipped commented or empty lines
-      if(!items[i] || items[i] == "" || items[i][0] == '#') 
+      if(!items[i] || items[i] == "" || items[i][0] == '#')
       {
         continue;
       }
@@ -133,7 +148,7 @@ void load_groups() {
     return;
   }
   for(i=0; i<max; i++) {
-    if(!lines[i] || lines[i] == "" || lines[i][0] == '#') 
+    if(!lines[i] || lines[i] == "" || lines[i][0] == '#')
       continue;
     if(sscanf(lines[i], "(%s): %s", grp, str) != 2) {
       ERROR("ERROR: master.c->load_groups(): groups.db read failure on line"+(i+1)+".\n");
@@ -153,9 +168,9 @@ void load_groups() {
           members += ({ names[k] });
         }
       }
-      if(!sizeof(groups[grp] = members)) 
+      if(!sizeof(groups[grp] = members))
         map_delete(groups, grp);
-    } 
+    }
   }
   TRACE(sprintf("load_groups: result of groups %O", groups));
 }
@@ -187,7 +202,7 @@ string error_handler(mapping errs, int caught)
       flag++;
       wiz = traceback[i]["object"];
     }
-    if(living(traceback[i]["object"]) && 
+    if(living(traceback[i]["object"]) &&
               traceback[i]["function"] == "heart_beat") {
       hb_ob = traceback[i]["object"];
     }
@@ -213,7 +228,7 @@ string error_handler(mapping errs, int caught)
       file_name(traceback[i]["object"]));
     log_str += sprintf("     Program: %s\n     File: %28s line %d\n\n", traceback[i]["program"],
       traceback[i]["file"], traceback[i]["line"]);
-  } 
+  }
   if(flag >= 2 && wiz) {
     if(!caught) wiz->more(explode(log_str, "\n"));
     else if(!wiz->query("error report"))
@@ -232,11 +247,11 @@ string error_handler(mapping errs, int caught)
     log_file("caught_errors", log_str);
     return "";
   }
-} 
+}
 
-int view_errors(object user) 
+int view_errors(object user)
 {
-  if(wizardp(user)) 
+  if(wizardp(user))
     return 1;
   return 0;
 }
@@ -263,7 +278,7 @@ int valid_save_binary(string file)
     return 0;
 }
 
-void load_access() 
+void load_access()
 {
   string *lines,
          *borg;
@@ -286,11 +301,11 @@ void load_access()
     shutdown();
     return;
   }
-  for(i=0; i < sizeof(lines); i++) 
+  for(i=0; i < sizeof(lines); i++)
   {
-    if(!lines[i] || lines[i] == "" || lines[i][0] == '#') 
+    if(!lines[i] || lines[i] == "" || lines[i][0] == '#')
       continue;
-    if(sscanf(lines[i], "(%s): %s", dir,tmp) !=2) 
+    if(sscanf(lines[i], "(%s): %s", dir,tmp) !=2)
     {
       error("Error in reading access database at line "+(i+1)+".\n");
       write("Error in reading access database at line "+(i+1)+".\n");
@@ -303,18 +318,18 @@ void load_access()
     access[dir] = ([]);
     for(j=0; j < sizeof(borg); j++)
     {
-      if(sscanf(borg[j], "(%s)[%s]", tmp, str) != 2) 
+      if(sscanf(borg[j], "(%s)[%s]", tmp, str) != 2)
       {
         write("Error in reading access database at line "+(i+1)+".\n");
         shutdown();
         return;
       }
       access[dir][tmp] = ({ 0, 0 });
-      if(str == "r") 
+      if(str == "r")
         access[dir][tmp][READ] = 1;
-      if(str == "w") 
+      if(str == "w")
         access[dir][tmp][WRITE] = 1;
-      if(str == "rw" || str == "wr") 
+      if(str == "rw" || str == "wr")
         access[dir][tmp] = ({ 1, 1 });
     }
   }
@@ -345,7 +360,7 @@ void load_privs() {
 
 void preload(string str) {
     string err;
-    if(!file_exists(str+".c")) 
+    if(!file_exists(str+".c"))
     {
       write(sprintf("ERROR: Preload failed no file found: %s", str));
     }
@@ -697,9 +712,9 @@ string get_bb_uid() { return UID_BACKBONE; }
 string creator_file(string str) {
        string str2;
        str2 = (string)call_other(OB_SIMUL_EFUN, "creator_file", str);
-       if(!str2) 
+       if(!str2)
         return UID_MUDLIB;
-       else 
+       else
         return str2;
 }
 
@@ -735,7 +750,7 @@ string domain_file(string str) {
     string nom, tmp;
 
     if(str[0] != '/') str = "/"+str;
-    if(sscanf(str, DOMAINS_DIRS+"/%s/%s", nom, tmp) == 2) 
+    if(sscanf(str, DOMAINS_DIRS+"/%s/%s", nom, tmp) == 2)
       return nom;
     return "unknown-domain";
 }
@@ -766,13 +781,13 @@ MudOS                       5 Sep 1994                          1
 string author_file(string str) {
     string nom, tmp;
 
-    if(str[0] != '/') 
+    if(str[0] != '/')
       str = "/"+str;
     //basically return the sub folder under /wizards (wiz name)
     if(sscanf(str, REALMS_DIRS+"/%s/%s", nom, tmp) == 2) {
       return nom;
     }
-      
+
     return "unknown-author";
 }
 
@@ -786,7 +801,7 @@ static int slow_shutdown() {
 int save_ed_setup(object who, int code) {
     string file;
 
-    if(!intp(code)) 
+    if(!intp(code))
       return 0;
     rm(file = user_path(getuid(who))+".edrc");
     return write_file(file, code+"");
@@ -795,7 +810,7 @@ int save_ed_setup(object who, int code) {
 int retrieve_ed_setup(object who) {
     string file;
 
-    if(!file_exists(file = user_path(getuid(who))+".edrc")) 
+    if(!file_exists(file = user_path(getuid(who))+".edrc"))
       return 0;
     return atoi(read_file(file));
 }

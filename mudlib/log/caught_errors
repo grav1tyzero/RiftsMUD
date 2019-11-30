@@ -1,0 +1,1002 @@
+
+Error in object: /cmds/system/_update (Fri Nov 29 21:29:22 2019)
+> *Error in loading object '/adm/daemon/network/ftpd'
+
+File: /cmds/system/_update.c         line 118
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   cmd_hook() in /std/user#1
+     Program: /std/living.c
+     File:                /std/living.c line 156
+
+2:   cmd_update() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+3:   CATCH() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+
+Error in object: /cmds/system/_update (Fri Nov 29 21:30:06 2019)
+> *Error in loading object '/adm/daemon/network/ftpd'
+
+File: /cmds/system/_update.c         line 118
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   cmd_hook() in /std/user#1
+     Program: /std/living.c
+     File:                /std/living.c line 156
+
+2:   cmd_update() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+3:   CATCH() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+
+Error in object: /cmds/system/_update (Fri Nov 29 21:31:32 2019)
+> *Error in loading object '/adm/daemon/network/ftpd'
+
+File: /cmds/system/_update.c         line 118
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   cmd_hook() in /std/user#1
+     Program: /std/living.c
+     File:                /std/living.c line 156
+
+2:   cmd_update() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+3:   CATCH() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+
+Error in object: /cmds/system/_update (Fri Nov 29 21:34:42 2019)
+> *Error in loading object '/adm/daemon/network/ftpd'
+
+File: /cmds/system/_update.c         line 118
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   cmd_hook() in /std/user#1
+     Program: /std/living.c
+     File:                /std/living.c line 156
+
+2:   cmd_update() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+3:   CATCH() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+
+Error in object: /adm/obj/simul_efun (Fri Nov 29 21:53:48 2019)
+> *Bad argument 1 to userp()
+Expected: object Got: "parnell".
+
+File: /adm/obj/simul_efun.c          line 24
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   cmd_hook() in /std/user#1
+     Program: /std/living.c
+     File:                /std/living.c line 156
+
+2:   cmd_massup() in /cmds/system/_massup
+     Program: /cmds/system/_massup.c
+     File:       /cmds/system/_massup.c line 165
+
+3:   do_update() in /cmds/system/_massup
+     Program: /cmds/system/_massup.c
+     File:       /cmds/system/_massup.c line 208
+
+4:   CATCH() in /cmds/system/_massup
+     Program: /cmds/system/_massup.c
+     File:       /cmds/system/_massup.c line 208
+
+5:   remove() in /adm/daemon/network/ftpd
+     Program: /adm/daemon/network/ftpd.c
+     File:   /adm/daemon/network/ftpd.c line 2023
+
+6:   adminp() in /adm/obj/simul_efun
+     Program: /adm/obj/simul_efun.c
+     File:      /adm/simul_efun/archp.c line 24
+
+
+Error in object: /adm/obj/simul_efun (Fri Nov 29 21:55:48 2019)
+> *Bad argument 1 to userp()
+Expected: object Got: "parnell".
+
+File: /adm/obj/simul_efun.c          line 24
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   cmd_hook() in /std/user#1
+     Program: /std/living.c
+     File:                /std/living.c line 156
+
+2:   cmd_massup() in /cmds/system/_massup
+     Program: /cmds/system/_massup.c
+     File:       /cmds/system/_massup.c line 165
+
+3:   do_update() in /cmds/system/_massup
+     Program: /cmds/system/_massup.c
+     File:       /cmds/system/_massup.c line 208
+
+4:   CATCH() in /cmds/system/_massup
+     Program: /cmds/system/_massup.c
+     File:       /cmds/system/_massup.c line 208
+
+5:   remove() in /adm/daemon/network/ftpd
+     Program: /adm/daemon/network/ftpd.c
+     File:   /adm/daemon/network/ftpd.c line 2023
+
+6:   adminp() in /adm/obj/simul_efun
+     Program: /adm/obj/simul_efun.c
+     File:      /adm/simul_efun/archp.c line 24
+
+
+Error in object: /adm/obj/simul_efun (Fri Nov 29 21:55:48 2019)
+> *Bad argument 1 to userp()
+Expected: object Got: "parnell".
+
+File: /adm/obj/simul_efun.c          line 24
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   cmd_hook() in /std/user#1
+     Program: /std/living.c
+     File:                /std/living.c line 156
+
+2:   cmd_massup() in /cmds/system/_massup
+     Program: /cmds/system/_massup.c
+     File:       /cmds/system/_massup.c line 165
+
+3:   do_update() in /cmds/system/_massup
+     Program: /cmds/system/_massup.c
+     File:       /cmds/system/_massup.c line 208
+
+4:   CATCH() in /cmds/system/_massup
+     Program: /cmds/system/_massup.c
+     File:       /cmds/system/_massup.c line 208
+
+5:   remove() in /adm/daemon/network/ftpd
+     Program: /adm/daemon/network/ftpd.c
+     File:   /adm/daemon/network/ftpd.c line 2023
+
+6:   adminp() in /adm/obj/simul_efun
+     Program: /adm/obj/simul_efun.c
+     File:      /adm/simul_efun/archp.c line 24
+
+
+Error in object: /cmds/system/_eval (Fri Nov 29 21:56:00 2019)
+> *Error in loading object '/wizards/parnell/CMD_EVAL_TMP_FILE'
+
+File: /cmds/system/_eval.c           line 51
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   cmd_hook() in /std/user#1
+     Program: /std/living.c
+     File:                /std/living.c line 156
+
+2:   cmd_eval() in /cmds/system/_eval
+     Program: /cmds/system/_eval.c
+     File:         /cmds/system/_eval.c line 51
+
+3:   CATCH() in /cmds/system/_eval
+     Program: /cmds/system/_eval.c
+     File:         /cmds/system/_eval.c line 51
+
+
+Error in object: /adm/obj/simul_efun (Fri Nov 29 21:59:06 2019)
+> *Bad argument 1 to userp()
+Expected: object Got: "parnell".
+
+File: /adm/obj/simul_efun.c          line 24
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   cmd_hook() in /std/user#1
+     Program: /std/living.c
+     File:                /std/living.c line 156
+
+2:   cmd_call() in /cmds/system/_call
+     Program: /cmds/system/_call.c
+     File:         /cmds/system/_call.c line 112
+
+3:   do_call() in /cmds/system/_call
+     Program: /cmds/system/_call.c
+     File:         /cmds/system/_call.c line 176
+
+4:   CATCH() in /cmds/system/_call
+     Program: /cmds/system/_call.c
+     File:         /cmds/system/_call.c line 176
+
+5:   remove() in /adm/daemon/network/ftpd
+     Program: /adm/daemon/network/ftpd.c
+     File:   /adm/daemon/network/ftpd.c line 2023
+
+6:   adminp() in /adm/obj/simul_efun
+     Program: /adm/obj/simul_efun.c
+     File:      /adm/simul_efun/archp.c line 24
+
+
+Error in object: /adm/obj/simul_efun (Fri Nov 29 22:00:02 2019)
+> *Bad argument 1 to userp()
+Expected: object Got: "parnell".
+
+File: /adm/obj/simul_efun.c          line 24
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   cmd_hook() in /std/user#1
+     Program: /std/living.c
+     File:                /std/living.c line 156
+
+2:   cmd_call() in /cmds/system/_call
+     Program: /cmds/system/_call.c
+     File:         /cmds/system/_call.c line 112
+
+3:   do_call() in /cmds/system/_call
+     Program: /cmds/system/_call.c
+     File:         /cmds/system/_call.c line 176
+
+4:   CATCH() in /cmds/system/_call
+     Program: /cmds/system/_call.c
+     File:         /cmds/system/_call.c line 176
+
+5:   remove() in /adm/daemon/network/ftpd
+     Program: /adm/daemon/network/ftpd.c
+     File:   /adm/daemon/network/ftpd.c line 2023
+
+6:   adminp() in /adm/obj/simul_efun
+     Program: /adm/obj/simul_efun.c
+     File:      /adm/simul_efun/archp.c line 24
+
+
+Error in object: /adm/obj/simul_efun (Fri Nov 29 22:00:05 2019)
+> *Bad argument 1 to userp()
+Expected: object Got: "parnell".
+
+File: /adm/obj/simul_efun.c          line 24
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   cmd_hook() in /std/user#1
+     Program: /std/living.c
+     File:                /std/living.c line 156
+
+2:   cmd_update() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 108
+
+3:   CATCH() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 108
+
+4:   remove() in /adm/daemon/network/ftpd
+     Program: /adm/daemon/network/ftpd.c
+     File:   /adm/daemon/network/ftpd.c line 2023
+
+5:   adminp() in /adm/obj/simul_efun
+     Program: /adm/obj/simul_efun.c
+     File:      /adm/simul_efun/archp.c line 24
+
+
+Error in object: /adm/obj/master (Fri Nov 29 22:07:04 2019)
+> *call_other() couldn't find object
+
+File: /adm/obj/master.c              line 353
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   preload() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 353
+
+2:   CATCH() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 353
+
+
+Error in object: /adm/daemon/race_d (Fri Nov 29 22:07:04 2019)
+> *Bad argument 1 to wizardp()
+Expected: object Got: 0.
+
+File: /adm/daemon/race_d.c           line 31
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   preload() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 353
+
+2:   CATCH() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 353
+
+3:   create() in /adm/daemon/race_d
+     Program: /adm/daemon/race_d.c
+     File:         /adm/daemon/race_d.c line 81
+
+4:   init_data() in /adm/daemon/race_d
+     Program: /adm/daemon/race_d.c
+     File:         /adm/daemon/race_d.c line 31
+
+
+Error in object: /adm/obj/login#0 (Fri Nov 29 22:07:09 2019)
+> *Error in loading object '/std/user'
+
+File: /adm/obj/login.c               line 43
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   logon() in /adm/obj/login#0
+     Program: /adm/obj/login.c
+     File:             /adm/obj/login.c line 43
+
+2:   CATCH() in /adm/obj/login#0
+     Program: /adm/obj/login.c
+     File:             /adm/obj/login.c line 43
+
+
+Error in object: /adm/obj/login#1 (Fri Nov 29 22:07:49 2019)
+> *Error in loading object '/std/user'
+
+File: /adm/obj/login.c               line 43
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   logon() in /adm/obj/login#1
+     Program: /adm/obj/login.c
+     File:             /adm/obj/login.c line 43
+
+2:   CATCH() in /adm/obj/login#1
+     Program: /adm/obj/login.c
+     File:             /adm/obj/login.c line 43
+
+
+Error in object: /adm/obj/login#2 (Fri Nov 29 22:07:58 2019)
+> *Error in loading object '/std/user'
+
+File: /adm/obj/login.c               line 43
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   logon() in /adm/obj/login#2
+     Program: /adm/obj/login.c
+     File:             /adm/obj/login.c line 43
+
+2:   CATCH() in /adm/obj/login#2
+     Program: /adm/obj/login.c
+     File:             /adm/obj/login.c line 43
+
+
+Error in object: /adm/obj/master (Fri Nov 29 22:10:34 2019)
+> *call_other() couldn't find object
+
+File: /adm/obj/master.c              line 353
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   preload() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 353
+
+2:   CATCH() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 353
+
+
+Error in object: /adm/daemon/race_d (Fri Nov 29 22:10:34 2019)
+> *Bad argument 1 to wizardp()
+Expected: object Got: 0.
+
+File: /adm/daemon/race_d.c           line 31
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   preload() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 353
+
+2:   CATCH() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 353
+
+3:   create() in /adm/daemon/race_d
+     Program: /adm/daemon/race_d.c
+     File:         /adm/daemon/race_d.c line 81
+
+4:   init_data() in /adm/daemon/race_d
+     Program: /adm/daemon/race_d.c
+     File:         /adm/daemon/race_d.c line 31
+
+
+Error in object: /adm/obj/login#0 (Fri Nov 29 22:10:39 2019)
+> *Error in loading object '/std/user'
+
+File: /adm/obj/login.c               line 43
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   logon() in /adm/obj/login#0
+     Program: /adm/obj/login.c
+     File:             /adm/obj/login.c line 43
+
+2:   CATCH() in /adm/obj/login#0
+     Program: /adm/obj/login.c
+     File:             /adm/obj/login.c line 43
+
+
+Error in object: /adm/obj/login#1 (Fri Nov 29 22:13:03 2019)
+> *Error in loading object '/std/user'
+
+File: /adm/obj/login.c               line 43
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   logon() in /adm/obj/login#1
+     Program: /adm/obj/login.c
+     File:             /adm/obj/login.c line 43
+
+2:   CATCH() in /adm/obj/login#1
+     Program: /adm/obj/login.c
+     File:             /adm/obj/login.c line 43
+
+
+Error in object: /adm/obj/master (Fri Nov 29 22:13:59 2019)
+> *call_other() couldn't find object
+
+File: /adm/obj/master.c              line 353
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   preload() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 353
+
+2:   CATCH() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 353
+
+
+Error in object: /adm/daemon/race_d (Fri Nov 29 22:13:59 2019)
+> *Bad argument 1 to wizardp()
+Expected: object Got: 0.
+
+File: /adm/daemon/race_d.c           line 31
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   preload() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 353
+
+2:   CATCH() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 353
+
+3:   create() in /adm/daemon/race_d
+     Program: /adm/daemon/race_d.c
+     File:         /adm/daemon/race_d.c line 81
+
+4:   init_data() in /adm/daemon/race_d
+     Program: /adm/daemon/race_d.c
+     File:         /adm/daemon/race_d.c line 31
+
+
+Error in object: /adm/obj/login#0 (Fri Nov 29 22:14:02 2019)
+> *Error in loading object '/std/user'
+
+File: /adm/obj/login.c               line 43
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   logon() in /adm/obj/login#0
+     Program: /adm/obj/login.c
+     File:             /adm/obj/login.c line 43
+
+2:   CATCH() in /adm/obj/login#0
+     Program: /adm/obj/login.c
+     File:             /adm/obj/login.c line 43
+
+
+Error in object: /cmds/system/_update (Fri Nov 29 22:22:58 2019)
+> *Error in loading object '/adm/daemon/network/ftpd'
+
+File: /cmds/system/_update.c         line 118
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   cmd_hook() in /std/user#2
+     Program: /std/living.c
+     File:                /std/living.c line 156
+
+2:   cmd_update() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+3:   CATCH() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+
+Error in object: /cmds/system/_update (Fri Nov 29 22:23:15 2019)
+> *Error in loading object '/adm/daemon/network/ftpd'
+
+File: /cmds/system/_update.c         line 118
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   cmd_hook() in /std/user#2
+     Program: /std/living.c
+     File:                /std/living.c line 156
+
+2:   cmd_update() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+3:   CATCH() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+
+Error in object: /cmds/system/_update (Fri Nov 29 22:26:55 2019)
+> *Error in loading object '/adm/daemon/network/ftpd'
+
+File: /cmds/system/_update.c         line 118
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   cmd_hook() in /std/user#2
+     Program: /std/living.c
+     File:                /std/living.c line 156
+
+2:   cmd_update() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+3:   CATCH() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+
+Error in object: /adm/obj/master (Fri Nov 29 22:56:34 2019)
+> *call_other() couldn't find object
+
+File: /adm/obj/master.c              line 353
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   preload() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 353
+
+2:   CATCH() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 353
+
+
+Error in object: /adm/daemon/race_d (Fri Nov 29 22:56:34 2019)
+> *Bad argument 1 to wizardp()
+Expected: object Got: 0.
+
+File: /adm/daemon/race_d.c           line 31
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   preload() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 353
+
+2:   CATCH() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 353
+
+3:   create() in /adm/daemon/race_d
+     Program: /adm/daemon/race_d.c
+     File:         /adm/daemon/race_d.c line 81
+
+4:   init_data() in /adm/daemon/race_d
+     Program: /adm/daemon/race_d.c
+     File:         /adm/daemon/race_d.c line 31
+
+
+Error in object: /cmds/system/_eval (Fri Nov 29 23:01:53 2019)
+> *Error in loading object '/wizards/parnell/CMD_EVAL_TMP_FILE'
+
+File: /cmds/system/_eval.c           line 51
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   cmd_hook() in /std/user#1
+     Program: /std/living.c
+     File:                /std/living.c line 156
+
+2:   cmd_eval() in /cmds/system/_eval
+     Program: /cmds/system/_eval.c
+     File:         /cmds/system/_eval.c line 51
+
+3:   CATCH() in /cmds/system/_eval
+     Program: /cmds/system/_eval.c
+     File:         /cmds/system/_eval.c line 51
+
+
+Error in object: /wizards/parnell/CMD_EVAL_TMP_FILE (Fri Nov 29 23:02:10 2019)
+> *Undefined function called: this_player
+
+File: /wizards/parnell/CMD_EVAL_TMP_FILE.c line 8
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   cmd_hook() in /std/user#1
+     Program: /std/living.c
+     File:                /std/living.c line 156
+
+2:   cmd_eval() in /cmds/system/_eval
+     Program: /cmds/system/_eval.c
+     File:         /cmds/system/_eval.c line 51
+
+3:   CATCH() in /cmds/system/_eval
+     Program: /cmds/system/_eval.c
+     File:         /cmds/system/_eval.c line 51
+
+4:   eval() in /wizards/parnell/CMD_EVAL_TMP_FILE
+     Program: /wizards/parnell/CMD_EVAL_TMP_FILE.c
+     File: /wizards/parnell/CMD_EVAL_TMP_FILE.c line 8
+
+
+Error in object: /cmds/system/_update (Fri Nov 29 23:05:22 2019)
+> *Error in loading object '/adm/daemon/network/ftpd'
+
+File: /cmds/system/_update.c         line 118
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   cmd_hook() in /std/user#1
+     Program: /std/living.c
+     File:                /std/living.c line 156
+
+2:   cmd_update() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+3:   CATCH() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+
+Error in object: /adm/obj/master (Sat Nov 30 17:10:36 2019)
+> *call_other() couldn't find object
+
+File: /adm/obj/master.c              line 353
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   preload() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 353
+
+2:   CATCH() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 353
+
+
+Error in object: /adm/daemon/race_d (Sat Nov 30 17:10:36 2019)
+> *Bad argument 1 to wizardp()
+Expected: object Got: 0.
+
+File: /adm/daemon/race_d.c           line 31
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   preload() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 353
+
+2:   CATCH() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 353
+
+3:   create() in /adm/daemon/race_d
+     Program: /adm/daemon/race_d.c
+     File:         /adm/daemon/race_d.c line 81
+
+4:   init_data() in /adm/daemon/race_d
+     Program: /adm/daemon/race_d.c
+     File:         /adm/daemon/race_d.c line 31
+
+
+Error in object: /adm/obj/master (Sat Nov 30 17:12:00 2019)
+> *call_other() couldn't find object
+
+File: /adm/obj/master.c              line 353
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   preload() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 353
+
+2:   CATCH() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 353
+
+
+Error in object: /adm/daemon/race_d (Sat Nov 30 17:12:00 2019)
+> *Bad argument 1 to wizardp()
+Expected: object Got: 0.
+
+File: /adm/daemon/race_d.c           line 31
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   preload() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 353
+
+2:   CATCH() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 353
+
+3:   create() in /adm/daemon/race_d
+     Program: /adm/daemon/race_d.c
+     File:         /adm/daemon/race_d.c line 81
+
+4:   init_data() in /adm/daemon/race_d
+     Program: /adm/daemon/race_d.c
+     File:         /adm/daemon/race_d.c line 31
+
+
+Error in object: /adm/obj/master (Sat Nov 30 17:15:18 2019)
+> *call_other() couldn't find object
+
+File: /adm/obj/master.c              line 353
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   preload() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 353
+
+2:   CATCH() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 353
+
+
+Error in object: /adm/daemon/race_d (Sat Nov 30 17:15:18 2019)
+> *Bad argument 1 to wizardp()
+Expected: object Got: 0.
+
+File: /adm/daemon/race_d.c           line 31
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   preload() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 353
+
+2:   CATCH() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 353
+
+3:   create() in /adm/daemon/race_d
+     Program: /adm/daemon/race_d.c
+     File:         /adm/daemon/race_d.c line 81
+
+4:   init_data() in /adm/daemon/race_d
+     Program: /adm/daemon/race_d.c
+     File:         /adm/daemon/race_d.c line 31
+
+
+Error in object: /cmds/system/_update (Sat Nov 30 18:00:04 2019)
+> *Error in loading object '/std/http_client-test'
+
+File: /cmds/system/_update.c         line 118
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   cmd_hook() in /std/user#1
+     Program: /std/living.c
+     File:                /std/living.c line 156
+
+2:   cmd_update() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+3:   CATCH() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+
+Error in object: /cmds/system/_update (Sat Nov 30 18:00:32 2019)
+> *Error in loading object '/std/http_client-test'
+
+File: /cmds/system/_update.c         line 118
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   cmd_hook() in /std/user#1
+     Program: /std/living.c
+     File:                /std/living.c line 156
+
+2:   cmd_update() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+3:   CATCH() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+
+Error in object: /cmds/system/_update (Sat Nov 30 21:34:25 2019)
+> *Error in loading object '/adm/daemon/network/http'
+
+File: /cmds/system/_update.c         line 118
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   cmd_hook() in /std/user#1
+     Program: /std/living.c
+     File:                /std/living.c line 156
+
+2:   cmd_update() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+3:   CATCH() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+
+Error in object: /cmds/system/_update (Sat Nov 30 21:34:37 2019)
+> *Error in loading object '/adm/daemon/network/http'
+
+File: /cmds/system/_update.c         line 118
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   cmd_hook() in /std/user#1
+     Program: /std/living.c
+     File:                /std/living.c line 156
+
+2:   cmd_update() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+3:   CATCH() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+
+Error in object: /cmds/system/_update (Sat Nov 30 21:35:34 2019)
+> *Error in loading object '/adm/daemon/network/http'
+
+File: /cmds/system/_update.c         line 118
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   cmd_hook() in /std/user#1
+     Program: /std/living.c
+     File:                /std/living.c line 156
+
+2:   cmd_update() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+3:   CATCH() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+
+Error in object: /cmds/system/_update (Sat Nov 30 21:47:43 2019)
+> *Error in loading object '/adm/daemon/network/http'
+
+File: /cmds/system/_update.c         line 118
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   cmd_hook() in /std/user#1
+     Program: /std/living.c
+     File:                /std/living.c line 156
+
+2:   cmd_update() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+3:   CATCH() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+
+Error in object: /cmds/system/_eval (Sat Nov 30 22:00:41 2019)
+> *Error in loading object '/wizards/parnell/CMD_EVAL_TMP_FILE'
+
+File: /cmds/system/_eval.c           line 51
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   cmd_hook() in /std/user#1
+     Program: /std/living.c
+     File:                /std/living.c line 156
+
+2:   cmd_eval() in /cmds/system/_eval
+     Program: /cmds/system/_eval.c
+     File:         /cmds/system/_eval.c line 51
+
+3:   CATCH() in /cmds/system/_eval
+     Program: /cmds/system/_eval.c
+     File:         /cmds/system/_eval.c line 51
+
+
+Error in object: /cmds/system/_eval (Sat Nov 30 22:00:48 2019)
+> *Error in loading object '/wizards/parnell/CMD_EVAL_TMP_FILE'
+
+File: /cmds/system/_eval.c           line 51
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   cmd_hook() in /std/user#1
+     Program: /std/living.c
+     File:                /std/living.c line 156
+
+2:   cmd_eval() in /cmds/system/_eval
+     Program: /cmds/system/_eval.c
+     File:         /cmds/system/_eval.c line 51
+
+3:   CATCH() in /cmds/system/_eval
+     Program: /cmds/system/_eval.c
+     File:         /cmds/system/_eval.c line 51
+
+
+Error in object: /adm/obj/master (Sat Nov 30 22:03:07 2019)
+> *call_other() couldn't find object
+
+File: /adm/obj/master.c              line 368
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   preload() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 368
+
+2:   CATCH() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 368
+
+
+Error in object: /adm/daemon/race_d (Sat Nov 30 22:03:07 2019)
+> *Bad argument 1 to wizardp()
+Expected: object Got: 0.
+
+File: /adm/daemon/race_d.c           line 31
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   preload() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 368
+
+2:   CATCH() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 368
+
+3:   create() in /adm/daemon/race_d
+     Program: /adm/daemon/race_d.c
+     File:         /adm/daemon/race_d.c line 81
+
+4:   init_data() in /adm/daemon/race_d
+     Program: /adm/daemon/race_d.c
+     File:         /adm/daemon/race_d.c line 31
+

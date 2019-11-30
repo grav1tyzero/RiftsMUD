@@ -1,18 +1,12 @@
-// Language daemon create by Valodin as an experimental racial language 
+// Language daemon create by Valodin as an experimental racial language
 // reference
-
-#include <std.h>
-#include <databases.h>
-
 inherit DAEMON;
 mapping language_list;
-
-mapping read_languages();
 
 void create()
 {
   ::create();
-  language_list = read_languages();
+  language_list = (["human":"american"]);
 }
 
 void init_languages(object ob)
@@ -40,20 +34,6 @@ void init_languages(object ob)
     ob->set_primary_lang(race + "ish");
     return;
   }
-}
-
-mapping read_languages()
-{
-  mapping langs;
-  string *lines, *line;
-  int i, lnsz;
-
-  langs = ([]);
-  for(i=0, lnsz = sizeof(lines = read_database(LANGUAGES_DB)); i<lnsz; i++) {
-    line = explode(lines[i], ":");
-    langs[line[0]] = line[1];
-  }
-  return langs;
 }
 
 string *all_languages()

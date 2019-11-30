@@ -1,5 +1,3 @@
-#pragma save_binary
-
 /*
  * ftpd.c:
  *
@@ -275,7 +273,7 @@
  * 94.12.07 Robocoder
  * o fixed typos in ftpd.c and ftpdsupp.h...so #define'ing ANONYMOUS_FTP
  *   loads properly
- * o Ack...removed "\r\n" processing to nlst output...back to 
+ * o Ack...removed "\r\n" processing to nlst output...back to
  *   some ftp clients complaining about bare linefeeds in ls output, to
  *   satisfy broken ftp clients that demand only "\n".
  *
@@ -305,8 +303,7 @@
  * o Fixed spurious errors from orphaned data connections during callbacks
  */
 
-#include <config.h> /* from tmi-2 */
-
+#include <net/ftpconfig.h> /* from tmi-2 */
 #define FTPD_VERSION "5.9"
 
 /*
@@ -381,7 +378,7 @@ int check_valid_read( string fname, int fd ) {
     int res;
 
     seteuid( socket_info[ fd ][ USER_NAME ] );
-    res = (int) MASTER_OB -> valid_read(fname, this_object(), "read_file");
+    res = (int) master() -> valid_read(fname, this_object(), "read_file");
     seteuid( getuid() );
 
     /*
@@ -433,7 +430,7 @@ int check_valid_write( string fname, int fd ) {
 	return 0;
 #endif
 
-    res = (int) MASTER_OB -> valid_write(fname, this_object(), "write_file");
+    res = (int) master() -> valid_write(fname, this_object(), "write_file");
     seteuid( getuid() );
 
     /*
@@ -653,10 +650,10 @@ string ls( string path, int column, int fd ) {
     // the Unix-like file permissions are mainly for effect...hopefully it
     // isn't too much, since anything more would likely be too cpu intensive
     // and cause it to max eval...
-    creator = (string)MASTER_OB->creator_file(path);
+    creator = (string)master()->creator_file(path);
     if (!creator)  creator = ROOT_UID;
 
-    domain = (string)MASTER_OB->domain_file(path);
+    domain = (string)master()->domain_file(path);
     if (!domain)  domain = ROOT_UID;
 
     i = strsrch(path, '/', -1);
@@ -698,7 +695,7 @@ void data_write_callback( int fd ) {
     if ( socket_info[fd][TYPE] == DOWNLOAD )  return;
 
     tmp = allocate_buffer( 0 );
-    pos = socket_info[ fd ][ POS ];
+    pos = socket_info[ fd ][ FTP_POS ];
     length = ( (pos+BLOCK_SIZE) >= socket_info[ fd ][ LEN ] ) ?
 	     ( socket_info[ fd ][ LEN ] - pos ) : BLOCK_SIZE;
 
@@ -776,7 +773,7 @@ void data_write_callback( int fd ) {
     TP( "leaving dwc(), pos: " + pos + ".\n" );
 #endif
 
-    socket_info[ fd ][ POS ] = pos;
+    socket_info[ fd ][ FTP_POS ] = pos;
     if ( ret_val == EEWOULDBLOCK || ret_val == EEALREADY ) {
 	/* it would block, so it's up to us to try again */
 #ifdef DEBUG_SEND
@@ -835,7 +832,7 @@ static void data_conn( int fd, string mess, string name, int type ) {
 
     socket_info[ new_fd ] = ([
 	DATA      : (type == STRING ? replace_string(mess, "\n", "\r\n") : mess),
-	POS       : 0,
+	FTP_POS       : 0,
 	PARENT_FD : fd,
 	TYPE      : type,
 	LEN       : (type == STRING ? strlen(mess) : file_size(mess))
@@ -1067,50 +1064,9 @@ static void parse_comm( int fd, string str ) {
 #endif
 		UNAME = 0;
 	    } else
-#ifdef CHECK_SITE
-	    if (!check_site( UNAME, fd )) {
-		/*
-		 * Note: this particular response of 530 is not mentioned
-		 * as a possible response to the PASS command in RFC959,
-		 * because site checking is TMI specific.
-		 */
-		socket_write( fd, sprintf("530 User %s: Can't login from %s.\n",
-		      UNAME, USITE) );
-#ifdef LOG_TIME
-		log_file( LOG_FILE, FTP_TIME );
-#endif
-
-#ifdef LOG_NO_CONNECT
-		log_file( LOG_FILE, sprintf("%s refused login from %s.\n",
-		      UNAME, USITE) );
-#endif
-		UNAME = 0;
-		lose_user( fd );
-	    } else
-#endif
 	    {
-		socket_info[ fd ][ LOGGED_IN ] = 1;
-#ifdef ANONYMOUS_FTP
-		if ( UNAME == "anonymous" )
-		    UCWD = FTP_DIR;
-		else
-#endif
+			socket_info[ fd ][ LOGGED_IN ] = 1;
 		    UCWD = HOME_DIR( UNAME );
-#ifdef LOG_TIME
-		log_file( LOG_FILE, FTP_TIME );
-#endif
-
-#ifdef LOG_CONNECT
-#ifdef ANONYMOUS_FTP
-		if (UNAME == "anonymous")
-		    log_file( LOG_FILE, sprintf("%s (%s) connected from %s.\n",
-			  UNAME, str[strlen(command[0]) + 1..<1], USITE) );
-		else
-#endif
-		    log_file( LOG_FILE, sprintf("%s connected from %s.\n",
-			  UNAME, USITE) );
-#endif
-
 		if ( !directory_exists( UCWD ) ) {
 		    socket_write( fd, "230 No directory! Logging in with home="
 #ifdef GUEST_WIZARD_FTP
@@ -1630,6 +1586,8 @@ static void parse_comm( int fd, string str ) {
 		    break;
 		case "chmod":
 		case "umask":
+		case "epsv":
+		case "eprt":
 		    socket_write( fd, sprintf("502 '%s' command not implemented.\n",
 			  command[ 0 ]) );
 		    break;
@@ -1987,13 +1945,14 @@ static void check_connections() {
 		if (!undefinedp(socket_info[ fd ][ TYPE ]) &&
 		      socket_info[ fd ][ TYPE ] == DOWNLOAD ) {
 		    flock_wrapper( socket_info[ fd ][ PATH ], F_UNLOCK,	fd );
-#endif
 		}
+#endif
+
 		lose_connection( fd );
 	    }
 	}
     }
-    call_out( "check_connections", 3 * 60 );
+    call_out( "check_connections", (3 * 60) );
 }
 
 
@@ -2022,7 +1981,7 @@ void resolve_callback( string address, string resolved, int key ) {
 
 
 void remove() {
-    if (number_of_users && this_player(1) && !adminp(geteuid(this_player(1))))
+    if (number_of_users && this_player(1) && !adminp(this_player(1)))
        error( "Cannot destruct while there are active ftp sessions.\n" );
 
     destruct( this_object() );

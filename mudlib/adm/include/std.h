@@ -10,7 +10,6 @@
 #define SKILLS "/std/living/skills"
 #define LOCKER "/std/locker"
 #define LOCKER_ROOM "/std/locker_room"
-#define PIER "/std/pier"
 #define VAULT "/std/vault"
 #define WEAPON "/std/weapon"
 #define ARMOUR "/std/armour"
@@ -19,6 +18,7 @@
 #define BBOARD "/std/bboard"
 #define MOVE "/std/move"
 #define SHADOW "/std/spells/shadows/shadow"
-
+#define PDATA_DIR "/save/adm/users"
+#define CONNECTION "/adm/obj/login"
 #define DAMAGE_TYPES ({ "crushing", "cutting", "impaling", "fire", "impact", "electricity", "acid", "plasma","vacuum", "cold", "depression", "time", "disruption", "holy","aether", "stress", "strike", "infernal" })
 

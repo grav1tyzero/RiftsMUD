@@ -30,7 +30,10 @@ RUN make install
 RUN cp bin/driver /usr/bin/driver
 RUN cp bin/portbind /usr/bin/portbind
 
+#telnet
 EXPOSE 7878
+#ftp
+EXPOSE 7877
 
 VOLUME ["/home/parnell/mud"]
 

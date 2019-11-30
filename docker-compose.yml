@@ -3,6 +3,7 @@ services:
   mud:
     build: .
     ports:
-      - "7878:7878"
+      - "7878:7878" #telnet
+      - "7877:7877" #mud's ftp (if we can get it working)
     volumes:
       - .:/home/parnell/mud
