@@ -16,7 +16,7 @@
 #define CURRENT_DATE(x) (1+((NOW(x))%MONTH)/DAY)
 #define CURRENT_HOUR(x) ((NOW(x))%DAY)/HOUR
 #define CURRENT_MINUTE(x) ((NOW(x))%HOUR)/MINUTE
-#define CURRENT_SECOND(x) ((NOW(x))%MINUTE)
+#define CURRENT_SECOND(x) ((NOW(x))%MINUTE)*MINUTE
 
 #define LONGEST_DAY 101
 #define SHORTEST_DAY 1
