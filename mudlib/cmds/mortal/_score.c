@@ -142,7 +142,7 @@ inherit DAEMON;
 			    hand2 = "Unknown Handedness";
 
 			      attrib[0] = sprintf("%d", (int) op->query_level());
-			      attrib[1] = capitalize((string) op->query_race());
+			      attrib[1] = op->query_race() ? capitalize((string) op->query_race()) : "N/A";
 			      attrib[2] = age3;
 			      attrib[3] = sprintf("%d", (int)op->query_property("dev points"));
 			      intox = (int) op->query_intox();

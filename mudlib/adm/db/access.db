@@ -25,8 +25,6 @@
 (/save/adm/objects): (all)[rw]
 (/save/adm/objects/crash): (all)[rw]
 (/save/adm/objects/saveall): (all)[rw]
-(/save/adm/bank/): (all)[rw]
-(/save/adm/bank/backup): (all)[rw]
 (/adm/save/objects/crash): (all)[rw]
 (/save/adm/daemons): (all)[r] (root)[rw] (SecureDaemonSave)[rw] (assist)[r] (superuser)[rw]
 (/save/adm/postal): (all)[r] (PostalSave)[rw] (assist)[r] (superuser)[rw]

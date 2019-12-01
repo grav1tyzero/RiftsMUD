@@ -9,7 +9,6 @@
 
 (/adm/obj/login): Root Shell
 (/adm/daemon/banish): Banish Log SecureDaemonSave
-(/d/damned/akkad/obj/mon/banker): Root
 (/adm/daemon/delayed_function_d): Log
 (/adm/daemon/save_items_d): Log SecureDaemonSave
 (/adm/daemon/shell_d): Log External
@@ -88,7 +87,6 @@
 (/daemon/letter): PostalSave Postal
 (/daemon/localpost): PostalSave Postal
 (/daemon/multi_d): DaemonSave
-(/daemon/player_d): DaemonSave
 (/daemon/pk_d): DaemonSave
 (/daemon/network): Socket DaemonSave
 (/daemon/remotepost): SecureDaemonSave Postal

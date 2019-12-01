@@ -28,3 +28,14 @@
 /cmds/mortal/_inventory.c line 35: Warning: Unused local variable 'silly' before the end of line
 /cmds/mortal/_get.c line 116: Warning: Unused local variable 'silly' before the end of line
 /cmds/system/_eval.c line 43: Warning: Non-void functions must return a value. before the end of line
+/cmds/mortal/_alias.c line 80: Warning: Unused local variable 'sl' before the end of line
+/cmds/mortal/_alias.c line 80: Warning: Unused local variable 'index' before the end of line
+/cmds/mortal/_passwd.c line 58: Warning: Unused local variable 'password' before the end of line
+/cmds/system/_eval.c line 43: Warning: Non-void functions must return a value. before the end of line
+/cmds/mortal/_help.c line 175: Warning: Unused local variable 'reg' before the end of line
+/cmds/mortal/_alias.c line 80: Warning: Unused local variable 'sl' before the end of line
+/cmds/mortal/_alias.c line 80: Warning: Unused local variable 'index' before the end of line
+/cmds/system/_eval.c line 43: Warning: Non-void functions must return a value. before the end of line
+/cmds/mortal/_inventory.c line 35: Warning: Unused local variable 'silly' before the end of line
+/cmds/mortal/_help.c line 175: Warning: Unused local variable 'reg' before the end of line
+/cmds/adm/_callouts.c line 197: Warning: Unused local variable 'args' before the end of line

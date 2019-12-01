@@ -1,9 +1,8 @@
-//      /cmds/mortal/_suicide.c 
-                     
+//      /cmds/mortal/_suicide.c
+
 #include <std.h>
 #include <daemons.h>
 #include <security.h>
-#include <bank.h>
 #include <dirs.h>
 
 inherit DAEMON;
@@ -23,14 +22,14 @@ static void my_choice(string str) {
     }
     name = lower_case(name);
     switch(str) {
-        case "yes":       
+        case "yes":
            if(!ob->query_ghost())
              ob->die();
            "/daemon/save_all_d"->add_crash_items(this_player());
            if(ob)
              ob->remove();
            if(ob) {
-             seteuid(UID_DESTRUCT);  
+             seteuid(UID_DESTRUCT);
              destruct(ob);
              seteuid(getuid());
            }
@@ -61,7 +60,7 @@ int cmd_suicide(string str) {
     string name;
     string em;
 
-    
+
     if(wizardp(TP)){
         return notify_fail("Hrm...Ask a admin to get rid of ya if its that
 bad...\n");

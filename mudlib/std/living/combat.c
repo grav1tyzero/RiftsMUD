@@ -92,7 +92,7 @@ int clean_up_attackers() {
     i = sizeof(attackers);
     if(i) first = attackers[0];
     while(i--) {
-		if(!attackers[i] || !objectp(attackers[i])) 
+		if(!attackers[i] || !objectp(attackers[i]))
 			continue;
 		if(attackers[i]->shadow_form() ||
 		this_object()->shadow_form()) {
@@ -102,7 +102,7 @@ int clean_up_attackers() {
 				hunters_tmp += ({ attackers[i] });
 			continue;
 		}
-		if(attackers[i]->query_ghost()) 
+		if(attackers[i]->query_ghost())
 			continue;
 		if(environment(attackers[i]) != environment(this_object()))
 			hunters_tmp += ({ attackers[i] });
@@ -110,9 +110,9 @@ int clean_up_attackers() {
     }
     i = sizeof(hunters);
     while(i--) {
-		if(!hunters[i] || !objectp(hunters[i])) 
+		if(!hunters[i] || !objectp(hunters[i]))
 			continue;
-		if(hunters[i]->query_ghost()) 
+		if(hunters[i]->query_ghost())
 			continue;
 		if(hunters[i]->shadow_form()) {
 			if(environment() == environment(hunters[i]))
@@ -171,7 +171,7 @@ int clean_up_attackers() {
 
 int kill_ob(object victim, int which) {
     object *borg_people;
-    
+
     int i;
     string to_owner, // this_object()->query_owner(); (cpu reduction)
     v_owner,  // victim->query_owner();        (cpu reduction)
@@ -249,11 +249,10 @@ void continue_attack() {
 		else {
 			if(attackers) {
 				if(sizeof(attackers) && attackers[0]) {
-					attackers[0]->add_kill((string)me->query_name());
 					add_death((string)attackers[0]->query_name());
 					if(me->is_player()) {
 						xxx = sizeof(death = all_inventory(attackers[0]));
-						while(xxx--) 
+						while(xxx--)
 							death[xxx]->notify_kill(me);
 					}
 					me->die((attackers && attackers[0] ? attackers[0] : 0));
@@ -263,17 +262,17 @@ void continue_attack() {
 			}
 		}
     }
-    if(!any_attack && !hunting) 
+    if(!any_attack && !hunting)
 		return;
-    if(!clean_up_attackers()) 
+    if(!clean_up_attackers())
 		return;
-    if(environment(this_object())->query_property("no attack")) 
+    if(environment(this_object())->query_property("no attack"))
 		return;
     if( (player_data["general"]["hp"] * 100) / player_data["general"]["max_hp"] < wimpy ) {
 		run_away();
 		return;
     }
-    if(!query_paralyzed() && check_limbs_for_attack()) 
+    if(!query_paralyzed() && check_limbs_for_attack())
 		execute_attack();
     else if(!check_limbs_for_attack())
 		message("my_combat", "You may not attack with no wielding limbs!", this_object());
@@ -285,15 +284,15 @@ object party_leader(object att) {
     string party;
     object ret;
 
-    if(!att->is_player()) 
+    if(!att->is_player())
 		return 0;
-    if(att->query_ghost()) 
+    if(att->query_ghost())
 		return 0;
     party = (string)PARTY_OB->party_member(att);
-    if(!party) 
+    if(!party)
 		return 0;
     ret = (object)PARTY_OB->query_leader(party);
-    if(ret && environment(ret) == environment(att) && ret != att) 
+    if(ret && environment(ret) == environment(att) && ret != att)
 		return ret;
     return 0;
 }
@@ -319,7 +318,7 @@ void execute_attack() {
 	if(!num_attacks)
 		num_attacks = 1;//set default to 1.
 
-	for(i=0; i<num_attacks; i++) 
+	for(i=0; i<num_attacks; i++)
 	{
 	    defendflag = 0;
 	    target_thing = (string)attackers[0]->return_target_limb();
@@ -330,9 +329,9 @@ void execute_attack() {
 	    a_weapons = distinct_array(attackers[0]->query_wielded());
 	    //TODO: do WP checks here
 
-          
+
         message("info", "To hit skill: "+skill, me);
-		
+
 	    if(0 /*dodge roll*/ && !attackers[0]->query_paralyzed()) {
 			miss("dodge",(current)?(string)current->query_type() : 0);
 			defendflag = 1;
@@ -343,14 +342,14 @@ void execute_attack() {
 			continue;
 	    } else
 			damage = get_damage(current);
-	    if(!damage || !keys(damage)) 
+	    if(!damage || !keys(damage))
 			continue;
 
 	    if(current) {
 			w_hit = current->query_hit();
-			if(functionp(w_hit)) 
+			if(functionp(w_hit))
 				w_hit = evaluate(w_hit, attackers[0]);
-			else if(stringp(w_hit)) 
+			else if(stringp(w_hit))
 				message("my_combat",w_hit,me);
 	    }
 	    tmp = keys(damage);
@@ -366,15 +365,15 @@ void execute_attack() {
 	    if(!criticals || !sizeof(criticals) || x > 0) {
 			send_messages(
 				(string *)DAMAGE_D->attack_message(
-					sprintf("%d %s %s:%s", 
-						x, 
-						(current)?(string)current->query_verb() :"hit", 
-						(string)me->query_name(), 
+					sprintf("%d %s %s:%s",
+						x,
+						(current)?(string)current->query_verb() :"hit",
+						(string)me->query_name(),
 						(string)attackers[0]->query_name()
 					)//sprintf
 				)//attack_message
 			);//send_messages
-			x = (int)attackers[0]->do_damage(target_thing, x); 
+			x = (int)attackers[0]->do_damage(target_thing, x);
 		}
 	}
 	if(x > 0) attackers[0]->check_on_limb(target_thing);
@@ -491,7 +490,7 @@ void miss(string how, string type) {
 	send_messages(({ "You miss "+you+".",me+" misses "+you+".",
 	    me+" misses you." }));
     }
-    return;	
+    return;
 }
 
 void set_paralyzed(int x, string drow) {
@@ -529,7 +528,7 @@ string query_paralyze_message() { return paralyze_message; }
 
 int query_paralyzed() { return paralyzed; }
 
-void remove_paralyzed() { 
+void remove_paralyzed() {
     if(!this_object()) return;
     remove_call_out("remove_paralyzed");
     paralyzed = 0;
@@ -542,11 +541,11 @@ void set_magic_round(int x) { magic_round = x; }
 int query_magic_round() { return magic_round; }
 
 int ok_to_kill(object targ) {
-    if(targ->is_invincible()) 
+    if(targ->is_invincible())
 		return 0;
-    if(wizardp(this_object())) 
+    if(wizardp(this_object()))
 		return 1;
-    if(!this_object()->is_player() || !targ->is_player()) 
+    if(!this_object()->is_player() || !targ->is_player())
 		return 1;
     return 1;
 }

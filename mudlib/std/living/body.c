@@ -102,21 +102,21 @@ void set_max_hp(int hp) {
     int i, maxd;
     string *what_limbs;
 
-    if(!player_data) 
+    if(!player_data)
         init_player_data();
-    if(!player_data["general"]) 
+    if(!player_data["general"])
         init_general();
     player_data["general"]["max_hp"] = hp;
     what_limbs = query_limbs();
     for(i=0;i<sizeof(what_limbs);i++) {
-        if(body[what_limbs[i]] 
+        if(body[what_limbs[i]]
         && maxd = RACE_D->query_max_dam(what_limbs[i], (string)this_object()->query_race()))
             body[what_limbs[i]]["max_dam"] = (int)(hp / maxd);
     }
 }
 
 void set_hp(int hp) {
-    if(!query_max_hp()) 
+    if(!query_max_hp())
         set_max_hp(hp);
     if(hp> query_max_hp()) {
         if(this_object()->is_player()) player_data["general"]["hp"] = query_max_hp();
@@ -129,19 +129,19 @@ void set_hp(int hp) {
 }
 
 void set_max_sdc(int sdc) {
-    
+
     if(!player_data)
         init_player_data();
-    if(!player_data["general"]) 
+    if(!player_data["general"])
         init_general();
     player_data["general"]["max_sdc"] = sdc;
 }
 
 void set_sdc(int sdc) {
-    if(!query_max_sdc()) 
+    if(!query_max_sdc())
         set_max_sdc(sdc);
     if(sdc > query_max_sdc()) {
-        if(this_object()->is_player()) 
+        if(this_object()->is_player())
             player_data["general"]["sdc"] = query_max_sdc();
         else {
             set_max_sdc(sdc);
@@ -152,18 +152,18 @@ void set_sdc(int sdc) {
 }
 
 void set_max_mdc(int mdc) {
-    if(!player_data) 
+    if(!player_data)
         init_player_data();
-    if(!player_data["general"]) 
+    if(!player_data["general"])
         init_general();
     player_data["general"]["max_mdc"] = mdc;
 }
 
 void set_mdc(int mdc) {
-    if(!query_max_mdc()) 
+    if(!query_max_mdc())
         set_max_mdc(mdc);
     if(mdc > query_max_mdc()) {
-        if(this_object()->is_player()) 
+        if(this_object()->is_player())
             player_data["general"]["mdc"] = query_max_mdc();
         else {
             set_max_sdc(mdc);
@@ -202,7 +202,7 @@ void set_max_ppe(int x) {
 
 int query_max_ppe() { return magic["max points"]; }
 
-void set_ppe(int x) { 
+void set_ppe(int x) {
     if(!query_max_ppe()) magic["max points"] = x;
     if(x > query_max_ppe()) {
 	if(this_object()->is_player()) {
@@ -346,9 +346,9 @@ int query_is_limb(string limb) {
     else return 0;
 }
 
-int query_max_hp() 
-{ 
-    return player_data["general"]["max_hp"]; 
+int query_max_hp()
+{
+    return player_data["general"]["max_hp"];
 }
 
 int query_max_sdc() { return player_data["general"]["max_sdc"]; }
@@ -424,7 +424,7 @@ string equip_weapon_to_limb(object weap, string limb1, string limb2) {
 	    return "You are wielding something with your "+limb2+".\n";
 	if(member_array("shield", body[limb2]["armour"]) != -1)
 	    return "You cannot wield a weapon where you wear a shield.\n";
-	if(!body[limb2]["wieldable"]) 
+	if(!body[limb2]["wieldable"])
 	    return "You cannot wield anything with your "+limb2+".\n";
 	i = sizeof(limbs);
 	while(i--)
@@ -490,9 +490,9 @@ string type_ok(string type, string limb) {
     case "ring":
 	i = 0;
 	x = sizeof(body[limb]["armour"]);
-	while(x--) 
+	while(x--)
 	    if(body[limb]["armour"][x] == "ring") i++;
-	if(i > all_my_fingers-1) 
+	if(i > all_my_fingers-1)
 	    return "You do not have that many fingers on your "+limb+".\n";
 	else return 0;
 	break;
@@ -578,7 +578,7 @@ string *query_wielding_limbs() {
     tmp = ({});
 
     for(i=0; i<sizeof(limbs); i++) {
-	if(body[limbs[i]]["wieldable"]) 
+	if(body[limbs[i]]["wieldable"])
 	    tmp += ({ limbs[i] });
     }
     return tmp;
@@ -640,9 +640,9 @@ void init_complex_body() {
 void heal(int x) {
     int i;
 
-    if(!player_data) 
+    if(!player_data)
         init_player_data();
-    if(!player_data["general"]) 
+    if(!player_data["general"])
         init_general();
     if(player_data["general"]["hp"] < 1) return;
     if(x < 0 && player_data["general"]["hp"] + x <= 0)
@@ -671,7 +671,7 @@ void heal_limb(string str, int x) {
 	    this_object());
 	body[str]["crippled"] = 0;
 	uncripple(str);
-    }	
+    }
 }
 
 void uncripple(string limb) {
@@ -688,7 +688,7 @@ void uncripple(string limb) {
 	if(body[tmp[j]]["limb_ref"] == limb) flag = 1;
     if(flag) { this_object()->add_stat_bonus("dexterity",10);
 	return; }
-    if(!flag && !body[limb]["wieldable"] && 
+    if(!flag && !body[limb]["wieldable"] &&
 	body[limb]["limb_ref"] != "FATAL")
 	this_object()->add_stat_bonus("strength",10);
     body[limb]["crippled"] = 0;
@@ -816,16 +816,6 @@ if(body[limb]["damage"] > 2*body[limb]["max_dam"] ||
 return 1;
 }
 
-void add_kill(string str) {
-    int x;
-
-    if(!str) return;
-    if(!player_data["kills"]) player_data["kills"] = ({});
-    if(member_array((x=(int)PLAYER_D->add_kill(str)), player_data["kills"]) !=
-      -1 || x== -1) return;
-    player_data["kills"] += ({ x });
-}
-
 int *query_kills() { return player_data["kills"]; }
 
 void add_death(string str) {
@@ -857,7 +847,7 @@ string sub_limb(string str) {
 	if(member_array(nix[i], words) >= 0) {
 	    for(k=0;k<sizeof(limbs);k++) {
 		l = sizeof(LIMB_NICKS[nix[i]]);
-		if(sizeof(words) == 1 && member_array(words[0], 
+		if(sizeof(words) == 1 && member_array(words[0],
 		    explode(limbs[k]," ")) >= 0)
 		    return limbs[k];
 		while(l--)

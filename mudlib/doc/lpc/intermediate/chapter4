@@ -12,7 +12,7 @@ you should well understand how the driver interacts with the mudlib and
 be able to code objects which use call outs and heart beats.  In addition,
 you should be coding simple objects which use mappings and arrays,
 noting how these data types perform in objects.  It is also a good idea to
-start looking in detail at the actual mudlib code that makes up your mud. 
+start looking in detail at the actual mudlib code that makes up your mud.
 See if you understand everything which is going on in your mudlibs
 room and monster codes.  For things you do not understand, ask the
 people on your mud designated to answer creator coding questions.
@@ -23,7 +23,7 @@ LPC drivers, LPC drivers interpret the LPC code written by creators
 rather than compile it into binary format.  Nevertheless, the LPC pre-
 compiler functions still perform much like pre-compilers for compiled
 languages in that pre-compiler directives are interpreted before the driver
-even starts to look at object code. 
+even starts to look at object code.
 
 4.2 Pre-compiler Directives
 If you do not know what a pre-compiler is, you really do not need to
@@ -35,7 +35,7 @@ exists as an object and before any LPC functions or instructions are ever
 examined.  The pre-compiler is thus working at the file level, meaning
 that it does not deal with any code in inherited files.
 
-The pre-compiler searches a file sent to it for pre-compiler directives. 
+The pre-compiler searches a file sent to it for pre-compiler directives.
 These are little instructions in the file meant only for the pre-compiler
 and are not really part of the LPC language.  A pre-compiler directive is
 any line in a file beginning with a pound (#) sign.  Pre-compiler
@@ -62,13 +62,13 @@ The first pair of directives are:
 #undefine
 
 The #define directive sets up a set of characters which will be replaced
-any where they exist in the code at precompiler time with their definition. 
+any where they exist in the code at precompiler time with their definition.
 For example, take:
 
 #define OB_USER "/std/user"
 
 This directive has the pre-compiler search the entire file for instances of
-OB_USER.  Everywhere it sees OB_USER, it replaces with "/std/user". 
+OB_USER.  Everywhere it sees OB_USER, it replaces with "/std/user".
 Note that it does not make OB_USER a variable in the code.  The LPC
 interpreter never sees the OB_USER label.  As stated above, the pre-
 compiler is a process which takes place before code interpretation.  So
@@ -97,7 +97,7 @@ value follows.  This is called a binary definition.  For example:
 exists in the config file for the Nightmare Mudlib.  This allows for pre-
 compiler tests which will be described later in the chapter.
 
-The other pre-compiler directive you are likely to use often is #include. 
+The other pre-compiler directive you are likely to use often is #include.
 As the name implies, #include includes the contents of another file right
 into the file being pre-compiled at the point in the file where the directive
 is placed.  Files made for inclusion into other files are often called header
@@ -145,14 +145,14 @@ following:
 which after being passed through the pre-compiler will appear to the
 interpreter as:
 
-    map_delete(map, key);   
+    map_delete(map, key);
 
 on a MudOS mud, and:
-  
+
     map = m_delete(map, key);
 
 on other muds.  The interpreter never sees the function call that would
-cause it to spam out in error. 
+cause it to spam out in error.
 
 Notice that my example made use of a binary definition as described
 above.  Binary definitions allow you to pass certain code to the
@@ -164,9 +164,9 @@ The pre-compiler is a useful LPC tool for maintaining modularity among
 your programs.  When you have values that might be subject to change,
 but are used widely throughout your files, you might stick all of those
 values in a header file as #define statements so that any need to make a
-future change will cause you to need to change just the #define directive. 
+future change will cause you to need to change just the #define directive.
 A very good example of where this would be useful would be a header
-file called money.h  which includes the directive:
+file called std.h  which includes the directive:
 #define HARD_CURRENCIES ({ "gold", "platinum", "silver",
 "electrum", "copper" })
 so that if ever you wanted to add a new hard currency, you only need

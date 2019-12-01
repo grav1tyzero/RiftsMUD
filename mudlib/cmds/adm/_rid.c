@@ -2,11 +2,10 @@
 //      from the Nightmare mudlib
 //      the administrators command to get rid of players
 //      created by Descartes of Borg 01 March 1993
-                     
+
 #include <std.h>
 #include <daemons.h>
 #include <security.h>
-#include <bank.h>
 #include <dirs.h>
 
 inherit DAEMON;
@@ -27,7 +26,7 @@ int cmd_rid(string str) {
         notify_fail("Syntax: <rid [player]>\n");
         return 0;
     }
-    str = lower_case(str);                                         
+    str = lower_case(str);
     if(member_group(str, "superuser")) {
         notify_fail("Shyeah...NOT.\n");
         return 0;

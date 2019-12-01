@@ -109,3 +109,115 @@ Loading preload files ...
 Accepting connections on 0.0.0.0:7878.
 Initializations complete.
 
+
+Error in object: /adm/daemon/astronomy_d (Sun Dec  1 02:41:19 2019)
+> *Array index must be positive or zero.
+
+File: /adm/daemon/astronomy_d.c      line 92
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   cmd_hook() in /std/user#2
+     Program: /std/living.c
+     File:                /std/living.c line 156
+
+2:   cmd_look() in /cmds/mortal/_look
+     Program: /cmds/mortal/_look.c
+     File:         /cmds/mortal/_look.c line 23
+
+3:   examine_object() in /cmds/mortal/_look
+     Program: /cmds/mortal/_look.c
+     File:         /cmds/mortal/_look.c line 35
+
+4:   <fake>() in /d/damned/virtual/room_15_15.world
+     Program: /<driver>
+     File:                      /(fake) line 0
+
+5:   la_sky() in /adm/daemon/astronomy_d
+     Program: /adm/daemon/astronomy_d.c
+     File:    /adm/daemon/astronomy_d.c line 92
+
+
+Error in object: /adm/daemon/astronomy_d (Sun Dec  1 02:43:35 2019)
+> *Array index must be positive or zero.
+
+File: /adm/daemon/astronomy_d.c      line 92
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   cmd_hook() in /std/user#2
+     Program: /std/living.c
+     File:                /std/living.c line 156
+
+2:   cmd_look() in /cmds/mortal/_look
+     Program: /cmds/mortal/_look.c
+     File:         /cmds/mortal/_look.c line 23
+
+3:   examine_object() in /cmds/mortal/_look
+     Program: /cmds/mortal/_look.c
+     File:         /cmds/mortal/_look.c line 35
+
+4:   <fake>() in /d/damned/virtual/room_15_15.world
+     Program: /<driver>
+     File:                      /(fake) line 0
+
+5:   la_sky() in /adm/daemon/astronomy_d
+     Program: /adm/daemon/astronomy_d.c
+     File:    /adm/daemon/astronomy_d.c line 92
+
+
+Error in object: /adm/daemon/astronomy_d (Sun Dec  1 02:43:54 2019)
+> *Array index must be positive or zero.
+
+File: /adm/daemon/astronomy_d.c      line 69
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   cmd_hook() in /std/user#2
+     Program: /std/living.c
+     File:                /std/living.c line 156
+
+2:   cmd_look() in /cmds/mortal/_look
+     Program: /cmds/mortal/_look.c
+     File:         /cmds/mortal/_look.c line 23
+
+3:   examine_object() in /cmds/mortal/_look
+     Program: /cmds/mortal/_look.c
+     File:         /cmds/mortal/_look.c line 35
+
+4:   <fake>() in /d/damned/virtual/room_15_15.world
+     Program: /<driver>
+     File:                      /(fake) line 0
+
+5:   la_sky() in /adm/daemon/astronomy_d
+     Program: /adm/daemon/astronomy_d.c
+     File:    /adm/daemon/astronomy_d.c line 69
+
+
+Error in object: /std/user#2 (Sun Dec  1 02:55:58 2019)
+> *Can't move object inside itself.
+
+File: /std/move.c                    line 73
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   cmd_hook() in /std/user#2
+     Program: /std/living.c
+     File:                /std/living.c line 156
+
+2:   cmd_goin() in /cmds/creator/_goin
+     Program: /cmds/creator/_goin.c
+     File:        /cmds/creator/_goin.c line 59
+
+3:   move_player() in /std/user#2
+     Program: /std/user.c
+     File:                  /std/user.c line 257
+
+4:   move() in /std/user#2
+     Program: /std/Object.c
+     File:                /std/Object.c line 553
+
+5:   move() in /std/user#2
+     Program: /std/move.c
+     File:                  /std/move.c line 73
+

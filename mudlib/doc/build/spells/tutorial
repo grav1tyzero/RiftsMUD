@@ -48,25 +48,7 @@ set_property("base mp cost", int cost);
 This is the magic points cost of the spell.  It may be modified by certain
 things.
 
-set_property("spell level",int level);
-This is the default level at which a spell becomes available to a player.
 
-set_property("dev cost", int cost);
-This is the amount of dev points a character must spend to gain one power
-level of the spell.  Each spell has six power levels and a character gets
-between 40-70 dev points times his level each time he advances (newbies will
-get 40-70, etc.)  This cost should probably mnot be over
-twenty to thirty even for powerful spells.  Newbie spells 3-10.
-NOTE: dev cost is CUMULATIVE.  The cost to advance to level 2 is twice
-level one, etc.
-
-set_property("moon", string moon);
-Every spell in DarkeMUD is governed by a moon.  There are three moons in
-DarkeMUD:
-warzau - which governs attack and combat related spells.
-ankh - which governs healing and protection.
-luna - which governs just about everything else.
-Set the moon to one of these.
 
 NOTE: for the following messages, these variables may be used:
 $C - caster's name inserted (not for caster message)
@@ -86,9 +68,6 @@ set_property("target observer message", string message);
 If the spell can be cast on someone outside the room of the caster, this is
 what observers in the target's room see.
 
-set_property("fumble message", string message);
-This is what a player upon whom the spell is fumbled sees.
-
 set_property("duration", "permanent" | int duration);
 "permanent" makes the spell permanent, a number makes the spell last for
 that many seconds.  Damage and healing spells do not need durations.
@@ -98,18 +77,6 @@ OPTIONAL SETS:
 set_property("combat spell", 1);
 This will cause whoever the spell is cast at to enter combat with the
 caster.
-
-set_property("can resist", 1);
-Set to one if the spell can be saved against.
-Set to 2 if the save will only half the effect of the spell.  This only applies
-to spells with numerical results like damage etc.
-Note that healing and area healing spells may be saved against!
-
-set_property("save mod", string stat);
-If you want one of the player stats: strength, dexterity, etc, to
-modify the saving throw, set this property to that stat...you must spell
-out the whole stat, it doesn't like dex, wis, etc.  This is not valid
-if you do not set "can resist" to 1.
 
 set_property("no target", int flag);
 Set flag to 1 if the spell is not cast at anything.
@@ -127,36 +94,6 @@ stat mod - modifies permantly or temporarily a player or monster stat
 skill mod - same for skills.
 More are on the way, like protection for instance.
 
-set_property("damage types", ([ "type1" : amount, "type2" : amount, etc ]));
-This is only used for damage and area damage spells.  See 'help 
-damage_types' for valid damage types.  "type1" etc is the damage type
-and amount is a badassness of that damage type roughly on the same scale
-as weapon class.  This weapon class is also multiplied by the power
-level of the spell, remember.
-
-set_property("damage multiplier", float x | int i);
-This is an optional variable which may be set for damage spells.
-Normally, a damage spell will not do much more damage than a hit from
-a regular weapon (multiplied by the power 1-6, of course), but it is
-often desirable for damage spells to be much more effective than a
-single weapon hit.  The multiplier multiplies the damage done by the
-spell.  Integers and floating points are supported.
-
-set_property("heal dice",string dice);
-dice is of the form "<dice>D<sides>" like "3D6", which simulates
-rolling 3 6-sided dice.  Remember to put a 1 for the amount of dice
-if it is only one..."D6" is BAD, "1D6" is GOOD.  Remember again, this is
-the hp healed PER POWER LEVEL.
-
-set_property("stat dice", string dice);
-Works just like heal dice, except its for stat mod spells.
-
-set_property("stats",({ "stat1", "stat2", etc. }))
-Sets the different stats which are modified by the stat mod spell.
-
-set_property("skill dice", string dice);
-Works just like heal dice, except for skill mod spells.
-
 set_property("skills",({ "skill1", "skill2", etc. }));
 Sets which skills are modified by the spell.
 ----------------------------------------------------------
@@ -167,7 +104,7 @@ write("This spell does this and this and this");
 }
 
 -------------------------------------------------------------
-Okay, if you wanna make a nonstandard spell, you need to define a 
+Okay, if you wanna make a nonstandard spell, you need to define a
 function in your spell file called spell_func like this:
 
 void spell_func(object caster, object at, int power, string args, int flag) {

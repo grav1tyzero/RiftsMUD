@@ -24,9 +24,9 @@ int cmd_biography(string str) {
       " "+(byear ? (byear<0 ? (-byear)+" BN.\n" : byear+" NM.\n") : " of the null year.\n");
     if(!(oh = (mixed *)this_player()->query_current_marriage()))
       borg += "You are currently single.\n\n";
-    else if(!oh[1]) 
+    else if(!oh[1])
       borg += "You married "+capitalize(oh[0])+" on a forgotten date.\n\n";
-    else 
+    else
       borg += "You married "+capitalize(oh[0])+" on "+month(oh[1])+" "+
         date(oh[1])+", "+year(oh[1])+".\n\n";
     if(!sizeof(minis = (mapping)this_player()->query_mini_quest_map()))
@@ -34,22 +34,13 @@ int cmd_biography(string str) {
     else {
       borg += "You have been rewarded for these great deeds:\n";
       i = sizeof(quests = keys(minis));
-      while(i--) {    
+      while(i--) {
         borg += date(minis[quests[i]][0])+" "+month(minis[quests[i]][0])+
           " "+year(minis[quests[i]][0])+" NM:\n"+minis[quests[i]][1];
         }
         borg += "\n";
     }
-    if(!(pk = (int *)this_player()->query_kills()) || !sizeof(pk))
-      borg += "\nNo kills.\n";
-    else {
-        for(i=0, kills = ({}), max = sizeof(pk); i<max; i++) {
-            if(pk[i] < 0) continue;
-            kills += ({ (string)PLAYER_D->query_monster(pk[i]) });
-        }
-        borg += "\nYou have brought doom to these beings:\n";
-        borg += format_page(kills, 4);
-    }
+
     if(!(deaths=(mixed *)this_player()->query_deaths()) ||
       !(max = sizeof(deaths)))
         borg += "\nYou have never experienced the pain of death.\n\n";

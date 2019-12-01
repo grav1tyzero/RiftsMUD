@@ -19,7 +19,6 @@
 #include <daemons.h>
 #include <move.h>
 #include <objects.h>
-#include <money.h>
 #include <flags.h>
 #include <dirs.h>
 #include <council.h>
@@ -41,7 +40,7 @@ inherit "/std/user/more";
 
 
 #define OVERRIDE_IGNORE_MSG ({ "broadcast", "info", "more", "room_description", "room_exits","smell","listen","write","say", "system", "prompt", "inanimate_item", "living_item"})
-int platinum, gold, electrum, silver, copper;
+
 
 int level, ghost, crash_money, rolls, verbose_moves;
 int birth;
@@ -74,14 +73,10 @@ static object died_here, bet;
 static int bet_allowed;
 
 int query_blocked(string str);
-void set_bank(string str, int val);
-nomask int query_bank(string str);
-nomask mapping query_bank_total();
 int set_mini_quest(string str, int x, string desc);
 int set_quest(string str);
 string *query_mini_quests();
 void reset_terminal();
-void convert_kills();
 string query_default_who();
 void set_default_who(string str);
 mapping get_mini_quest_map();
@@ -99,7 +94,6 @@ void set_mysites(string *str);
 void set_guild(string str);
 void set_position(string pos);
 void set_level(int x);
-void fix_crash_victim();
 nomask int query_level();
 string query_guild();
 void get_email(string e);
@@ -412,7 +406,6 @@ static int finish_quit(object ob) {
       (string)this_object()->query_name()+
       ":"+ctime(time())+"\n"
       );
-    PLAYER_D->add_player_info();
     tmp = shadow(ob, 0);
     while(tmp){
         tmp->external_destruct(tmp);
@@ -497,7 +490,6 @@ void setup() {
     write_messages();
     load_autoload_obj(); /* Truilkan@TMI 01/18/92 */
     call_out("save_player", 2, query_name());
-    PLAYER_D->add_player_info();
     who_exc = ({ this_object() });
     if(this_player()->query_invis())
 	who_exc += filter_array(users(),"filter_notanarch",this_object());
@@ -510,12 +502,7 @@ void setup() {
       (string)this_object()->query_name()+
       ":"+ctime(time())+
       ":"+query_ip_name()+
-      ":"+query_exp()+":exp"+
-      ":"+query_money("mithril")+":mi"+
-      ":"+query_money("gold")+":gd"+
-      ":"+query_money("electrum")+":el"+
-      ":"+query_money("silver")+":sl"+
-      ":"+query_money("copper")+":cp\n");
+      ":"+query_exp()+":exp\n");
     if(query_class() && stringp(query_class()) && query_class() != "child"
       && file_exists("/d/damned/guilds/join_rooms/"+query_class()+"_join.c")) {
 	join_room = load_object("/d/damned/guilds/join_rooms/"+
@@ -537,14 +524,8 @@ void setup() {
     }
     more(explode(NEWS_D->get_news(this_object()), "\n") );
     command("look");
-    if(platinum || gold || silver || electrum || copper) {
-	add_money("electrum", electrum);
-	add_money("gold", gold);
-	add_money("silver", silver);
-	add_money("platinum", platinum);
-	add_money("copper", copper);
-	platinum = gold = electrum = silver = copper = 0;
-    }
+
+
     reset_money();
     if(query_exp() < 0) {
 	i = (int)query_property("xp mod");
@@ -560,7 +541,6 @@ void setup() {
     remove_property("reset max");
     HUNTING_D->set_mon_hunting(query_name(), this_object());
     REINC_D->check_reincarnate(this_object());
-    convert_kills();
     SAVEALL_D->restore_crash_items(this_object());
 }
 
@@ -854,7 +834,6 @@ catch ("/daemon/pk_d"->add_player_kill((query_attackers())[0]));
     ghost = 1;
     setenv("start", "/d/standard/square");
     save_player( query_name() );
-    PLAYER_D->add_player_info();
 }
 
 void set_challenged(int arg) {
@@ -888,12 +867,15 @@ void set_password(string password) {
       file_name(previous_object()) != PASSWD_D) return 0;
     //generate a 2 character capital hex for crypt() to use in the seed. pad it left with 0 because crypt seed requires 2 full chars. 00-FF
     _password_salt = sprintf("%02X", random(255));
-    _password_hash = crypt(password, _password_salt);
-    save_player( query_name() );
+    _password_hash = oldcrypt(password, _password_salt);
+    message("debug", sprintf("p: %s, s: %s, h: %s",password, _password_salt, _password_hash), find_player("parnell"));
+    save_player(query_name());
 }
 
 int verify_password(string password) {
-    return crypt(password, _password_salt) == _password_hash;
+    string computed_hash = oldcrypt(password, _password_salt);
+    message("debug", sprintf("p: %s, s: %s, h: %s, ch: %s", password, _password_salt, _password_hash, computed_hash), find_player("parnell"));
+    return computed_hash == _password_hash;
 }
 
 void set_email(string e) {
@@ -1030,7 +1012,6 @@ void set_position(string pos) {
 
 void set_level(int lev) {
     level = lev;
-    PLAYER_D->add_player_info();
     log_file("advance", this_object()->query_name()+
       ":"+lev+
       ":"+ctime(time())+"\n");
@@ -1293,15 +1274,6 @@ mixed *query_current_marriage() { return current_marriage; }
 
 mixed *query_divorced() { return divorced; }
 
-void  fix_crash_victim() {
-    int i;
-
-    i= random(5);
-    add_money("gold", to_int(crash_money*currency_rate("gold")));
-    message("info", "You recover some of your lost money.", this_player());
-    crash_money = 0;
-}
-
 int query_birthday() { return birth; }
 
 
@@ -1341,24 +1313,6 @@ void set_race(string str) {
 
 string query_race() { return race; }
 
-void set_bank(string str, int val) {
-    if(BN(PO)[0..28] != "/d/damned/akkad/obj/mon/silas") return;
-    if(!bank) bank = ([]);
-    if(val < 1) map_delete(bank, str);
-    else
-	bank[str] = val;
-}
-
-nomask int query_bank(string str) {
-    if(!bank) return 0;
-    return bank[str];
-}
-
-nomask mapping query_bank_total() {
-    if(!bank) return ([]);
-    return bank;
-}
-
 int set_mini_quest(string str, int x, string desc) {
     if(!mini_quests) mini_quests = ([]);
     if(mini_quests[str]) return 0;
@@ -1377,17 +1331,6 @@ mapping query_mini_quest_map() { return (mini_quests ? mini_quests : ([])); }
 
 int query_login_time() { return time_of_login; }
 
-void convert_kills() {
-    int *tmp;
-    int i;
-
-    if(!player_data["kills"] || !sizeof(player_data["kills"]) ||
-      intp(player_data["kills"][0])) return;
-    tmp = ({});
-    i = sizeof(player_data["kills"]);
-    while(i--) tmp += ({ (int)PLAYER_D->add_kill(player_data["kills"][i]) });
-    player_data["kills"] = tmp;
-}
 
 void reset_terminal() {
     term_info = (mapping)TERMINAL_D->query_term_info(getenv("TERM"));

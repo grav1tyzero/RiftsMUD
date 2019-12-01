@@ -5,7 +5,6 @@
 //      rewritten by Descartes 931108
 
 #include <std.h>
-#include <money.h>
 
 #define MAX_ITEMS 75
 
@@ -51,7 +50,7 @@ int __Buy(string str) {
         this_object()->force_me("speak Buy what?");
         return 1;
     }
-    if(!(ob = present(str, __Eco["storage object"])) && 
+    if(!(ob = present(str, __Eco["storage object"])) &&
       !(ob = parse_objects(__Eco["storage object"]))) {
         this_object()->force_me("speak I have nothing like that to sell.");
         return 1;
@@ -181,7 +180,7 @@ int __List(string str) {
       this_object()->force_me("speak I have nothing to sell right now.");
       return 1;
     }
-    i = sizeof(inv = filter_array(all_inventory(__Eco["storage object"]), 
+    i = sizeof(inv = filter_array(all_inventory(__Eco["storage object"]),
       "filter_list", this_object(), str));
     if(!i) {
         this_object()->force_me("speak I have nothing like that to sell.");
@@ -310,7 +309,7 @@ static int __SellAll() {
         message("my_action", "You sell "+(string)inv[i]->query_short()+".",
           this_player());
         message("other_action", (string)this_player()->query_cap_name()+
-          " sells "+(string)inv[i]->query_short()+".", 
+          " sells "+(string)inv[i]->query_short()+".",
           environment(this_object()), ({ this_player() }));
         if(inv[i]->query_destroy()) inv[i]->remove();
         else if(__AlreadyThere(inv[i])) inv[i]->remove();
@@ -347,7 +346,7 @@ static int __AlreadyThere(object ob) {
     int i;
 
     if(!(i = sizeof(inv = all_inventory(__Eco["storage object"])))) return 0;
-    while(i--) 
+    while(i--)
       if((string)inv[i]->query_short() == (string)ob->query_short()) return 1;
     return 0;
 }
@@ -366,7 +365,7 @@ static int __CheckDiscrimination() {
         return 0;
     }
     if(__Discriminate["language"] && i = sizeof(__Discriminate["language"])) {
-        while(i--) 
+        while(i--)
           if(x < (tmp = (int)this_player()->query_lang_prof(
             __Discriminate["language"][i]))) x = tmp;
         if(!x) {
@@ -392,7 +391,7 @@ varargs void set_currency(string str, float wert) {
 
 void set_discriminate(string who, string *which) { __Discriminate[who]=which; }
 
-void set_storage_room(string str) { 
+void set_storage_room(string str) {
     __Eco["storage object"] =load_object(__Eco["storage file"] = str);
 }
 

@@ -1,6 +1,5 @@
 #include <std.h>
 #include <security.h>
-#include <bank.h>
 #include <dirs.h>
 
 inherit DAEMON;

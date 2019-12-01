@@ -66,11 +66,12 @@ void la_sky(string str) {
     tod = (string)EVENTS_D->query_time_of_day();
     phase = allocate(i=sizeof(MOONS));
     while(i--)
-    phase[i] = query_phase_name(query_phase(MOONS[i]));
+      phase[i] = query_phase_name(query_phase(MOONS[i]));
+
     switch(str) {
         case "sun":
           switch(tod) {
-            case "dawn": 
+            case "dawn":
               write("The sun is hanging low in the dawning eastern sky.\n");
               break;
             case "day":
@@ -89,8 +90,8 @@ void la_sky(string str) {
             write(DEFAULT_MSG);
           else {
               write("The sky is dark with night.\n");
-            if(phase[0] != "new") 
-              write("There is a "+MOON_DESC[0]+".\n");
+            if(phase[0] != "new")
+              write(sprintf("There is a %s %s.\n", phase[0], MOON_DESC[0]));
           }
           break;
         case "sky":
@@ -111,9 +112,9 @@ void la_sky(string str) {
                 write("The night time sky is moonless and dark.\n");
               else {
                 write("The sky is darkened with night.\n");
-                if(phase[0] != "new") 
+                if(phase[0] != "new")
                   write("There is a "+MOON_DESC[0]+" in the sky.\n");
-                
+
               }
               break;
           }
@@ -136,6 +137,6 @@ void la_sky(string str) {
             else write("The "+phase[0]+" "+MOON_DESC[0]+" is hovering in the night time sky.\n");
           }
           break;
-	
+
     }
 }

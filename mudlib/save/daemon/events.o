@@ -1,2 +1,2 @@
 #/daemon/events_d.c
-__Events (["/daemon/events_d":(["regular":0,"args":({}),"time":1575158287,"function":"change_sky",]),"/adm/daemon/wizchar_d":(["regular":32400,"args":({}),"time":1575166381,"function":"output_log",]),])
+__Events (["/daemon/events_d":(["regular":0,"args":({}),"time":1575174271,"function":"change_sky",]),"/adm/daemon/wizchar_d":(["regular":32400,"args":({}),"time":1575198796,"function":"output_log",]),])
