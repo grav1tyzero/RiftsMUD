@@ -1,47 +1,33 @@
 // Language daemon create by Valodin as an experimental racial language
 // reference
+// revamped by Parnell 2019 - Rifts doesn't use race as a language consideration
 inherit DAEMON;
-mapping language_list;
+string * language_list;
 
 void create()
 {
   ::create();
-  language_list = (["human":"american"]);
+  language_list = ({"american",
+  "techno-can",
+  "spanish",
+  "japanese",
+  "chinese",
+  "euro",
+  "dragonese",
+  "gobblely",
+  "faerie"
+  });
 }
 
 void init_languages(object ob)
 {
-  string race, tmp;
-  int prof;
-
-  race = ob->query_race();
-  prof = 10;
-  if(sscanf(race, "half-%s", tmp) == 1)
-  {
-    race = tmp;
-    ob->set_lang_prof(language_list["human"], 6);
-    prof = 6;
-  }
-  if(tmp = language_list[race])
-  {
-    ob->set_lang_prof(tmp, prof);
-    ob->set_primary_lang(tmp);
-    return;
-  }
-  else
-  {
-    ob->set_lang_prof(race + "ish", prof);
-    ob->set_primary_lang(race + "ish");
-    return;
-  }
+  //TODO: setup some sort of region/race combination of things
+  ob->set_lang_prof("american", 88,1);
+  ob->set_primary_lang("american");
 }
 
 string *all_languages()
 {
-  return values(language_list);
+  return language_list;
 }
 
-string *all_races()
-{
-  return keys(language_list);
-}

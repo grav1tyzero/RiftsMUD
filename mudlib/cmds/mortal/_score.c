@@ -196,7 +196,7 @@ inherit DAEMON;
 
 			      message("Ninfo", "%^BLUE%^ Level: %^RESET%^" + sprintf("%-15s", attrib[0]) + "%^BLUE%^|%^RESET%^" + "                   " + "%^BLUE%^|%^GREEN%^          WEALTH\n", tp);
 
-			      message("Ninfo", "%^BLUE%^  Race: %^RESET%^" + sprintf("%-15s", attrib[1]) + "%^BLUE%^|%^RESET%^" +  "                   " + "%^BLUE%^|%^RESET%^     Credits:  " + sprintf("%11i\n", op->query_money("credits")), tp);
+			      message("Ninfo", "%^BLUE%^  Race: %^RESET%^" + sprintf("%-15s", attrib[1]) + "%^BLUE%^|%^RESET%^" +  "                   " + "%^BLUE%^|%^RESET%^" + sprintf("%12s:  %11i\n","Credits", op->query_money("credits")), tp);
 
 			      message("Ninfo", "%^BLUE%^   Age: %^RESET%^" + sprintf("%-15s", attrib[2]) + "%^BLUE%^|%^RESET%^" + "                   " + "%^BLUE%^|%^RESET%^\n", tp);
 

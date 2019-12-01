@@ -38,10 +38,7 @@ int cmd_reincarnate(string str) {
   who->remove_property("sp skills");
   who->remove_property("sp spells");
   who->reset_quests();
-  langs = (string *)who->query_all_languages();
-  if(langs && pointerp(langs) && (i=sizeof(langs))) {
-    while(i--) who->remove_language(langs[i]);
-  }
+
   inv = filter_array(all_inventory(who), (: call_other :),
     "query_auto_load");
   if(inv && sizeof(inv))

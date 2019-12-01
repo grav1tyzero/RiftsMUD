@@ -7,86 +7,83 @@
 #include <std.h>
 #include <daemons.h>
 
-#define FLUBS ({ "something", "womble", "blarg", "cabbage", "blurgle", "jello", "bing", "migrated", "yellow hephalumps", "furry" })
-#define FLUBNUM 10
 inherit DAEMON;
+#define FLUENT 10
+#define NO_SKILL 0
 
 void speak(string lang, string str, int prof);
 void tell_em(string str, object *ob);
 mapping make_speakers(object *ob, string lang);
-mapping make_speech(mapping speakers, string str, int prof);
+mapping make_speech(int* prof_keys, string str);
 
 int cmd_say(string str)
 {
-   string tmp, lang;
-   int prof;
+  string tmp, lang;
+  int prof;
 
-   if(!str)
-   {
-     write("Speak what?\n");
-     return 1;
-   }
+  if (!str)
+  {
+    return notify_fail("Speak what?\n");
+  }
 
-     if(!(lang = this_player()->query_primary_lang()))
-     {
-       write("You need to visit the sage to get your languages fixed.\n");
-       return 1;
-     }
-     else
-       speak(lang, str, (int)this_player()->query_lang_prof(lang));
-   return 1;
+  if (!(lang = this_player()->query_primary_lang()))
+  {
+    return notify_fail("You need to visit the sage to get your languages fixed.\n");
+    ;
+  }
+  else
+    speak(lang, str, (int)this_player()->query_lang_prof(lang));
+  return 1;
 }
 
 void speak(string lang, string str, int prof)
 {
-   object *speakers;
-   mapping speech;
-   string cap_name, cap_lang, foo;
-   int i, k;
+  object *speakers;
+  mapping speaker_map;
+  mapping speech;
+  int *prof_keys;
+  string cap_name, cap_lang, foo;
+  int k;
 
-if(this_player() && environment(this_player()))
-   speakers = all_inventory(environment(this_player()));
-else speakers = ({});
-   speakers -= ({ this_player() });
-   speakers = filter_array(speakers, "is_living", this_object());
-  if(this_player()->is_player()) foo = "";
-  else foo = "\n";
-   if(prof != 10)
-    str = translate(str, prof);
-   cap_lang = capitalize(lang);
-   write("You say in " + cap_lang + ": " + str);
-   speech = make_speakers(speakers, lang);
-   speech = make_speech(speech, str, prof);
-   cap_name = this_player()->query_cap_name();
-   if(speech[10])
-     tell_em(foo+cap_name + " says in " + cap_lang + ": " + str, speech[10]);
-   if(speech[0]) {
-     tell_em(foo+cap_name + " says something in " + cap_lang + ".", speech[0]);
-     i = sizeof(speech[0]);
-     while(i--)
-	if(speech[0][i]->is_player()) speech[0][i]->learn_language(lang,
-	    random(4));
-   }
-   for(i = 1; i < 10; i++)
-     if(speech[i]) {
-       tell_em(foo+cap_name + " says in " + cap_lang + ": " + 
-	       speech["messages"][i], speech[i]);
-       k = sizeof(speech[i]);
-       while(k--)
-	if(speech[i][k]->is_player()) speech[i][k]->learn_language(lang,
-	    random(25));
-   }	
+  if (this_player() && environment(this_player()))
+    speakers = all_inventory(environment(this_player()));
+  else
+    speakers = ({});
+  speakers -= ({this_player()});
+  speakers = filter_array(speakers, "is_living", this_object());
+  if (this_player()->is_player())
+    foo = "";
+  else
+    foo = "\n";
+  str = translate(str, prof);
+  cap_lang = capitalize(lang);
+  write(sprintf("You say in %s: %s",cap_lang,str));
+  speaker_map = make_speakers(speakers, lang);
+  write(sprintf("make_speakers speech %O speakers %O", speech, speakers));
+  prof_keys = keys(speaker_map);
+  speech = make_speech(prof_keys, str);
+  write(sprintf("make_speech %O", speech));
+  cap_name = this_player()->query_cap_name();
+
+  for (int i = 0; i < sizeof(prof_keys); i++) {
+      if(prof_keys[i] == NO_SKILL)
+        tell_em(foo + cap_name + " says something in " + cap_lang + ".", speaker_map[prof_keys[i]]);
+      else if (prof_keys[i] == FLUENT)
+        tell_em(foo + cap_name + " says in " + cap_lang + ": " + str, speaker_map[prof_keys[i]]);
+      else
+        tell_em(sprintf("%s %s says in %s: %s",foo,cap_name,cap_lang,speech[prof_keys[i]]), speaker_map[prof_keys[i]]);
+  }
+
 }
 
 int is_living(object ob)
 {
-   return living(ob);
+  return living(ob);
 }
 
 void tell_em(string str, object *ob)
 {
-
-    message("talk", str, ob);
+  message("talk", str, ob);
 }
 
 mapping make_speakers(object *ob, string lang)
@@ -95,36 +92,35 @@ mapping make_speakers(object *ob, string lang)
   int i, obsz, z;
 
   speakers = ([]);
-  for(i = 0, obsz = sizeof(ob); i < obsz; i++)
+  for (i = 0, obsz = sizeof(ob); i < obsz; i++)
   {
     z = ob[i]->query_lang_prof(lang);
-    if(!speakers[z])
-      speakers[z] = ({ ob[i] });
+    if (!speakers[z])
+      speakers[z] = ({ob[i]});
     else
-      speakers[z] += ({ ob[i] });
+      speakers[z] += ({ob[i]});
   }
   return speakers;
 }
 
-mapping make_speech(mapping speakers, string str, int prof)
+mapping make_speech(int * profs, string str)
 {
-  int i;
+  mapping speech;
 
-  speakers["messages"] = ([]);
-  for(i = 1; i < 10; i++)
-    if(speakers[i])
-      speakers["messages"][i] = translate(str, i);
-  return speakers;
+  speech = ([]);
+  for (int i = 0; i < sizeof(profs); i++)
+    speech[profs[i]] = translate(str, profs[i]);
+  return speech;
 }
 
 int help()
 {
-write("Command: say\nSyntax: say <text>\n"
-      "        This allows you to speak in a language other than common. \n"
-       "       Only those around you who understand the language will see the real\n"
-       "       text.  The others will see parts of it based on theirspeaking\n"
-       "       ability.  If you have problems with languages, visit the sage and ask\n"
-       "       him to fix you.  \n"
-       "       NOTE: Use the 'speak' command to change your default language.");
-return 1;
+  write("Command: say\nSyntax: say <text>\n"
+        "        This allows you to speak in a language other than common. \n"
+        "       Only those around you who understand the language will see the real\n"
+        "       text.  The others will see parts of it based on theirspeaking\n"
+        "       ability.  If you have problems with languages, visit the sage and ask\n"
+        "       him to fix you.  \n"
+        "       NOTE: Use the 'speak' command to change your default language.");
+  return 1;
 }

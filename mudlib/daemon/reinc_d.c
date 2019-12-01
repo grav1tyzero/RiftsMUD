@@ -42,7 +42,7 @@ void check_reincarnate(object who) {
   int i = 0;
   string *langs;
   object *inv;
-  
+
   if(wizardp(who)) return;
   who->remove_property("checked out");
   if(!who->query_level() || (int)who->query_level() <= 1) {
@@ -62,10 +62,7 @@ void check_reincarnate(object who) {
     return;
   who->set_property("reincarnate", 1);
   who->init_spells();
-  langs = (string *)who->query_all_languages();
-  if(langs && pointerp(langs) && (i=sizeof(langs))) {
-    while(i--) who->remove_language(langs[i]);
-  }
+
   seteuid(UID_ROOT);
   who->reset_quests();
   seteuid(getuid());

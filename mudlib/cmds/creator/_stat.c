@@ -1,22 +1,21 @@
 #include <std.h>
 #include <str_fmt.h>
- 
+
 inherit DAEMON;
- 
+
 object ob;
- 
+
 void show_quests(object tp);
 void money_display();
 void stats_display();
 void skills_display();
 void spells_display();
-void language_display();
- 
+
 int cmd_stat(string str)
 {
    string name, title, class_str, race, married;
    int level, hp, max_hp, mp, max_mp, sp, max_sp, exp,sdc,max_sdc;
- 
+
    if(!str) {
       notify_fail("stat <living>\n");
       return 0;
@@ -45,9 +44,9 @@ int cmd_stat(string str)
    max_sdc = ob->query_max_sdc();
    mp = (int)ob->query_ppe();
    max_mp = (int)ob->query_max_ppe();
-   
+
    married = (string)ob->query_married();
- 
+
    if(!married) married = "none";
    if(!race) race = "undefined";
    if(!class_str) class_str = "none";
@@ -77,7 +76,7 @@ int cmd_stat(string str)
    write("------------------------------------------------------------------------");
 //   property_display();
    money_display();
-   language_display();
+
    stats_display();
    skills_display();
    if(ob->query_all_spells()) spells_display();
@@ -92,7 +91,7 @@ void property_display() {
 void show_quests(object tp) {
     string *quests;
     int i;
- 
+
     quests = (string *)tp->query_quests();    message("Nwrite", "quests: ", this_player());
     for(i=0; i<sizeof(quests); i++) {
         message("Nwrite", quests[i]+" ", this_player());
@@ -100,33 +99,12 @@ void show_quests(object tp) {
     message("Nwrite", "\n\n", this_player());
 }
 
-// added by Valodin to display language abilities, Aug. 27, 1993
-void language_display() {
-  string *langs,*list;
-  string ret;
-  int i,j, lsz;
-
-    seteuid(getuid());
-    langs = (string *)ob->query_all_languages();
-    if(!langs || !sizeof(langs))
-	return;
-    langs = sort_array(langs,"alphabetize",this_object());
-    list = ({});
-    for(i=0;i<sizeof(langs);i++) {
-		list += ({ sprintf("%-15s %2d     ",langs[i],
-		(int)ob->query_lang_prof(langs[i])) });
-    }
-    message("info","Languages:
-------------------------------------------------------------------------"
-	,this_player());
-    this_player()->more(explode(format_page(list, 3),"\n\n"));
-}
 
 void money_display() {
     string *currs;
     string borg;
     int i, tmp;
- 
+
     currs = (string *)ob->query_currencies();
     if((!currs || !sizeof(currs)) ) {
         message("info", "No money.", this_player());
@@ -142,7 +120,7 @@ void money_display() {
     message("info", borg, this_player());
     return;
 }
- 
+
 void skills_display() {
     string *skills, *list, which_skill, file, dev_str;
     int i;
@@ -180,28 +158,28 @@ void spells_display()
 	,this_player());
     this_player()->more(explode(format_page(list, 2),"\n"));
 }
- 
+
 void stats_display() {
     int i, stats_size;
     string *stats;
- 
+
     stats = ({ "iq", "me", "ma", "ps",
       "pp", "pe", "pb", "spd" });
     stats_size = sizeof(stats); /* speed patch by Val */
     for(i = 0; i < stats_size; i += 3) {
         message("Nwrite", arrange_string(stats[i], 13)+": ", this_player());
-        message("Nwrite", (int)ob->query_stats(stats[i])+"     ", 
+        message("Nwrite", (int)ob->query_stats(stats[i])+"     ",
                 this_player());
         if(i+1 >= stats_size) message("Nwrite", "\n", this_player());
         else {
-            message("Nwrite", arrange_string(stats[i+1], 13)+": ", 
+            message("Nwrite", arrange_string(stats[i+1], 13)+": ",
                     this_player());
-            message("Nwrite", (int)ob->query_stats(stats[i+1])+"     ", 
+            message("Nwrite", (int)ob->query_stats(stats[i+1])+"     ",
                     this_player());
         }
         if(i+2 >= stats_size) message("Nwrite", "\n", this_player());
         else {
-            message("Nwrite", arrange_string(stats[i+2], 13)+": ", 
+            message("Nwrite", arrange_string(stats[i+2], 13)+": ",
                     this_player());
             message("Nwrite", (int)ob->query_stats(stats[i+2])+"     ",
                     this_player());

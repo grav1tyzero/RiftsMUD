@@ -2,20 +2,20 @@
 //      from the Nightmare mudlib
 //      yells to adjacent rooms, good for muds who want to axe shout
 //      created by Descartes of Borg 20 april 1993
- 
+
 #include <std.h>
- 
+
 inherit DAEMON;
- 
+
 void do_yell(object env, string who, string str, string lang);
 mapping *yell_msg(object *who_l, string who, string str, string lang);
- 
+
 int cmd_yell(string str) {
     string *primary, *secondary, *tmp_arr;
     string char_arr, lang, temp;
     int i, j, tmp, tmp2, prof;
     object env;
- 
+
     if(this_player()->query_ghost()) {
         write("You howl pitifully.\n");
         say("You hear the howling of a ghost.\n");
@@ -36,8 +36,8 @@ int cmd_yell(string str) {
         notify_fail("Your voice does not travel far.\n");
         return 0;
     }
- 
-    
+
+
     log_file("shouts", this_player()->query_name()+" (yell): "+str+"\n");
     primary = (string *)env->query_destinations();
     if(this_player()->query_ansi()) write(magenta("You yell in "
@@ -74,12 +74,12 @@ int cmd_yell(string str) {
     }
     return 1;
 }
- 
+
 void do_yell(object env, string who, string str, string lang) {
     object *inv;
     int i, j, tmp;
     mapping *yell_map;
- 
+
     if(env->query_property("no shout")) return;
     inv = filter_array(all_inventory(env), "is_living", this_object());
     if(!str || str == "")
@@ -90,12 +90,6 @@ void do_yell(object env, string who, string str, string lang) {
     while(i--) {
 	if(!yell_map[i] || !mapp(yell_map[i])) continue;
 	message("shout",yell_map[i]["msg"],yell_map[i]["who"]);
-	if(i < 10) {
-	    j = sizeof(yell_map[i]["who"]);
-	    while(j--)
-		if(yell_map[i]["who"][j]->is_player())
-                    yell_map[i]["who"][j]->learn_language(lang, random(100));
-	}
     }
     return;
 }
@@ -134,7 +128,7 @@ mapping *yell_msg(object *who_l, string who, string str, string lang) {
     }
     return ret;
 }
- 
+
 void help() {
     write("Syntax: <yell (in [language]) [message]>\n\n"
         "It yells a message to surrounding rooms.\n"

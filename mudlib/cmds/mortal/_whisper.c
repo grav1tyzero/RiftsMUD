@@ -60,8 +60,6 @@ int cmd_whisper(string str) {
     tell_object(ob, "%^BOLD%^%^CYAN%^"+act_ob->query_cap_name()+
                               " whispers to you in "
 			      +capitalize(lang)+": %^RESET%^"+msg);
-  if(!prof) ob->learn_language(lang,random(5));
-    else if(prof < 10) ob->learn_language(lang, random(15));
   say("%^CYAN%^"+act_ob->query_cap_name() + " whispers something to " +
       ob->query_cap_name() + ".", ob);
   return 1;
@@ -69,7 +67,7 @@ int cmd_whisper(string str) {
 
 void help() {
   write("Syntax: <whisper [player] [message]>\n\n"+
-        "This command is used to whisper a message to another " 
+        "This command is used to whisper a message to another "
         "player who is in the same room as you without other "
         "players being able to hear what you are saying.\n"
         "See also: say, emote, yell\n");

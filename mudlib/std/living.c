@@ -29,9 +29,7 @@ static int login_flag;
 private string gender;
 mapping stats;
 static mapping stat_bonus;
-mapping languages;
-string primary_language;
-mapping language_exp;
+
 static int dev_rate_int;
 
 private int xp_to_next_dev;
@@ -456,93 +454,7 @@ int query_spiritual() { return spiritual; }
 
 int query_physical() { return physical; }
 
-string query_primary_lang() {
-    if(!primary_language && living(this_object()) &&
-      !this_object()->is_player()) return "common";
-    return primary_language;
-}
 
-void set_primary_lang(string str) { primary_language = str; }
-
-
-// language system added by Valodin in August 1993
-
-int query_lang_prof(string lang)
-{
-    if(wizardp(this_object())) return 10;
-    if(!languages)
-	return 0;
-    if(!languages[lang])
-	return 0;
-    return languages[lang];
-}
-
-int set_lang_prof(string lang, int i)
-{
-    if(!languages)
-	languages = ([]);
-    if(i > 10)
-	i = 10;
-    languages[lang] = i;
-    return languages[lang];
-}
-
-string *query_all_languages()
-{
-    if(!languages)
-	return ({});
-    return keys(languages);
-}
-
-int remove_language(string lang)
-{
-    if(!languages || !languages[lang])
-	return 0;
-    map_delete(languages, lang);
-    return 1;
-}
-
-
-// each mapping element is an array of two ints
-// The first is the number of language points amassed.  When this reaches
-// (lang_prof + 1) ^ 4, the language prof advances and the language points
-// are decreased.  The second number is the number of excess exp points
-// have been spent.  When exp is spent, it is converted to lang_pts based
-// on intelligence.  it takes (40 - int) exp pts to make one lang_pt
-// -Valodin
-
-void learn_language(string lang, int exp)
-{
-    int tot_exp, intel_fac;
-
-    if(lang == "coderish" && !wizardp(this_object()))
-	return;
-    if(mapp(languages) && languages[lang] >= 10) return;
-    if(!language_exp)
-	language_exp = ([]);
-    if(!language_exp[lang] || !pointerp(language_exp[lang]))
-	language_exp[lang] = ({ 0, 0});
-    tot_exp = (language_exp[lang][0] += exp);
-    intel_fac = (110 - query_stats("intelligence"));
-    if(intel_fac > 25) intel_fac = 20;
-    if(intel_fac <= 0) intel_fac = 5;
-    language_exp[lang][1] = tot_exp / intel_fac;
-    language_exp[lang][0] = tot_exp % intel_fac;
-    if(language_exp[lang][1] >= (to_int(pow(to_float(languages[lang]),1.1)) +1)) {
-	language_exp[lang][1] = 0;
-	languages[lang] += (languages[lang] >= 10)?0:1;
-    }
-    return;
-}
-
-int *query_lang_exp(string lang)
-{
-    if(!language_exp)
-	return ({ 0, 0 });
-    if(!language_exp[lang])
-	return ({ 0, 0});
-    return language_exp[lang];
-}
 
 void set_gender(string str) {
     if(str != "male" && str != "female" && str != "neuter") return;

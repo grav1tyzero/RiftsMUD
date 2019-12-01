@@ -10,6 +10,7 @@
 string char_class;
 mapping skills;
 mapping spells;
+string primary_language;
 
 void add_skill_points(string skill, int amount);
 void reduce_skill_points(string skill, int amount);
@@ -140,4 +141,43 @@ mapping query_skills() {
 string *query_all_spells() {
   if(mapp(spells)) return keys(spells);
   return ({});
+}
+
+string query_primary_lang() {
+    if(!primary_language && living(this_object()) &&
+      !this_object()->is_player()) return "american";
+    return primary_language;
+}
+
+void set_primary_lang(string str) { primary_language = str; }
+
+
+// language system added by Valodin in August 1993
+
+int query_lang_prof(string lang)
+{
+    int skill_value;
+    return this_object()->query_skill(sprintf("language: %s", lang));
+}
+
+varargs int set_lang_prof(string lang, int i, int per_level)
+{
+    set_skill(sprintf("language: %s", lang), i, per_level);
+}
+
+int is_language(string skill_name) {
+  string language;
+  return sscanf(skill_name, "language: %s", language) == 1;
+}
+
+string *query_all_languages()
+{
+    string *lang_skills = filter_array(query_all_skills(), "is_language");
+    string *langs = ({});
+    string language;
+    for(int i = 0; i < sizeof(lang_skills);i++) {
+      if(sscanf(lang_skills[i], "language: %s", language) == 1)
+        langs += ({ language });
+    }
+    return langs;
 }

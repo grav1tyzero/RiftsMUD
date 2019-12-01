@@ -19,7 +19,7 @@ int cmd_languages(string str)
     write("    ");
     return 1;
   }
-  write("Your primary language is " + 
+  write("Your primary language is " +
 	capitalize((string)this_player()->query_primary_lang()) + ".");
   for(i = 0; i < lsz; i++)
   {
@@ -27,24 +27,19 @@ int cmd_languages(string str)
     switch(prof)
       {
       case 0:
-	break;
-      case 1:
-      case 2:
-      case 3:
-      case 4:
-	write("You are just beginning to learn " + capitalize(langs[i]) + ".");
-	break;
-      case 5:
-      case 6:
-      case 7:
-	write("You are moderately skilled at " + capitalize(langs[i]) + ".");
-	break;
-      case 8:
-      case 9:
-	write("You are very skilled at " + capitalize(langs[i]) + ".");
-	break;
-      case 10:
-	write("You are fluent in " + capitalize(langs[i]) + ".");
+        break;
+      case 1..25:
+        write("You are just beginning to learn " + capitalize(langs[i]) + ".");
+        break;
+      case 26..50:
+        write("You are moderately skilled at " + capitalize(langs[i]) + ".");
+        break;
+      case 51..87:
+        write("You are very skilled at " + capitalize(langs[i]) + ".");
+        break;
+      default:
+        write("You are fluent in " + capitalize(langs[i]) + ".");
+        break;
       }
   }
   return 1;

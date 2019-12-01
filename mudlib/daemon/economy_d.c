@@ -25,7 +25,7 @@ void create() {
     }
     i = sizeof(borg = keys(Currencies));
     temps = percent(time()-LastInflation, YEAR)* 0.01;
-    while(i--) { 
+    while(i--) {
         tmp = temps * Currencies[borg[i]]["inflation"];
         if(intp(Currencies[borg[i]]["rate"]))
           Currencies[borg[i]]["rate"] = to_float(Currencies[borg[i]]["rate"]);
@@ -60,7 +60,7 @@ void change_currency(string type, string key, float x) {
 }
 
 float __Query(string type, string key) {
-    return Currencies[type][key]; 
+    return Currencies[type][key];
 }
 
 string *__QueryCurrencies() { return keys(Currencies); }
