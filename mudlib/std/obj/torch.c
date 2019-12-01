@@ -3,11 +3,11 @@
 //	created by Forlock
 //	motion checks added by Descartes of Borg 12 october 1992
 //	other fixes by Hanse 02 november 1992
- 
+
 #include <std.h>
 
 inherit OBJECT;
- 
+
 int lit, fuel, light_time;
 object shadow;
 
@@ -24,14 +24,14 @@ void create() {
     shadow = 0;
     set_property("no save", 1);
 }
- 
+
 
 void init() {
     add_action("extinguish", "douse");
     add_action("light","light");
     add_action("extinguish","extinguish");
 }
- 
+
 int light(string str) {
     if(effective_light(this_player()) < -2) {
 	notify_fail("It is too dark.\n");
@@ -55,12 +55,12 @@ int light(string str) {
     shadow = new("/std/spells/shadows/light_shad");
     shadow->set_light(2);
     shadow->start_shadow(environment());
-delayed_call("go_dark", fuel);
+call_out("go_dark", fuel);
     light_time = time();
     lit = 1;
     return 1;
 }
- 
+
 int extinguish(string str) {
     if(!str || present(str, this_player()) != this_object()) {
         notify_fail("Extinguish what?\n");
@@ -79,7 +79,7 @@ int extinguish(string str) {
     lit = 0;
     return 1;
 }
- 
+
 void go_dark() {
     if(shadow) shadow->external_destruct(shadow);
     fuel = 0;
@@ -91,15 +91,15 @@ void go_dark() {
     set_value(10);
     lit = 0;
 }
- 
+
 string query_short() {
     string str;
- 
+
     str = ::query_short();
     if(lit) str = str+ " (lit)";
     return str;
 }
- 
+
 int move(mixed dest) {
     int x;
      if(lit && shadow)

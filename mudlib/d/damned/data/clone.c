@@ -71,7 +71,7 @@ void spell_func(object caster, object at, int power, string args, int flag) {
   } else {
     caster->set("mirror action", ob);
     caster->set("has clone", 1);
-    delayed_call("expire_me", props["duration"]+3, caster);
+    call_out("expire_me", props["duration"]+3, caster);
   }
   remove();
   return;

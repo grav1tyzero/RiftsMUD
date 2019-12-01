@@ -23,13 +23,13 @@ void set_up(object who, int dur, int pow) {
   set_level((int)who->query_level());
   owner = who;
   my_hp = 2+random(pow+1);
-  delayed_call("wink_out", dur);
+  call_out("wink_out", dur);
   return;
 }
 
 varargs void heart_beat(int flag) {
   object att;
-  
+
   if(!owner) {
     wink_out();
     return;
@@ -75,7 +75,7 @@ void wink_out() {
   return;
 }
 
-  
+
 
 void add_exp(int x) {
   if(owner) owner->add_exp(x);

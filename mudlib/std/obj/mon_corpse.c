@@ -26,8 +26,8 @@ void init() {
 }
 
 varargs void preserve_me(int time) {
-  remove_delayed_call("decay");
-  if(time) delayed_call("decay", time);
+  remove_call_out("decay");
+  if(time) call_out("decay", time);
   return;
 }
 int transfer_inv(string str) {
@@ -67,7 +67,7 @@ int transfer_inv(string str) {
   return 1;
 }
 
-  
+
 int is_player() { return player; }
 
 int copy_body(object ob)
@@ -103,8 +103,8 @@ int make_new_body(object ob)
   limb_names = keys(body);
   for(i = 0, lnsz = sizeof(limb_names); i < lnsz; i++)
     {
-      ob->add_limb(limb_names[i], body[limb_names[i]]["limb_ref"], 
-		   body[limb_names[i]]["max_dam"], 
+      ob->add_limb(limb_names[i], body[limb_names[i]]["limb_ref"],
+		   body[limb_names[i]]["max_dam"],
 		   body[limb_names[i]]["damage"], body[limb_names[i]]["ac"]);
     }
   ob->set_wielding_limbs(wielding_limbs);
@@ -119,17 +119,17 @@ int query_level()
 {
    return level;
 }
-                
+
 void set_level(int lev)
 {
    level = lev;
 }
-    
+
 int query_old_hp()
 {
    return old_hp;
 }
-                 
+
 void set_old_hp(int num)
 {
    old_hp = num;
@@ -139,7 +139,7 @@ int query_decay()
 {
    return decay;
 }
-               
+
 void set_fingers(int num)
 {
    fingers = num;
@@ -162,8 +162,8 @@ void create() {
    decay = 2;
    set_id(({"corpse", "corpse of " + name, "remains"}));
    set_max_internal_encumbrance(0);
-   level = 0;   
-   old_hp = 0;                                                
+   level = 0;
+   old_hp = 0;
    fingers = 0;
 }
 
@@ -172,13 +172,13 @@ void set_name(string str) {
    name = str;
    set("long", "This is the dead body of " + name + ".");
    set_id( ({"corpse", "corpse of " + lower_case(name), "remains" }));
-   delayed_call("decay", DECAY_TIME);
+   call_out("decay", DECAY_TIME);
 }
 
 void decay() {
   decay -= 1;
   if(decay > 0) {
-    delayed_call("decay", 20);
+    call_out("decay", 20);
     return;
   }
   catch(map_array(all_inventory(this_object()), (: call_other :),

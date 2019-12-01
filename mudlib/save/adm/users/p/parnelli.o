@@ -1,27 +1,27 @@
 #/std/user.c
 encumbrance 500
-props (["last reinc":1575169199,"light":0,"last read news":1575169199,])
+props (["last reinc":1575178437,"light":0,"last read news":1575178437,])
 true_name "parnelli"
 creator "/adm/obj/login#3"
-player_data (["general":(["sp":1,"max_sdc":0,"sdc":0,"max_hp":1,"max_sp":1,"hp":1,]),])
+player_data (["general":(["max_sdc":0,"sp":1,"sdc":0,"max_hp":1,"hp":1,"max_sp":1,]),])
 magic ([])
 severed ([])
 healing ([])
 body ([])
 limbs ({})
 heal_rate 2
-skills (["attack":(["max":0,"points":0,"level":0,]),"melee":(["max":0,"points":0,"level":0,]),])
+skills (["melee":(["max":0,"points":0,"level":0,]),"attack":(["max":0,"points":0,"level":0,]),])
 spells ([])
 wimpydir "out"
 _attacks_per_melee 1
-env_var (["start":"/d/standard/setter","TERM":"unknown","SCORE":"off",])
+env_var (["start":"/d/standard/setter","SCORE":"off","TERM":"unknown",])
 money ([])
-ok_to_heal 3226
-player_age 6452
+ok_to_heal 6818
+player_age 13636
 gender "male"
 stats ([])
-alias (["bio":"biography","n":"north","nw":"northwest","l":"look $*","ne":"northeast","i":"inventory","w":"west","sw":"southwest","exa":"look at $*","u":"up","e":"east","se":"southeast","d":"down","s":"south",])
-xverb (["$:":"emote $*","$\"":"say $*","$'":"say $*",])
+alias (["n":"north","bio":"biography","nw":"northwest","l":"look $*","ne":"northeast","i":"inventory","w":"west","exa":"look at $*","sw":"southwest","e":"east","u":"up","d":"down","se":"southeast","s":"south",])
+xverb (["$\"":"say $*","$:":"emote $*","$'":"say $*",])
 auto_load ({})
 level 1
 verbose_moves 1
@@ -32,7 +32,7 @@ inf_block ({})
 real_name "james test"
 email "james.peckham@hotmail.com"
 ip "172.30.0.1"
-last_on "Sun Dec  1 02:59:59 2019"
+last_on "Sun Dec  1 05:33:57 2019"
 original_site "172.30.0.1"
 _password_hash "cjd`lfnc!cgccjcdbjl`jidekhkhikldofldanian"
 _password_salt "F6"

@@ -31,7 +31,7 @@ class wiz_char find_character(string my_name, class wiz_char *chars);
 class wiz_char *load_characters() {
   class wiz_char *ret;
   string euid = geteuid(this_object());
-  
+
   seteuid(UID_SECURE_DAEMONSAVE);
   if(!file_exists(DIR_SECURE_DAEMONS_SAVE+"/wizchar.v")) return ({});
   ret = restore_variable(read_file(DIR_SECURE_DAEMONS_SAVE+"/wizchar.v"));
@@ -42,7 +42,7 @@ class wiz_char *load_characters() {
 
 void save_characters(class wiz_char *chars) {
   string euid = geteuid(this_object());
-  
+
   seteuid(UID_SECURE_DAEMONSAVE);
   if(file_exists(DIR_SECURE_DAEMONS_SAVE+"/wizchar.v"))
     rm(DIR_SECURE_DAEMONS_SAVE+"/wizchar.v");
@@ -74,7 +74,7 @@ void create() {
   if(!event_pending(this_object())) {
     event("output_log", 32400, 0, 1);
   }
-  delayed_call("update_chars", 62);
+  call_out("update_chars", 62);
   return;
 }
 
@@ -108,7 +108,7 @@ void update_chars() {
   }
   save_characters(chars);
   wizchars_on = new_chars;
-  delayed_call("update_chars", 60);
+  call_out("update_chars", 60);
   return;
 }
 

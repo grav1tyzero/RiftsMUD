@@ -56,7 +56,7 @@ void create() {
   this_object()->__INIT();
   set_property("ambidextry", 1);
   speed = 0;
-  if(query_level() < 1) 
+  if(query_level() < 1)
     set_level(1);
 }
 
@@ -90,7 +90,7 @@ void init() {
       aggr = 1;
     }
     if(fllw) chase(this_player());
-    if(aggr && (query("race") != this_player()->query_race()) ) 
+    if(aggr && (query("race") != this_player()->query_race()) )
       kill_ob(this_player(), 0);
   }
 }
@@ -100,7 +100,7 @@ void chase(object plyr) {
    plyr->add_follower(this_object());
    return;
 }
-   
+
 void set_name(string str) {
   set_living_name(str);
   ::set_name(str);
@@ -113,7 +113,7 @@ varargs void heart_beat(int recurs_flag) {
   int tmp;
 
   if(!recurs_flag) {
-    remove_delayed_call("move_around");
+    remove_call_out("move_around");
     player_age += 2;
     ok_to_heal++;
     tmp = (int)this_object()->query_property("extra heart beat");
@@ -133,12 +133,12 @@ varargs void heart_beat(int recurs_flag) {
   continue_attack();
   if(speed && moving >= speed) move_around();
   else if(speed) moving++;
- 
+
   am_i_alive();
   if(!test_heart())
   {
     if(speed)
-      delayed_call("move_around", speed*2);
+      call_out("move_around", speed*2);
     set_heart_beat(heart_beat_on=0);
   }
   return;
@@ -180,7 +180,7 @@ void do_emote(string pre) {
   mixed emotef;
   string emote;
 
-  
+
   if(this_object()) {
     emotef = emotes[pre+"msg"][random(sizeof(emotes[pre+"msg"]))];
       if(functionp(emotef)) { emote = (*emotef)(); }
@@ -188,7 +188,7 @@ void do_emote(string pre) {
       if(emote) {
          message("environment", emote, environment(this_object()),
            ({ this_object() }) );
-        }  
+        }
     }
 }
 
@@ -298,15 +298,15 @@ void die(object ob) {
   tmp->copy_body(this_object());
   tmp->move(environment(this_object()));
   tmp_size=sizeof(currs=query_currencies());
- 
-  if(tmp_size){ 
+
+  if(tmp_size){
     money_ob = new("/std/obj/coins");
-	  money_ob = put_money(tmp_size, currs, money_ob); 
+	  money_ob = put_money(tmp_size, currs, money_ob);
     money_ob->move(tmp);
   }
   contents = all_inventory(this_object());
   for(i=0;i<sizeof(contents);i++) {
-    if(contents[i]->move(tmp)) 
+    if(contents[i]->move(tmp))
       if(!contents[i]->remove())
         destruct(contents[i]);
   }
@@ -318,7 +318,7 @@ int heal_filter(string spell) {
 }
 
 
-  object put_money(int tmp_size, string *currs, object money) 
+  object put_money(int tmp_size, string *currs, object money)
    {object money_ob;
     money_ob = new("/std/obj/coins");
     for(i=0; i<tmp_size; i++) {
@@ -448,7 +448,7 @@ void set_body_type(string str) {
   init_limb_data();
   monster_bod = (mapping)RACE_D->monster_body(str, query_max_hp());
   for(i = 0, max = sizeof(mon_limbs = keys(monster_bod)); i < max; i++)
-    add_limb(mon_limbs[i], monster_bod[mon_limbs[i]]["limb_ref"], 
+    add_limb(mon_limbs[i], monster_bod[mon_limbs[i]]["limb_ref"],
       monster_bod[mon_limbs[i]]["max_dam"], 0, 0);
   set_wielding_limbs((string *)RACE_D->query_monster_wielding_limbs(str));
   set_fingers((int)RACE_D->query_monster_fingers(str));
@@ -499,7 +499,7 @@ int test_heart() {
     (query_ppe() < (query_max_ppe()-5))) return 1;
   if(!(env = environment())) return 0;
   i = sizeof(inv = all_inventory(env));
-  while(i--) 
+  while(i--)
     if(interactive(inv[i]) || inv[i]->query("aggressive")) return 1;
   return 0;
 }

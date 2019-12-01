@@ -19,13 +19,13 @@ void set_limb(string who, string type) {
    set_short(what);
    set_long("This is the " + what + " of " + whose + ".\n");
    add("id", what);
-   delayed_call("decay", DECAY_TIME);
+   call_out("decay", DECAY_TIME);
 }
 
 void decay() {
    decay -= 1;
    if(decay > 0) {
-      delayed_call("decay", 20);
+      call_out("decay", 20);
       return;
    }
    remove();

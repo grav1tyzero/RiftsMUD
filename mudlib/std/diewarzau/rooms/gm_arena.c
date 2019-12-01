@@ -136,7 +136,7 @@ int do_surrender() {
 
   }
 
-  remove_delayed_call("begin_challenge");
+  remove_call_out("begin_challenge");
 
   if(this_player() == gm) {
 
@@ -176,7 +176,7 @@ int do_surrender() {
 
 
 
-void set_cip(int x) { 
+void set_cip(int x) {
 
   cip = x;
 
@@ -326,11 +326,11 @@ TEXT
 
     (: call_other, "/std/diewarzau/obj/misc/death_func","gm_death" :));
 
-  chal->set("death save", 
+  chal->set("death save",
 
     (: call_other, "/std/diewarzau/obj/misc/death_func","other_guy" :));
 
-  delayed_call("begin_challenge", 120);
+  call_out("begin_challenge", 120);
 
 }
 
@@ -340,15 +340,15 @@ void gm_quit() {
 
   if(!cip) return;
 
-  remove_delayed_call("begin_challenge");
+  remove_call_out("begin_challenge");
 
-  remove_delayed_call("begin_combat");
+  remove_call_out("begin_combat");
 
   "/daemon/chat"->send_chat("darke","DemiUrge",
 
     "The Guild Master has conceded, making "+
 
-    (string)chal->query_cap_name() + 
+    (string)chal->query_cap_name() +
 
     " the new guild master of the "+
 
@@ -376,9 +376,9 @@ void chal_quit() {
 
 
 
-  remove_delayed_call("begin_combat");
+  remove_call_out("begin_combat");
 
-  remove_delayed_call("begin_challenge");
+  remove_call_out("begin_challenge");
 
   "/daemon/chat"->send_chat("darke","DemiUrge",
 
@@ -462,7 +462,7 @@ void begin_combat() {
 
 }
 
-      
+
 
 void begin_challenge() {
 
@@ -518,7 +518,7 @@ void begin_challenge() {
 
   ({ gm, chal })->move_player(ARENA, 0);
 
-  delayed_call("begin_combat", 30);
+  call_out("begin_combat", 30);
 
   return;
 

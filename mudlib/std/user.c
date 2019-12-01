@@ -686,7 +686,7 @@ varargs void net_dead(int flag) {
       object *who_exc, spell;
 
     if(!flag && query_current_attacker() && query_level() > 3) {
-	delayed_call("net_dead", 4*query_level(), 1);
+	call_out("net_dead", 4*query_level(), 1);
 	return;
     }
     else
@@ -868,13 +868,11 @@ void set_password(string password) {
     //generate a 2 character capital hex for crypt() to use in the seed. pad it left with 0 because crypt seed requires 2 full chars. 00-FF
     _password_salt = sprintf("%02X", random(255));
     _password_hash = oldcrypt(password, _password_salt);
-    message("debug", sprintf("p: %s, s: %s, h: %s",password, _password_salt, _password_hash), find_player("parnell"));
     save_player(query_name());
 }
 
 int verify_password(string password) {
     string computed_hash = oldcrypt(password, _password_salt);
-    message("debug", sprintf("p: %s, s: %s, h: %s, ch: %s", password, _password_salt, _password_hash, computed_hash), find_player("parnell"));
     return computed_hash == _password_hash;
 }
 

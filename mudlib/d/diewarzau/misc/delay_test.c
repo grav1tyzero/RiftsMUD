@@ -1,14 +1,14 @@
 // a test
 
 void start_test() {
-  delayed_call("finish_test", 30, this_player(), "help me!");
-  write(sprintf("%O", delayed_call_info()));
+  call_out("finish_test", 30, this_player(), "help me!");
+  write(sprintf("%O", call_out_info()));
   return;
 }
 
 void int_test() {
-  remove_delayed_call("finish_test");
-  write(sprintf("%O", delayed_call_info()));
+  remove_call_out("finish_test");
+  write(sprintf("%O", call_out_info()));
   return;
 }
 

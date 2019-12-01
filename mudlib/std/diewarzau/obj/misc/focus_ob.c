@@ -63,7 +63,7 @@ int fix_cast(string str) {
         (int)spell_ob->query_property("base mp cost") * 2);
       this_player()->add_skill_bonus((string)spell_ob->query_property("skill"),
         30);
-delayed_call("remove_mod", (int)spell_ob->query_property("casting time")*2 +
+call_out("remove_mod", (int)spell_ob->query_property("casting time")*2 +
         3, this_player(), (string)spell_ob->query_property("skill"));
       break;
     case "fast":

@@ -87,7 +87,6 @@ string *epilog(int load_empty)
   //it appears FluffOS does not have valid -e flag so we ignore load_empty
   call_out("socket_preload", 5);
   return ({"/daemon/command",
-    "/adm/daemon/delayed_function_d",
     "/adm/daemon/astronomy_d",
     "/adm/daemon/castle_d",
     "/adm/daemon/race_d",

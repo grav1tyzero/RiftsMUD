@@ -521,7 +521,7 @@ void set_paralyzed(int x, string drow) {
     else
 	paralyze_message = drow;
     paralyzed = 1;
-    delayed_call("remove_paralyzed", x);
+    call_out("remove_paralyzed", x);
 }
 
 string query_paralyze_message() { return paralyze_message; }

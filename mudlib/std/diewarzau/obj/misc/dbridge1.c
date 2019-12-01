@@ -19,7 +19,7 @@ int inside = 0;
 
 void create() {
   ::create();
-  
+
   set_name("drawbridge");
   set_id(({ "bridge", "drawbridge", "draw bridge" }));
   set_short("A tall wooden draw bridge");
@@ -27,7 +27,7 @@ void create() {
 
   damage = 100;
   up = 1;
-  
+
   return;
 }
 
@@ -69,7 +69,7 @@ string query_short() {
 
 int db_func(string null) {
   object o_dbridge;
-  
+
   if(!up) return 0;
   o_dbridge = present("draw bridge", load_object(other_room));
   if(!o_dbridge) {
@@ -94,7 +94,7 @@ int db_func(string null) {
     message("info", "%^CYAN%^The draw bridge lowers.", environment(o_dbridge));
     up = 0;
     o_dbridge->external_lower();
-    delayed_call("raise_bridge", 6);
+    call_out("raise_bridge", 6);
     return 0;
   }
   else {
@@ -113,7 +113,7 @@ int db_func(string null) {
     message("info", "%^CYAN%^The draw bridge lowers.", environment(o_dbridge));
     up = 0;
     o_dbridge->external_lower();
-    delayed_call("raise_bridge", 6);
+    call_out("raise_bridge", 6);
     return 0;
   }
 }
@@ -135,7 +135,7 @@ void raise_bridge() {
 
 void damage_bridge(int amt) {
   object o_dbridge = present("draw bridge", load_object(other_room));
-  
+
   damage -= amt;
   if(amt > 0)
     message("info", "%^RED%^%^BOLD%^BOOOOOOM!!!!!\n%^RESET%^"

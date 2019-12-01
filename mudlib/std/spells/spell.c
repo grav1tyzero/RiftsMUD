@@ -38,12 +38,11 @@ int clean_up() {
   int i;
 
   info = call_out_info();
-  info += delayed_call_info();
   i = sizeof(info);
   while(i--)
     if(info[i][0] == this_object() && intp(info[i][2]) && info[i][2] > 0 &&
        info[i][1] != "do_spell") {
-      delayed_call("remove",info[i][2]+1);
+      call_out("remove",info[i][2]+1);
 	    return 1;
     }
   remove();
@@ -54,12 +53,12 @@ void remove() {
     mixed *info;
     int i;
 
-    remove_delayed_call("do_spell");
-    info = (mixed *)call_out_info() + (mixed *)delayed_call_info();
+    remove_call_out("do_spell");
+    info = (mixed *)call_out_info();
     i = sizeof(info);
     while(i--)
       if(info[i][0] == this_object() && intp(info[i][2]) && info[i][2] > 0) {
-	      delayed_call("remove",info[i][2]+1);
+	      call_out("remove",info[i][2]+1);
 	      return;
       }
     destruct(this_object());
@@ -105,7 +104,7 @@ int not_party(object who, object caster) {
 	     (string)PARTY_OB->party_member(owner)) return 0;
 	  if(who->is_pet() && stringp(who->query_owner()) &&
 	     (owner2=find_player((string)who->query_owner()))) {
-	    if((string)PARTY_OB->party_member(owner) == 
+	    if((string)PARTY_OB->party_member(owner) ==
 	       (string)PARTY_OB->party_member(owner2)) return 0;
 	  }
 	}
@@ -236,7 +235,7 @@ else{
 }
 
     bonus = ({});
-	
+
     if((int)caster->query_skill(props["skill"]) > 100) {
       i = (int)caster->query_skill(props["skill"]) / 100;
       if(i > 0) set_property("extra power", 0);
@@ -283,7 +282,7 @@ else{
     if(query("instant cast") || !props["casting time"])
       this_object()->do_spell(call_value);
     else
-      delayed_call("do_spell",props["casting time"]*2,call_value);
+      call_out("do_spell",props["casting time"]*2,call_value);
     return;
 }
 
@@ -604,7 +603,7 @@ void spell_func(object caster, object at, int power, string args, int flag) {
 	    else if(flag && props["spell type"][i] == "area damage")
 		inv = filter_array(all_inventory(environment(caster)),
 		    "random_filter",this_object());
-	    else { 
+	    else {
 	      inv = filter_array(all_inventory(environment(caster)),
 				"filter_area", this_object());
 	      if(sizeof(inv)) inv = ({ inv[random(sizeof(inv))] });
@@ -694,8 +693,8 @@ void spell_func(object caster, object at, int power, string args, int flag) {
 			roll *= power;
 			roll /= (resist_flag?2:1);
 			inv[k]->do_damage(targ_limb, roll);
-			inv[k]->check_on_limb(targ_limb);			
-			
+			inv[k]->check_on_limb(targ_limb);
+
 			break;
 		}
 	    } }
@@ -735,7 +734,7 @@ void spell_func(object caster, object at, int power, string args, int flag) {
 		    caster->add_exp2(roll);
 		}
 		else {
-		   inv[j]->do_damage((targ_limb = 
+		   inv[j]->do_damage((targ_limb =
 			(string)inv[i]->return_target_limb()),
 			roll/(resist_flag?4:2));
 		   inv[j]->check_on_limb(targ_limb);
@@ -777,7 +776,7 @@ void spell_func(object caster, object at, int power, string args, int flag) {
                   default: mesarg = "%^BOLD%^RED%^U N F A T H O M A B L Y!!!";
                 }
                 message("info", "Your "+props["stats"][j]+" has been affected "+mesarg, at);
-		    delayed_call("remove_stat_mod",props["duration"],
+		    call_out("remove_stat_mod",props["duration"],
 			([ "who" : at, "what" : props["stats"][j],
 			"amount" : -roll ]));
 		}
@@ -806,7 +805,7 @@ void spell_func(object caster, object at, int power, string args, int flag) {
 		else {
 		    roll /= resist_flag?2:1;
 		    at->add_skill_bonus(props["skills"][j],roll);
-		    delayed_call("remove_skill_mod",props["duration"],
+		    call_out("remove_skill_mod",props["duration"],
 			([ "who" : at, "what" : props["skills"][j],
 			"amount" : -roll ]));
 		}
@@ -814,7 +813,7 @@ void spell_func(object caster, object at, int power, string args, int flag) {
 	    break;
 	case "protection":
 	    if(!mapp(props["protection types"]) || !props["duration"]) break;
-	    
+
 		break;
 	    }
 	    if(props["stack key"]) {
@@ -840,9 +839,9 @@ void spell_func(object caster, object at, int power, string args, int flag) {
 		    tmp_ob->set_shad_ac(props["protection types"][tmp[j]]*power
 			/ (resist_flag?2:1),tmp[j]);
 	    tmp_ob->set_expire_message("%^CYAN%^A protection spell wears off.");
-	    break;	    
+	    break;
     }
-    remove_delayed_call("remove");
-    delayed_call("remove", 4);
+    remove_call_out("remove");
+    call_out("remove", 4);
 }
 

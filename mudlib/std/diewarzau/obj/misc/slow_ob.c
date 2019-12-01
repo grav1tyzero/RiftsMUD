@@ -18,7 +18,7 @@ void create() {
 void init() {
   string *exits;
   int i;
-  
+
   ::init();
   if(this_player() != environment() || !environment(this_player())) return;
   exits = (string *)this_player()->query("exits");
@@ -42,7 +42,7 @@ void reset_exits() {
 int slow_move(string null) {
   string verb;
   object prev;
-  
+
   verb = query_verb();
   if(!verb) return 0;
   if(moving) {
@@ -55,7 +55,7 @@ int slow_move(string null) {
   }
   moving = verb;
   write("You begin to s-l-o-w-l-y move "+moving+".");
-  delayed_call("actually_move", 5, this_player());
+  call_out("actually_move", 5, this_player());
   return 1;
 }
 
