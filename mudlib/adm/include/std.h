@@ -21,4 +21,4 @@
 #define PDATA_DIR "/save/adm/users"
 #define CONNECTION "/adm/obj/login"
 #define DAMAGE_TYPES ({ "crushing", "cutting", "impaling", "fire", "impact", "electricity", "acid", "plasma","vacuum", "cold", "depression", "time", "disruption", "holy","aether", "stress", "strike", "infernal" })
-
+#define DEFAULT_MSG "You do not notice that here.\n"

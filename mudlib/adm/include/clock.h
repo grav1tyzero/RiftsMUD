@@ -2,12 +2,12 @@
 #define NOW(x) x-THE_BEGINNING
 
 #define SECOND 1
-#define MINUTE 20
-#define HOUR 800
-#define DAY 16000
-#define WEEK 80000
-#define MONTH 320000
-#define YEAR 3200000
+#define MINUTE 8
+#define HOUR 480
+#define DAY 11520
+#define WEEK 80640
+#define MONTH 4193280
+#define YEAR 50319360
 
 #define CURRENT_YEAR(x) (1+((NOW(x))/(YEAR)))
 #define CURRENT_MONTH(x) ((NOW(x))%YEAR)/MONTH

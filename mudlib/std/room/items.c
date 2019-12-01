@@ -6,11 +6,11 @@
 
 #include <config.h>
 #include <daemons.h>
-#include <astronomy.h>
 
-#define DEFAULT_MSG "You do not notice that here.\n"
+
+// handler for add_action( call_other, 'func');
 #define ASTRA (: call_other, ASTRONOMY_D, "la_sky" :)
-#define DEFAULT_ITEMS ([ "sky":ASTRA, "sun":ASTRA, "moon":ASTRA, "moons":ASTRA, MOONS[0]:ASTRA, MOON_DESC[0]:ASTRA, ])
+#define DEFAULT_ITEMS ([ "sky":ASTRA, "sun":ASTRA, "moon":ASTRA, ])
 
 private mapping __Items;
 

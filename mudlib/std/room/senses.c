@@ -46,7 +46,7 @@ int hide_something(string str) {
     if(this_player()->query_paralyzed())
       return notify_fail("You cannot move.\n");
     if(!str) return notify_fail("Hide what?\n");
-    if(effective_light(this_player()) < -1) 
+    if(effective_light(this_player()) < -1)
       return notify_fail("It is too dark.\n");
     if(effective_light(this_player()) > 8)
       return notify_fail("It is too bright to do that.\n");
@@ -87,7 +87,7 @@ int search_room(string str) {
       return notify_fail("It is too dark.\n");
     if(effective_light(this_player()) > 7)
       return notify_fail("It is too bright to see anything.\n");
-    if(__Search_Obj && str == "shadows" && random(100) < 
+    if(__Search_Obj && str == "shadows" && random(100) <
        (int)this_player()->query_skill("perception")) {
         message("my_action", sprintf("You find %s",
           (string)__Search_Obj->query_name()), this_player());
@@ -115,7 +115,7 @@ int smell_things(string str) {
     if(!str || str == "") str = "default";
     if(!__Smells || !__Smells[str]) {
         if(!this_object()->id(str))
-          return notify_fail("You do not notice that here.\n");
+          return notify_fail(DEFAULT_MSG);
         else message("smell", "You smell no odd odors.", this_player());
         return 1;
     }
@@ -139,7 +139,7 @@ int do_listen(string str) {
       return notify_fail("Listen to what?\n");
     if(!__Listens || !__Listens[str]) {
         if(!this_object()->id(str))
-          return notify_fail("You do not notice that here.\n");
+          return notify_fail(DEFAULT_MSG);
         else message("listen", "You hear nothing unusual.",this_player());
         return 1;
     }
@@ -178,7 +178,7 @@ void set_listen(string item, mixed desc) {
 
 void remove_listen(string item) { map_delete(__Listens, item); }
 
-mixed query_search(string item) { 
+mixed query_search(string item) {
     return (__Searches ? __Searches[item] : 0);
 }
 

@@ -40,10 +40,10 @@ void create() {
 }
 
 void set_reboot_interval(int x) {
-    if(geteuid(previous_object()) != UID_SHUTDOWN 
+    if(geteuid(previous_object()) != UID_SHUTDOWN
         && !archp(this_player()))
         return;
-    if(x >= 0) 
+    if(x >= 0)
         __RebootInterval = x;
     Save();
 }
@@ -55,7 +55,7 @@ int query_reboot_interval() {
 varargs void add_events(object ob, string fun, int when, mixed *args, int reg) {
     if(file_name(previous_object()) != OB_SIMUL_EFUN) return;
     __Events[file_name(ob)] =
-      (["time":time()+when, "function":fun, "regular":(reg?when:0), 
+      (["time":time()+when, "function":fun, "regular":(reg?when:0),
       "args":(pointerp(args) ? args : ({})) ]);
     Save();
 }
@@ -78,7 +78,7 @@ static void check_events() {
         }
     }
     if(__RebootInterval && //if 0 then we don't reboot.
-        uptime() > __RebootInterval*3600 && 
+        uptime() > __RebootInterval*3600 &&
         !__InReboot) {
       __InReboot = 1;
         reboot();
@@ -185,7 +185,6 @@ void change_sky() {
     }
     message("environment", msg, users());
     if(__TimeOfDay == "night") __Almanac = almanac_data();
-    ASTRONOMY_D->set_moon_light();
     next_change();
 }
 
@@ -193,11 +192,11 @@ mapping almanac_data() {
     int temps, days, x, morn, even, tmp, hour, min;
     mapping ret;
 
-    if((days= ((query_month(temps = time())*20) + query_day(temps))) == 
+    if((days= ((query_month(temps = time())*20) + query_day(temps))) ==
       LONGEST_DAY)
         return (["sunrise":({4,0}),"morning":({5,0}),"sunset":({18,0}),
           "twilight":({17,0}) ]);
-    else if(days == SHORTEST_DAY) 
+    else if(days == SHORTEST_DAY)
       return (["sunrise":({6,0}),"morning":({7,0}),"sunset":({16,0}),
         "twilight":({15,0}) ]);
     else if(days > LONGEST_DAY) x = days-LONGEST_DAY;

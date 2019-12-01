@@ -1,72 +1,58 @@
+/*
+It's a little strange because anywhere in the world you would have
+a different phase of the moon.
+
+This previously supported multiple moons but I am going to be doing
+an Earth based MUD so there's no point to it
+
+--Parnell 2019
+
+*/
 #include <daemons.h>
 #include <clock.h>
-#include <astronomy.h>
 
-#define DEFAULT_MSG "You do not see that here.\n"
-
+//always ensure full moon is halfway between
+#define PHASES ({ "new", "waxing crescent","first quarter","axing gibbous", "full", "waning gibbous", "third quarter", "waning crescent" })
+#define MAX_MOON_LIGHT 2.0
 private static int moon_light;
-private static mapping moons;
 
-void init_sky();
-void set_moon_light();
-string query_phase_name(int x);
-int query_phase(string moon);
+varargs string query_phase_name(int x);
+varargs int query_phase(string moon);
 
 void create() {
     seteuid(getuid());
-    moons = ([]);
-    init_sky();
-    set_moon_light();
 }
 
-void init_sky() {
-    int x;
-
-    moons[MOONS[0]] = CURRENT_WEEK(time()) + 1;
-    x = date(time())+(20*(CURRENT_MONTH(time())));
+// let's you pass moon for backward compat for a moment
+varargs int query_phase(string moon) {
+  return CURRENT_WEEK(time()) % sizeof(PHASES);
 }
 
-int query_phase(string moon) {
-    if(member_array(moon, MOONS) == -1) return 0;
-    else return moons[moon];
+varargs string query_phase_name(int phase) {
+    if(!phase || phase > sizeof(PHASES))
+      return PHASES[query_phase()];
+    else return PHASES[phase];
 }
 
-string query_phase_name(int phase) {
-    if(phase > sizeof(PHASES)) return "Error";
-    else return PHASES[phase-1];
+int query_moon_light() {
+  // basically you can get up to MAX_MOON_LIGHT for full moon
+  int fullness_level, full_moon_phase;
+  float percent_full;
+  full_moon_phase = sizeof(PHASES) / 2;
+  fullness_level = (query_phase() <= full_moon_phase ? query_phase() : (sizeof(PHASES) - query_phase()));
+  percent_full = to_float(fullness_level) / (sizeof(PHASES) / 2);
+  return to_int(round(percent_full * MAX_MOON_LIGHT));
 }
-
-void set_moon_light() {
-    int i;
-
-    i = sizeof(MOONS);
-    moon_light = 0;
-    while(i--) {
-        switch(moons[MOONS[i]]) {
-            case 1: break;
-            case 2: moon_light += 1; break;
-            case 3: moon_light += 2; break;
-            case 4: moon_light += 1; break;
-        }
-    }
-    moon_light = moon_light/2;
-}
-
-int query_moon_light() { return moon_light; }
 
 void la_sky(string str) {
     string tod;
-    string *phase;
-    int ansi, i;
+    int ansi;
     if(environment(this_player())->query_property("indoors")) {
       write(DEFAULT_MSG);
       return;
     }
     ansi = (int)this_player()->query_ansi();
     tod = (string)EVENTS_D->query_time_of_day();
-    phase = allocate(i=sizeof(MOONS));
-    while(i--)
-      phase[i] = query_phase_name(query_phase(MOONS[i]));
 
     switch(str) {
         case "sun":
@@ -90,8 +76,8 @@ void la_sky(string str) {
             write(DEFAULT_MSG);
           else {
               write("The sky is dark with night.\n");
-            if(phase[0] != "new")
-              write(sprintf("There is a %s %s.\n", phase[0], MOON_DESC[0]));
+            if(query_phase_name() != "new")
+              write(sprintf("There is a %s moon.\n", query_phase_name()));
           }
           break;
         case "sky":
@@ -108,35 +94,24 @@ void la_sky(string str) {
               else write("The sun is fading over the western horizon.\n");
               break;
             case "night":
-            if((phase[0] == "new") && (phase[1] == "new") &&  ("new" == phase[2]))
+            if(query_phase_name() == "new")
                 write("The night time sky is moonless and dark.\n");
               else {
                 write("The sky is darkened with night.\n");
-                if(phase[0] != "new")
-                  write("There is a "+MOON_DESC[0]+" in the sky.\n");
+                if(query_phase_name() != "new")
+                  write(sprintf("There is a %s moon in the sky.\n",query_phase_name()));
 
               }
               break;
           }
           break;
-        case "moons":
-          if(tod != "night") write(DEFAULT_MSG);
+	    case "moon":
+          if(tod != "night" || query_phase_name() == "new")
+            write(DEFAULT_MSG);
           else {
-            if(phase[0] != "new") write("There is a "+MOON_DESC[0]+".\n");
-            if((phase[0] == "new") && (phase[1] == "new") &&  ("new" == phase[2]))
-              write(DEFAULT_MSG);
+            if(ansi) write(sprintf("The %s moon is hovering in the night time sky.\n",query_phase_name()));
+            else write(sprintf("The %s moon is hovering in the night time sky.\n",query_phase_name()));
           }
           break;
-/* The current MudOS driver does not handle case statements well
-   with #define macros.  Change this asap
-*/
-	case "moon": case "moon":
-          if(tod != "night" || phase[0] == "new") write(DEFAULT_MSG);
-          else {
-            if(ansi) write("The "+phase[0]+" "+red(MOON_DESC[0])+" is hovering in the night time sky.\n");
-            else write("The "+phase[0]+" "+MOON_DESC[0]+" is hovering in the night time sky.\n");
-          }
-          break;
-
     }
 }

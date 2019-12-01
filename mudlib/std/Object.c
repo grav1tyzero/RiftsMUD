@@ -109,7 +109,7 @@ varargs mixed query(string what, mixed element) {
 // II] That use the "props" mapping
 
 void set_property(string prop, mixed value) {
-    if(!props) props = ([]);   
+    if(!props) props = ([]);
     props[prop] = value;
 }
 
@@ -123,7 +123,7 @@ mapping query_all_properties() {
 }
 
 mixed query_property(string prop) {
-    if(!props) 
+    if(!props)
     {
 	props = ([]);
 	return 0;
@@ -159,7 +159,7 @@ string * regexp_query_property (string pattern)
 
     vars = keys(props);
     prop = regexp (vars, pattern);
-    if (!prop) 
+    if (!prop)
 	prop = ({});
     return prop;
 }
@@ -193,7 +193,7 @@ string query_long(string str) {
 	desc = (string)(*ob_data["long"])(str);
     else desc = ob_data["long"];
     if(!this_player()) return desc;
-    
+
     return desc;
 }
 
@@ -206,7 +206,7 @@ int    query_value()             {
 
 float query_float_value() {
     if(query_property("float value")) return query_property("float value");
-    else if(query_property("value")) 
+    else if(query_property("value"))
 	return to_float(query_property("value"));
     else return 0.0;
 }
@@ -283,7 +283,7 @@ string query_short() {
     if(functionp(ob_data["short"]))
 	desc = (string)(*ob_data["short"])();
     else desc = ob_data["short"];
-    
+
     return desc;
 }
 
@@ -345,7 +345,7 @@ void set_material( string str )
     if( !str ) material = "/default";
     else material = (  (str[0..0] == "/") ? str : ("/" + str)  );
 
-    // The next few lines do the equivalent of 
+    // The next few lines do the equivalent of
     //   sscanf( material, "%s/%s", type, name );
     // except they search for the / from the other end first.
     parts = explode( material, "/" );
@@ -370,11 +370,7 @@ void set_material( string str )
     d_master-> setup_object( this_object(), previous_object() );
 }
 
-
-
-
-
-int __Read(string str) { 
+int __Read(string str) {
     if(!str) return notify_fail("Read what?\n");
     if(!ob_data || !ob_data["read"])
 	return notify_fail(living(this_object()) ? "Read a living thing?\n" :
@@ -382,7 +378,7 @@ int __Read(string str) {
     if(functionp(ob_data["read"]))
 	return (int)(*ob_data["read"])(str);
     else if(stringp(ob_data["read"])) {
-	if(present(str, this_player()) != this_object()) return notify_fail("You do not notice that here.\n");
+	if(present(str, this_player()) != this_object()) return notify_fail(DEFAULT_MSG);
 	message("info", ob_data["read"], this_player());
 	message("other_action", (string)this_player()->query_cap_name()+
 	  " reads the "+query_name()+".", environment(this_player()),
