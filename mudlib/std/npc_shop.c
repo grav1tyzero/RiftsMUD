@@ -55,11 +55,7 @@ void create() {
 	     "say shopkeeper, help");
     set_level(10);
     set_property("melee damage", ([ "crushing" : 55 ]));
-    set_skill("melee", 100);
-    set_skill("dodge", 100);
-    set_skill("parry", 100);
-    set_skill("perception", 90);
-    
+
     set_lang_prof("common", 10);
     set("no clean up", 1);
     call_out("load_store", 2);
@@ -300,7 +296,7 @@ object *search_inv(string str) {
       else return ({ 0, inv[i] });
     }
     val = (float)inv[i]->query_float_value();
-    while(i < sizeof(inv) && desc == (string)inv[i]->query_short() && 
+    while(i < sizeof(inv) && desc == (string)inv[i]->query_short() &&
 	  val == (float)inv[i]->query_float_value()) {
       if(inv[i]->id(str)) {
 	if(query("save items")) return ({ environment(inv[i]), inv[i] });
@@ -425,7 +421,7 @@ void sell_item(string str, object who) {
       amt = mtmp[0];
       if(!amt) continue;
       amt += amt * ((int)who->query_skill("trade lore") - random(36)) / 100;
-      if((int)safe_ob()->query_money("gold") < 
+      if((int)safe_ob()->query_money("gold") <
         to_int(to_float(amt) * currency_rate("gold") / currency_rate(mtmp[1]))) {
 	say_this("Sorry, I don't have enough money to give you for "+
 	  (string)inv[i]->query_short() + ".",
@@ -577,7 +573,7 @@ void offer_me(string arg, object who) {
   offer_val = 0.0;
   while(i--) {
     if(!strlen(vals[i])) continue;
-    while(strlen(vals[i]) && vals[i][0] == ' ') 
+    while(strlen(vals[i]) && vals[i][0] == ' ')
       vals[i] = replace_string(vals[i], " ", "", 1);
     while((tmp = strlen(vals[i]) - 2) >= 0 && vals[i][tmp+1] == ' ')
       vals[i] = vals[i][0..tmp];

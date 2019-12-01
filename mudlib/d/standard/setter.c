@@ -14,15 +14,11 @@
 
 inherit ROOM;
 
-
-
 void do_rolls();
 void assign_point(string str, int *points, int pts_left);
 void set_ansi();
 
 string * _occs = ({"Coalition Grunt"});
-
-
 
 void create()
 {
@@ -38,7 +34,7 @@ void create()
       "This is the Character generator\n\n"
       " type \"help races\" to see a list of race selections.\n"
       " type \"pick <race>\" to select your race and begin\n");
-  //skip_obvious();  
+  //skip_obvious();
 }
 
 void init()
@@ -133,7 +129,7 @@ int pick_race(string race) {
     case "human" :
       attrib = s1_rolling_attributes();
     break;
-    default: 
+    default:
       return notify_fail("invalid race. see help races.\n");
   }
   show_attrib(attrib);
@@ -141,7 +137,7 @@ int pick_race(string race) {
   if(low_values > 0) {
     prompt_low_values(low_values, attrib, race);
   }
-  else 
+  else
     prompt_keep_attributes(attrib, race);
   return 1;
 }
@@ -205,6 +201,7 @@ int keep_attrib(string yn, mapping attrib, string race) {
     write(sprintf("Base HP is %d",base_hp));
     this_player()->set_max_hp(base_hp);
     this_player()->set_hp(base_hp);
+    //IF not rcc
   }
   else if(yn == "n") {
     pick_race(race);
@@ -283,7 +280,7 @@ int read(string str)
 
 int choose_occ(string str) {
   object occ_obj;
-  object *inv = filter_array(all_inventory(this_player()), 
+  object *inv = filter_array(all_inventory(this_player()),
     (: call_other :), "query_is_occ_obj");
   if(inv)
     for(int x = 0;x<sizeof(inv);x++) {

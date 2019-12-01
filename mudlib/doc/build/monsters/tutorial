@@ -6,13 +6,13 @@ What must be done in each and every monster!:
 To build a monster, you must first inherit "/std/monster";
 In the create functions, you must call the following functions IN ORDER!:
 
-set_name("beggar");  //  Please use a single noun for set name so that 
+set_name("beggar");  //  Please use a single noun for set name so that
 			 intelligent objects can use phrases like "a beggar".
 			 This function simply gives the monster a generic
 			 name. (Also see set_proper_name()) //
 
 set("id", ({ "beggar", "poor beggar", "a poor beggar", "a beggar" }) );
-		    //	 These are the things a player must type to make 
+		    //	 These are the things a player must type to make
 			 reference to the monster, as in look at poor beggar.
 			 You can have any number of id's inside the ({ }),
 			 but make sure you separate them by , and enclose them
@@ -25,7 +25,7 @@ set_level( 4 );	    //	 This actually does a lot of things besides setting the
 			 beggar 4th level, it also sets all other attributes
 			 necessary to keep the beggar MINIMALLY balanced.
 			 To name a few examples, this will set the monster's
-			 skills and stats to a minimum level for a level 4 
+			 skills and stats to a minimum level for a level 4
 			 monster.  It will set the monster exp to the level
 			 of a fourth level player, and so on.  //
 
@@ -44,13 +44,13 @@ set("race", "human" ); //	 This makes the monster a member of a certain race.
 			 added to the list. //
 
 set_gender( "male" ); // The old version used numbers to indicate gender.
-			 Nowadays gender is set with a string.  Acceptable 
+			 Nowadays gender is set with a string.  Acceptable
 			 strings are "male", "female", "neuter".  Make sure
 			 you set this, as a neuter knight is a silly thing.
 
 Either :
 set_body_type("human");    *or*     add_limb("head", "FATAL", 20, 0, 4);
-			 // Let's start from the back up.  In the 
+			 // Let's start from the back up.  In the
 			 Nightmare 3.0 limb combat system, you must create
 			 a body for a monster.  You do this by adding limbs.
 			 set_body_type() automatically adds the limbs used
@@ -76,7 +76,7 @@ set_body_type("human");    *or*     add_limb("head", "FATAL", 20, 0, 4);
 			 the damage taking ability as the monster has hp.
 			 max_dam is the maximum amount of damage the limb can
 			 take before being lost.  As I just said, for fatal
-			 limbs, this number should be 1/4 (at least) the 
+			 limbs, this number should be 1/4 (at least) the
 			 monster's hp.
 			 dam is the amount of damage the monster is starting
 			 with on the limb.  In this way you can creatively
@@ -104,7 +104,7 @@ set_wielding_limbs( ({ "right hand", "left hand" }) );
 		    	 is able to wield a weapon.
 
 set_melee_damage(string type);
-	Gives the monster a melee damage type other that 
+	Gives the monster a melee damage type other that
 	the default, crushing.
 
 set_melee_damage(mapping types);
@@ -128,13 +128,13 @@ add_spell("heal", "$(ME)");
 add_spell("mirror image", "$(ME)", 1, 500);
 	Adds a spell to the monster's repertoire (remember to give it
 	skill with that spell or he can't cast it!!! see below)
-	The first arguement is the name of the spell (LOWER CASE),	
+	The first arguement is the name of the spell (LOWER CASE),
 	and the secon is the string that will come after "at" if a
 	player were using the "cast" command to cast the spell.
 	$A = attacker of the monster
 	$(ME) = the monster itself
 	$R = random person in the room (not the monster itself)
-	
+
 	The last two arguements are optional.  If the third arguement
 	is set to 1, the spell will only be cast in combat.  If the
 	fourth arguement is specified, the monster will wait that many
@@ -148,10 +148,10 @@ set_spell_level("ice dagger", 6);
 	skill is higher than 75%, the players will not know if the
 	monster begins casting!
 
-set_fingers(5);	    //	 Gives the monster fingers.  Necessary to have the 
+set_fingers(5);	    //	 Gives the monster fingers.  Necessary to have the
 			 monster wear rings.
 
-set_moving(1); 
+set_moving(1);
 *and*
 set_speed(60);	    //	 Makes the monster a wandering monster.  1 MUST be
 			 the argument to moving, whereas speed is how often
@@ -178,14 +178,7 @@ set_exp(1000);	    //	 Sets how many experience points the monster has, and
 			 if you want to make a 20th level monster yielding
 			 no exp, set_exp(0); is the way to do it.
 
-set_skill("melee", 20) // Sets a given skill to a certain number.  This will
-			  not allow you to set the stat below its default
-			  setting.  This is useful for creating monsters that
-			  pick pockets, steal, or (in the future, I hope)
-			  caste mage, monk, or cleric spells.
-			  YOU MUST USE THIS IF YOU WISH THE MONSTER TO WIELD
-			  A WEAPON EFFECTIVELY.  Otherwise Balance will have
-			  you shot :)
+
 
 Skills you'll want you monsters to have:
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -223,7 +216,7 @@ set("aggressive", 1)     *or*     set("aggressive", "special_func");
 	getting attacked.  If the monster's int is higher,
 	the player must use his or her fast talk skill to get
 	out of being attacked.  If special_func is supplied,
-	that function will be called int the monster every time a 
+	that function will be called int the monster every time a
 	player enters the room.  Return a non-zero number if you wish
 	the monster to attack.
 	NOTE: the function is also supplied with the object variable
@@ -232,8 +225,8 @@ set("aggressive", 1)     *or*     set("aggressive", "special_func");
 
 set_wimpy(20);	    //	 Makes the monster wimp out at 20% of its max_hp
 
-set_wimpydir("north"); 
-			If you want to set the direction a monster 
+set_wimpydir("north");
+			If you want to set the direction a monster
 			will wipmpy to, use this
 
 set_languages( ({ "farsi", "borgish" }) );
@@ -273,7 +266,7 @@ Functions outside of create() that you define:
 
 void directed_message(object who, string mess) { }
 
-This function will be called everytime the monster is addressed with   
+This function will be called everytime the monster is addressed with
 either a tell or a say.  This can happen in one of two ways.  Say the
 monster is named "bignasty."  It may be addressed with:
 
@@ -293,7 +286,7 @@ string mess
 This is the actual message.  All leading spaces are stripped.  In the
 above case, it would be:
 "blah-blah."
-in both instances.  This is useful for creating monsters which may be 
+in both instances.  This is useful for creating monsters which may be
 commanded or just conversed with.
 
 

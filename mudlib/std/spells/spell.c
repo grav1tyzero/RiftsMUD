@@ -145,11 +145,7 @@ void send_messages(string *mesgs,object caster, object at) {
     return;
 }
 
-void remove_skill_mod(mapping info) {
-    if(!info || !mapp(info) || !info["who"]) return;
-    info["who"]->add_skill_bonus(info["what"], info["amount"]);
-    return;
-}
+
 
 void remove_stat_mod(mapping info) {
     if(!info || !mapp(info) || !info["who"]) return;
@@ -778,35 +774,6 @@ void spell_func(object caster, object at, int power, string args, int flag) {
                 message("info", "Your "+props["stats"][j]+" has been affected "+mesarg, at);
 		    call_out("remove_stat_mod",props["duration"],
 			([ "who" : at, "what" : props["stats"][j],
-			"amount" : -roll ]));
-		}
-	    }
-	    break;
-	case "skill mod":
-	    if(!props["skill dice"] || sscanf(props["skill dice"],"%dD%d",
-		dice,sides) != 2 || !props["skills"])
-		break;
-	    if(stringp(props["skills"]) && !pointerp(props["skills"])) {
-		tmp_str = props["skills"];
-		map_delete(props,"skills");
-		props["skills"] = ({ tmp_str });
-	    }
-	    j = sizeof(props["skills"]);
-	    while(j--) {
-		roll = 0;
-		if(dice < 0) { dice *= -1; power *= -1; }
-		for(k=1;k <= dice;k++) roll += random(sides)+1;
-		roll *= power;
-		roll *= (flag)? -1 : 1;
-		if(stringp(props["duration"]) && props["duration"] ==
-		    "permanent") at->set_skill(props["skills"][j],
-			(int)at->query_base_skill(props["skills"][j])+roll
-			/ (resist_flag?2:1));
-		else {
-		    roll /= resist_flag?2:1;
-		    at->add_skill_bonus(props["skills"][j],roll);
-		    call_out("remove_skill_mod",props["duration"],
-			([ "who" : at, "what" : props["skills"][j],
 			"amount" : -roll ]));
 		}
 	    }

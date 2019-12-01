@@ -68,6 +68,10 @@ int protection, hits, pois, i, j, k, num_attacks, x, defendflag;
 int parry_bonus, has_shield, skill, y;
 //*************
 
+void create() {
+	skills::create();
+}
+
 //  This function is used to initialize various variables
 
 void init_attack() {

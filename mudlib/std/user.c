@@ -311,6 +311,7 @@ void reset_euid() {
 
 void create() {
     more::create();
+    living::create();
     seteuid(getuid());
     position = "player";
     wielded = ([]);
@@ -443,9 +444,7 @@ void setup() {
     set_living_name(query_name());
     seteuid(getuid());
     set_heart_beat(1);
-    if(!stats) init_stats();
-    if(!skills) init_skills(0);
-    if(!spells) init_spells();
+
     if(member_array(query_position(), MORTAL_POSITIONS) == -1) {
         log_file("security", "Enable Wizard:"+
           this_object()->query_name()+":"
@@ -804,9 +803,6 @@ nomask void die() {
     }
     message("death", query_cap_name()+ " dies a horrible death.",
       environment());
-    if(previous_object()->is_player() && previous_object() != this_object()) {
-      reduce_skills();
-    }
     corpse = new(OB_CORPSE);
     corpse->set_name(query_cap_name());
     corpse->move(environment(this_object()));

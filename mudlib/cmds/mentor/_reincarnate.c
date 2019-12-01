@@ -12,7 +12,7 @@ int cmd_reincarnate(string str) {
   object who, join_room, *inv;
   int lev, extra_dev, i;
   string *langs;
-  
+
   if(!(who = find_player(lower_case(str)))) {
     write("Can't find '"+str+"'.");
     return 1;
@@ -21,9 +21,7 @@ int cmd_reincarnate(string str) {
     write("You can't reincarnate a wizard.");
     return 1;
   }
-  who->init_skills();
   who->set_property("reincarnate", 1);
-  who->init_spells();
   who->set_property("xp mod", 0);
   lev = (int)who->query_level() / 2;
   if(lev < 1) lev = 1;
@@ -74,4 +72,4 @@ int help() {
   return 1;
 }
 
-  
+

@@ -14,9 +14,6 @@ void create() {
   set_property("melee damage", ([ "impaling" : 15 ]));
   set_level(5);
   set_body_type("serpent");
-  set_skill("melee", 50);
-  set_skill("dodge", 30);
-  set_skill("parry", 0);
   set_max_hp(300);
   set_hp(300);
   set_speed(40);

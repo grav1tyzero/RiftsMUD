@@ -132,8 +132,6 @@ int __Sell(string str) {
           map_delete(__Values, tmp);
     }
     this_player()->add_money(__Eco["currency"], val);
-    this_player()->add_skill_points("bargaining",
-      random(query_skill("bargaining")));
     message("other_action", (string)this_player()->query_cap_name()+
       " sells "+(string)ob->query_short()+".", environment(this_object()),
       ({ this_player() }));

@@ -397,8 +397,6 @@ __INIT()
   enable_commands();
   seteuid(getuid(this_object()));
   init_limb_data();
-  init_stats();
-  init_skills(0);
   init_living();
   set_heart_beat(heart_beat_on = 1);
   speed = 0;

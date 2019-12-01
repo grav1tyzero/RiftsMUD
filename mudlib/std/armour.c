@@ -49,7 +49,6 @@ void create() {
     ::create();
     armour_save = ([]);
     armour_static = ([]);
-    set_material("metal/iron");
 }
 
 int wear(string str) {
@@ -149,7 +148,7 @@ int do_remove(string str) {
 int illuminate(string str) {
     int heure;
 
-    if(!query_property("magic item") || 
+    if(!query_property("magic item") ||
       member_array("illuminate", query_property("magic item")) == -1) return 0;
     if(!str || !id(str)) {
 	notify_fail("Illuminate what?\n");
@@ -201,13 +200,13 @@ environment(this_object())->query_cap_name()+"'s "+query_name()+
     environment(this_object())->set_property("light", -armour_static["lit"]);
     map_delete(armour_static, "lit");
 }
- 
+
 void unequip() { if(armour_static["worn by"]) unwear(); }
- 
+
 void set_not_equipped() {
     if(query_worn()) map_delete(armour_static, "worn by");
     if(armour_static["actual limbs"]) map_delete(armour_static, "actual limbs");}
- 
+
 int remove() {
     if(armour_static && armour_static["lit"]) {
       if(environment(this_object()))
@@ -216,10 +215,10 @@ int remove() {
     }
     return ::remove();
 }
- 
+
 int move(mixed dest) {
     int x;
- 
+
     if(armour_static["lit"])
       environment(this_object())->set_property("light", -armour_static["lit"]);
     x = ::move(dest);
@@ -229,7 +228,7 @@ int move(mixed dest) {
 }
 
 void set_illuminate(int x) { set_property("magic item", ({ "illuminate" })); }
- 
+
 void set_limbs(mixed *limbs) {
   int i;
 
@@ -238,7 +237,7 @@ void set_limbs(mixed *limbs) {
   while(i--) {
     if(pointerp(limbs[i]) && member_array("right arm", limbs[i]) != -1 &&
 	member_array("left arm", limbs[i]) != -1)
-      limbs[i] = distinct_array(limbs[i] + ({ "right arm", "left arm", "first arm", "second arm", 
+      limbs[i] = distinct_array(limbs[i] + ({ "right arm", "left arm", "first arm", "second arm",
 		      "third arm", "fourth arm", "first branch", "second branch",
 		      "third branch", "fourth branch" }));
 
@@ -266,19 +265,19 @@ void set_limbs(mixed *limbs) {
     if(stringp(limbs[i]) && limbs[i] == "left leg")
       limbs[i] = ({ "left leg", "third leg", "fourth leg", "third root", "fourth root" });
   }
-  armour_static["possible limbs"] = limbs; 
+  armour_static["possible limbs"] = limbs;
 }
 
 void set_wear(mixed val) {
     if(!functionp(val) && !stringp(val) && !pointerp(val)) return 0;
     armour_static["wear"] = val;
 }
- 
+
 void set_remove(mixed val) {
     if(!functionp(val) && !stringp(val) && !pointerp(val)) return;
     armour_static["unwear"] = val;
 }
- 
+
 void set_type(string str) {
   armour_static["type"] = str;
   if(str == "ring") {
@@ -290,16 +289,16 @@ void set_type(string str) {
 }
 
 mixed *query_limbs() { return armour_static["possible limbs"]; }
- 
+
 mixed query_wear() { return armour_static["wear"]; }
- 
+
 mixed query_unwear() { return armour_static["unwear"]; }
- 
+
 string query_type() { return armour_static["type"]; }
- 
+
 object query_worn() { return armour_static["worn by"]; }
- 
- 
+
+
 string query_short() {
     if(!armour_static["worn by"]) return ::query_short();
     else return ::query_short()+" (worn)";
@@ -321,7 +320,7 @@ string query_long(string str) {
     string ret;
     int i;
     mixed tmp;
-    
+
     if(!armour_static["worn by"]) ret = ::query_long(str);
     else {
         ret = ::query_long(str);
@@ -350,14 +349,14 @@ string query_long(string str) {
     }
     return ret;
 }
- 
+
 string *query_actual_limbs() { return armour_static["actual limbs"]; }
- 
+
 int is_armour() { return 1; }
- 
+
 void set_struck(mixed val) {
     if(functionp(val) && geteuid(this_object()) != geteuid(val[0])) return;
     armour_static["struck"] = val;
 }
 
-mixed query_struck() { return armour_static["struck"]; } 
+mixed query_struck() { return armour_static["struck"]; }

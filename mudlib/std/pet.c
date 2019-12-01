@@ -68,12 +68,12 @@ void add_exp(int amt) {
           (string)this_object()->query_owner())
           lev += to_int(pow(to_float((int)inv[i]->query_level()), 2.3));
       }
-      lev = to_int(pow(to_float(lev), 1/2.3));      
+      lev = to_int(pow(to_float(lev), 1/2.3));
     }
     if(lev > ((int)who->query_level() +1))
       amt = to_int(to_float(amt) / pow(2.0,
                    to_float(lev -
-                   (1+(int)who->query_level()))));    
+                   (1+(int)who->query_level()))));
     who->add_exp(amt);
   }
   return;
@@ -87,7 +87,6 @@ void create() {
   this_object()->set_lang_prof("common", 10);
   set("aggressive", (: call_other, this_object(), "query_aggr_status" :) );
   set_storage_key("pet");
-  set_skill("swimming", 100);
   return;
 }
 
@@ -127,11 +126,11 @@ void set_aggr_status(int stat) {
   return;
 }
 
-int query_aggr_status(object who) { 
+int query_aggr_status(object who) {
   if(!living(who)) return 0;
   if(wizardp(who)) return 0;
   if(!Pet_data["aggr status"]) return 0;
-  if(who->is_pet() && Pet_data["owner"] == (string)who->query_owner()) 
+  if(who->is_pet() && Pet_data["owner"] == (string)who->query_owner())
     return 0;
   if(!who->is_player()) return 1;
   if((string)who->query_name() == Pet_data["owner"]) return 0;

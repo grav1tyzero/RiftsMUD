@@ -12,7 +12,11 @@
 #include <daemons.h>
 #include <party.h>
 #include <dirs.h>
-#include <living.h>
+inherit "/std/living/messages";
+inherit "/std/living/combat";
+inherit "/std/living/env";
+inherit "/std/money";
+inherit "/std/living/follow";
 
 int invis, ok_to_heal, player_age;
 static int forced, spiritual, physical;
@@ -72,8 +76,14 @@ static void init_living() {
     init_attack();
 }
 
+void create() {
+    combat::create();
+    if(!stats)
+        stats = ([]);
+}
+
 void override_add_exp(int exp) {
-   
+
 }
 
 int buffer_full() {
@@ -81,23 +91,23 @@ int buffer_full() {
 }
 
 void adjust_exp() {
-  
+
     return;
 }
 
 void reset_xp_to_dev()
 {
- 
+
  return;
 }
 
 void reset_max_exp() {
-    
+
     return;
 }
 
 nomask int at_max_exp() {
-    
+
     return 0;
 }
 
@@ -116,7 +126,7 @@ static void init_path() {
 	search_path += ({ DIR_AMBASSADOR_CMDS, DIR_SYSTEM_CMDS });
     if(high_mortalp(this_object()) || wizardp(this_object()))
 	search_path += ({ DIR_HM_CMDS });
-      
+
     if(wizardp(this_object())) {
 	search_path += ({ DIR_CREATOR_CMDS });
 	if(file_size(user_path(query_name()) + "bin") == -2)
@@ -129,7 +139,6 @@ static void init_path() {
     }
 }
 
-static void init_stats() { stats = ([]); }
 
 /* Added did_command(cmd); so shadowing would work more efficiently
  * - Geldron 030696
@@ -149,7 +158,7 @@ nomask static int cmd_hook(string cmd) {
 	return 1;
     }
     if(!(file = (string)CMD_D->find_cmd(verb, search_path))) {
-	if(!((int)SOUL_D->do_cmd(verb, abcmd))) 
+	if(!((int)SOUL_D->do_cmd(verb, abcmd)))
 	    return (int)CHAT_D->do_chat(verb, cmd);
 	else return 1;
     }
@@ -167,7 +176,7 @@ int force_me(string cmd) {
 	tmp = geteuid(previous_object());
     else tmp = "";
     /*  Added by Geldron 031096 to work with equip/unequip */
-    if(PO && BN(PO) && (BN(PO) == "/cmds/mortal/_equip" || 
+    if(PO && BN(PO) && (BN(PO) == "/cmds/mortal/_equip" ||
 	    BN(PO) == "/cmds/mortal/_unequip")) {
 	    res = command(cmd);
 	    return res;
@@ -183,7 +192,7 @@ int force_me(string cmd) {
 }
 
 void reduce_stats() {
-    
+
 }
 
 int sort_limbs(string one, string two) {
@@ -193,7 +202,7 @@ int sort_limbs(string one, string two) {
     tmp = (mapping)RACE_D->query_limb_info(one, query("race"));
     if(!mapp(tmp))
 	a_one = "";
-    else 
+    else
 	a_one = tmp["attach"];
     tmp = (mapping)RACE_D->query_limb_info(two, query("race"));
     if(!mapp(tmp))
@@ -209,12 +218,12 @@ void do_healing(int x) {
 }
 
 void set_severed(string limb) {
-    
+
     return;
 }
 
 int calculate_healing() {
-    
+
 }
 
 void set_party(string str) {
@@ -223,20 +232,20 @@ void set_party(string str) {
 }
 
 int add_stoned(int x) {
-  
+
 }
 
 int query_stoned() {
-    
+
 }
 
 
 void add_poisoning(int x) {
-    
+
 }
 
 void add_potion_healing(int x) {
-    
+
 }
 
 void set_stats(string str, int x) {
@@ -249,7 +258,7 @@ void set_stats(string str, int x) {
             this_object()->set_max_internal_encumbrance(x * 20);
         //else if robot
         //this_object()->set_max_internal_encumbrance(x * 25);
-        //else if supernatural 
+        //else if supernatural
         //this_object()->set_max_internal_encumbrance(x * 20);
         //and ps >=18
         //this_object()->set_max_internal_encumbrance(x * 50);
@@ -289,19 +298,19 @@ void add_exp(int x) {
 }
 
 int add_intox(int x) {
-    
+
 }
 
 int add_stuffed(int x) {
-    
+
 }
 
 int add_quenched(int x) {
-    
+
 }
 
 void add_stat_bonus(string stat, int amount) {
-    
+
 }
 
 string query_long(string unused) {
@@ -351,7 +360,7 @@ string query_long(string unused) {
 }
 
 int query_stat_bonus(string stat) {
-   
+
 }
 
 int query_stats(string stat) {
@@ -377,7 +386,7 @@ int query_invis() { return invis; }
 
 int query_exp() { return player_data["general"]["experience"]; }
 
-void set_exp(int exp) 
+void set_exp(int exp)
 {
     player_data["general"]["experience"] = exp;
 }
@@ -440,7 +449,7 @@ void remove() {
 }
 
 void adjust_biorhythms() {
-    
+
 }
 
 int query_spiritual() { return spiritual; }
@@ -458,12 +467,12 @@ void set_primary_lang(string str) { primary_language = str; }
 
 // language system added by Valodin in August 1993
 
-int query_lang_prof(string lang) 
-{ 
+int query_lang_prof(string lang)
+{
     if(wizardp(this_object())) return 10;
     if(!languages)
 	return 0;
-    if(!languages[lang]) 
+    if(!languages[lang])
 	return 0;
     return languages[lang];
 }
@@ -535,7 +544,7 @@ int *query_lang_exp(string lang)
     return language_exp[lang];
 }
 
-void set_gender(string str) { 
+void set_gender(string str) {
     if(str != "male" && str != "female" && str != "neuter") return;
     gender = str;
 }

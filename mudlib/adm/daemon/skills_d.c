@@ -3,16 +3,6 @@
 //	contains code that would be very memory wasteful if in the user object
 //	created by Descartes of Borg 14 february 1993
 
-mapping init_skills(string cl) {
-    mapping skills;
-    if(!skills) skills = ([]);
-    if(!cl) {
-        skills["melee"] = ([ "level": 0, "points": 0, "max": 0 ]);
-	skills["attack"] = ([ "level":0, "points":0, "max":0 ]);
-    } else return init_skills(0);
-    return skills;
-}
-
 int training_formula(string cl, int lvl, string skill) {
     if(cl == "fighter") {
 	switch(skill) {
@@ -27,9 +17,9 @@ int training_formula(string cl, int lvl, string skill) {
     }
     else if(cl == "cleric") {
 	switch(skill) {
-	    case "magic defense": case "healing": case "faith": 
+	    case "magic defense": case "healing": case "faith":
 		return lvl * lvl; break;
-	    case "melee": case "defense": case "knife": case "blunt": 
+	    case "melee": case "defense": case "knife": case "blunt":
             case "conjuring":
 		return lvl * lvl * lvl; break;
 	    default: return lvl * lvl * lvl * lvl; break;

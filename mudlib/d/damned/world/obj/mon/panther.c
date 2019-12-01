@@ -14,9 +14,6 @@ create() {
     set_level(7);
     set_stats("intelligence", 20);
     set_property("melee damage", ([ "cutting" : 30]));
-    set_skill("melee", 60);
-    set_skill("dodge", 70);
-    set_skill("parry", 20);
     set_stats("dexterity", 90);
     set_max_hp(400);
     set_hp(400);
