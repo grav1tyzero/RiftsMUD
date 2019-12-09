@@ -3,14 +3,16 @@
 #include <daemons.h>
 #include <security.h>
 #include <rooms.h>
-#define DIR_CASTLE "/d/damned/data/castles"
+#include <dirs.h>
+
+
 #define DOORS ([ "wood door" : 2, "iron door" : 5, "steel door" : 8, \
    "vault door" : 16, "reinforced door" : 11 ])
 #define COMPASS ([ "north" : "south", "south" : "north", "east" : "west", \
     "west" : "east", "up" : "down", "down" : "up" ])
 #define FEATURES ({ "no scry", "no teleport", "no summon", "healing room", \
     "special exits" })
-#define EXITS ([ "church" : "/d/standard/square", "shop" : "/d/daybreak/room/shop/general_store" ])
+#define EXITS ([ "church" : "/d/standard/square"])
 
 inherit "/std/vault_locker_room";
 inherit "/std/virtual/compile";
@@ -172,7 +174,7 @@ void heart_beat() {
   else heal_counter--;
   return;
 }
-    
+
 void rewrite_castle() {
   string file, door;
   string *exits, plyr;
@@ -207,7 +209,7 @@ void rewrite_castle() {
   }
   seteuid(getuid());
 }
-  
+
 void bug() {
   set_short("There is a BUG here...");
   set_long("This room has a bug.  Please report it to an arch immediately.");
@@ -315,7 +317,7 @@ void virtual_setup(string file) {
 
 void init() {
   object ob;
-  
+
   ::init();
   add_action("castle_help", "help");
   add_action("castle_action", "castle");
@@ -345,10 +347,10 @@ void notify_me(object who) {
 
 int castle_help(string str) {
   string tmp;
-  
+
   if(str != "castle") return 0;
   if((string)this_player()->query_name() != query("owner")) return 0;
-  tmp = 
+  tmp =
 "Castle commands:\n"
 "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\n"
 "castle list......................Lists all castle 'things' available\n"
@@ -410,7 +412,7 @@ void manage_all_exits(string dir, object tp) {
 
 void manage_exits(object room, string dir) {
   string door;
-  
+
   if(!COMPASS[dir]) return;
   dir = COMPASS[dir];
   if(query_exit(dir) == base_name(room)) {
@@ -420,7 +422,7 @@ void manage_exits(object room, string dir) {
   }
   return;
 }
-  
+
 int castle_action(string arg) {
   string tmp, str2;
   int rooms, i, num1, j;
@@ -585,7 +587,7 @@ int castle_action(string arg) {
     this_player()->set_property("castle doors", doors);
     write("Door '"+tmp+"' removed and added to your inventory.");
     CASTLE_D->update_room(this_object());
-    CASTLE_D->update_room(load_object(query_exit(str1)));    
+    CASTLE_D->update_room(load_object(query_exit(str1)));
     return 1;
   }
   if(sscanf(arg, "short %s", str1) == 1) {
@@ -715,9 +717,9 @@ int castle_action(string arg) {
   write("See 'help castle' for syntax.");
   return 1;
 }
-     
+
 void next_line(string line, int to_go) {
-  to_go--;  
+  to_go--;
   if(line == "." || to_go <= 0) {
     if(to_go <= 0) {
       if(strlen(line) > 74)

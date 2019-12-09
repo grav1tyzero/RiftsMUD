@@ -41,7 +41,7 @@ void add_user(string *chans) {
 
     if(base_name(ob = previous_object()) != OB_USER) return;
     i = sizeof(chans);
-    while(i--) { 
+    while(i--) {
 	if(!channels[chans[i]]) channels[chans[i]] = ({});
 	channels[chans[i]] = distinct_array(channels[chans[i]]+({ob}));
     }
@@ -73,7 +73,6 @@ int send_chat(string verb, string who, string str) {
     case "newbie": col = "%^BOLD%^%^MAGENTA%^"; break;
     case "bid": col = "%^B_GREEN%^%^BLACK%^"; break;
     case "chat": col = "%^CYAN%^"; break;
-      case "daybreak":  col = "%^ORANGE%^"; break;
     case "cre":    col = "%^BOLD%^%^BLUE%^"; break;
     case "intercre": col = "%^BOLD%^%^CYAN%^"; break;
     case "admin":  col = "%^YELLOW%^"; break;
@@ -134,7 +133,6 @@ if (this_player()->query_property("no chat")==1){
     case "legend": col = "%^YELLOW%^"; break;
     case "bid": col = "%^B_GREEN%^%^BLACK%^"; break;
     case "chat": col = "%^CYAN%^"; break;
-      case "daybreak":  col = "%^ORANGE%^"; break;
     case "cre":    col = "%^BOLD%^%^BLUE%^"; break;
     case "intercre": col = "%^BOLD%^%^CYAN%^"; break;
     case "admin":  col = "%^YELLOW%^"; break;
@@ -206,7 +204,6 @@ int list_channel(string str) {
     switch(str) {
     case "newbie": col = "%^BOLD%^%^MAGENTA%^"; break;
     case "bid": col = "%^B_GREEN%^%^BLACK%^"; break;
-      case "daybreak":  col = "%^ORANGE%^"; break;
     case "chat": col = "%^CYAN%^"; break;
     case "legend": col = "%^YELLOW%^"; break;
     case "cre":    col = "%^BOLD%^%^BLUE%^"; break;
@@ -285,13 +282,9 @@ int hist_channel(string str) {
         col = "%^B_GREEN%^%^BLACK%^";
 	allow = 1;
 	break;
-      case "daybreak":
-          col = "%^ORANGE%^";
-          if(member_array(this_player(), channels["daybreak"]) > -1) allow = 1;
-	break;
         case "cre":
 	        col = "%^BOLD%^%^BLUE%^";
-	        if(wizardp(this_player())) 
+	        if(wizardp(this_player()))
                 allow = 1;
 	        break;
     case "intercre":

@@ -17,10 +17,10 @@ spells ([])
 primary_language "american"
 wimpydir "out"
 _attacks_per_melee 1
-env_var (["start":"/d/standard/setter","TITLE":"Novice $N the Human","LINES":"255","TERM":"ansi","SCORE":"off",])
+env_var (["start":"/wizards/parnell/workroom","TITLE":"Novice $N the Human","LINES":"255","TERM":"ansi","SCORE":"off",])
 money (["credits":10000500,])
-ok_to_heal 22306
-player_age 44612
+ok_to_heal 24109
+player_age 48218
 gender "male"
 stats (["spd":7,"iq":12,"me":11,"pe":6,"ps":10,"ma":12,"pb":9,"pp":9,])
 alias (["bio":"biography","n":"north","nw":"northwest","l":"look $*","ne":"northeast","i":"inventory","w":"west","sw":"southwest","exa":"look at $*","u":"up","e":"east","se":"southeast","d":"down","st":"status","s":"south",])

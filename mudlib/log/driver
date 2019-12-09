@@ -1,6 +1,6 @@
 ========================================================================
 Full Command Line: /usr/bin/driver /home/parnell/mud/mudlib/config.darke 
-Boot Time: Mon Dec  9 03:56:18 2019
+Boot Time: Mon Dec  9 04:26:39 2019
 Version: fluffos v2019 (Linux/x86-64)
 Jemalloc Version: 3.6.0-11
 libdw or libbfd is not found, you will only get very limited crash stacktrace.

@@ -2419,3 +2419,35 @@ Traceback
      Program: /d/damned/virtual/world_server.c
      File: /d/damned/virtual/world_server.c line 57
 
+
+Error in object: /adm/obj/master (Mon Dec  9 04:26:40 2019)
+> *call_other() couldn't find object
+
+File: /adm/obj/master.c              line 371
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   preload() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+
+2:   CATCH() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+
+
+Error in object: /adm/obj/master (Mon Dec  9 04:26:40 2019)
+> *call_other() couldn't find object
+
+File: /adm/obj/master.c              line 371
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   preload() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+
+2:   CATCH() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+

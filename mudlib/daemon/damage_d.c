@@ -1,5 +1,5 @@
 //	Combat damage daemon for DarkeMUD combat system.  Reads text files
-//	out of DIR_DAEMONS_DATA, specifically critical_<damage-type>.db
+//	out of DIR_DB, specifically critical_<damage-type>.db
 //	and damage.db, see specific files for format.
 //	DarkeLIB 0.1
 //	Diewarzau 3/26/94
@@ -105,11 +105,11 @@ static private void initialize_dmg_table() {
     string *damage, *line;
     int i, sz;
 
-    if(!file_exists(DIR_DAEMONS_DATA+"/damage.db")) {
+    if(!file_exists(DIR_DB+"/damage.db")) {
 	shout("BUG in damage daemon!  Damage.db not found.");
 	return;
     }
-    damage = read_database(DIR_DAEMONS_DATA+"/damage.db");
+    damage = read_database(DIR_DB+"/damage.db");
     dmg_table = new(class d_table);
     sz = sizeof(damage);
     dmg_table->res_idx = allocate(sz);
@@ -119,7 +119,7 @@ static private void initialize_dmg_table() {
 	dmg_table->res_idx[i] = line[0];
 	dmg_table->results[i] = line[1];
     }
-    damage = read_database(DIR_DAEMONS_DATA+"/damage_msg.db");
+    damage = read_database(DIR_DB+"/damage_msg.db");
     sz = sizeof(damage);
     dmg_table->m_idx = allocate(sz);
     dmg_table->mesgs = allocate(sz);
@@ -137,13 +137,13 @@ static private void initialize_criticals() {
 class table tmp_table;
     int i,j, p, sz;
 
-    table_dir = get_dir(DIR_DAEMONS_DATA+"/critical_*.db");
+    table_dir = get_dir(DIR_DB+"/critical_*.db");
     i = sizeof(table_dir);
     while(i--) {
 	if(sscanf(table_dir[i],"critical_%s.db",name) == 1)
 	    tmp_table = new(class table);
 	tmp_table->table_name = name;
-	table = read_database(DIR_DAEMONS_DATA+"/"+table_dir[i]);
+	table = read_database(DIR_DB+"/"+table_dir[i]);
 	sz = sizeof(table)-5;
 	tmp_table->lines = allocate(sz);
 	tmp_table->idx = allocate(sz);
@@ -274,7 +274,7 @@ string *query_msg(string type, int roll, string names) {
 	    return parse_message(line,a_name,t_name,verb);
 	}
     }
-    return ({ "critical hit BUG with "+tbl_name+" table.", 
+    return ({ "critical hit BUG with "+tbl_name+" table.",
       "critical hit BUG with "+tbl_name+" table.",
       "critical hit BUG with "+tbl_name+" table." });
 }
@@ -304,8 +304,8 @@ string *query_result(string type, int roll) {
 		critsults = tmp_table2->results;
 		strsults = (string *)critsults[i];
                  //we need to return this - crit_tables[cidx]->results[i]
-		return strsults; 
- 	        
+		return strsults;
+
 		}//this was all wacked out - still broke - that was a ugly. Cast this! .!..(><)..!.
     }
     return ({ "NO_EFFECT" });
@@ -318,7 +318,7 @@ string *parse_message(string line, string a_name, string t_name, string verb)
     int i;
     object att, targ;
 
-    
+
     a_name = lower_case(a_name); t_name = lower_case(t_name);
     att = find_living(a_name);
     targ = find_living(t_name);
