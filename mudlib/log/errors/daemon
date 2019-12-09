@@ -281,3 +281,15 @@
 /daemon/events_d.c line 189: Warning: Unused local variable 'i' before the end of line
 /daemon/voter.c line 13: Warning: Function clean_up inherited from '/std/daemon.c' does not match current function in return type ( void vs int ) before  {return 1;}
 /daemon/network.c line 148: Warning: Expression has no side effects, and the value is unused before  
+/daemon/multi_d.c line 111: Warning: Expression has no side effects, and the value is unused before [name] = time();
+/daemon/reinc_d.c line 109: Warning: Unused local variable 'langs' before the end of line
+/daemon/localpost.c line 123: Warning: Unused local variable 'g' before  
+/daemon/events_d.c line 189: Warning: Unused local variable 'who' before the end of line
+/daemon/events_d.c line 189: Warning: Unused local variable 'i' before the end of line
+/daemon/voter.c line 13: Warning: Function clean_up inherited from '/std/daemon.c' does not match current function in return type ( void vs int ) before  {return 1;}
+/daemon/network.c line 148: Warning: Expression has no side effects, and the value is unused before the end of line
+/daemon/localpost.c line 123: Warning: Unused local variable 'g' before  
+/daemon/events_d.c line 189: Warning: Unused local variable 'who' before the end of line
+/daemon/events_d.c line 189: Warning: Unused local variable 'i' before the end of line
+/daemon/voter.c line 13: Warning: Function clean_up inherited from '/std/daemon.c' does not match current function in return type ( void vs int ) before  {return 1;}
+/daemon/network.c line 148: Warning: Expression has no side effects, and the value is unused before the end of line

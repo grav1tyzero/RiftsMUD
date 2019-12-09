@@ -75,13 +75,7 @@ NME
   nplayer+=({0});
   count+=({0});
   name+=({ nme });
-#if 0
-  if(MULTI_D->query_prevent_login(nme)){
-    destruct(this_player());
-    return 1;
-// Prevent players with multiple character having both on at once
-  }
-#endif
+
   if((string)this_player()->query_name()==nme){
     samep+=({1});
     switch_player();
@@ -101,7 +95,7 @@ NME
 
 static void get_password(string pass){
   int i;
-  
+
   i = member_array(this_player(),oplayer);
   write("\n");
   if(pass==""){
@@ -127,7 +121,7 @@ static void enter_world() {
   int i;
   i = member_array(this_player(), oplayer);
   /*
-   * log_file("ENTER", name+"\tenter\t\t" + ctime(time()) + 
+   * log_file("ENTER", name+"\tenter\t\t" + ctime(time()) +
    *   " from " + query_ip_name(player) + "\n");
    */
   if (i == -1) return;
@@ -176,7 +170,7 @@ static void switch_player() {
     return;
   }
   nplayer[pos]->set_name(pname);
-  if(exec(nplayer[pos], oplayer[pos])){ 
+  if(exec(nplayer[pos], oplayer[pos])){
     object *inv;
     int i;
     nplayer[pos]->setup();
@@ -205,7 +199,7 @@ static void switch_player() {
 
 static void remove_player(){
   int i;
-  
+
   i=member_array(this_player(),oplayer);
   oplayer=oplayer[0..i-1]+oplayer[i+1..sizeof(oplayer)-1];
   nplayer=nplayer[0..i-1]+nplayer[i+1..sizeof(nplayer)-1];

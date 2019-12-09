@@ -152,3 +152,7 @@
 /std/vault_locker_room.c line 26: Warning: Unused local variable 'l_keys' before the end of line
 /std/vault_locker_room.c line 26: Warning: Unused local variable 'i' before the end of line
 /std/vault_locker_room.c line 26: Warning: Unused local variable 'ob' before the end of line
+/std/user/tsh.c line 149: Warning: alloc() inherited from both /std/user/history.c and /std/adt/cstack.c; using the definition in /std/user/history.c. before the end of file
+/std/user/tsh.c line 149: Warning: enqueue() inherited from both /std/user/history.c and /std/adt/cstack.c; using the definition in /std/user/history.c. before the end of file
+/std/user/tsh.c line 149: Warning: alloc() inherited from both /std/user/history.c and /std/adt/cstack.c; using the definition in /std/user/history.c. before the end of file
+/std/user/tsh.c line 149: Warning: enqueue() inherited from both /std/user/history.c and /std/adt/cstack.c; using the definition in /std/user/history.c. before the end of file

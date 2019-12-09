@@ -144,3 +144,4 @@
 /cmds/mortal/_yell.c line 76: Warning: Unused local variable 'prof' before the end of line
 /cmds/mortal/_yell.c line 95: Warning: Unused local variable 'j' before the end of line
 /cmds/mortal/_yell.c line 95: Warning: Unused local variable 'tmp' before the end of line
+/cmds/mortal/_tell.c line 97: Warning: Unused local variable 'tell_msg' before the end of line

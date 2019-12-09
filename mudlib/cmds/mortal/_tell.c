@@ -9,7 +9,7 @@
 inherit DAEMON;
 
 int cmd_tell(string str) {
-    string tell_msg, who, target, mud, msg;
+    string who, target, mud, msg;
     object ob;
     int sp_cost;
     int ttr, x;
@@ -43,7 +43,7 @@ int cmd_tell(string str) {
         return 0;
     }
     if(sscanf(lower_case(who),"%s@%s",target,mud) == 2) {
-        if(!NETWORK_D->mud_exists(mud)) 
+        if(!NETWORK_D->mud_exists(mud))
           return notify_fail("That mud is not listed with"+mud_name()+".\n");
         SERVICES_D->send_gtell(mud, target, msg);
         return 1;

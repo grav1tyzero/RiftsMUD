@@ -40,7 +40,6 @@ void create() {
 
 void check_reincarnate(object who) {
   int i = 0;
-  string *langs;
   object *inv;
 
   if(wizardp(who)) return;

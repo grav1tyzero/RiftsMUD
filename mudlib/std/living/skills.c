@@ -115,8 +115,6 @@ string query_class() { return char_class; }
 
 varargs int add_skill(string name, int value, int per_level)
 {
-    string file;
-
     if(skill_exists(name))
       return 0;
     set_skill(name, value, per_level);
@@ -156,7 +154,6 @@ void set_primary_lang(string str) { primary_language = str; }
 
 int query_lang_prof(string lang)
 {
-    int skill_value;
     return this_object()->query_skill(sprintf("language: %s", lang));
 }
 

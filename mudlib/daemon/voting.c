@@ -36,7 +36,6 @@ int register_vote(string who, string whom, string v_class) {
     }
     if(member_array(whom, candidates) == -1) return NOT_RUNNING;
     if(votes[who] && sizeof(votes[who]) > 1) return ALREADY_VOTED;
-    if(MULTI_D-> non_voter(who)) return ALREADY_VOTED;
     // 'who' is a second character and should use his main one to vote
     if(votes[who] && member_array(whom, votes[who]) != -1) return BAD_VOTE;
     if(!votes[who]) votes[who] = ({ whom });
@@ -102,7 +101,7 @@ void end_elections() {
     int i;
 
     if(geteuid(previous_object()) != UID_LAW) return;
-    i = sizeof(ELECTIONS); 
+    i = sizeof(ELECTIONS);
     while(i--) {
         seteuid(UID_VOTESAVE);
         tmp = read_file(DIR_VOTES+"/"+ELECTIONS[i]+"_votes");

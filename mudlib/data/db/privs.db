@@ -21,6 +21,7 @@
 (/cmds/adm/_newemail): UserSave
 (/cmds/adm/_update): Force
 (/cmds/adm/_idaemon): SecureDaemonSave
+(/cmds/adm/_dumpallobj): Log
 (/cmds/adm/_economy): Approval Log
 (/cmds/adm/_elections): UidLaw
 (/cmds/adm/_setreboot): Shutdown
@@ -86,7 +87,6 @@
 (/daemon/events_d): DaemonSave Shutdown
 (/daemon/letter): PostalSave Postal
 (/daemon/localpost): PostalSave Postal
-(/daemon/multi_d): DaemonSave
 (/daemon/pk_d): DaemonSave
 (/daemon/network): Socket DaemonSave
 (/daemon/remotepost): SecureDaemonSave Postal

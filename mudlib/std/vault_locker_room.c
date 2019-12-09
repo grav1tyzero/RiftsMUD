@@ -14,11 +14,6 @@ static int load_status;
 void load_lockers();
 
 void create() {
-  mapping lockers;
-  string *l_keys;
-  int i;
-  object ob;
-  
   ::create();
   set_property("storage room", 1);
   if(!load_status) call_out("load_lockers", 2);

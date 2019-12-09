@@ -340,7 +340,6 @@ void remove() {
 	      capitalize((string)this_object()->query_name()) +
                 " has logged off.",
 	      who_exc);
-    MULTI_D->quit(query_name());
     this_object()->tsh_cleanup();
 living::remove();
 }

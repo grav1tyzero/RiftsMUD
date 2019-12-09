@@ -35,7 +35,7 @@
 (/log/errors): (all)[rw]
 (/log/personal): (all)[rw]
 (/log/reports): (all)[rw]
-(/log/tells): (all)[rw]
+(/log/tells): (all)[n] (Log)[rw] (law)[r] (superuser)[rw]
 (/news): (all)[r] (mentor)[rw] (assist)[rw] (superuser)[rw]
 (/obj): (all)[r] (mudlib)[rw] (superuser)[rw]
 (/open): (all)[rw]
@@ -62,4 +62,3 @@
 (/tmp/ObProps): (all)[rw]
 (/wizards): (all)[r] (assist)[rw] (superuser)[rw] (elder)[rw] (mentor)[rw]
 (/www): (all)[n] (www)[rw] (superuser)[rw]
-
