@@ -3,6 +3,7 @@
 //   DarkeLIB 1.0
 
 #include <security.h>
+#include <dirs.h>
 
 void generate_map(string type, int max_mines, int good_mine) {
   int non_h2o;
@@ -16,7 +17,7 @@ void generate_map(string type, int max_mines, int good_mine) {
     seteuid(getuid());
     return;
   }
-  lines = explode(read_file("/d/damned/data/world_terrain.db"), "\n");
+  lines = explode(read_file(DIR_DATA_DAMNED+"/world_terrain.db"), "\n");
   non_h2o = 0;
   for(i=0;i<sizeof(lines);i++) {
     words = explode(lines[i], ":");

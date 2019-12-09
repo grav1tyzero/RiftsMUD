@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "lpctypes.h": "c"
+        "lpctypes.h": "c",
+        "daemons.h": "c"
     }
 }

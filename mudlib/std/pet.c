@@ -202,7 +202,7 @@ int exit_func(string null) {
 	  if(random(100) > ((int)this_object()->query_skill("perception")/3))
 	    return 0;
 	}
-	if(this_player()->shadow_form() || this_player()->query_ghost()) return 0;
+	if(this_player()->query_ghost()) return 0;
 	p_name = (string)this_player()->query_name();
 	if((member_array(p_name, b_keys) < 0 ||
 	  blocked[p_name] < time()) && !a_flag) {

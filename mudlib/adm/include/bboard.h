@@ -1,5 +1,5 @@
 #include <dirs.h>
-#define BBOARD_DIR 		DIR_DATA+"/boards/"
+#define BBOARD_DIR 		DIR_ADM_SAVE+"/boards/"
 #define BBOARD_EDIT		"/tmp/bb/"
 
 #define BBOARD_OK		0

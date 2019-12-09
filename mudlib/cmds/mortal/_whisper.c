@@ -35,8 +35,7 @@ int cmd_whisper(string str) {
   }
 
   lang = (string)this_player()->query_primary_lang();
-  if((prof = (int)this_player()->query_lang_prof(lang)) < 10) msg =
-	translate(msg, prof);
+  msg =	translate(msg, (int)this_player()->query_lang_prof(lang));
   if(ob->query_invis()) {
     notify_fail(capitalize(who) +
                 " does not appear to be within whispering distance.\n");

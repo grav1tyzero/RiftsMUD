@@ -1,0 +1,43 @@
+#/std/user.c
+encumbrance 500
+props (["last reinc":1575213962,"light":0,"combat color":"%^BOLD%^","someproperty":(["map1":0,]),"last read news":1575213962,])
+true_name "parnellii"
+creator "/adm/obj/login#2"
+max_internal_encumbrance 80
+player_data (["general":(["sp":1,"max_sdc":23,"mdc":0,"sdc":23,"max_mdc":0,"max_hp":10,"max_sp":1,"hp":10,]),])
+magic (["max points":0,"points":0,])
+severed ([])
+healing ([])
+body (["torso":(["damage":0,"armour_ob":({}),"max_dam":10,"weapons":0,"ac":0,"limb_ref":"FATAL","armour":({}),]),"left leg":(["damage":0,"armour_ob":({}),"max_dam":3,"weapons":0,"ac":0,"limb_ref":"left foot","armour":({}),]),"right foot":(["damage":0,"armour_ob":({}),"max_dam":2,"weapons":0,"ac":0,"limb_ref":"","armour":({}),]),"right leg":(["damage":0,"armour_ob":({}),"max_dam":3,"weapons":0,"ac":0,"limb_ref":"right foot","armour":({}),]),"head":(["damage":0,"armour_ob":({}),"max_dam":5,"weapons":0,"ac":0,"limb_ref":"FATAL","armour":({}),]),"right hand":(["damage":0,"armour_ob":({}),"max_dam":2,"wieldable":1,"weapons":0,"ac":0,"limb_ref":"","armour":({}),]),"left foot":(["damage":0,"armour_ob":({}),"max_dam":2,"weapons":0,"ac":0,"limb_ref":"","armour":({}),]),"left arm":(["damage":0,"armour_ob":({}),"max_dam":3,"weapons":0,"ac":0,"limb_ref":"left hand","armour":({}),]),"left hand":(["damage":0,"armour_ob":({}),"max_dam":2,"wieldable":1,"weapons":0,"ac":0,"limb_ref":"","armour":({}),]),"right arm":(["damage":0,"armour_ob":({}),"max_dam":3,"weapons":0,"ac":0,"limb_ref":"right hand","armour":({}),]),])
+limbs ({"left leg","torso","head","right leg","right foot","right hand","left arm","left foot","right arm","left hand",})
+all_my_fingers 5
+heal_rate 2
+skills ([])
+spells ([])
+wimpydir "out"
+_attacks_per_melee 1
+env_var (["start":"/d/standard/setter","TITLE":"Novice $N the Human","TERM":"unknown","SCORE":"off",])
+ok_to_heal 563
+player_age 1126
+gender "male"
+stats (["spd":12,"iq":14,"me":6,"pe":8,"ps":8,"ma":20,"pb":9,"pp":9,])
+languages (["american":10,])
+primary_language "american"
+alias (["bio":"biography","n":"north","nw":"northwest","l":"look $*","ne":"northeast","i":"inventory","w":"west","sw":"southwest","exa":"look at $*","u":"up","e":"east","se":"southeast","d":"down","st":"status","s":"south",])
+xverb (["$:":"emote $*","$\"":"say $*","$'":"say $*",])
+auto_load ({})
+level 1
+verbose_moves 1
+birth 1575213962
+blocked ([])
+snatch "off"
+inf_block ({})
+real_name "jp"
+email "test1@test.com"
+ip "172.30.0.1"
+last_on "Sun Dec  1 15:26:02 2019"
+race "human"
+original_site "172.30.0.1"
+_password_hash "nkdglbkl!cb`eocconcncnbgaodomddhfbkaajddb"
+_password_salt "B7"
+position "player"

@@ -6,6 +6,7 @@
 //	Diewarzau 1994
 // Modified by Geldron 031096 to fix HeartBeat prob
 // Modified by Geldron 031096 to work with arena
+// Started over almost for Rifts - Parnell 2018
 
 #include <std.h>
 #include <party.h>
@@ -15,7 +16,7 @@
 
 #pragma optimize
 #define KILL_RANGE 5
-#define DEFAULT_PARALYZE_MESSAGE "You are stiff as stone."
+#define DEFAULT_PARALYZE_MESSAGE "You are STUNNED!"
 
 inherit BODY;
 inherit SKILLS;
@@ -34,7 +35,6 @@ private static object *attackers;
 private static int any_attack;
 private static int casting;
 private static object *hunters;
-private static object *pres_hunters;
 private static mapping magic_protection;
 private static string paralyze_message;
 private static string target_thing;
@@ -78,7 +78,6 @@ void init_attack() {
     init_complex_body();
     hunters = ({});
     attackers = ({});
-    pres_hunters = ({});
     wimpydir = "out";
 }
 
@@ -86,84 +85,46 @@ void init_attack() {
 // Return true if there are still attackers around
 
 int clean_up_attackers() {
-    object *hunters_tmp, *attackers_tmp, *phunters_tmp;
+    object *hunters_tmp, *attackers_tmp;
     object first;
     int i;
 
     attackers_tmp = ({});
     hunters_tmp = ({});
-    phunters_tmp = ({});
     i = sizeof(attackers);
+
+	//let's remember who our front attacker is. that's who we're beating on when we type kill <suckafool>
     if(i) first = attackers[0];
+
+	//prepare list of valid attackers and move to others to hunters.
     while(i--) {
-		if(!attackers[i] || !objectp(attackers[i]))
-			continue;
-		if(attackers[i]->shadow_form() ||
-		this_object()->shadow_form()) {
-			if(environment(attackers[i]) == environment())
-				phunters_tmp += ({ attackers[i] });
-			else
-				hunters_tmp += ({ attackers[i] });
-			continue;
-		}
-		if(attackers[i]->query_ghost())
+		if(!attackers[i] || !objectp(attackers[i]) || attackers[i]->query_ghost())
 			continue;
 		if(environment(attackers[i]) != environment(this_object()))
 			hunters_tmp += ({ attackers[i] });
 		else attackers_tmp += ({ attackers[i] });
     }
+
+	//deal with hunters
     i = sizeof(hunters);
     while(i--) {
-		if(!hunters[i] || !objectp(hunters[i]))
+		if(!hunters[i] || !objectp(hunters[i]) || hunters[i]->query_ghost())
 			continue;
-		if(hunters[i]->query_ghost())
-			continue;
-		if(hunters[i]->shadow_form()) {
-			if(environment() == environment(hunters[i]))
-				phunters_tmp += ({ hunters[i] });
-			else
-				hunters_tmp += ({ hunters[i] });
-			continue;
-		}
-		if(environment(hunters[i]) == environment(this_object())) {
-			if(hunters[i]->query_invis() && !this_object()->query("see invis")) {
-				phunters_tmp += ({ hunters[i] });
-				continue;
-			}
-			if(hunters[i]->query_stealth() &&
-			skill_contest((int)hunters[i]->query_stealth(),
-			(int)this_object()->query_skill("perception"), 1) == 1) {
-				phunters_tmp += ({ hunters[i] });
-				continue;
-			}
+
+		if(environment(hunters[i]) == environment(this_object()))
 			attackers_tmp += ({ hunters[i] });
-		}
-		else hunters_tmp += ({ hunters[i] });
+		else
+			hunters_tmp += ({ hunters[i] });
     }
-    i = sizeof(pres_hunters);
-    while(i--) {
-         if(!pres_hunters[i]) continue;
-	if(environment(pres_hunters[i]) != environment()) {
-	    hunters_tmp += ({ pres_hunters[i] });
-	    continue;
-	}
-	if(pres_hunters[i]->query_stealth() ||
-	  (pres_hunters[i]->query_invis() && !this_object()->query("see invis")) ||
-	  pres_hunters[i]->shadow_form() ||
-	  this_object()->shadow_form()) {
-	    phunters_tmp += ({ pres_hunters[i] });
-	    continue;
-	}
-	attackers_tmp += ({ pres_hunters[i] });
-    }
+
     attackers = attackers_tmp;
+
     i = member_array(first, attackers);
     if(i > 0) {
-	attackers[i] = attackers[0];
-	attackers[0] = first;
+		attackers[i] = attackers[0];
+		attackers[0] = first;
     }
     hunters = hunters_tmp;
-    pres_hunters = phunters_tmp;
     any_attack = sizeof(attackers);
     hunting = sizeof(hunters);
     return any_attack;
@@ -443,7 +404,7 @@ void send_messages(string *mesgs) {
     return;
 }
 
-object *query_hunted() { return hunters + pres_hunters; }
+object *query_hunted() { return hunters; }
 
 object *query_attackers() {
     if(!attackers) return ({});

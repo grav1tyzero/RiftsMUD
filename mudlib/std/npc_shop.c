@@ -92,7 +92,6 @@ int block_exit(string null) {
     return 0;
   if(skill_contest((int)this_player()->query_stealth(), query_skill("perception")+10, 1)
     == 1) return 0;
-  if(this_player()->shadow_form()) return 0;
   write("The Shopkeeper blocks your way.");
   return 1;
 }

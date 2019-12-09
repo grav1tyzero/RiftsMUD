@@ -58,7 +58,7 @@ void update_room(object what) {
 
 void check_upkeep() {
 
-    
+
     string *dir, file;
     string owner, wfile, *remv;
     mixed *cdata;
@@ -94,7 +94,7 @@ void check_upkeep() {
   foreach(file in dir) map_delete(castles, file);
 
   seteuid(UID_DAMNED_DATA);
-  dir = read_database("/d/damned/data/world_items.db");
+  dir = read_database(DIR_DATA_DAMNED+"/world_items.db");
   foreach(file in remv) {
     idx = sizeof(dir);
     while(idx--) {

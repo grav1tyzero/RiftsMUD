@@ -77,7 +77,7 @@ int is_save_room(mixed room){
     if(member_array(tmp, save_rooms) != -1) return 1;
     else return 0;
 }
-          
+
 int add_save_room(mixed room){
     string tmp;
     object r;
@@ -91,14 +91,14 @@ int add_save_room(mixed room){
         return 0;
     r->set_save_room(1);
     if(member_array(tmp, save_rooms) == -1)
-    
+
     save_rooms += ({ tmp });
     save_save_rooms();
     r->save();
     return 1;
-    
+
 }
-    
+
 int remove_save_room(mixed room){
     string tmp;
     object r;
@@ -150,7 +150,7 @@ string get_sid() {
     int i;
 
     prev = previous_object();
-    sid2 = DIR_DATA+"/";
+    sid2 = DIR_ADM_SAVE+"/";
     if(prev->query_room())
         type = "room";
     else

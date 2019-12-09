@@ -10,7 +10,7 @@ security system is relatively new, however, /adm/daemon retains
 Root access for the time being.  In truth, the only object on the mud
 which needs Root access under this security system is the master object.
 I left login.c with Root for the sake of simplicity, and simul_efun
-object always acts as if it were root anyways.  
+object always acts as if it were root anyways.
 
 The directory is subdivided as follows:
 
@@ -19,7 +19,7 @@ Secure daemons.  These do not need Root access, but they do need the sort
 of access that can screw the mud up if misused.  For example, the banish
 objects, if misused, could prevent admins from logging in.
 
-/adm/db:
+/data/db:
 Secure databases.  These are databases no one but admins should have access to.
 A good example here is the access.db which determines what access
 different euid's have.

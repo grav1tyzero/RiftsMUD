@@ -773,3 +773,260 @@
 /adm/daemon/finger_d.c line 59: Warning: Unused local variable 'amt' before the end of line
 /adm/daemon/finger_d.c line 194: Warning: Unused local variable 'pos' before the end of line
 /adm/daemon/finger_d.c line 194: Warning: Unused local variable 'tmp9' before the end of line
+/adm/daemon/astronomy_d.c line 28: Warning: Number of arguments disagrees with previous definition. before  {
+/adm/daemon/astronomy_d.c line 32: Warning: Number of arguments disagrees with previous definition. before  {
+/adm/daemon/astronomy_d.c line 34: Redeclaration of function query_phase. before the end of line
+/adm/daemon/astronomy_d.c line 67: Wrong number of arguments to query_phase
+    Expected: 0  Got: 1 before );
+/adm/daemon/astronomy_d.c line 119: Warning: Unused local variable 'i' before the end of line
+/adm/daemon/astronomy_d.c line 40: syntax error before  += (query_phase()<s
+/adm/daemon/astronomy_d.c line 41: syntax error before the end of line
+/adm/daemon/astronomy_d.c line 42: Illegal LHS before the end of line
+/adm/daemon/astronomy_d.c line 42: syntax error before the end of line
+/adm/daemon/astronomy_d.c line 53: Illegal LHS before the end of line
+/adm/daemon/astronomy_d.c line 53: syntax error before the end of line
+/adm/daemon/astronomy_d.c line 40: syntax error before  += (query_phase() <
+/adm/daemon/astronomy_d.c line 40: Illegal LHS before the end of line
+/adm/daemon/astronomy_d.c line 40: syntax error before the end of line
+/adm/daemon/astronomy_d.c line 42: Illegal LHS before the end of line
+/adm/daemon/astronomy_d.c line 42: syntax error before the end of line
+/adm/daemon/astronomy_d.c line 53: Illegal LHS before the end of line
+/adm/daemon/astronomy_d.c line 44: Undefined function atof before  / (sizeof(PHASES) /
+/adm/daemon/astronomy_d.c line 44: Invalid types to '/' ( unknown vs int ) before the end of line
+/adm/obj/server.c line 35: Warning: Unused local variable 'obj' before the end of line
+/adm/daemon/race_d.c line 77: Warning: Unused local variable 'borg' before the end of line
+/adm/daemon/save_items_d.c line 108: Warning: Unused local variable 'tstr' before the end of line
+/adm/daemon/save_items_d.c line 108: Warning: Unused local variable 'tmpor' before the end of line
+/adm/daemon/save_items_d.c line 108: Warning: Unused local variable 'tmp' before the end of line
+/adm/daemon/save_items_d.c line 249: Warning: Unused local variable 'x' before the end of line
+/adm/daemon/save_items_d.c line 275: Warning: Unused local variable 'x' before the end of line
+/adm/daemon/save_items_d.c line 275: Warning: Unused local variable 'i' before the end of line
+/adm/daemon/save_items_d.c line 275: Warning: Unused local variable 'uar' before the end of line
+/adm/daemon/save_items_d.c line 370: Warning: Unused local variable 'j' before the end of line
+/adm/daemon/save_items_d.c line 370: Warning: Unused local variable 'lfile' before the end of line
+/adm/daemon/save_items_d.c line 370: Warning: Unused local variable 'ofile' before the end of line
+/adm/obj/login.c line 55: Warning: Unused local variable 'name' before the end of line
+/adm/obj/login.c line 172: Warning: Unused local variable 'pass' before  
+/adm/obj/server.c line 35: Warning: Unused local variable 'obj' before the end of line
+/adm/daemon/race_d.c line 77: Warning: Unused local variable 'borg' before the end of line
+/adm/daemon/save_items_d.c line 108: Warning: Unused local variable 'tstr' before the end of line
+/adm/daemon/save_items_d.c line 108: Warning: Unused local variable 'tmpor' before the end of line
+/adm/daemon/save_items_d.c line 108: Warning: Unused local variable 'tmp' before the end of line
+/adm/daemon/save_items_d.c line 249: Warning: Unused local variable 'x' before the end of line
+/adm/daemon/save_items_d.c line 275: Warning: Unused local variable 'x' before the end of line
+/adm/daemon/save_items_d.c line 275: Warning: Unused local variable 'i' before the end of line
+/adm/daemon/save_items_d.c line 275: Warning: Unused local variable 'uar' before the end of line
+/adm/daemon/save_items_d.c line 370: Warning: Unused local variable 'j' before the end of line
+/adm/daemon/save_items_d.c line 370: Warning: Unused local variable 'lfile' before the end of line
+/adm/daemon/save_items_d.c line 370: Warning: Unused local variable 'ofile' before the end of line
+/adm/obj/login.c line 55: Warning: Unused local variable 'name' before the end of line
+/adm/obj/login.c line 172: Warning: Unused local variable 'pass' before  
+/adm/daemon/bboard_d.c line 139: Warning: Types in ?: do not match ( int vs string ). before +"] ");
+/adm/daemon/delayed_function_d.c line 167: syntax error before ;
+/adm/daemon/delayed_function_d.c line 169: Illegal LHS before the end of line
+/adm/daemon/delayed_function_d.c line 169: Warning: Expression has no side effects, and the value is unused before the end of line
+/adm/daemon/delayed_function_d.c line 170: syntax error before  if(arg3) {
+/adm/daemon/delayed_function_d.c line 172: Illegal LHS before the end of line
+/adm/daemon/delayed_function_d.c line 172: Warning: Expression has no side effects, and the value is unused before the end of line
+/adm/daemon/delayed_function_d.c line 173: syntax error before  if(arg2) {
+/adm/obj/server.c line 35: Warning: Unused local variable 'obj' before the end of line
+/adm/daemon/race_d.c line 77: Warning: Unused local variable 'borg' before the end of line
+/adm/daemon/save_items_d.c line 108: Warning: Unused local variable 'tstr' before the end of line
+/adm/daemon/save_items_d.c line 108: Warning: Unused local variable 'tmpor' before the end of line
+/adm/daemon/save_items_d.c line 108: Warning: Unused local variable 'tmp' before the end of line
+/adm/daemon/save_items_d.c line 249: Warning: Unused local variable 'x' before the end of line
+/adm/daemon/save_items_d.c line 275: Warning: Unused local variable 'x' before the end of line
+/adm/daemon/save_items_d.c line 275: Warning: Unused local variable 'i' before the end of line
+/adm/daemon/save_items_d.c line 275: Warning: Unused local variable 'uar' before the end of line
+/adm/daemon/save_items_d.c line 370: Warning: Unused local variable 'j' before the end of line
+/adm/daemon/save_items_d.c line 370: Warning: Unused local variable 'lfile' before the end of line
+/adm/daemon/save_items_d.c line 370: Warning: Unused local variable 'ofile' before the end of line
+/adm/obj/login.c line 55: Warning: Unused local variable 'name' before the end of line
+/adm/obj/login.c line 172: Warning: Unused local variable 'pass' before  
+/adm/obj/server.c line 35: Warning: Unused local variable 'obj' before the end of line
+/adm/daemon/race_d.c line 77: Warning: Unused local variable 'borg' before the end of line
+/adm/daemon/save_items_d.c line 108: Warning: Unused local variable 'tstr' before the end of line
+/adm/daemon/save_items_d.c line 108: Warning: Unused local variable 'tmpor' before the end of line
+/adm/daemon/save_items_d.c line 108: Warning: Unused local variable 'tmp' before the end of line
+/adm/daemon/save_items_d.c line 249: Warning: Unused local variable 'x' before the end of line
+/adm/daemon/save_items_d.c line 275: Warning: Unused local variable 'x' before the end of line
+/adm/daemon/save_items_d.c line 275: Warning: Unused local variable 'i' before the end of line
+/adm/daemon/save_items_d.c line 275: Warning: Unused local variable 'uar' before the end of line
+/adm/daemon/save_items_d.c line 370: Warning: Unused local variable 'j' before the end of line
+/adm/daemon/save_items_d.c line 370: Warning: Unused local variable 'lfile' before the end of line
+/adm/daemon/save_items_d.c line 370: Warning: Unused local variable 'ofile' before the end of line
+/adm/obj/login.c line 55: Warning: Unused local variable 'name' before the end of line
+/adm/obj/login.c line 172: Warning: Unused local variable 'pass' before  
+/adm/obj/server.c line 35: Warning: Unused local variable 'obj' before the end of line
+/adm/daemon/race_d.c line 77: Warning: Unused local variable 'borg' before the end of line
+/adm/daemon/save_items_d.c line 108: Warning: Unused local variable 'tstr' before the end of line
+/adm/daemon/save_items_d.c line 108: Warning: Unused local variable 'tmpor' before the end of line
+/adm/daemon/save_items_d.c line 108: Warning: Unused local variable 'tmp' before the end of line
+/adm/daemon/save_items_d.c line 249: Warning: Unused local variable 'x' before the end of line
+/adm/daemon/save_items_d.c line 275: Warning: Unused local variable 'x' before the end of line
+/adm/daemon/save_items_d.c line 275: Warning: Unused local variable 'i' before the end of line
+/adm/daemon/save_items_d.c line 275: Warning: Unused local variable 'uar' before the end of line
+/adm/daemon/save_items_d.c line 370: Warning: Unused local variable 'j' before the end of line
+/adm/daemon/save_items_d.c line 370: Warning: Unused local variable 'lfile' before the end of line
+/adm/daemon/save_items_d.c line 370: Warning: Unused local variable 'ofile' before the end of line
+/adm/obj/login.c line 55: Warning: Unused local variable 'name' before the end of line
+/adm/obj/login.c line 172: Warning: Unused local variable 'pass' before  
+/adm/obj/server.c line 35: Warning: Unused local variable 'obj' before the end of line
+/adm/daemon/race_d.c line 77: Warning: Unused local variable 'borg' before the end of line
+/adm/daemon/save_items_d.c line 108: Warning: Unused local variable 'tstr' before the end of line
+/adm/daemon/save_items_d.c line 108: Warning: Unused local variable 'tmpor' before the end of line
+/adm/daemon/save_items_d.c line 108: Warning: Unused local variable 'tmp' before the end of line
+/adm/daemon/save_items_d.c line 249: Warning: Unused local variable 'x' before the end of line
+/adm/daemon/save_items_d.c line 275: Warning: Unused local variable 'x' before the end of line
+/adm/daemon/save_items_d.c line 275: Warning: Unused local variable 'i' before the end of line
+/adm/daemon/save_items_d.c line 275: Warning: Unused local variable 'uar' before the end of line
+/adm/daemon/save_items_d.c line 370: Warning: Unused local variable 'j' before the end of line
+/adm/daemon/save_items_d.c line 370: Warning: Unused local variable 'lfile' before the end of line
+/adm/daemon/save_items_d.c line 370: Warning: Unused local variable 'ofile' before the end of line
+/adm/obj/login.c line 55: Warning: Unused local variable 'name' before the end of line
+/adm/obj/login.c line 172: Warning: Unused local variable 'pass' before  
+/adm/obj/server.c line 35: Warning: Unused local variable 'obj' before the end of line
+/adm/daemon/race_d.c line 77: Warning: Unused local variable 'borg' before the end of line
+/adm/daemon/save_items_d.c line 108: Warning: Unused local variable 'tstr' before the end of line
+/adm/daemon/save_items_d.c line 108: Warning: Unused local variable 'tmpor' before the end of line
+/adm/daemon/save_items_d.c line 108: Warning: Unused local variable 'tmp' before the end of line
+/adm/daemon/save_items_d.c line 249: Warning: Unused local variable 'x' before the end of line
+/adm/daemon/save_items_d.c line 275: Warning: Unused local variable 'x' before the end of line
+/adm/daemon/save_items_d.c line 275: Warning: Unused local variable 'i' before the end of line
+/adm/daemon/save_items_d.c line 275: Warning: Unused local variable 'uar' before the end of line
+/adm/daemon/save_items_d.c line 370: Warning: Unused local variable 'j' before the end of line
+/adm/daemon/save_items_d.c line 370: Warning: Unused local variable 'lfile' before the end of line
+/adm/daemon/save_items_d.c line 370: Warning: Unused local variable 'ofile' before the end of line
+/adm/obj/login.c line 55: Warning: Unused local variable 'name' before the end of line
+/adm/obj/login.c line 172: Warning: Unused local variable 'pass' before  
+/adm/obj/server.c line 35: Warning: Unused local variable 'obj' before the end of line
+/adm/daemon/race_d.c line 77: Warning: Unused local variable 'borg' before the end of line
+/adm/daemon/save_items_d.c line 108: Warning: Unused local variable 'tstr' before the end of line
+/adm/daemon/save_items_d.c line 108: Warning: Unused local variable 'tmpor' before the end of line
+/adm/daemon/save_items_d.c line 108: Warning: Unused local variable 'tmp' before the end of line
+/adm/daemon/save_items_d.c line 249: Warning: Unused local variable 'x' before the end of line
+/adm/daemon/save_items_d.c line 275: Warning: Unused local variable 'x' before the end of line
+/adm/daemon/save_items_d.c line 275: Warning: Unused local variable 'i' before the end of line
+/adm/daemon/save_items_d.c line 275: Warning: Unused local variable 'uar' before the end of line
+/adm/daemon/save_items_d.c line 370: Warning: Unused local variable 'j' before the end of line
+/adm/daemon/save_items_d.c line 370: Warning: Unused local variable 'lfile' before the end of line
+/adm/daemon/save_items_d.c line 370: Warning: Unused local variable 'ofile' before the end of line
+/adm/obj/login.c line 55: Warning: Unused local variable 'name' before the end of line
+/adm/obj/login.c line 172: Warning: Unused local variable 'pass' before  
+/adm/daemon/lang_d.c line 19: Bad assignment ( mapping vs mixed * ). before the end of line
+/adm/daemon/lang_d.c line 31: Bad argument 1 to efun values() before ;
+/adm/daemon/lang_d.c line 36: Bad argument 1 to efun keys() before ;
+/adm/daemon/lang_d.c line 31: Bad argument 1 to efun values() before ;
+/adm/daemon/lang_d.c line 36: Bad argument 1 to efun keys() before ;
+/adm/daemon/lang_d.c line 31: Bad argument 1 to efun values() before ;
+/adm/daemon/lang_d.c line 36: Bad argument 1 to efun keys() before ;
+/adm/obj/server.c line 35: Warning: Unused local variable 'obj' before the end of line
+/adm/daemon/race_d.c line 77: Warning: Unused local variable 'borg' before the end of line
+/adm/daemon/save_items_d.c line 108: Warning: Unused local variable 'tstr' before the end of line
+/adm/daemon/save_items_d.c line 108: Warning: Unused local variable 'tmpor' before the end of line
+/adm/daemon/save_items_d.c line 108: Warning: Unused local variable 'tmp' before the end of line
+/adm/daemon/save_items_d.c line 249: Warning: Unused local variable 'x' before the end of line
+/adm/daemon/save_items_d.c line 275: Warning: Unused local variable 'x' before the end of line
+/adm/daemon/save_items_d.c line 275: Warning: Unused local variable 'i' before the end of line
+/adm/daemon/save_items_d.c line 275: Warning: Unused local variable 'uar' before the end of line
+/adm/daemon/save_items_d.c line 370: Warning: Unused local variable 'j' before the end of line
+/adm/daemon/save_items_d.c line 370: Warning: Unused local variable 'lfile' before the end of line
+/adm/daemon/save_items_d.c line 370: Warning: Unused local variable 'ofile' before the end of line
+/adm/obj/login.c line 55: Warning: Unused local variable 'name' before the end of line
+/adm/obj/login.c line 172: Warning: Unused local variable 'pass' before  
+/adm/obj/server.c line 35: Warning: Unused local variable 'obj' before the end of line
+/adm/daemon/race_d.c line 77: Warning: Unused local variable 'borg' before the end of line
+/adm/daemon/save_items_d.c line 108: Warning: Unused local variable 'tstr' before the end of line
+/adm/daemon/save_items_d.c line 108: Warning: Unused local variable 'tmpor' before the end of line
+/adm/daemon/save_items_d.c line 108: Warning: Unused local variable 'tmp' before the end of line
+/adm/daemon/save_items_d.c line 249: Warning: Unused local variable 'x' before the end of line
+/adm/daemon/save_items_d.c line 275: Warning: Unused local variable 'x' before the end of line
+/adm/daemon/save_items_d.c line 275: Warning: Unused local variable 'i' before the end of line
+/adm/daemon/save_items_d.c line 275: Warning: Unused local variable 'uar' before the end of line
+/adm/daemon/save_items_d.c line 370: Warning: Unused local variable 'j' before the end of line
+/adm/daemon/save_items_d.c line 370: Warning: Unused local variable 'lfile' before the end of line
+/adm/daemon/save_items_d.c line 370: Warning: Unused local variable 'ofile' before the end of line
+/adm/obj/login.c line 55: Warning: Unused local variable 'name' before the end of line
+/adm/obj/login.c line 172: Warning: Unused local variable 'pass' before  
+/adm/obj/server.c line 35: Warning: Unused local variable 'obj' before the end of line
+/adm/daemon/race_d.c line 77: Warning: Unused local variable 'borg' before the end of line
+/adm/daemon/save_items_d.c line 108: Warning: Unused local variable 'tstr' before the end of line
+/adm/daemon/save_items_d.c line 108: Warning: Unused local variable 'tmpor' before the end of line
+/adm/daemon/save_items_d.c line 108: Warning: Unused local variable 'tmp' before the end of line
+/adm/daemon/save_items_d.c line 249: Warning: Unused local variable 'x' before the end of line
+/adm/daemon/save_items_d.c line 275: Warning: Unused local variable 'x' before the end of line
+/adm/daemon/save_items_d.c line 275: Warning: Unused local variable 'i' before the end of line
+/adm/daemon/save_items_d.c line 275: Warning: Unused local variable 'uar' before the end of line
+/adm/daemon/save_items_d.c line 370: Warning: Unused local variable 'j' before the end of line
+/adm/daemon/save_items_d.c line 370: Warning: Unused local variable 'lfile' before the end of line
+/adm/daemon/save_items_d.c line 370: Warning: Unused local variable 'ofile' before the end of line
+/adm/obj/login.c line 55: Warning: Unused local variable 'name' before the end of line
+/adm/obj/login.c line 172: Warning: Unused local variable 'pass' before  
+/adm/obj/server.c line 35: Warning: Unused local variable 'obj' before the end of line
+/adm/daemon/race_d.c line 77: Warning: Unused local variable 'borg' before the end of line
+/adm/daemon/save_items_d.c line 108: Warning: Unused local variable 'tstr' before the end of line
+/adm/daemon/save_items_d.c line 108: Warning: Unused local variable 'tmpor' before the end of line
+/adm/daemon/save_items_d.c line 108: Warning: Unused local variable 'tmp' before the end of line
+/adm/daemon/save_items_d.c line 249: Warning: Unused local variable 'x' before the end of line
+/adm/daemon/save_items_d.c line 275: Warning: Unused local variable 'x' before the end of line
+/adm/daemon/save_items_d.c line 275: Warning: Unused local variable 'i' before the end of line
+/adm/daemon/save_items_d.c line 275: Warning: Unused local variable 'uar' before the end of line
+/adm/daemon/save_items_d.c line 370: Warning: Unused local variable 'j' before the end of line
+/adm/daemon/save_items_d.c line 370: Warning: Unused local variable 'lfile' before the end of line
+/adm/daemon/save_items_d.c line 370: Warning: Unused local variable 'ofile' before the end of line
+/adm/obj/login.c line 55: Warning: Unused local variable 'name' before the end of line
+/adm/obj/login.c line 172: Warning: Unused local variable 'pass' before  
+/adm/obj/server.c line 35: Warning: Unused local variable 'obj' before the end of line
+/adm/daemon/race_d.c line 77: Warning: Unused local variable 'borg' before the end of line
+/adm/daemon/save_items_d.c line 108: Warning: Unused local variable 'tstr' before the end of line
+/adm/daemon/save_items_d.c line 108: Warning: Unused local variable 'tmpor' before the end of line
+/adm/daemon/save_items_d.c line 108: Warning: Unused local variable 'tmp' before the end of line
+/adm/daemon/save_items_d.c line 249: Warning: Unused local variable 'x' before the end of line
+/adm/daemon/save_items_d.c line 275: Warning: Unused local variable 'x' before the end of line
+/adm/daemon/save_items_d.c line 275: Warning: Unused local variable 'i' before the end of line
+/adm/daemon/save_items_d.c line 275: Warning: Unused local variable 'uar' before the end of line
+/adm/daemon/save_items_d.c line 370: Warning: Unused local variable 'j' before the end of line
+/adm/daemon/save_items_d.c line 370: Warning: Unused local variable 'lfile' before the end of line
+/adm/daemon/save_items_d.c line 370: Warning: Unused local variable 'ofile' before the end of line
+/adm/obj/login.c line 55: Warning: Unused local variable 'name' before the end of line
+/adm/obj/login.c line 172: Warning: Unused local variable 'pass' before  
+/adm/daemon/race_d.c line 77: Warning: Unused local variable 'borg' before the end of line
+/adm/daemon/race_d.c line 77: Warning: Unused local variable 'borg' before the end of line
+/adm/obj/server.c line 35: Warning: Unused local variable 'obj' before the end of line
+/adm/daemon/race_d.c line 77: Warning: Unused local variable 'borg' before the end of line
+/adm/daemon/save_items_d.c line 108: Warning: Unused local variable 'tstr' before the end of line
+/adm/daemon/save_items_d.c line 108: Warning: Unused local variable 'tmpor' before the end of line
+/adm/daemon/save_items_d.c line 108: Warning: Unused local variable 'tmp' before the end of line
+/adm/daemon/save_items_d.c line 249: Warning: Unused local variable 'x' before the end of line
+/adm/daemon/save_items_d.c line 275: Warning: Unused local variable 'x' before the end of line
+/adm/daemon/save_items_d.c line 275: Warning: Unused local variable 'i' before the end of line
+/adm/daemon/save_items_d.c line 275: Warning: Unused local variable 'uar' before the end of line
+/adm/daemon/save_items_d.c line 370: Warning: Unused local variable 'j' before the end of line
+/adm/daemon/save_items_d.c line 370: Warning: Unused local variable 'lfile' before the end of line
+/adm/daemon/save_items_d.c line 370: Warning: Unused local variable 'ofile' before the end of line
+/adm/obj/login.c line 55: Warning: Unused local variable 'name' before the end of line
+/adm/obj/login.c line 172: Warning: Unused local variable 'pass' before  
+/adm/daemon/race_d.c line 77: Warning: Unused local variable 'borg' before the end of line
+/adm/daemon/race_d.c line 77: Warning: Unused local variable 'borg' before the end of line
+/adm/daemon/race_d.c line 77: Warning: Unused local variable 'borg' before the end of line
+/adm/daemon/race_d.c line 77: Warning: Unused local variable 'borg' before the end of line
+/adm/daemon/race_d.c line 77: Warning: Unused local variable 'borg' before the end of line
+/adm/daemon/race_d.c line 77: Warning: Unused local variable 'borg' before the end of line
+/adm/daemon/race_d.c line 77: Warning: Unused local variable 'borg' before the end of line
+/adm/daemon/race_d.c line 77: Warning: Unused local variable 'borg' before the end of line
+/adm/daemon/race_d.c line 78: Warning: Unused local variable 'borg' before the end of line
+/adm/daemon/race_d.c line 78: Warning: Unused local variable 'borg' before the end of line
+/adm/obj/server.c line 35: Warning: Unused local variable 'obj' before the end of line
+/adm/daemon/race_d.c line 78: Warning: Unused local variable 'borg' before the end of line
+/adm/daemon/save_items_d.c line 108: Warning: Unused local variable 'tstr' before the end of line
+/adm/daemon/save_items_d.c line 108: Warning: Unused local variable 'tmpor' before the end of line
+/adm/daemon/save_items_d.c line 108: Warning: Unused local variable 'tmp' before the end of line
+/adm/daemon/save_items_d.c line 249: Warning: Unused local variable 'x' before the end of line
+/adm/daemon/save_items_d.c line 275: Warning: Unused local variable 'x' before the end of line
+/adm/daemon/save_items_d.c line 275: Warning: Unused local variable 'i' before the end of line
+/adm/daemon/save_items_d.c line 275: Warning: Unused local variable 'uar' before the end of line
+/adm/daemon/save_items_d.c line 370: Warning: Unused local variable 'j' before the end of line
+/adm/daemon/save_items_d.c line 370: Warning: Unused local variable 'lfile' before the end of line
+/adm/daemon/save_items_d.c line 370: Warning: Unused local variable 'ofile' before the end of line
+/adm/obj/login.c line 55: Warning: Unused local variable 'name' before the end of line
+/adm/obj/login.c line 172: Warning: Unused local variable 'pass' before  

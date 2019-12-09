@@ -1,4 +1,4 @@
-# /adm/etc/privs.db
+# /data/db/privs.db
 # from the Nightmare Mudlib
 # database for defining legal euid priveledges for special access
 # system created by Descartes of Borg 01 august 1993

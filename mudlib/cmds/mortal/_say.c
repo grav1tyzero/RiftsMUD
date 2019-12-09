@@ -59,10 +59,10 @@ void speak(string lang, string str, int prof)
   cap_lang = capitalize(lang);
   write(sprintf("You say in %s: %s",cap_lang,str));
   speaker_map = make_speakers(speakers, lang);
-  write(sprintf("make_speakers speech %O speakers %O", speech, speakers));
+
   prof_keys = keys(speaker_map);
   speech = make_speech(prof_keys, str);
-  write(sprintf("make_speech %O", speech));
+
   cap_name = this_player()->query_cap_name();
 
   for (int i = 0; i < sizeof(prof_keys); i++) {

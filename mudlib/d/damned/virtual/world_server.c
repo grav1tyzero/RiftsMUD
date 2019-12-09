@@ -2,13 +2,15 @@
 //    terrains as well as things like mineral mining and dropping areas and
 //    stuff on the filed.
 
-#define HIGH_COLUMN 98
-#define HIGH_ROW 98
-#define EXITS ({ "north", "south", "east", "west" })
-#define TERRAIN_FILE "/d/damned/data/world_terrain.db"
 
 #include <daemons.h>
 #include <std.h>
+#include <dirs.h>
+
+#define HIGH_COLUMN 98
+#define HIGH_ROW 98
+#define EXITS ({ "north", "south", "east", "west" })
+#define TERRAIN_FILE DIR_DATA_DAMNED+"/world_terrain.db"
 
 inherit ROOM;
 inherit "/std/virtual/compile";
@@ -38,7 +40,7 @@ void virtual_setup(string room) {
     return;
   }
 /*
-if(x == 12 && y == 12) 
+if(x == 12 && y == 12)
 add_exit("/d/damned/arena/booths_room", "arena");
 */
   exits_x = allocate(4);
@@ -58,9 +60,9 @@ add_exit("/d/damned/arena/booths_room", "arena");
   if(random(10) == 3 && memory_info() < 5000000)
     clone_monster(terrain_type);
   brook = (type == lower_case(type));
-  set("day long", get_day_long(capitalize(type),x+y) + 
+  set("day long", get_day_long(capitalize(type),x+y) +
 	get_xtra_long(exits_x,exits_y));
-  set("night long", get_night_long(capitalize(type),x+y) + 
+  set("night long", get_night_long(capitalize(type),x+y) +
 	get_xtra_long(exits_x,exits_y));
   set_items(get_items(capitalize(type)));
   switch(capitalize(type)) {
@@ -108,7 +110,7 @@ add_exit("/d/damned/arena/booths_room", "arena");
     set_listen("brook", "You hear the quiet babbling of the brook.");
     add_item("brook", "It is a beautiful brook with stones at the bottom");
   }
-  items_file = explode(read_file("/d/damned/data/world_items.db"), "\n");
+  items_file = explode(read_file(DIR_DATA_DAMNED+"/world_items.db"), "\n");
   i = sizeof(items_file);
   while(i--) {
     words = explode(items_file[i], ":");
@@ -148,13 +150,13 @@ set("night long", (string)query("night long") + "%^BOLD%^A large "
 set("day long", (string)query("day long") + "%^BOLD%^A large "
 "arena can be seen in the distance.%^RESET%^");
 }
-  items_file = get_dir("/d/damned/data/");
+  items_file = get_dir(DIR_DATA_DAMNED+"/");
   i = sizeof(items_file);
   minerals = ([]);
-#if 1 
+#if 1
   while(i--) {
     if(!sscanf(items_file[i], "mineral_%s.db", min_type)) continue;
-    words = explode(read_file("/d/damned/data/"+items_file[i], y + 1, 1), ":");
+    words = explode(read_file(DIR_DATA_DAMNED+"/"+items_file[i], y + 1, 1), ":");
     minerals[min_type] =  atoi(words[x]);
   }
 #endif
@@ -183,7 +185,7 @@ string get_xtra_long(int *x, int *y) {
       if(j == (sizeof(dirs[line[i]]) - 1)
 	&& sizeof(dirs[line[i]]) > 1) desc += "and ";
       desc += dirs[line[i]][j];
-      if(j == (sizeof(dirs[line[i]]) - 1) || 
+      if(j == (sizeof(dirs[line[i]]) - 1) ||
 	 sizeof(dirs[line[i]]) > 2) desc += ", ";
       else desc += " ";
     }
@@ -267,7 +269,7 @@ void damage_all() {
   string *limbs;
   int flag;
 
-  who_here = filter_array(all_inventory(this_object()), 
+  who_here = filter_array(all_inventory(this_object()),
 			  "living_filter", this_object());
   if(!who_here || !sizeof(who_here)) return;
   i = sizeof(who_here);

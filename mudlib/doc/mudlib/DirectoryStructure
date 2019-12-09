@@ -12,11 +12,11 @@ Commands available to all users at all times
 Domains of the mud.  Areas which link creator realms.
 /daemon
 Non-secure daemons
-/doc 
+/doc
 Documentation and help files
 /ftp
 You hook up the ftp daemon available at the same site as the mudlib here
-/hm
+/data/hm
 Not currently used.  High mortal castles will be stored here.
 /log
 Logging is done to this directory

@@ -58,7 +58,7 @@ int enter(string str) {
 
     }
 
-    this_player()->move_player( CASTLES_DIRS+"/NOBODY/homeroom",
+    this_player()->move_player( DIR_CASTLES_HM+"/NOBODY/homeroom",
 
 	"into the CASTLE_NAME");
 

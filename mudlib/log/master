@@ -1357,3 +1357,843 @@ Sun Dec  1 02:39:58 2019 [TRACE] - socket_preload - lines=2
 Sun Dec  1 02:39:58 2019 [TRACE] - socket_preload - [/daemon/network]->create()
 Sun Dec  1 02:39:58 2019 [TRACE] - socket_preload - [/daemon/services]->create()
 Sun Dec  1 02:39:58 2019 [TRACE] - socket_preload END
+Sun Dec  1 04:33:17 2019 [TRACE] - load_groups: result of groups ([ /* sizeof() == 15 */
+  "elder" : ({ /* sizeof() == 3 */
+      "noone",
+      "",
+      "noone"
+    }),
+  "assist" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "ambassador" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "wizard" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "mudlib" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "admin" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "arch" : ({ /* sizeof() == 3 */
+      "parnell",
+      "noone",
+      "noone"
+    }),
+  "superuser" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+  "advocate" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "law" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "standard" : ({ /* sizeof() == 1 */
+      "Standard"
+    }),
+  "approval" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+  "siteadmin" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+  "mentor" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "god" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+])
+Sun Dec  1 04:33:23 2019 [TRACE] - socket_preload BEGIN
+Sun Dec  1 04:33:23 2019 [TRACE] - socket_preload - lines=2
+Sun Dec  1 04:33:23 2019 [TRACE] - socket_preload - [/daemon/network]->create()
+Sun Dec  1 04:33:23 2019 [TRACE] - socket_preload - [/daemon/services]->create()
+Sun Dec  1 04:33:23 2019 [TRACE] - socket_preload END
+Sun Dec  1 04:49:57 2019 [TRACE] - load_groups: result of groups ([ /* sizeof() == 15 */
+  "elder" : ({ /* sizeof() == 3 */
+      "noone",
+      "",
+      "noone"
+    }),
+  "assist" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "ambassador" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "wizard" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "mudlib" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "admin" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "arch" : ({ /* sizeof() == 3 */
+      "parnell",
+      "noone",
+      "noone"
+    }),
+  "superuser" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+  "advocate" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "law" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "standard" : ({ /* sizeof() == 1 */
+      "Standard"
+    }),
+  "approval" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+  "siteadmin" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+  "mentor" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "god" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+])
+Sun Dec  1 04:50:03 2019 [TRACE] - socket_preload BEGIN
+Sun Dec  1 04:50:03 2019 [TRACE] - socket_preload - lines=2
+Sun Dec  1 04:50:03 2019 [TRACE] - socket_preload - [/daemon/network]->create()
+Sun Dec  1 04:50:03 2019 [TRACE] - socket_preload - [/daemon/services]->create()
+Sun Dec  1 04:50:03 2019 [TRACE] - socket_preload END
+Sun Dec  1 06:36:36 2019 [TRACE] - load_groups: result of groups ([ /* sizeof() == 15 */
+  "elder" : ({ /* sizeof() == 3 */
+      "noone",
+      "",
+      "noone"
+    }),
+  "assist" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "ambassador" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "wizard" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "mudlib" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "admin" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "arch" : ({ /* sizeof() == 3 */
+      "parnell",
+      "noone",
+      "noone"
+    }),
+  "superuser" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+  "advocate" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "law" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "standard" : ({ /* sizeof() == 1 */
+      "Standard"
+    }),
+  "approval" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+  "siteadmin" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+  "mentor" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "god" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+])
+Sun Dec  1 06:36:42 2019 [TRACE] - socket_preload BEGIN
+Sun Dec  1 06:36:42 2019 [TRACE] - socket_preload - lines=2
+Sun Dec  1 06:36:42 2019 [TRACE] - socket_preload - [/daemon/network]->create()
+Sun Dec  1 06:36:42 2019 [TRACE] - socket_preload - [/daemon/services]->create()
+Sun Dec  1 06:36:42 2019 [TRACE] - socket_preload END
+Sun Dec  1 06:39:00 2019 [TRACE] - load_groups: result of groups ([ /* sizeof() == 15 */
+  "elder" : ({ /* sizeof() == 3 */
+      "noone",
+      "",
+      "noone"
+    }),
+  "assist" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "ambassador" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "wizard" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "mudlib" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "admin" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "arch" : ({ /* sizeof() == 3 */
+      "parnell",
+      "noone",
+      "noone"
+    }),
+  "superuser" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+  "advocate" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "law" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "standard" : ({ /* sizeof() == 1 */
+      "Standard"
+    }),
+  "approval" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+  "siteadmin" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+  "mentor" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "god" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+])
+Sun Dec  1 06:39:07 2019 [TRACE] - socket_preload BEGIN
+Sun Dec  1 06:39:07 2019 [TRACE] - socket_preload - lines=2
+Sun Dec  1 06:39:07 2019 [TRACE] - socket_preload - [/daemon/network]->create()
+Sun Dec  1 06:39:07 2019 [TRACE] - socket_preload - [/daemon/services]->create()
+Sun Dec  1 06:39:07 2019 [TRACE] - socket_preload END
+Sun Dec  1 15:14:12 2019 [TRACE] - load_groups: result of groups ([ /* sizeof() == 15 */
+  "elder" : ({ /* sizeof() == 3 */
+      "noone",
+      "",
+      "noone"
+    }),
+  "assist" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "ambassador" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "wizard" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "mudlib" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "admin" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "arch" : ({ /* sizeof() == 3 */
+      "parnell",
+      "noone",
+      "noone"
+    }),
+  "superuser" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+  "advocate" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "law" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "standard" : ({ /* sizeof() == 1 */
+      "Standard"
+    }),
+  "approval" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+  "siteadmin" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+  "mentor" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "god" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+])
+Sun Dec  1 15:14:19 2019 [TRACE] - socket_preload BEGIN
+Sun Dec  1 15:14:19 2019 [TRACE] - socket_preload - lines=2
+Sun Dec  1 15:14:19 2019 [TRACE] - socket_preload - [/daemon/network]->create()
+Sun Dec  1 15:14:19 2019 [TRACE] - socket_preload - [/daemon/services]->create()
+Sun Dec  1 15:14:19 2019 [TRACE] - socket_preload END
+Sun Dec  1 15:23:29 2019 [TRACE] - load_groups: result of groups ([ /* sizeof() == 15 */
+  "elder" : ({ /* sizeof() == 3 */
+      "noone",
+      "",
+      "noone"
+    }),
+  "assist" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "ambassador" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "wizard" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "mudlib" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "admin" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "arch" : ({ /* sizeof() == 3 */
+      "parnell",
+      "noone",
+      "noone"
+    }),
+  "superuser" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+  "advocate" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "law" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "standard" : ({ /* sizeof() == 1 */
+      "Standard"
+    }),
+  "approval" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+  "siteadmin" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+  "mentor" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "god" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+])
+Sun Dec  1 15:23:35 2019 [TRACE] - socket_preload BEGIN
+Sun Dec  1 15:23:35 2019 [TRACE] - socket_preload - lines=2
+Sun Dec  1 15:23:35 2019 [TRACE] - socket_preload - [/daemon/network]->create()
+Sun Dec  1 15:23:35 2019 [TRACE] - socket_preload - [/daemon/services]->create()
+Sun Dec  1 15:23:35 2019 [TRACE] - socket_preload END
+Sun Dec  1 15:35:37 2019 [TRACE] - load_groups: result of groups ([ /* sizeof() == 15 */
+  "elder" : ({ /* sizeof() == 3 */
+      "noone",
+      "",
+      "noone"
+    }),
+  "assist" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "ambassador" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "wizard" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "mudlib" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "admin" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "arch" : ({ /* sizeof() == 3 */
+      "parnell",
+      "noone",
+      "noone"
+    }),
+  "superuser" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+  "advocate" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "law" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "standard" : ({ /* sizeof() == 1 */
+      "Standard"
+    }),
+  "approval" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+  "siteadmin" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+  "mentor" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "god" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+])
+Sun Dec  1 15:35:44 2019 [TRACE] - socket_preload BEGIN
+Sun Dec  1 15:35:44 2019 [TRACE] - socket_preload - lines=2
+Sun Dec  1 15:35:44 2019 [TRACE] - socket_preload - [/daemon/network]->create()
+Sun Dec  1 15:35:44 2019 [TRACE] - socket_preload - [/daemon/services]->create()
+Sun Dec  1 15:35:44 2019 [TRACE] - socket_preload END
+Sun Dec  1 17:47:12 2019 [TRACE] - load_groups: result of groups ([ /* sizeof() == 15 */
+  "elder" : ({ /* sizeof() == 3 */
+      "noone",
+      "",
+      "noone"
+    }),
+  "assist" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "ambassador" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "wizard" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "mudlib" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "admin" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "arch" : ({ /* sizeof() == 3 */
+      "parnell",
+      "noone",
+      "noone"
+    }),
+  "superuser" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+  "advocate" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "law" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "standard" : ({ /* sizeof() == 1 */
+      "Standard"
+    }),
+  "approval" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+  "siteadmin" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+  "mentor" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "god" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+])
+Sun Dec  1 17:47:19 2019 [TRACE] - socket_preload BEGIN
+Sun Dec  1 17:47:19 2019 [TRACE] - socket_preload - lines=2
+Sun Dec  1 17:47:19 2019 [TRACE] - socket_preload - [/daemon/network]->create()
+Sun Dec  1 17:47:19 2019 [TRACE] - socket_preload - [/daemon/services]->create()
+Sun Dec  1 17:47:19 2019 [TRACE] - socket_preload END
+Sun Dec  1 17:55:37 2019 [TRACE] - load_groups: result of groups ([ /* sizeof() == 15 */
+  "elder" : ({ /* sizeof() == 3 */
+      "noone",
+      "",
+      "noone"
+    }),
+  "assist" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "ambassador" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "wizard" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "mudlib" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "admin" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "arch" : ({ /* sizeof() == 3 */
+      "parnell",
+      "noone",
+      "noone"
+    }),
+  "superuser" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+  "advocate" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "law" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "standard" : ({ /* sizeof() == 1 */
+      "Standard"
+    }),
+  "approval" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+  "siteadmin" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+  "mentor" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "god" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+])
+Sun Dec  1 17:55:43 2019 [TRACE] - socket_preload BEGIN
+Sun Dec  1 17:55:43 2019 [TRACE] - socket_preload - lines=2
+Sun Dec  1 17:55:43 2019 [TRACE] - socket_preload - [/daemon/network]->create()
+Sun Dec  1 17:55:43 2019 [TRACE] - socket_preload - [/daemon/services]->create()
+Sun Dec  1 17:55:44 2019 [TRACE] - socket_preload END
+Sun Dec  1 17:59:36 2019 [TRACE] - load_groups: result of groups ([ /* sizeof() == 15 */
+  "elder" : ({ /* sizeof() == 3 */
+      "noone",
+      "",
+      "noone"
+    }),
+  "assist" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "ambassador" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "wizard" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "mudlib" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "admin" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "arch" : ({ /* sizeof() == 3 */
+      "parnell",
+      "noone",
+      "noone"
+    }),
+  "superuser" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+  "advocate" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "law" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "standard" : ({ /* sizeof() == 1 */
+      "Standard"
+    }),
+  "approval" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+  "siteadmin" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+  "mentor" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "god" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+])
+Sun Dec  1 17:59:42 2019 [TRACE] - socket_preload BEGIN
+Sun Dec  1 17:59:42 2019 [TRACE] - socket_preload - lines=2
+Sun Dec  1 17:59:42 2019 [TRACE] - socket_preload - [/daemon/network]->create()
+Sun Dec  1 17:59:42 2019 [TRACE] - socket_preload - [/daemon/services]->create()
+Sun Dec  1 17:59:42 2019 [TRACE] - socket_preload END
+Sun Dec  1 20:20:10 2019 [TRACE] - load_groups: result of groups ([ /* sizeof() == 15 */
+  "elder" : ({ /* sizeof() == 3 */
+      "noone",
+      "",
+      "noone"
+    }),
+  "assist" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "ambassador" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "wizard" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "mudlib" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "admin" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "arch" : ({ /* sizeof() == 3 */
+      "parnell",
+      "noone",
+      "noone"
+    }),
+  "superuser" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+  "advocate" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "law" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "standard" : ({ /* sizeof() == 1 */
+      "Standard"
+    }),
+  "approval" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+  "siteadmin" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+  "mentor" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "god" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+])
+Sun Dec  1 20:20:17 2019 [TRACE] - socket_preload BEGIN
+Sun Dec  1 20:20:17 2019 [TRACE] - socket_preload - lines=2
+Sun Dec  1 20:20:17 2019 [TRACE] - socket_preload - [/daemon/network]->create()
+Sun Dec  1 20:20:17 2019 [TRACE] - socket_preload - [/daemon/services]->create()
+Sun Dec  1 20:20:17 2019 [TRACE] - socket_preload END
+Sun Dec  1 20:56:37 2019 [TRACE] - load_groups: result of groups ([ /* sizeof() == 15 */
+  "elder" : ({ /* sizeof() == 3 */
+      "noone",
+      "",
+      "noone"
+    }),
+  "assist" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "ambassador" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "wizard" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "mudlib" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "admin" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "arch" : ({ /* sizeof() == 3 */
+      "parnell",
+      "noone",
+      "noone"
+    }),
+  "superuser" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+  "advocate" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "law" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "standard" : ({ /* sizeof() == 1 */
+      "Standard"
+    }),
+  "approval" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+  "siteadmin" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+  "mentor" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "god" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+])
+Sun Dec  1 20:56:44 2019 [TRACE] - socket_preload BEGIN
+Sun Dec  1 20:56:44 2019 [TRACE] - socket_preload - lines=2
+Sun Dec  1 20:56:44 2019 [TRACE] - socket_preload - [/daemon/network]->create()
+Sun Dec  1 20:56:44 2019 [TRACE] - socket_preload - [/daemon/services]->create()
+Sun Dec  1 20:56:44 2019 [TRACE] - socket_preload END
+Tue Dec  3 02:25:23 2019 [TRACE] - load_groups: result of groups ([ /* sizeof() == 15 */
+  "elder" : ({ /* sizeof() == 3 */
+      "noone",
+      "",
+      "noone"
+    }),
+  "assist" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "ambassador" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "wizard" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "mudlib" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "admin" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "arch" : ({ /* sizeof() == 3 */
+      "parnell",
+      "noone",
+      "noone"
+    }),
+  "superuser" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+  "advocate" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "law" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "standard" : ({ /* sizeof() == 1 */
+      "Standard"
+    }),
+  "approval" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+  "siteadmin" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+  "mentor" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "god" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+])
+Tue Dec  3 02:25:29 2019 [TRACE] - socket_preload BEGIN
+Tue Dec  3 02:25:29 2019 [TRACE] - socket_preload - lines=2
+Tue Dec  3 02:25:29 2019 [TRACE] - socket_preload - [/daemon/network]->create()
+Tue Dec  3 02:25:29 2019 [TRACE] - socket_preload - [/daemon/services]->create()
+Tue Dec  3 02:25:29 2019 [TRACE] - socket_preload END
+Mon Dec  9 03:30:56 2019 [TRACE] - load_groups: result of groups ([ /* sizeof() == 15 */
+  "elder" : ({ /* sizeof() == 3 */
+      "noone",
+      "",
+      "noone"
+    }),
+  "assist" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "ambassador" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "wizard" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "mudlib" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "admin" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "arch" : ({ /* sizeof() == 3 */
+      "parnell",
+      "noone",
+      "noone"
+    }),
+  "superuser" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+  "advocate" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "law" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "standard" : ({ /* sizeof() == 1 */
+      "Standard"
+    }),
+  "approval" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+  "siteadmin" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+  "mentor" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "god" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+])
+Mon Dec  9 03:31:02 2019 [TRACE] - socket_preload BEGIN
+Mon Dec  9 03:31:02 2019 [TRACE] - socket_preload - lines=2
+Mon Dec  9 03:31:02 2019 [TRACE] - socket_preload - [/daemon/network]->create()
+Mon Dec  9 03:31:02 2019 [TRACE] - socket_preload - [/daemon/services]->create()
+Mon Dec  9 03:31:02 2019 [TRACE] - socket_preload END
+Mon Dec  9 03:56:19 2019 [TRACE] - load_groups: result of groups ([ /* sizeof() == 15 */
+  "elder" : ({ /* sizeof() == 3 */
+      "noone",
+      "",
+      "noone"
+    }),
+  "assist" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "ambassador" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "wizard" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "mudlib" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "admin" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "arch" : ({ /* sizeof() == 3 */
+      "parnell",
+      "noone",
+      "noone"
+    }),
+  "superuser" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+  "advocate" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "law" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "standard" : ({ /* sizeof() == 1 */
+      "Standard"
+    }),
+  "approval" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+  "siteadmin" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+  "mentor" : ({ /* sizeof() == 1 */
+      "noone"
+    }),
+  "god" : ({ /* sizeof() == 1 */
+      "parnell"
+    }),
+])
+Mon Dec  9 03:56:25 2019 [TRACE] - socket_preload BEGIN
+Mon Dec  9 03:56:25 2019 [TRACE] - socket_preload - lines=2
+Mon Dec  9 03:56:25 2019 [TRACE] - socket_preload - [/daemon/network]->create()
+Mon Dec  9 03:56:25 2019 [TRACE] - socket_preload - [/daemon/services]->create()
+Mon Dec  9 03:56:25 2019 [TRACE] - socket_preload END

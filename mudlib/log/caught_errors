@@ -1245,3 +1245,1177 @@ Traceback
      Program: /adm/obj/master.c
      File:            /adm/obj/master.c line 372
 
+
+Error in object: /cmds/system/_update (Sun Dec  1 03:28:42 2019)
+> *Error in loading object '/std/room/items'
+
+File: /cmds/system/_update.c         line 118
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   cmd_hook() in /std/user#2
+     Program: /std/living.c
+     File:                /std/living.c line 156
+
+2:   cmd_update() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+3:   CATCH() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+
+Error in object: /cmds/system/_update (Sun Dec  1 03:43:27 2019)
+> *Error in loading object '/adm/daemon/astronomy_d'
+
+File: /cmds/system/_update.c         line 118
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   cmd_hook() in /std/user#2
+     Program: /std/living.c
+     File:                /std/living.c line 156
+
+2:   cmd_update() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+3:   CATCH() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+
+Error in object: /cmds/system/_update (Sun Dec  1 04:15:43 2019)
+> *Error in loading object '/adm/daemon/astronomy_d'
+
+File: /cmds/system/_update.c         line 118
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   cmd_hook() in /std/user#2
+     Program: /std/living.c
+     File:                /std/living.c line 156
+
+2:   cmd_update() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+3:   CATCH() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+
+Error in object: /cmds/system/_update (Sun Dec  1 04:16:00 2019)
+> *Error in loading object '/adm/daemon/astronomy_d'
+
+File: /cmds/system/_update.c         line 118
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   cmd_hook() in /std/user#2
+     Program: /std/living.c
+     File:                /std/living.c line 156
+
+2:   cmd_update() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+3:   CATCH() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+
+Error in object: /adm/daemon/astronomy_d (Sun Dec  1 04:23:52 2019)
+> *(s)printf(): Incorrect argument to type %s. (arg: 0)
+
+File: /adm/daemon/astronomy_d.c      line 43
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   cmd_hook() in /std/user#2
+     Program: /std/living.c
+     File:                /std/living.c line 156
+
+2:   cmd_call() in /cmds/system/_call
+     Program: /cmds/system/_call.c
+     File:         /cmds/system/_call.c line 112
+
+3:   do_call() in /cmds/system/_call
+     Program: /cmds/system/_call.c
+     File:         /cmds/system/_call.c line 176
+
+4:   CATCH() in /cmds/system/_call
+     Program: /cmds/system/_call.c
+     File:         /cmds/system/_call.c line 176
+
+5:   query_moon_light() in /adm/daemon/astronomy_d
+     Program: /adm/daemon/astronomy_d.c
+     File:    /adm/daemon/astronomy_d.c line 43
+
+
+Error in object: /cmds/system/_update (Sun Dec  1 04:24:58 2019)
+> *Error in loading object '/adm/daemon/astronomy_d'
+
+File: /cmds/system/_update.c         line 118
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   cmd_hook() in /std/user#2
+     Program: /std/living.c
+     File:                /std/living.c line 156
+
+2:   cmd_update() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+3:   CATCH() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+
+Error in object: /adm/obj/master (Sun Dec  1 04:33:17 2019)
+> *call_other() couldn't find object
+
+File: /adm/obj/master.c              line 372
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   preload() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 372
+
+2:   CATCH() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 372
+
+
+Error in object: /adm/obj/master (Sun Dec  1 04:33:17 2019)
+> *call_other() couldn't find object
+
+File: /adm/obj/master.c              line 372
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   preload() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 372
+
+2:   CATCH() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 372
+
+
+Error in object: /adm/obj/master (Sun Dec  1 04:49:57 2019)
+> *call_other() couldn't find object
+
+File: /adm/obj/master.c              line 372
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   preload() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 372
+
+2:   CATCH() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 372
+
+
+Error in object: /adm/obj/master (Sun Dec  1 04:49:57 2019)
+> *call_other() couldn't find object
+
+File: /adm/obj/master.c              line 372
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   preload() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 372
+
+2:   CATCH() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 372
+
+
+Error in object: /cmds/creator/_scan (Sun Dec  1 05:29:22 2019)
+> *call_other() couldn't find object
+
+File: /cmds/creator/_scan.c          line 271
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   cmd_hook() in /std/user#1
+     Program: /std/living.c
+     File:                /std/living.c line 156
+
+2:   cmd_scan() in /cmds/creator/_scan
+     Program: /cmds/creator/_scan.c
+     File:        /cmds/creator/_scan.c line 73
+
+3:   find_obj() in /cmds/creator/_scan
+     Program: /cmds/creator/_scan.c
+     File:        /cmds/creator/_scan.c line 271
+
+4:   CATCH() in /cmds/creator/_scan
+     Program: /cmds/creator/_scan.c
+     File:        /cmds/creator/_scan.c line 271
+
+
+Error in object: /cmds/creator/_scan (Sun Dec  1 05:29:22 2019)
+> *call_other() couldn't find object
+
+File: /cmds/creator/_scan.c          line 275
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   cmd_hook() in /std/user#1
+     Program: /std/living.c
+     File:                /std/living.c line 156
+
+2:   cmd_scan() in /cmds/creator/_scan
+     Program: /cmds/creator/_scan.c
+     File:        /cmds/creator/_scan.c line 73
+
+3:   find_obj() in /cmds/creator/_scan
+     Program: /cmds/creator/_scan.c
+     File:        /cmds/creator/_scan.c line 275
+
+4:   CATCH() in /cmds/creator/_scan
+     Program: /cmds/creator/_scan.c
+     File:        /cmds/creator/_scan.c line 275
+
+
+Error in object: /cmds/creator/_scan (Sun Dec  1 05:29:31 2019)
+> *call_other() couldn't find object
+
+File: /cmds/creator/_scan.c          line 271
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   cmd_hook() in /std/user#1
+     Program: /std/living.c
+     File:                /std/living.c line 156
+
+2:   cmd_scan() in /cmds/creator/_scan
+     Program: /cmds/creator/_scan.c
+     File:        /cmds/creator/_scan.c line 73
+
+3:   find_obj() in /cmds/creator/_scan
+     Program: /cmds/creator/_scan.c
+     File:        /cmds/creator/_scan.c line 271
+
+4:   CATCH() in /cmds/creator/_scan
+     Program: /cmds/creator/_scan.c
+     File:        /cmds/creator/_scan.c line 271
+
+
+Error in object: /cmds/creator/_scan (Sun Dec  1 05:29:31 2019)
+> *call_other() couldn't find object
+
+File: /cmds/creator/_scan.c          line 275
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   cmd_hook() in /std/user#1
+     Program: /std/living.c
+     File:                /std/living.c line 156
+
+2:   cmd_scan() in /cmds/creator/_scan
+     Program: /cmds/creator/_scan.c
+     File:        /cmds/creator/_scan.c line 73
+
+3:   find_obj() in /cmds/creator/_scan
+     Program: /cmds/creator/_scan.c
+     File:        /cmds/creator/_scan.c line 275
+
+4:   CATCH() in /cmds/creator/_scan
+     Program: /cmds/creator/_scan.c
+     File:        /cmds/creator/_scan.c line 275
+
+
+Error in object: /cmds/system/_update (Sun Dec  1 06:03:06 2019)
+> *Error in loading object '/cmds/adm/_callouts'
+
+File: /cmds/system/_update.c         line 118
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   cmd_hook() in /std/user#1
+     Program: /std/living.c
+     File:                /std/living.c line 156
+
+2:   cmd_update() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+3:   CATCH() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+
+Error in object: /cmds/system/_update (Sun Dec  1 06:13:51 2019)
+> *Error in loading object '/adm/daemon/delayed_function_d'
+
+File: /cmds/system/_update.c         line 118
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   cmd_hook() in /std/user#1
+     Program: /std/living.c
+     File:                /std/living.c line 156
+
+2:   cmd_update() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+3:   CATCH() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+
+Error in object: /adm/obj/master (Sun Dec  1 06:36:36 2019)
+> *call_other() couldn't find object
+
+File: /adm/obj/master.c              line 372
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   preload() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 372
+
+2:   CATCH() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 372
+
+
+Error in object: /adm/obj/master (Sun Dec  1 06:36:36 2019)
+> *call_other() couldn't find object
+
+File: /adm/obj/master.c              line 372
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   preload() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 372
+
+2:   CATCH() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 372
+
+
+Error in object: /adm/obj/master (Sun Dec  1 06:36:36 2019)
+> *call_other() couldn't find object
+
+File: /adm/obj/master.c              line 372
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   preload() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 372
+
+2:   CATCH() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 372
+
+
+Error in object: /adm/obj/login#0 (Sun Dec  1 06:36:42 2019)
+> *Error in loading object '/std/living/combat'
+
+File: /adm/obj/login.c               line 43
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   logon() in /adm/obj/login#0
+     Program: /adm/obj/login.c
+     File:             /adm/obj/login.c line 43
+
+2:   CATCH() in /adm/obj/login#0
+     Program: /adm/obj/login.c
+     File:             /adm/obj/login.c line 43
+
+
+Error in object: /adm/obj/login#1 (Sun Dec  1 06:37:54 2019)
+> *Error in loading object '/std/living/combat'
+
+File: /adm/obj/login.c               line 43
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   logon() in /adm/obj/login#1
+     Program: /adm/obj/login.c
+     File:             /adm/obj/login.c line 43
+
+2:   CATCH() in /adm/obj/login#1
+     Program: /adm/obj/login.c
+     File:             /adm/obj/login.c line 43
+
+
+Error in object: /adm/obj/login#2 (Sun Dec  1 06:38:14 2019)
+> *Error in loading object '/std/user'
+
+File: /adm/obj/login.c               line 43
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   logon() in /adm/obj/login#2
+     Program: /adm/obj/login.c
+     File:             /adm/obj/login.c line 43
+
+2:   CATCH() in /adm/obj/login#2
+     Program: /adm/obj/login.c
+     File:             /adm/obj/login.c line 43
+
+
+Error in object: /adm/obj/master (Sun Dec  1 06:39:00 2019)
+> *call_other() couldn't find object
+
+File: /adm/obj/master.c              line 371
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   preload() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+
+2:   CATCH() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+
+
+Error in object: /adm/obj/master (Sun Dec  1 06:39:00 2019)
+> *call_other() couldn't find object
+
+File: /adm/obj/master.c              line 371
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   preload() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+
+2:   CATCH() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+
+
+Error in object: /adm/obj/master (Sun Dec  1 15:14:12 2019)
+> *call_other() couldn't find object
+
+File: /adm/obj/master.c              line 371
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   preload() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+
+2:   CATCH() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+
+
+Error in object: /adm/obj/master (Sun Dec  1 15:14:13 2019)
+> *call_other() couldn't find object
+
+File: /adm/obj/master.c              line 371
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   preload() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+
+2:   CATCH() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+
+
+Error in object: /adm/obj/master (Sun Dec  1 15:23:29 2019)
+> *call_other() couldn't find object
+
+File: /adm/obj/master.c              line 371
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   preload() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+
+2:   CATCH() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+
+
+Error in object: /adm/obj/master (Sun Dec  1 15:23:29 2019)
+> *call_other() couldn't find object
+
+File: /adm/obj/master.c              line 371
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   preload() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+
+2:   CATCH() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+
+
+Error in object: /adm/obj/master (Sun Dec  1 15:35:37 2019)
+> *call_other() couldn't find object
+
+File: /adm/obj/master.c              line 371
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   preload() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+
+2:   CATCH() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+
+
+Error in object: /adm/obj/master (Sun Dec  1 15:35:37 2019)
+> *call_other() couldn't find object
+
+File: /adm/obj/master.c              line 371
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   preload() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+
+2:   CATCH() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+
+
+Error in object: /adm/obj/master (Sun Dec  1 17:47:12 2019)
+> *call_other() couldn't find object
+
+File: /adm/obj/master.c              line 371
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   preload() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+
+2:   CATCH() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+
+
+Error in object: /adm/obj/master (Sun Dec  1 17:47:13 2019)
+> *call_other() couldn't find object
+
+File: /adm/obj/master.c              line 371
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   preload() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+
+2:   CATCH() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+
+
+Error in object: /adm/obj/login#0 (Sun Dec  1 17:47:17 2019)
+> *Error in loading object '/std/living/skills'
+
+File: /adm/obj/login.c               line 43
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   logon() in /adm/obj/login#0
+     Program: /adm/obj/login.c
+     File:             /adm/obj/login.c line 43
+
+2:   CATCH() in /adm/obj/login#0
+     Program: /adm/obj/login.c
+     File:             /adm/obj/login.c line 43
+
+
+Error in object: /adm/obj/login#1 (Sun Dec  1 17:48:19 2019)
+> *Error in loading object '/std/living/skills'
+
+File: /adm/obj/login.c               line 43
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   logon() in /adm/obj/login#1
+     Program: /adm/obj/login.c
+     File:             /adm/obj/login.c line 43
+
+2:   CATCH() in /adm/obj/login#1
+     Program: /adm/obj/login.c
+     File:             /adm/obj/login.c line 43
+
+
+Error in object: /adm/obj/login#2 (Sun Dec  1 17:48:50 2019)
+> *Error in loading object '/std/living/skills'
+
+File: /adm/obj/login.c               line 43
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   logon() in /adm/obj/login#2
+     Program: /adm/obj/login.c
+     File:             /adm/obj/login.c line 43
+
+2:   CATCH() in /adm/obj/login#2
+     Program: /adm/obj/login.c
+     File:             /adm/obj/login.c line 43
+
+
+Error in object: /adm/obj/login#3 (Sun Dec  1 17:49:09 2019)
+> *Error in loading object '/std/living/skills'
+
+File: /adm/obj/login.c               line 43
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   logon() in /adm/obj/login#3
+     Program: /adm/obj/login.c
+     File:             /adm/obj/login.c line 43
+
+2:   CATCH() in /adm/obj/login#3
+     Program: /adm/obj/login.c
+     File:             /adm/obj/login.c line 43
+
+
+Error in object: /adm/obj/login#4 (Sun Dec  1 17:49:40 2019)
+> *Error in loading object '/std/money'
+
+File: /adm/obj/login.c               line 43
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   logon() in /adm/obj/login#4
+     Program: /adm/obj/login.c
+     File:             /adm/obj/login.c line 43
+
+2:   CATCH() in /adm/obj/login#4
+     Program: /adm/obj/login.c
+     File:             /adm/obj/login.c line 43
+
+
+Error in object: /cmds/system/_update (Sun Dec  1 17:52:15 2019)
+> *Error in loading object '/adm/daemon/lang_d'
+
+File: /cmds/system/_update.c         line 118
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   cmd_hook() in /std/user#6
+     Program: /std/living.c
+     File:                /std/living.c line 163
+
+2:   cmd_update() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+3:   CATCH() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+
+Error in object: /std/user#6 (Sun Dec  1 17:52:59 2019)
+> *Bad argument 2 to sscanf
+Expected: string Got: 0.
+
+File: /std/living/skills.c           line 170
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   cmd_hook() in /std/user#6
+     Program: /std/living.c
+     File:                /std/living.c line 163
+
+2:   cmd_call() in /cmds/system/_call
+     Program: /cmds/system/_call.c
+     File:         /cmds/system/_call.c line 112
+
+3:   do_call() in /cmds/system/_call
+     Program: /cmds/system/_call.c
+     File:         /cmds/system/_call.c line 176
+
+4:   CATCH() in /cmds/system/_call
+     Program: /cmds/system/_call.c
+     File:         /cmds/system/_call.c line 176
+
+5:   query_all_languages() in /std/user#6
+     Program: /std/living/skills.c
+     File:         /std/living/skills.c line 175
+
+6:   is_language() in /std/user#6
+     Program: /std/living/skills.c
+     File:         /std/living/skills.c line 170
+
+
+Error in object: /adm/obj/master (Sun Dec  1 17:55:37 2019)
+> *call_other() couldn't find object
+
+File: /adm/obj/master.c              line 371
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   preload() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+
+2:   CATCH() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+
+
+Error in object: /adm/obj/master (Sun Dec  1 17:55:37 2019)
+> *call_other() couldn't find object
+
+File: /adm/obj/master.c              line 371
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   preload() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+
+2:   CATCH() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+
+
+Error in object: /adm/obj/master (Sun Dec  1 17:59:36 2019)
+> *call_other() couldn't find object
+
+File: /adm/obj/master.c              line 371
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   preload() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+
+2:   CATCH() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+
+
+Error in object: /adm/obj/master (Sun Dec  1 17:59:36 2019)
+> *call_other() couldn't find object
+
+File: /adm/obj/master.c              line 371
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   preload() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+
+2:   CATCH() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+
+
+Error in object: /adm/obj/login#0 (Sun Dec  1 17:59:37 2019)
+> *Error in loading object '/std/living/skills'
+
+File: /adm/obj/login.c               line 43
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   logon() in /adm/obj/login#0
+     Program: /adm/obj/login.c
+     File:             /adm/obj/login.c line 43
+
+2:   CATCH() in /adm/obj/login#0
+     Program: /adm/obj/login.c
+     File:             /adm/obj/login.c line 43
+
+
+Error in object: /adm/obj/login#1 (Sun Dec  1 18:00:03 2019)
+> *Error in loading object '/std/living/skills'
+
+File: /adm/obj/login.c               line 43
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   logon() in /adm/obj/login#1
+     Program: /adm/obj/login.c
+     File:             /adm/obj/login.c line 43
+
+2:   CATCH() in /adm/obj/login#1
+     Program: /adm/obj/login.c
+     File:             /adm/obj/login.c line 43
+
+
+Error in object: /adm/obj/simul_efun (Sun Dec  1 18:01:36 2019)
+> *Can't load objects when no effective user.
+
+File: /adm/obj/simul_efun.c          line 71
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   pick_race() in /d/standard/setter
+     Program: /d/standard/setter.c
+     File:         /d/standard/setter.c line 113
+
+2:   query_racial_properties() in /adm/daemon/race_d
+     Program: /adm/daemon/race_d.c
+     File:         /adm/daemon/race_d.c line 138
+
+3:   resolv_str() in /adm/daemon/refs_d
+     Program: /adm/daemon/refs_d.c
+     File:         /adm/daemon/refs_d.c line 65
+
+4:   get_objects() in /adm/obj/simul_efun
+     Program: /adm/obj/simul_efun.c
+     File: /adm/simul_efun/get_object.c line 108
+
+5:   get_objects() in /adm/obj/simul_efun
+     Program: /adm/obj/simul_efun.c
+     File: /adm/simul_efun/get_object.c line 152
+
+6:   get_object() in /adm/obj/simul_efun
+     Program: /adm/obj/simul_efun.c
+     File: /adm/simul_efun/get_object.c line 71
+
+7:   CATCH() in /adm/obj/simul_efun
+     Program: /adm/obj/simul_efun.c
+     File: /adm/simul_efun/get_object.c line 71
+
+
+Error in object: /adm/obj/simul_efun (Sun Dec  1 18:02:09 2019)
+> *Can't load objects when no effective user.
+
+File: /adm/obj/simul_efun.c          line 71
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   pick_race() in /d/standard/setter
+     Program: /d/standard/setter.c
+     File:         /d/standard/setter.c line 113
+
+2:   query_racial_properties() in /adm/daemon/race_d
+     Program: /adm/daemon/race_d.c
+     File:         /adm/daemon/race_d.c line 138
+
+3:   resolv_str() in /adm/daemon/refs_d
+     Program: /adm/daemon/refs_d.c
+     File:         /adm/daemon/refs_d.c line 65
+
+4:   get_objects() in /adm/obj/simul_efun
+     Program: /adm/obj/simul_efun.c
+     File: /adm/simul_efun/get_object.c line 108
+
+5:   get_objects() in /adm/obj/simul_efun
+     Program: /adm/obj/simul_efun.c
+     File: /adm/simul_efun/get_object.c line 152
+
+6:   get_object() in /adm/obj/simul_efun
+     Program: /adm/obj/simul_efun.c
+     File: /adm/simul_efun/get_object.c line 71
+
+7:   CATCH() in /adm/obj/simul_efun
+     Program: /adm/obj/simul_efun.c
+     File: /adm/simul_efun/get_object.c line 71
+
+
+Error in object: /cmds/system/_update (Sun Dec  1 20:04:43 2019)
+> *Error in loading object '/cmds/mortal/_say'
+
+File: /cmds/system/_update.c         line 118
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   cmd_hook() in /std/user#3
+     Program: /std/living.c
+     File:                /std/living.c line 163
+
+2:   cmd_update() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+3:   CATCH() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+
+Error in object: /cmds/system/_update (Sun Dec  1 20:04:56 2019)
+> *Error in loading object '/cmds/mortal/_say'
+
+File: /cmds/system/_update.c         line 118
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   cmd_hook() in /std/user#3
+     Program: /std/living.c
+     File:                /std/living.c line 163
+
+2:   cmd_update() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+3:   CATCH() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+
+Error in object: /cmds/system/_update (Sun Dec  1 20:05:23 2019)
+> *Error in loading object '/cmds/mortal/_say'
+
+File: /cmds/system/_update.c         line 118
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   cmd_hook() in /std/user#3
+     Program: /std/living.c
+     File:                /std/living.c line 163
+
+2:   cmd_update() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+3:   CATCH() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+
+Error in object: /adm/obj/master (Sun Dec  1 20:20:10 2019)
+> *call_other() couldn't find object
+
+File: /adm/obj/master.c              line 371
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   preload() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+
+2:   CATCH() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+
+
+Error in object: /adm/obj/master (Sun Dec  1 20:20:11 2019)
+> *call_other() couldn't find object
+
+File: /adm/obj/master.c              line 371
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   preload() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+
+2:   CATCH() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+
+
+Error in object: /adm/obj/master (Sun Dec  1 20:56:37 2019)
+> *call_other() couldn't find object
+
+File: /adm/obj/master.c              line 371
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   preload() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+
+2:   CATCH() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+
+
+Error in object: /adm/obj/master (Sun Dec  1 20:56:38 2019)
+> *call_other() couldn't find object
+
+File: /adm/obj/master.c              line 371
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   preload() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+
+2:   CATCH() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+
+
+Error in object: /cmds/system/_update (Sun Dec  1 22:05:59 2019)
+> *Error in loading object '/cmds/mortal/_whisper'
+
+File: /cmds/system/_update.c         line 118
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   cmd_hook() in /std/user#1
+     Program: /std/living.c
+     File:                /std/living.c line 163
+
+2:   cmd_update() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+3:   CATCH() in /cmds/system/_update
+     Program: /cmds/system/_update.c
+     File:       /cmds/system/_update.c line 118
+
+
+Error in object: /adm/obj/master (Tue Dec  3 02:25:23 2019)
+> *call_other() couldn't find object
+
+File: /adm/obj/master.c              line 371
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   preload() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+
+2:   CATCH() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+
+
+Error in object: /adm/obj/master (Tue Dec  3 02:25:23 2019)
+> *call_other() couldn't find object
+
+File: /adm/obj/master.c              line 371
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   preload() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+
+2:   CATCH() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+
+
+Error in object: /adm/obj/master (Mon Dec  9 03:30:56 2019)
+> *call_other() couldn't find object
+
+File: /adm/obj/master.c              line 371
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   preload() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+
+2:   CATCH() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+
+
+Error in object: /adm/obj/master (Mon Dec  9 03:30:56 2019)
+> *call_other() couldn't find object
+
+File: /adm/obj/master.c              line 371
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   preload() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+
+2:   CATCH() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+
+
+Error in object: /adm/obj/master (Mon Dec  9 03:56:19 2019)
+> *call_other() couldn't find object
+
+File: /adm/obj/master.c              line 371
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   preload() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+
+2:   CATCH() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+
+
+Error in object: /adm/obj/master (Mon Dec  9 03:56:19 2019)
+> *call_other() couldn't find object
+
+File: /adm/obj/master.c              line 371
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   preload() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+
+2:   CATCH() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 371
+
+
+Error in object: /d/damned/virtual/world_server#3 (Mon Dec  9 03:56:58 2019)
+> *Bad argument 1 to explode()
+Expected: string Got: 0.
+
+File: /d/damned/virtual/world_server.c line 57
+
+Traceback
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1:   use_exit() in /d/standard/square
+     Program: /std/room/exits.c
+     File:            /std/room/exits.c line 140
+
+2:   move_player() in /std/user#1
+     Program: /std/user.c
+     File:                  /std/user.c line 256
+
+3:   move() in /std/user#1
+     Program: /std/Object.c
+     File:                /std/Object.c line 354
+
+4:   move() in /std/user#1
+     Program: /std/move.c
+     File:                  /std/move.c line 34
+
+5:   CATCH() in /std/user#1
+     Program: /std/move.c
+     File:                  /std/move.c line 34
+
+6:   compile_object() in /adm/obj/master
+     Program: /adm/obj/master.c
+     File:            /adm/obj/master.c line 543
+
+7:   compile_object() in /adm/daemon/virtual_d
+     Program: /adm/daemon/virtual_d.c
+     File:      /adm/daemon/virtual_d.c line 23
+
+8:   compile_object() in /d/damned/virtual/server
+     Program: /d/damned/virtual/server.c
+     File:   /d/damned/virtual/server.c line 27
+
+9:   compile_object() in /d/damned/virtual/world_server
+     Program: /std/virtual/compile.c
+     File:       /std/virtual/compile.c line 18
+
+10:  virtual_setup() in /d/damned/virtual/world_server#3
+     Program: /d/damned/virtual/world_server.c
+     File: /d/damned/virtual/world_server.c line 57
+

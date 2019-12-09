@@ -1,29 +1,28 @@
 #/std/user.c
 encumbrance 500
-props (["last reinc":1574904788,"light":0,"wiz light":1,"combat color":"%^BOLD%^","someproperty":(["map1":0,]),"last read news":1575182349,])
+props (["last reinc":1574904788,"light":0,"wiz light":1,"combat color":"%^BOLD%^","someproperty":(["map1":0,]),"last read news":1575863785,])
 true_name "parnell"
 creator "/adm/obj/login#0"
-max_internal_encumbrance 360
-player_data (["general":(["sp":1,"max_sdc":0,"experience":900,"sdc":0,"max_hp":16,"max_sp":1,"hp":16,]),])
+max_internal_encumbrance 100
+player_data (["general":(["sp":1,"max_sdc":0,"experience":900,"sdc":0,"max_hp":12,"max_sp":1,"hp":12,]),])
 magic (["max points":0,"points":0,])
 severed ([])
 healing ([])
-body (["right foot":(["damage":0,"weapon":0,"armour_ob":({}),"max_dam":4,"weapons":0,"ac":0,"limb_ref":"","armour":({}),]),"right leg":(["damage":0,"weapon":0,"armour_ob":({}),"max_dam":5,"weapons":0,"ac":0,"limb_ref":"right foot","armour":({}),]),"head":(["damage":0,"weapon":0,"armour_ob":({}),"max_dam":8,"weapons":0,"ac":0,"limb_ref":"FATAL","armour":({}),]),"left foot":(["damage":0,"weapon":0,"armour_ob":({}),"max_dam":4,"weapons":0,"ac":0,"limb_ref":"","armour":({}),]),"left arm":(["damage":0,"weapon":0,"armour_ob":({}),"max_dam":5,"weapons":0,"ac":0,"limb_ref":"left hand","armour":({}),]),"torso":(["damage":0,"weapon":0,"armour_ob":({}),"max_dam":16,"weapons":0,"ac":0,"limb_ref":"FATAL","armour":({}),]),"left leg":(["damage":0,"weapon":0,"armour_ob":({}),"max_dam":5,"weapons":0,"ac":0,"limb_ref":"left foot","armour":({}),]),"right hand":(["damage":0,"armour_ob":({}),"weapon":0,"max_dam":4,"weapons":0,"wieldable":1,"ac":0,"limb_ref":"","armour":({}),]),"left hand":(["damage":0,"armour_ob":({}),"weapon":0,"max_dam":4,"weapons":0,"wieldable":1,"ac":0,"limb_ref":"","armour":({}),]),"right arm":(["damage":0,"weapon":0,"armour_ob":({}),"max_dam":5,"weapons":0,"ac":0,"limb_ref":"right hand","armour":({}),]),])
+body (["head":(["damage":0,"weapon":0,"armour_ob":({}),"max_dam":6,"weapons":0,"ac":0,"limb_ref":"FATAL","armour":({}),]),"right leg":(["damage":0,"weapon":0,"armour_ob":({}),"max_dam":4,"weapons":0,"ac":0,"limb_ref":"right foot","armour":({}),]),"right foot":(["damage":0,"weapon":0,"armour_ob":({}),"max_dam":3,"weapons":0,"ac":0,"limb_ref":"","armour":({}),]),"left arm":(["damage":0,"weapon":0,"armour_ob":({}),"max_dam":4,"weapons":0,"ac":0,"limb_ref":"left hand","armour":({}),]),"left foot":(["damage":0,"weapon":0,"armour_ob":({}),"max_dam":3,"weapons":0,"ac":0,"limb_ref":"","armour":({}),]),"left leg":(["damage":0,"weapon":0,"armour_ob":({}),"max_dam":4,"weapons":0,"ac":0,"limb_ref":"left foot","armour":({}),]),"torso":(["damage":0,"weapon":0,"armour_ob":({}),"max_dam":12,"weapons":0,"ac":0,"limb_ref":"FATAL","armour":({}),]),"right hand":(["damage":0,"weapon":0,"armour_ob":({}),"max_dam":3,"wieldable":1,"weapons":0,"ac":0,"limb_ref":"","armour":({}),]),"right arm":(["damage":0,"weapon":0,"armour_ob":({}),"max_dam":4,"weapons":0,"ac":0,"limb_ref":"right hand","armour":({}),]),"left hand":(["damage":0,"weapon":0,"armour_ob":({}),"max_dam":3,"wieldable":1,"weapons":0,"ac":0,"limb_ref":"","armour":({}),]),])
 limbs ({"left leg","torso","head","right leg","right foot","right hand","left arm","left foot","right arm","left hand",})
 all_my_fingers 5
 heal_rate 2
-skills (["attack":(["max":0,"points":0,"level":0,]),"melee":(["max":0,"points":0,"level":0,]),])
+skills (["radio: basic":(["per_level":5,"value":55,]),"language: american":(["per_level":1,"value":88,]),"brewing":(["per_level":5,"value":25,]),])
 spells ([])
+primary_language "american"
 wimpydir "out"
 _attacks_per_melee 1
 env_var (["start":"/d/standard/setter","TITLE":"Novice $N the Human","LINES":"255","TERM":"ansi","SCORE":"off",])
 money (["credits":10000500,])
-ok_to_heal 21664
-player_age 43328
+ok_to_heal 22306
+player_age 44612
 gender "male"
-stats (["spd":11,"iq":12,"me":12,"pe":12,"ps":18,"ma":6,"pb":11,"pp":10,])
-languages (["american":10,])
-primary_language "american"
+stats (["spd":7,"iq":12,"me":11,"pe":6,"ps":10,"ma":12,"pb":9,"pp":9,])
 alias (["bio":"biography","n":"north","nw":"northwest","l":"look $*","ne":"northeast","i":"inventory","w":"west","sw":"southwest","exa":"look at $*","u":"up","e":"east","se":"southeast","d":"down","st":"status","s":"south",])
 xverb (["$:":"emote $*","$\"":"say $*","$'":"say $*",])
 auto_load ({})
@@ -36,7 +35,7 @@ inf_block ({})
 real_name "james"
 email "jdpeckham@gmail.com"
 ip "172.30.0.1"
-last_on "Sun Dec  1 06:39:09 2019"
+last_on "Mon Dec  9 03:56:25 2019"
 cpath "/adm/daemon"
 race "human"
 original_site "172.31.0.1"

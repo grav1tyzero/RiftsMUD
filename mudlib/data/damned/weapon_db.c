@@ -1,7 +1,8 @@
 #include "/d/damned/virtual/virtual_table.h"
 #include <daemons.h>
+#include <dirs.h>
 
-class v_table *weapons; 
+class v_table *weapons;
 
 int clean_up() {
   return 0;
@@ -12,7 +13,7 @@ void create() {
   class v_table next_item;
   string *file, w_type, tmp, arg_s;
   mixed *argv;
-  
+
   seteuid(getuid());
   weapons = ({});
   file = read_database("/d/damned/data/weapon_types");
@@ -32,7 +33,7 @@ void create() {
       }
       if(sz == i) return;
       next_item = new(class v_table);
-      next_item->type = w_type; 
+      next_item->type = w_type;
       next_item->funcs = ({});
       next_item->args = ({});
       last = 0;

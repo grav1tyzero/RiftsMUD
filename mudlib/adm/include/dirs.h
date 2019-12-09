@@ -1,24 +1,29 @@
 #ifndef __DIRS_H
 #define __DIRS_H
 
+#define DIR_DATA             "/data"
 #define DIR_SECURE              "/adm"
-#define DIR_DB                  DIR_SECURE+"/db"
 #define DIR_SAVE                "/save" //regular save
-#define DIR_DATA                DIR_SAVE+"/adm" //secure save
+#define DIR_ADM_SAVE            DIR_SAVE+"/adm" //secure save
 #define DIR_SECURE_DAEMONS      DIR_SECURE+"/daemon"
-#define DIR_ACCOUNTS            DIR_DATA+"/accounts"
-#define DIR_BOARDS              DIR_DATA+"/boards"
-#define DIR_USERS               DIR_DATA+"/users"
-#define DIR_LETTERS             DIR_DATA+"/letters"
-#define DIR_POSTAL              DIR_DATA+"/postal"
-#define DIR_SECURE_DAEMONS_SAVE DIR_DATA+"/daemons"
-#define DIR_VOTES               DIR_DATA+"/votes"
-#define DIR_OBJECTS		        DIR_DATA+"/objects"
-#define DIR_ROOM                DIR_DATA+"/room"
+#define DIR_ACCOUNTS            DIR_ADM_SAVE+"/accounts"
+#define DIR_BOARDS              DIR_ADM_SAVE+"/boards"
+#define DIR_USERS               DIR_ADM_SAVE+"/users"
+#define DIR_LETTERS             DIR_ADM_SAVE+"/letters"
+#define DIR_POSTAL              DIR_ADM_SAVE+"/postal"
+#define DIR_SECURE_DAEMONS_SAVE DIR_ADM_SAVE+"/daemons"
+#define DIR_VOTES               DIR_ADM_SAVE+"/votes"
+#define DIR_OBJECTS		        DIR_ADM_SAVE+"/objects"
+#define DIR_ROOM                DIR_ADM_SAVE+"/room"
+
+#define DIR_DB                  DIR_DATA+"/db"
 
 #define DIR_DAEMONS             "/daemon"
 #define DIR_DAEMONS_SAVE        DIR_SAVE+"/daemon"
-#define DIR_DAEMONS_DATA        DIR_DAEMONS+"/db"
+#define DIR_DATA_DAMNED         DIR_DATA+"/damned"
+#define DIR_CASTLE              DIR_DATA_DAMNED+"/castles"
+#define DIR_CASTLES_HM          DIR_DATA+"/hm"
+
 
 #define DIR_INHERITABLES        "/std"
 #define DIR_LIVING_INHERITABLES DIR_INHERITABLES+"/living"
@@ -58,7 +63,7 @@
 #define DOMAINS_DIRS            "/d"
 #define DIR_STANDARD_DOMAIN     DOMAINS_DIRS+"/standard"
 
-#define CASTLES_DIRS            "/hm"
+
 
 #define DIR_NEWS                "/news"
 

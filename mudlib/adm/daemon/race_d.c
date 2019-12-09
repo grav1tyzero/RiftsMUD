@@ -6,10 +6,11 @@
 
 #include <databases.h>
 #include <daemons.h>
+#include <dirs.h>
 
-#define LIMB_DIR "/daemon/db/races/"
-#define PROPS_DIR "/daemon/db/racial_props/"
-#define MON_DIR "/daemon/db/mon_races/"
+#define LIMB_DIR DIR_DB+"/races/"
+#define PROPS_DIR DIR_DB+"/racial_props/"
+#define MON_DIR DIR_DB+"/mon_races/"
 inherit DAEMON;
 
 mapping races, limbs;
@@ -77,8 +78,7 @@ void init_data() {
 }
 void create() {
   daemon::create();
-  init_data();
-
+  call_out("init_data", 1);
 }
 
 int query_weight(string res, int con) {
@@ -155,7 +155,6 @@ mapping body(object ob)
 
   if(!limbs || !races)
     init_data();
-
   borg = ([]);
   res = (string)ob->query_race();
   if (!res)
@@ -164,6 +163,7 @@ mapping body(object ob)
 
   borg["torso"] =
       (["limb_ref":"FATAL", "max_dam":max, "damage":0, "ac":0]);
+
   for (i = 0, tmp = sizeof(what = keys(limbs[races[res]["body type"]]));
        i < tmp; i++)
     borg[what[i]] =
@@ -231,12 +231,17 @@ mapping monster_body(string mon_race, int max)
 	    ]);
     else
     {
-      for(i = 1, tmp = sizeof(lines = explode(read_file(MON_DIR + mon_race),
-					      "\n")); i < tmp; i++) {
-	if(sizeof(data=explode(lines[i], ":")) != 4) continue;
-	if(data[1] == "0") data[1] = "";
-	borg[data[0]] =
-          ([ "limb_ref": data[1], "max_dam": max/atoi(data[2]), "damage":0, "ac":0 ]);
+      message("debug", sprintf("loading %s", MON_DIR + mon_race), find_player("parnell"));
+      for (i = 1, tmp = sizeof(lines = explode(read_file(MON_DIR + mon_race),
+                                               "\n"));
+           i < tmp; i++)
+      {
+        if (sizeof(data = explode(lines[i], ":")) != 4)
+          continue;
+        if (data[1] == "0")
+          data[1] = "";
+        borg[data[0]] =
+            (["limb_ref":data[1], "max_dam":max / atoi(data[2]), "damage":0, "ac":0]);
       }
     }
     return borg;
