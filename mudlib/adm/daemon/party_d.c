@@ -14,26 +14,7 @@ void manage_party(string group);
 void remove_party(string group);
 void remove_invitation(mixed *bing);
 int invited_now(object ob, string str);
-int perc_exp_bonus(int *levs);
 
-int perc_exp_bonus(int *levs) {
-  int sz = sizeof(levs);
-  int avg = 0;
-  int ldiff = 0;
-  int i;
-
-  if(sz <= 1) return 0;
-  i = sz;
-  while(i--)
-    avg += levs[i];
-  avg /= sz;
-  i = sz;
-  while(i--)
-    ldiff += (levs[i] >= avg)?(levs[i] - avg):(avg - levs[i]);
-  ldiff /= sz;
-  if(ldiff > 2) return 0;
-  return (3-ldiff) * (sz-1) * 10;
-}
 
 void create() {
     party = ([]);
@@ -44,7 +25,7 @@ void create() {
 
 int add_member(object ob, string group) {
     string name;
-    
+
     if(!party) party = ([]);
     if(party_member(ob)) return ALREADY_MEMBER;
     if(!party[group]) {
@@ -167,7 +148,7 @@ void remove_party(string group) {
 int filter_rec_exp(object sharer, object gainer, object mob) {
     object *list;
     object *tmp;
-  
+
     if(!mob || !living(mob)){
         if(gainer == sharer)
             return 1;
@@ -212,8 +193,7 @@ void calculate_exp(string group, int exp, object tmp) {
 	    x = (int)rec_exp[i]->query_level();
 	    tot += x * x;
     }
-    bonus = perc_exp_bonus(map_array(rec_exp, (: call_other :), "query_level"));
-    exp += (exp * bonus) / 100;
+
     for(i=0; i<sizeof(rec_exp); i++) {
         x = (int)rec_exp[i]->query_level();
         rec_exp[i]->fix_exp( (x*x*exp)/tot + 1, tmp);

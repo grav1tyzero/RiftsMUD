@@ -92,7 +92,7 @@ int add_member(string str) {
         notify_fail("No player by that name on the mud.\n");
         return 0;
     }
-    if(wizardp(ob)) { 
+    if(wizardp(ob)) {
         notify_fail("Immortals may not join.\n");
         return 0;
     }
@@ -202,7 +202,7 @@ int list() {
         items = allocate(sizeof(who));
     tot_exp = 0;
     for(i=0;i<sizeof(who);i++) {
-      items[i] = sprintf("%1s %-13s (level: %3d) %8d exp  %%^BOLD%%^hp:%%^RESET%%^ %s%d%%^RESET%%^ (%d)  %%^BOLD%%^mp:%%^RESET%%^ %d (%d)",
+      items[i] = sprintf("%1s %-13s (level: %3d) %8d exp  %%^BOLD%%^hp:%%^RESET%%^ %s%d%%^RESET%%^ (%d)  %%^BOLD%%^ppe:%%^RESET%%^ %d (%d)",
            (!i)?"*":" ",
           capitalize((string)who[i]->query_name()), (int)who[i]->query_level(),
           (int)PARTY_OB->query_party_exp(who[i]), ((int)who[i]->query_hp() < (int)who[i]->query_max_hp()/5)?"%^RED%^%^BOLD%^":"",
@@ -212,10 +212,8 @@ int list() {
       tot_exp += (int)PARTY_OB->query_party_exp(who[i]);
     }
     tmp =
-    "%^BOLD%^Party:%^RESET%^ %^CYAN%^%^BOLD%^"+party+"%^RESET%^ "+sprintf("(%d exp)\n", tot_exp) +
-    sprintf("%%^CYAN%%^%%^BOLD%%^Current EXP bonus: %%^RESET%%^%%^BOLD%%^%d%%\n",
-      (int)PARTY_OB->perc_exp_bonus(map_array(who2, (: call_other :), "query_level")))+
-    "%^BOLD%^-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-%^RESET%^\n\n";
+        "%^BOLD%^Party:%^RESET%^ %^CYAN%^%^BOLD%^" + party + "%^RESET%^ " + sprintf("(%d exp)\n", tot_exp) +
+        "%^BOLD%^-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-%^RESET%^\n\n";
     tmp += implode(items, "\n");
     tmp += "\n%";
     this_player()->more(explode(tmp, "\n"));
@@ -241,14 +239,15 @@ int join_party(string str) {
 
 void help() {
     write("Command: party\n"+
-        "Syntax: <party form [name]>\n"+
-        "        <party add [player]>\n"+
-	"        <party join [name]>\n"+
-        "        <party remove [player]>\n"+
-        "        <party leave>\n"+
-        "        <party list>\n"+
-        "        <party line [message]>\n"+
-        "        <party leader [player]>\n\n"+
+        "usage: <party form [name]>\n"+
+        "       <party add [player]>\n"+
+	    "       <party join [name]>\n"+
+        "       <party remove [player]>\n"+
+        "       <party leave>\n"+
+        "       <party list>\n"+
+        "       <party line [message]>\n"+
+        "       <party lineemote [action]>\n"+
+        "       <party leader [player]>\n\n"+
         "This command accesses the various party enabling functions.\n"+
         "The person who forms any party is automatically the leader of\n"+
         "the party.  Only that player may add or remove players.  That\n"+

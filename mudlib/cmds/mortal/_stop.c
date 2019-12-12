@@ -15,7 +15,6 @@ int cmd_stop(string str) {
             message("info", "%^BOLD%^%^GREEN%^You stop casting your spell.%^RESET%^", TP);
             spell->remove();
             TP->set_casting(0);
-            TP->set_magic_round(0);
             return 1;
         }
         message("info", "%^BOLD%^%^GREEN%^You are not casting a spell.%^RESET%^", TP);

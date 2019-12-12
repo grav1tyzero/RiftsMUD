@@ -369,23 +369,26 @@ static int finish_quit(object ob) {
     TO->move(tmp);
     tmp = 0;
     if(ob->query_followers()) ob->clear_followers();
-    if(environment(ob)) {
-          if(!ob->query_ghost() && !environment(ob)->query_property("no quit and save")) {
-	    message("Nquit_save", ENV(ob)->query_short() &&
-	      (string)ENV(ob)->query_short() != "" ?
-	      "Setting start location to " + ENV(ob)->query_short() + "..." :
-	      "Setting start location here...", ob);
-	    ob->setenv("start", file_name(environment(ob)));
-	    if((string)ob->getenv("start") == BN(ENV(ob)))
-		message("quit_save", "%^BLUE%^Successful.%^RESET%^", ob);
-	    else message("quit_save", "%^RED%^Unsuccessful.%^RESET%^", ob);
-	} else {
-	    message("Nquit_save", "Setting start location to Akkad Church...", ob);
-	    ob->setenv("start", "/d/standard/square");
-	    if((string)ob->getenv("start") == "/d/standard/square")
-		message("quit_save", "%^BLUE%^Successful.%^RESET%^", ob);
-	    else message("quit_save", "%^RED%^Unsuccessful.%^RESET%^", ob);
-	}
+    if (environment(ob))
+    {
+        if (!ob->query_ghost() && !environment(ob)->query_property("no quit and save"))
+        {
+            message("Nquit_save", ENV(ob)->query_short() && (string)ENV(ob)->query_short() != "" ? "Setting start location to " + ENV(ob)->query_short() + "..." : "Setting start location here...", ob);
+            ob->setenv("start", file_name(environment(ob)));
+            if ((string)ob->getenv("start") == BN(ENV(ob)))
+                message("quit_save", "%^BLUE%^Successful.%^RESET%^", ob);
+            else
+                message("quit_save", "%^RED%^Unsuccessful.%^RESET%^", ob);
+        }
+        else
+        {
+            message("Nquit_save", "Setting start location to Akkad Church...", ob);
+            ob->setenv("start", "/d/standard/square");
+            if ((string)ob->getenv("start") == "/d/standard/square")
+                message("quit_save", "%^BLUE%^Successful.%^RESET%^", ob);
+            else
+                message("quit_save", "%^RED%^Unsuccessful.%^RESET%^", ob);
+        }
     }
     message("quit", "%^CYAN%^Reality suspended.  See you another time!%^RESET%^",
       ob);
@@ -501,25 +504,7 @@ void setup() {
       ":"+ctime(time())+
       ":"+query_ip_name()+
       ":"+query_exp()+":exp\n");
-    if(query_class() && stringp(query_class()) && query_class() != "child"
-      && file_exists("/d/damned/guilds/join_rooms/"+query_class()+"_join.c")) {
-	join_room = load_object("/d/damned/guilds/join_rooms/"+
-	  query_class()+"_join");
-	if(join_room && !join_room->is_member(query_name())) {
-	    write("\n--**>> YOU HAVE BEEN KICKED OUT OF YOUR GUILD!!! <<**--\n");
-	    mods = (mapping)join_room->query_property("guild mods");
-	    if(mods) {
-		mod_keys = keys(mods);
-		for(i=0;i<sizeof(mod_keys);i++) {
-		    if(this_object()->query_base_stats(mod_keys[i]))
-			this_object()->set_stats(mod_keys[i], (int)this_object()->
-			  query_base_stats(mod_keys[i]) -
-			  mods[mod_keys[i]]);
-		}
-	    }
-	    set_class("child");
-	}
-    }
+
     more(explode(NEWS_D->get_news(this_object()), "\n") );
     command("look");
 
@@ -714,7 +699,6 @@ varargs void net_dead(int flag) {
 if(spell = this_object()->query_casting()){
             spell->remove();
             this_object()->set_casting(0);
-            this_object()->set_magic_round(0);
         }
     this_object()->move_player(ROOM_FREEZER);
     if(query_snoop(this_object()))

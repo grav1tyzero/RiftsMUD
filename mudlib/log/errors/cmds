@@ -145,3 +145,38 @@
 /cmds/mortal/_yell.c line 95: Warning: Unused local variable 'j' before the end of line
 /cmds/mortal/_yell.c line 95: Warning: Unused local variable 'tmp' before the end of line
 /cmds/mortal/_tell.c line 97: Warning: Unused local variable 'tell_msg' before the end of line
+/cmds/mortal/_party.c line 112: Warning: Unused local variable 'x' before the end of line
+/cmds/mortal/_finger.c line 20: Warning: Unused local variable 'ob' before the end of line
+/cmds/mortal/_finger.c line 32: Warning: Unused local variable 'id' before the end of line
+/cmds/mortal/_help.c line 175: Warning: Unused local variable 'reg' before the end of line
+/cmds/mortal/_finger.c line 20: Warning: Unused local variable 'ob' before the end of line
+/cmds/mortal/_finger.c line 32: Warning: Unused local variable 'id' before the end of line
+/cmds/mortal/_finger.c line 20: Warning: Unused local variable 'ob' before the end of line
+/cmds/mortal/_finger.c line 32: Warning: Unused local variable 'id' before the end of line
+/cmds/mortal/_finger.c line 20: Warning: Unused local variable 'ob' before the end of line
+/cmds/mortal/_finger.c line 32: Warning: Unused local variable 'id' before the end of line
+/cmds/mortal/_mudlist.c line 65: Warning: Unused local variable 'color' before the end of line
+/cmds/mortal/_mudlist.c line 65: Warning: Unused local variable 'tmp' before the end of line
+/cmds/mortal/_mudlist.c line 65: Warning: Unused local variable 'lib' before the end of line
+/cmds/mortal/_mudlist.c line 65: Warning: Unused local variable 'i' before the end of line
+/cmds/mortal/_finger.c line 16: Warning: Unused local variable 'ob' before the end of line
+/cmds/mortal/_finger.c line 16: Warning: Unused local variable 'wer' before the end of line
+/cmds/mortal/_finger.c line 16: Warning: Unused local variable 'wo' before the end of line
+/cmds/mortal/_finger.c line 16: Warning: Unused local variable 'ob' before the end of line
+/cmds/mortal/_finger.c line 16: Warning: Unused local variable 'wer' before the end of line
+/cmds/mortal/_finger.c line 16: Warning: Unused local variable 'wo' before the end of line
+/cmds/mortal/_colour.c line 8: Cannot #include /wizards/geldron/pt/valid_colour.c before the end of line
+/cmds/mortal/_colour.c line 32: Undefined function valid_colour before  && arg2 != "none") 
+/cmds/mortal/_colour.c line 31: Undefined function valid_colour before  && arg2 != "none") 
+/cmds/mortal/_colour.c line 31: Undefined function valid_colour before  && arg2 != "none") 
+/cmds/system/_eval.c line 43: Warning: Non-void functions must return a value. before the end of line
+/cmds/mortal/_say.c line 37: Warning: Unused local variable 'tmp' before the end of line
+/cmds/mortal/_say.c line 37: Warning: Unused local variable 'prof' before the end of line
+/cmds/mortal/_say.c line 77: Warning: Unused local variable 'k' before the end of line
+/cmds/mortal/_inventory.c line 35: Warning: Unused local variable 'silly' before the end of line
+/cmds/mortal/_inventory.c line 35: Warning: Unused local variable 'silly' before the end of line
+/cmds/mortal/_get.c line 116: Warning: Unused local variable 'silly' before the end of line
+/cmds/mortal/_alias.c line 80: Warning: Unused local variable 'sl' before the end of line
+/cmds/mortal/_alias.c line 80: Warning: Unused local variable 'index' before the end of line
+/cmds/mortal/_kill.c line 55: Warning: Unused local variable 'i' before the end of line
+/cmds/mortal/_party.c line 112: Warning: Unused local variable 'x' before the end of line

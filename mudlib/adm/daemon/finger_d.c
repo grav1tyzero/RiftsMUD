@@ -43,15 +43,12 @@ string general_finger_display() {
   finger += "%^BLUE%^---------------------------------------------------------------------%^RESET%^\n";
   who = users();
   for(i=0; i<sizeof(who); i++) {
-    if(who[i]->query_invis()) continue;
-    if(!who[i]->query_name()) continue;
+    if(!who[i]->query_name())
+      continue;
     name = (string)who[i]->query_cap_name();
-    rname= (string)who[i]->query_rname();
-     if(wizardp(this_player()))
-      email = (string)who[i]->query_email();
-     else
-      email = "censored";
+    email = (string)who[i]->query_email();
     idle = query_idle_string(who[i], 0);
+    rname= (string)who[i]->query_rname();
     finger += sprintf("%-15s %-17s %-23s %-5s\n", name, rname, email, idle);
   }
   finger += "%^BLUE%^----------------------------------------------------%^RESET%^\n";
@@ -68,7 +65,7 @@ string user_finger_display(string who) {
   tmp = true_name;
   who = sprintf("%s/%s/%s", DIR_USERS, tmp[0..0], tmp);
   if(file_size(who + ".o") < 0)
-    return "That character does not exist in Darke.\n";
+    return "That character does not exist in "+capitalize(mud_name())+"\n";
   restore_object(who);
   mail_stat = (mapping)LOCALPOST_D->mail_status(tmp);
   if(ob) {

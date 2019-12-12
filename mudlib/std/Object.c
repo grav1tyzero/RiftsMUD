@@ -307,6 +307,11 @@ int query_light() {
     if(props["light"]) return props["light"];
     return 0;
 }
+int set_light(int light){
+    if(!props)
+        props = ([]);
+    props["light"] = light;
+}
 
 void set_destroy() {
     if(!ob_data) ob_data = ([]);

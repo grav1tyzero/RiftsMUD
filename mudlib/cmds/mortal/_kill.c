@@ -3,18 +3,18 @@
 // rehack to check kill_ob first before continuing with kill and PK labeling
 // by Valodin, Feb 13, 1993
 // minor changes by Bohemund, Jan 22, 1993
- 
+
 #include <std.h>
 
 inherit DAEMON;
- 
+
 int help();
- 
+
 int cmd_kill(string str) {
    object victim;
    int retvalue;   /* return value */
    int i;
- 
+
    if(!str) {
       return help();
    }
@@ -40,20 +40,20 @@ int cmd_kill(string str) {
       notify_fail("Kill yourself?\n");
       return 0;
    }
- 
+
    if(!living(victim)) {
       notify_fail("That is not a living foe.\n");
       return 0;
    }
    /* check for an okay hit before we actually continue, Val */
    if (!(retvalue = (int)this_player()->kill_ob(victim))) return 1;
- 
+
    write("%^RED%^%^BOLD%^You attack "+(string)victim->query_cap_name() + "!");
    say(this_player()->query_cap_name() + " attacks " +
      victim->query_cap_name() + "!", victim);
    return retvalue;
 }
- 
+
 int help() {
   write("Command: kill\nSyntax: kill <living>\n"
         "This command is used to initiate combat with the "

@@ -274,7 +274,6 @@ else{
       }
     }
     caster->set_casting(this_object());
-    caster->set_magic_round(props["casting time"]);
     if(query("instant cast") || !props["casting time"])
       this_object()->do_spell(call_value);
     else
@@ -395,7 +394,6 @@ void do_spell(mapping info) {
 	 power = info["power"]; args = info["arg"];
    if(!caster){ TO->remove();return;}
     caster->set_casting(0);
-    caster->set_magic_round(0);
     caster_env = environment(caster);
         if(environment(caster)->query_property("no spell")) {
 	message("info","Mystic forces prevent casting.",caster);

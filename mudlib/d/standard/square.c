@@ -2,6 +2,10 @@
 
 inherit ROOM;
 
+void reset() {
+  return;
+}
+
 void init() {
     ::init();
 }
@@ -10,7 +14,7 @@ void create() {
     ::create();
     set("short", "Square");
     set("long", "You're in the city center square. East is the post office");
-    set_exits( 
+    set_exits(
       ([ "east" : "/d/standard/post"]));
     add_exit("/d/damned/virtual/room_15_15.world","world");
     set_property("light", 2);

@@ -176,14 +176,14 @@ string get_sid() {
             if(file_size(type) != -2)
                 mkdir(type);
             type +="/";
-message("debug", "Make dir: "+type, find_player("parnell"));
-        	}
+            message("debug", "Make dir: "+type, find_player("parnell"));
+        }
         seteuid(getuid());
         tmp = file_name(prev);
         tmp = sid2+tmp[1..sizeof(tmp)];
-message("debug", "Room sid: "+tmp, find_player("parnell"));
+        message("debug", "Room sid: "+tmp, find_player("parnell"));
         return tmp;
-    	}
+    }
     seteuid(UID_ROOT);
     type = base_name(prev);
     tmp2 = explode(type, "/");

@@ -12,11 +12,9 @@ mapping skills;
 mapping spells;
 string primary_language;
 
-void add_skill_points(string skill, int amount);
-void reduce_skill_points(string skill, int amount);
 void set_skill(string str, int x);
 void set_last_use(string str);
-int skill_exists(string str);
+int has_skill(string str);
 int query_max_skill(string str);
 int query_skill(string str);
 void set_class(string str);
@@ -29,7 +27,7 @@ void create () {
     spells = ([]);
 }
 
-int skill_exists(string name) {
+int has_skill(string name) {
     return member_array(name, keys(skills)) != -1;
 }
 
@@ -115,16 +113,16 @@ string query_class() { return char_class; }
 
 varargs int add_skill(string name, int value, int per_level)
 {
-    if(skill_exists(name))
+    if(has_skill(name))
       return 0;
     set_skill(name, value, per_level);
     return 1;
 }
 
-int delete_skill(string type)
+int delete_skill(string skill_name)
 {
-     if(!skill_exists(type)) return 0;
-     map_delete(skills, type);
+     if(!has_skill(skill_name)) return 0;
+     map_delete(skills, skill_name);
      return 1;
 }
 
