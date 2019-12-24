@@ -22,8 +22,25 @@
 #include <flags.h>
 #include <dirs.h>
 #include <council.h>
-// WHY IS THIS AN INCLUDE IF IT HAS A .C EXTENSION?
-#include "/std/user/ansi_convert.c"
+
+string ansi_convert(string str) {
+    if(str == "reset") return "%^RESET%^";
+    if(str == "red") return "%^RED%^";
+    if(str == "green") return "%^GREEN%^";
+    if(str == "yellow") return "%^ORANGE%^";
+    if(str == "blue") return "%^BLUE%^";
+    if(str == "cyan") return "%^CYAN%^";
+    if(str == "magenta") return "%^MAGENTA%^";
+    if(str == "black") return "%^BLACK%^";
+    if(str == "hired") return "%^BOLD%^%^RED%^";
+    if(str == "higreen") return "%^BOLD%^%^GREEN%^";
+    if(str == "hiblue") return "%^BOLD%^%^BLUE%^";
+    if(str == "hiyellow") return "%^BOLD%^%^ORANGE%^";
+    if(str == "hicyan") return "%^BOLD%^%^CYAN%^";
+    if(str == "hiblack") return "%^BOLD%^%^BLACK%^";
+    return "";
+}
+
 #pragma optimize
 #define RESURRECT "/cmds/adm/_resurrect"
 #define LOG_PROPS ({ "old exp", "dev points", "dev point base", "xp mod", "hp advance", "mp advance" })
