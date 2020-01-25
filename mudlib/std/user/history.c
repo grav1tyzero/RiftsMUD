@@ -9,14 +9,17 @@
 private static string *history_queue;
 private static int cmd_num, ptr;
 private static int max;
+private static int suspended = 0;
 
 int query_cmd_num() { return cmd_num ? cmd_num : 1; }
 int query_ptr() { return ptr; }
 int query_max() { return max; }
-string *query_history() {
-    if(geteuid(previous_object()) != geteuid() &&
-      geteuid(previous_object()) != UID_USERACCESS) return ({});
-    return history_queue;
+string *query_history()
+{
+   if (geteuid(previous_object()) != geteuid() &&
+         geteuid(previous_object()) != UID_USERACCESS)
+      return ({});
+   return history_queue;
 }
 
 void alloc(int size)
