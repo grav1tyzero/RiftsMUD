@@ -21,9 +21,6 @@
 #define DIR_DAEMONS             "/daemon"
 #define DIR_DAEMONS_SAVE        DIR_SAVE+"/daemon"
 #define DIR_DATA_DAMNED         DIR_DATA+"/damned"
-#define DIR_CASTLE              DIR_DATA_DAMNED+"/castles"
-#define DIR_CASTLES_HM          DIR_DATA+"/hm"
-
 
 #define DIR_INHERITABLES        "/std"
 #define DIR_LIVING_INHERITABLES DIR_INHERITABLES+"/living"

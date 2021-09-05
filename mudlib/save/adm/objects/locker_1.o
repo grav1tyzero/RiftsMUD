@@ -1,4 +1,5 @@
 #/std/diewarzau/obj/misc/storage_locker.c
+encumbrance 1200
 props (["value":100000,])
 true_name "locker"
 creator "/cmds/system/_clone"

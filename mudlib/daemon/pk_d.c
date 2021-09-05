@@ -104,7 +104,7 @@ void add_player_kill(object who) {
     killer = who->query_cap_name();
     victim = ob->query_cap_name();
     wibble = random(10);
-if (who->query_property("pkmsg")==0){
+
     switch(wibble) {
       case 0:
         "/daemon/inform_d"->do_inform("murders", 
@@ -158,13 +158,7 @@ if (who->query_property("pkmsg")==0){
         victim+" is vanquished by "+killer+" in a disgusting battle.");
         break;
     }
-}
-if (who->query_property("pkmsg")!=0){
-   pkm=(string)who->query_property("pkmsg");
-   pkm=replace_string(pkm, "ME", killer);
-   pkm=replace_string(pkm, "TARGET", victim);
-   "/daemon/inform_d"->do_inform("murders","%^BOLD%^%^MAGENTA%^Player Kill:%^RESET%^ "+pkm);
-}
+
     i = sizeof(player_kills);
     while(i--)
       if(player_kills[i]["name"] == (string)ob->query_name()) x = i;

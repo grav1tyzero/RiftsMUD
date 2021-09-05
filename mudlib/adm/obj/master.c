@@ -88,7 +88,6 @@ string *epilog(int load_empty)
   call_out("socket_preload", 5);
   return ({"/daemon/command",
     "/adm/daemon/astronomy_d",
-    "/adm/daemon/castle_d",
     "/adm/daemon/race_d",
     "/daemon/localpost",
     "/daemon/remotepost",
@@ -96,10 +95,7 @@ string *epilog(int load_empty)
     "/daemon/economy_d",
     "/daemon/events_d",
     "/adm/daemon/save_items_d",
-    "/daemon/voter",
-    "/daemon/terminal_d",
-    "/adm/daemon/wizchar_d",
-    "/adm/daemon/network/ftpd"
+    "/daemon/terminal_d"
   });
 }
 

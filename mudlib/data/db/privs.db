@@ -17,7 +17,6 @@
 (/cmds/adm/_chkdev): Root
 (/cmds/adm/_dirupdate): Force
 (/cmds/adm/_at): Force
-(/cmds/adm/_genpass): Root Log
 (/cmds/adm/_newemail): UserSave
 (/cmds/adm/_update): Force
 (/cmds/adm/_idaemon): SecureDaemonSave
@@ -77,8 +76,6 @@
 (/cmds/mortal/_typo): Log
 (/cmds/mortal/_who): ArchSave
 (/d/damned/inn/main_room): DamnedData
-(/daemon/clan_d): Root DaemonSave DamnedData
-(/daemon/castle_d): Root DaemonSave DamnedData
 (/d/standard/setter): Force Log Root Shell
 (/daemon/chat): Log
 (/daemon/email_d): UserSave Root DaemonSave
@@ -93,9 +90,5 @@
 (/daemon/services): Socket
 (/daemon/voting): Log UidLaw VoteSave
 (/std/locker_room): Log
-(/std/compat_mker): Root
-(/std/skills/communion): Force
-(/std/skills/prepare_item): Force
-(/std/spells/suggestion): Force
 (/std/spells/shadows/stat_shadow): Shadow
 (/std/obj/post): CreSave

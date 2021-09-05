@@ -307,7 +307,7 @@ void heart_beat()
 	if( i < 10 )
 	{
 		set_heart_beat( 0 );
-		message("broadcast", "Soul Daemon shouts: I am alive!", users());
+		//message("broadcast", "Soul Daemon shouts: I am alive!", users());
 		line = -1;
 	}
 }

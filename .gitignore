@@ -1,0 +1,9 @@
+mudlib/sqlitedata/**
+mudlib/log/**
+mudlib/save/**
+
+# but keep these
+!mudlib/log/author_stats
+!mudlib/log/domain_stats
+!mudlib/save/adm/users/p/parnell.o
+!mudlib/log/**/.gitkeep

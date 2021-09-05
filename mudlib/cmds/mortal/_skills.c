@@ -35,7 +35,7 @@ int cmd_skills(string str)
 	for (i = 0; i < sizeof(skills); i++)
 	{
 
-		list += ({sprintf("%-20s %3d%1s+%1d%1s  ", skills[i],
+		list += ({sprintf("%-20s %3d%1s (+%1d%1s/lvl)  ", skills[i],
 						  (int)this_player()->query_skill(skills[i]), "%",
 						  (int)this_player()->query_skill_per_level(skills[i]), "%")});
 
