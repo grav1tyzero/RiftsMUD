@@ -71,7 +71,7 @@ string default_who;
 string *inf_block;
 string	real_name, email, ip, last_on, cpath, race, original_site;
 private string _password_hash;
-private string _password_salt;
+
 private string position, primary_start;
 private static string *channels;
 mapping mini_quests;
@@ -861,14 +861,12 @@ string query_rname() { return real_name ? real_name : "???"; }
 void set_password(string password) {
     if(geteuid(previous_object()) != UID_ROOT &&
       file_name(previous_object()) != PASSWD_D) return 0;
-    //generate a 2 character capital hex for crypt() to use in the seed. pad it left with 0 because crypt seed requires 2 full chars. 00-FF
-    _password_salt = sprintf("%02X", random(255));
-    _password_hash = oldcrypt(password, _password_salt);
+    _password_hash = crypt(password, 0);
     save_player(query_name());
 }
 
 int verify_password(string password) {
-    string computed_hash = oldcrypt(password, _password_salt);
+    string computed_hash = crypt(password, _password_hash);
     return computed_hash == _password_hash;
 }
 
