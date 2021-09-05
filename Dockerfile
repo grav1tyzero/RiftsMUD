@@ -35,7 +35,7 @@ WORKDIR ${wrk}/fluffos/build
 
 RUN pwd
 
-RUN cmake ..
+RUN cmake .. -DPACKAGE_DB=ON -DPACKAGE_DB_MYSQL=1 -DPACKAGE_DB_SQLITE=2 -DPACKAGE_DB_DEFAULT_DB=2
 
 RUN make install
 

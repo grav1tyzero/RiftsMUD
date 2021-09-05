@@ -840,3 +840,9 @@ mapping query_groups() {
     return copy(groups);
 }
 
+mixed valid_database( object caller, string f_name, mixed *info )
+{
+     if(f_name == "connect")
+         return "topsecret2";
+     else return 1;
+}

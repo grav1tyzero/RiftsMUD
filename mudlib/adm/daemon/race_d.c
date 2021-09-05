@@ -25,7 +25,7 @@ string *query_limbs(string res);
 int is_limb(string limb, string res);
 
 void init_data() {
-  string *lines, *data, *w_limbs, *borg, *b_types;
+  string *lines, *data, *w_limbs, *b_types;
     int i, j, tmp, tmp2,trace;
 
     if(this_player() && wizardp(this_player()))

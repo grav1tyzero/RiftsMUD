@@ -47,9 +47,9 @@ private void update_objs();
  
 void downward_compat() {
   class uil tuil;
-  string *dir, file, key, tstr;
+  string *dir, file, key;
   int idx, i;
-  mapping tmpor, tmp;
+
 
   seteuid(getuid());
   dir = get_dir(DIR_OBJECTS+"/*.o");
@@ -249,10 +249,11 @@ int unregister_item(string key, int idx) {
 }
 
 void save_unregistered(string key, int *idx) {
-  int x, i;
-  class uil uar;
+
 
 #if 0
+  int i;
+  class uil uar;
   if(!(uar=find_uar_list(key))) {
     i = 0;
     while(unreg_at_reboot[i]) i++;
