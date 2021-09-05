@@ -18,7 +18,8 @@ int cmd_update(string str) {
     string file, res, *list, *dirs, path;
     int n, i, master_flag;
   
-    if(ambassadorp(previous_object())) return 0;
+    if( ambassadorp(previous_object()) && !wizardp(previous_object()) )
+      return 0;
     this_player()->set("error report", 0);
     if(!str || str == "here") {
         if(!environment(this_player())) {
