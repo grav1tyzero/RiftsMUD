@@ -91,6 +91,8 @@ string *epilog(int load_empty)
     "/adm/daemon/race_d",
     "/daemon/localpost",
     "/daemon/remotepost",
+    "/adm/daemon/wizchar_d",
+    "/std/user",
     "/daemon/letter",
     "/daemon/economy_d",
     "/daemon/events_d",

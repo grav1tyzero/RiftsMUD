@@ -102,12 +102,15 @@ string *deep_inherit_list(object ob) {
     "/", "", 1);
 }
 
-//   Allows message to be supplied with 0 as a third arg, in
+//   Allows message to be supplied with 0 as a third arg, inF
 //    which case it does nothing.  A compat. fixer.
 //    Diewarzau 4/23/96
 
 varargs void message(string type, string mess, mixed to, mixed exclude) {
   if(!to) return;
+  if (exclude)
   efun::message(type, mess, to, exclude);
+  else
+  efun::message(type, mess, to);
   return;
 }

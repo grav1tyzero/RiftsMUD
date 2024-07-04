@@ -10,6 +10,7 @@
 #define BANISH_D             (DIR_SECURE_DAEMONS+"/banish")
 #define BBOARD_D             (DIR_SECURE_DAEMONS+"/bboard_d")
 #define CHAT_D               (DIR_DAEMONS+"/chat")
+#define CASTLE_D             (DIR_DAEMONS+"/castle_d")
 #define CLAN_D               (DIR_DAEMONS+"/clan_d")
 #define CLOCK_D              (DIR_SECURE_DAEMONS+"/clock_d")
 #define CMD_D                (DIR_DAEMONS+"/command")

@@ -42,7 +42,7 @@ port number : 7878
 # This should be the absolute pathname to where you placed your copy of
 # the Lima Mudlib.
 #
-mudlib directory : /home/parnell/mud/mudlib
+mudlib directory : mudlib
 
 #
 # [ REQUIRED ]
